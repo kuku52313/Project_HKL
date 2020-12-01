@@ -1,0 +1,10 @@
+1. ALTER SESSION SET "_ORACLE_SCRIPT"=TRUE;
+
+2. CREATE USER hkl IDENTIFIED BY root;
+
+3. GRANT DBA TO hkl;
+
+
+////////////////////////////////////////////////////////
+Escape. DROP USER hkl CASCADE;
+////////////////////////////////////////////////////////

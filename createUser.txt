@@ -1,5 +1,0 @@
-alter session set "_ORACLE_SCRIPT"=true;
-
-create user hkl identified by root;
-
-grant dba to hkl;
