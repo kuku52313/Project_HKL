@@ -60,7 +60,8 @@
    (	"PRODUCT_NAME" VARCHAR2(100 BYTE), 
 	"PRODUCT_CODE" CHAR(6 BYTE), 
 	"PRODUCT_BRAND" CHAR(15 BYTE), 
-	"PRODUCT_PRICE" NUMBER(8,0)
+	"PRODUCT_PRICE" NUMBER(8,0),
+ 	"PRODUCT_KIND" NUMBER(4,0)
    );
 --------------------------------------------------------
 --  DDL for Table PRODUCT_LIKE
