@@ -56,7 +56,7 @@
 
                 <input type="password" class="input-field" onkeyup="checkPwfn()" id="userPw" name="memberPw" placeholder="PW : 알파벳 대,소문자,특수문자,숫자 포함" required>
                
-                &nbsp; &nbsp;
+                &nbsp;&nbsp;
 
                 <input type="button" id="pwCheckBtn" class="pwCheckBtn">
                 
@@ -74,13 +74,13 @@
 
                 <input type="text" class="input-field" id="userName" name="memberName" onkeyup="checkNamefn()" placeholder="name ex) 홍길동" required>
                 
-                &nbsp; &nbsp;
+                &nbsp;&nbsp;
 
                 <input type="button" id="nameCheckBtn" class="nameCheckBtn">
 
                 <input type="text" class="input-field" id="userTel" name="memberTel" onkeyup="telCheckfn()" placeholder="Tel ex) 010-1234-5678" required>
 
-                &nbsp; &nbsp;
+                &nbsp;&nbsp;
 
                 <input type="button" id="telCheckBtn" class="telCheckBtn">
 
