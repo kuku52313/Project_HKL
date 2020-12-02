@@ -1,3 +1,4 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -283,21 +284,39 @@
             </div>
 
             <!-- NavMenu -->
+            <sec:authorize access="isAnonymous()">
             <div class="col-4">
                 <a class="navbar_toggleBtn">
                     <i class="fas fa-bars"></i>
                 </a>
-
                 <br>
-
                 <ul class="navbar_menu font-set">
-                    <li><a href="#">로그인</a></li>
-                    <li><a href="#">회원가입</a></li>
+                    <li><a href="/loginPage">로그인</a></li>
+                    <li><a href="/loginPage">회원가입</a></li>
                     <li><a href="#">고객센터</a></li>
                     <li><a href="#">장바구니</a></li>
                 </ul>
+                
             </div>
-
+            </sec:authorize>
+            
+            <sec:authorize access="isAuthenticated()">
+            <div class="col-4">
+                <a class="navbar_toggleBtn">
+                    <i class="fas fa-bars"></i>
+                </a>
+                <br>
+                <ul class="navbar_menu font-set">
+               		<li><a href="#">${memberName}님</a>
+                    <li><a href="#">마이페이지</a></li>
+                    <li><a href="#" onclick="logout()">로그아웃</a></li>
+                    <li><a href="#">고객센터</a></li>
+                    <li><a href="#">장바구니</a></li>
+                </ul>
+                
+            </div>
+            </sec:authorize>
+           
         </nav>
         <div class="col-1">
         </div>
