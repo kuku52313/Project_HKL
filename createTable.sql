@@ -80,7 +80,9 @@
 	"ORDER_MEMBER_ID" CHAR(15 BYTE), 
 	"ORDER_PRODUCT_CODE" CHAR(6 BYTE), 
 	"ORDER_DATE" DATE, 
+    	"ORDER_ADDRESS" varchar2(100 byte),
 	"ORDER_STATE" VARCHAR2(20 BYTE) DEFAULT '준비 중 입니다'
+	    
    );
 --------------------------------------------------------
 --  DDL for Table PRODUCT_STOCK
@@ -198,6 +200,7 @@
   ALTER TABLE "HKL"."PRODUCT_ORDER" ADD CONSTRAINT "PRODUCT_ORDER_PK_ORDER_NUMBER" PRIMARY KEY ("ORDER_NUMBER");
   ALTER TABLE "HKL"."PRODUCT_ORDER" MODIFY ("ORDER_DATE" NOT NULL ENABLE);
   ALTER TABLE "HKL"."PRODUCT_ORDER" MODIFY ("ORDER_PRODUCT_CODE" NOT NULL ENABLE);
+  ALTER TABLE "HKL"."PRODUCT_ORDER" MODIFY ("ORDER_ADDRESS" NOT NULL ENABLE);
 --------------------------------------------------------
 --  Constraints for Table PRODUCT_STOCK
 --------------------------------------------------------
