@@ -12,7 +12,13 @@
 			password-parameter="memberPw"
 			login-processing-url="/login"
 			login-page="/loginPage"
-			default-target-url="/index" 
+		/>
+		
+		<security:logout 
+			logout-url="/logout"
+			logout-success-url="/"
+			invalidate-session="true"
+			delete-cookies="JSESSIONID"
 		/>
 		
 		<security:csrf disabled="false"/>
@@ -20,14 +26,16 @@
 		<security:intercept-url pattern="/index"
 			access="permitAll" />
 		<security:intercept-url pattern="/test"
-			access="hasRole('ROLE_MEMBER')" />
-
-		
+			access="hasRole('ROLE_ADMIN')" />
 
 		<security:access-denied-handler
-			error-page="/access/accessException" />
-
-		<security:logout />
+			error-page="/access/403" />
+			
+			
+		<!-- 중복 로그인 방지 | 중복가능한 최대 세션 수 1 | 중복로그인시 /login 으로 리다이렉트 -->	
+		<security:session-management invalid-session-url="/login">
+        	<security:concurrency-control max-sessions="1" expired-url="/login"/>
+   	 	</security:session-management>
 
 	</security:http>
 

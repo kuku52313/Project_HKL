@@ -183,7 +183,7 @@
             </p>
             </div>
             <div id="particles-js">
-                <a class="back" href="/index"><i class="fas fa-home"></i></a>
+                <a class="back" href="/"><i class="fas fa-home"></i></a>
             </div>
         </div>
     </div>

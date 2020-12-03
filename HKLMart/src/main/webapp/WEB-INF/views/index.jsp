@@ -284,6 +284,7 @@
             </div>
 
             <!-- NavMenu -->
+            <!-- 비로그인 상태 -->
             <sec:authorize access="isAnonymous()">
             <div class="col-4">
                 <a class="navbar_toggleBtn">
@@ -296,10 +297,10 @@
                     <li><a href="#">고객센터</a></li>
                     <li><a href="#">장바구니</a></li>
                 </ul>
-                
             </div>
             </sec:authorize>
             
+            <!-- 로그인 상태 -->
             <sec:authorize access="isAuthenticated()">
             <div class="col-4">
                 <a class="navbar_toggleBtn">
@@ -307,13 +308,19 @@
                 </a>
                 <br>
                 <ul class="navbar_menu font-set">
-               		<li><a href="#">${memberName}님</a>
+               		<li><a href="#"><i><u>${memberName}님</u></i></a>
                     <li><a href="#">마이페이지</a></li>
-                    <li><a href="#" onclick="logout()">로그아웃</a></li>
+                    <li><a href="#" onclick="$('#logout-form').submit();">로그아웃</a>
+                    	
+                    	<!-- Logout Form -->
+	                    <form id="logout-form" action="/logout" method="POST">
+					    	<input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }">
+						</form>
+		
+					</li>
                     <li><a href="#">고객센터</a></li>
                     <li><a href="#">장바구니</a></li>
-                </ul>
-                
+                </ul>                
             </div>
             </sec:authorize>
            
