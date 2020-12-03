@@ -35,7 +35,7 @@
             </div>
             
             <div class="logo" style="text-align: center;">
-                <a href=""> <img src="resources/img/login/twitter_header_photo_1.png"></a>
+                <a href="#"> <img src="../resources/img/login/twitter_header_photo_1.png"></a>
             </div>
 			
 			<!-- Login -->
@@ -50,7 +50,7 @@
             </form>
             
 			<!-- Sign up -->
-            <form class="input-group" id="register" name="memberForm" action="/signup" method="POST">
+            <form class="input-group" id="register" name="memberForm" action="/member/signup" method="POST">
             
             	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
@@ -248,7 +248,7 @@
              $("#telCheckHidden").val() == 1)
         ) { 
         	alert("회원가입을 환영합니다");
-        	window.location.href = '/';	
+        	window.location.href = "/";	
         }
         else {
             alert("양식에 오류가있습니다. 다시입력하여 주십시오.")
@@ -274,7 +274,7 @@
         
         if ((loginIdcheckId.test(loginId))) {
         	alert("로그인 되었습니다");
-            window.location.href = '/';	
+            window.location.href = "/";	
         }else{
             alert("ID 와 PW가 일치하지 않습니다");
         }

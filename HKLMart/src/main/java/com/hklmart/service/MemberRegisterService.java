@@ -2,6 +2,6 @@ package com.hklmart.service;
 
 public interface MemberRegisterService{
 	
-	public String doEncryption(String password);
+	public String registMember(String password);
 	
 }
