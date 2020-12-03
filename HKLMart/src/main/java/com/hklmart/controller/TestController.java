@@ -1,10 +1,10 @@
 package com.hklmart.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 public class TestController {
 	
-	@GetMapping("/test")
+	@PostMapping("/test")
 	public String doTest() {
 		return "TestPageName";
 	}
