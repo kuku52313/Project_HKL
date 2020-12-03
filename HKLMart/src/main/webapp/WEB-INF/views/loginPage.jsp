@@ -7,9 +7,11 @@
 <html>
 
 <head>
+	<title>sign in/sign up</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <title>sign in/sign up</title>
     <link rel="stylesheet" href="/resources/css/loginCss.css">
 </head>
 
@@ -38,17 +40,19 @@
 			
 			<!-- Login -->
             <form class="input-group" id="login" action="/login" method="POST">
-                <input type="text" class="input-field_log" name="memberId" placeholder="User ID" required>
+                <input type="text" class="input-field_log" id="loginId" name="memberId" placeholder="User ID" required>
 
-                <input type="password" class="input-field_log" name="memberPw" placeholder="Enter Password" required>
+                <input type="password" class="input-field_log" id="loginPw" name="memberPw" placeholder="Enter Password" required>
                 
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-                <button class="submit">Login</button>
+                <button class="submit" onclick="loginCheckfn()">Login</button>
             </form>
             
 			<!-- Sign up -->
-            <form id="register" action="" name="member" class="input-group">
+            <form class="input-group" id="register" name="memberForm" action="/signup" method="POST">
+            
+            	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
                 <input type="text" class="input-check" id="userId" name="memberId" placeholder="User ID ex) hkl123" onchange="idCheck()" required>
 
@@ -60,7 +64,7 @@
 
                 <input type="button" id="pwCheckBtn" class="pwCheckBtn">
                 
-                <input type="password" class="input-field" onkeyup="checkPwfn()" id="userPwCk" name="memberPwCheck" placeholder="PW 확인" required>
+                <input type="password" class="input-field" onkeyup="checkPwfn()" id="userPwCk" placeholder="PW 확인" required>
                     
                 &nbsp;&nbsp;
 
@@ -84,9 +88,7 @@
 
                 <input type="button" id="telCheckBtn" class="telCheckBtn">
 
-                <input type="button" onclick="memberCheckfn()" class="submit" value="REGISTER">
-
-
+                <button onclick="memberCheckfn()" class="submit">REGISTER</button>
             </form>
         </div>
     </div>
@@ -239,17 +241,44 @@
 
         if (
             ($("#idCheckHidden").val() == 1 &&
-                $("#pwCheckHidden").val() == 1 &&
-                $("#pwckCheckHidden").val() == 1 &&
-                $("#emailCheckHidden").val() == 1 &&
-                $("#nameCheckHidden").val() == 1 &&
-                $("#telCheckHidden").val() == 1)
-        ) { alert("회원가입을 환영합니다") }
+             $("#pwCheckHidden").val() == 1 &&
+             $("#pwckCheckHidden").val() == 1 &&
+             $("#emailCheckHidden").val() == 1 &&
+             $("#nameCheckHidden").val() == 1 &&
+             $("#telCheckHidden").val() == 1)
+        ) { 
+        	alert("회원가입을 환영합니다");
+        	window.location.href = '/';	
+        }
         else {
             alert("양식에 오류가있습니다. 다시입력하여 주십시오.")
         }
     }
+	
+    
+    function loginCheckfn() {
 
+        var loginId = $("#loginId").val();
+        var loginIdcheckId = /^[a-zA-Z0-9]{2,15}$/;
+        var loginPw = $("#loginPw").val();
+        
+        /* 테스트끝나면 되돌리기
+        var logincheckPw = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$/;
+        
+        되돌릴때
+        아래 js 서브밋 조건식 바꾸기
+        if ((loginIdcheckId.test(loginId) && logincheckPw.test(loginPw)))
+        
+       */
+       
+        
+        if ((loginIdcheckId.test(loginId))) {
+        	alert("로그인 되었습니다");
+            window.location.href = '/';	
+        }else{
+            alert("ID 와 PW가 일치하지 않습니다");
+        }
+    }
 
 </script>
 

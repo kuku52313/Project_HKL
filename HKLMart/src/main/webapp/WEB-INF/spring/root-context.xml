@@ -8,8 +8,12 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	
 	<!-- Service Scan -->
 	<context:component-scan base-package="com.hklmart.service" />
+	
+	<!-- Repository Scan -->
+	<context:component-scan base-package="com.hklmart.repository" />
 	
 	<!-- MyBatis-Scan -->
 	<mybatis-spring:scan base-package="com.hklmart.persistence"/>
@@ -17,6 +21,11 @@
 	<!-- MyBatis -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
+		<property name="configuration">
+	    	<bean class="org.apache.ibatis.session.Configuration">
+	    		<property name="mapUnderscoreToCamelCase" value="true"/>
+	    	</bean>
+	   	</property>
 	</bean>
 	
 	<!-- HikariCP Configuration -->
