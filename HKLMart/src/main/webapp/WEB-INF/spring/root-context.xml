@@ -9,15 +9,18 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
+	<!-- Security -->
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+	
 	<!-- Service Scan -->
 	<context:component-scan base-package="com.hklmart.service" />
 	
-	<!-- Repository Scan -->
-	<context:component-scan base-package="com.hklmart.repository" />
-	
 	<!-- MyBatis-Scan -->
 	<mybatis-spring:scan base-package="com.hklmart.persistence"/>
-		
+	
+	<!-- Repository Scan -->
+	<context:component-scan base-package="com.hklmart.repository" />
+
 	<!-- MyBatis -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
@@ -40,6 +43,5 @@
 		<property name="username" value="hkl"></property>
 		<property name="password" value="root"></property>
 	</bean>		
-	
 	
 </beans>

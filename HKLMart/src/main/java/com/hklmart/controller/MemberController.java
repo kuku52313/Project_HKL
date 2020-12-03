@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.hklmart.repository.MemberVO;
-import com.hklmart.service.MemberRegister;
+import com.hklmart.service.MemberRegisterService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -15,8 +15,8 @@ import lombok.extern.log4j.Log4j;
 public class MemberController {
 	
 	@Autowired
-	MemberRegister memberRegister;
-
+	MemberRegisterService memberRegister;
+	
 	@GetMapping("/loginPage")
 	public String tryLogin() {
 		return "loginPage";

@@ -4,13 +4,11 @@
 	xmlns:s="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+	
 	<s:http auto-config="true" use-expressions="true">
 	
 	
 		<!-- ########################################################### 권한 ########################################################### -->
-	
-	
 	
 		<!-- 정적 리소스는 모두 접근 허용 -->
 		<s:intercept-url pattern="/resources/**" access="permitAll" />
@@ -70,7 +68,5 @@
 
 		</s:authentication-provider>
 	</s:authentication-manager>
-	
-	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
 	
 </beans>

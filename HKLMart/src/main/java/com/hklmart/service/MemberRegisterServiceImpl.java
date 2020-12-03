@@ -1,20 +1,22 @@
 package com.hklmart.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import lombok.AllArgsConstructor;
+
 @Service
-public class MemberRegisterImpl implements MemberRegister{
+@AllArgsConstructor
+public class MemberRegisterServiceImpl implements MemberRegisterService{
 	
 	@Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	@Override
 	public String doEncryption(String password) {
 		
-		return bCryptPasswordEncoder.encode(password);
+		return passwordEncoder.encode(password);
 	}
 	
 }
