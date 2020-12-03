@@ -46,7 +46,10 @@
 
 				<security:user name="member" password="{noop}member"
 					authorities="ROLE_MEMBER" />
-
+				
+				<security:user name="admin" password="{noop}root"
+					authorities="ROLE_ADMIN" />
+				
 			</security:user-service>
 
 		</security:authentication-provider>
