@@ -6,7 +6,7 @@
 	<groupId>com.HKLMart</groupId>
 	<artifactId>HKLMart</artifactId>
 	<name>HKLMart</name>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
 		<java-version>11</java-version>
