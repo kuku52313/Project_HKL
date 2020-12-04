@@ -20,8 +20,9 @@ public class MemberRegistService{
 
 	public void registMember(MemberVO memberVO) {
 		memberVO.setMemberAuthorities("ROLE_MEMBER");
-		memberVO.setMemberEmail(passwordEncoder.encode(memberVO.getMemberEmail()));
+		memberVO.setMemberPw(passwordEncoder.encode(memberVO.getMemberPw()));
 		memberDAO.registMember(memberVO);
+		
 	}
 	
 }

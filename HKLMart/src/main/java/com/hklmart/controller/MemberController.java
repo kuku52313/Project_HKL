@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.hklmart.repository.MemberVO;
 import com.hklmart.service.MemberRegistService;
 
+import lombok.extern.log4j.Log4j;
+
 @Controller
 @RequestMapping("/member")
 public class MemberController {
@@ -23,9 +25,7 @@ public class MemberController {
 	
 	@PostMapping("/signup")
 	public String doSignUp(MemberVO memberVO) {
-		
 		memberService.registMember(memberVO);
-		
 		return "redirect:/";
 	}
 	
