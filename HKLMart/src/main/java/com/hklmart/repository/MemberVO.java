@@ -9,8 +9,8 @@ import lombok.Data;
 public class MemberVO {
 	private String memberId;
 	private String memberPw;
-	private String memberEmail;
 	private String memberName;
+	private String memberEmail;
 	private String memberTel;
 	private String memberAuthorities;
 }

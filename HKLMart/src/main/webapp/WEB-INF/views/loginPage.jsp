@@ -273,10 +273,10 @@
        
         
         if ((loginIdcheckId.test(loginId))) {
-        	alert("로그인 되었습니다");
-            window.location.href = "/";	
+        	alert("로그인하였습니다");
+        	
         }else{
-            alert("ID 와 PW가 일치하지 않습니다");
+            alert("입력하신 정보가 올바르지 않습니다");
         }
     }
 

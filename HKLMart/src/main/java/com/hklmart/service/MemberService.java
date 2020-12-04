@@ -7,10 +7,8 @@ import org.springframework.stereotype.Service;
 import com.hklmart.persistence.MemberDAO;
 import com.hklmart.repository.MemberVO;
 
-import lombok.extern.log4j.Log4j;
-
 @Service
-public class MemberRegistService{
+public class MemberService{
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
@@ -23,6 +21,11 @@ public class MemberRegistService{
 		memberVO.setMemberPw(passwordEncoder.encode(memberVO.getMemberPw()));
 		memberDAO.registMember(memberVO);
 		
+	}
+	
+	public MemberVO getMemberInfo(String memberId) {
+		MemberVO memberVO = memberDAO.getMemberInfo(memberId);
+		return memberVO;
 	}
 	
 }
