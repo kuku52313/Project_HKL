@@ -2,6 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.hklmart.persistence.MemberDAO">
-
+	
+	<insert id="registMember">
+		<![CDATA[
+			INSERT INTO MEMBER VALUES (member_id, member_pw, member_name, member_email, member_tel, member_authorities)
+		]]>
+	</insert>
 
 </mapper>

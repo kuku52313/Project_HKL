@@ -1,19 +1,20 @@
 package com.hklmart.controller;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hklmart.repository.MemberVO;
+import com.hklmart.service.MemberRegistService;
 
-import lombok.extern.log4j.Log4j;
-
-@Log4j
 @Controller
 @RequestMapping("/member")
 public class MemberController {
+	
+	@Autowired
+	private MemberRegistService memberService;
 	
 	@GetMapping("/loginPage")
 	public String tryLogin() {
@@ -21,12 +22,9 @@ public class MemberController {
 	}
 	
 	@PostMapping("/signup")
-	public String doSignUp(BCryptPasswordEncoder passwordEncoder, MemberVO memberVO) {
-	
-		memberVO.setMemberAuthorities("ROLE_MEMBER");
-		memberVO.setMemberPw(passwordEncoder.encode(memberVO.getMemberPw()));
+	public String doSignUp(MemberVO memberVO) {
 		
-		log.info("memberPw = " + memberVO.getMemberPw());
+		memberService.registMember(memberVO);
 		
 		return "redirect:/";
 	}

@@ -1,9 +1,9 @@
-package com.hklmart.persistence;
+package com.hklmart.service;
 
 import com.hklmart.repository.MemberVO;
 
-public interface MemberDAO {
-
+public interface MemberRegistService{
+	
 	public void registMember(MemberVO memberVO);
 	
 }
