@@ -1,4 +1,4 @@
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -302,13 +302,14 @@
             
             <!-- 로그인 상태 -->
             <sec:authorize access="isAuthenticated()">
+            <sec:authentication property="principal" var="user"/>
             <div class="col-4">
                 <a class="navbar_toggleBtn">
                     <i class="fas fa-bars"></i>
                 </a>
                 <br>
                 <ul class="navbar_menu font-set">
-               		<li><a href="#"><i><u>${memberName}님</u></i></a>
+               		<li><a href="#"><i><u>${user.memberName}님</u></i></a>
                     <li><a href="#">마이페이지</a></li>
                     <li><a href="#" onclick="$('#logout-form').submit();">로그아웃</a>
                     	

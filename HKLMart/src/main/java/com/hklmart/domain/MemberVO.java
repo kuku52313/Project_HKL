@@ -1,16 +1,13 @@
-package com.hklmart.repository;
-
-import org.springframework.stereotype.Repository;
+package com.hklmart.domain;
 
 import lombok.Data;
 
 @Data
-@Repository
 public class MemberVO {
 	private String memberId;
 	private String memberPw;
-	private String memberEmail;
 	private String memberName;
+	private String memberEmail;
 	private String memberTel;
 	private String memberAuthorities;
 }
