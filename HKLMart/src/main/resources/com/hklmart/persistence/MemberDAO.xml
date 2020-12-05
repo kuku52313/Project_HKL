@@ -9,7 +9,7 @@
 		]]>
 	</insert>
 	
-	<select id="getMemberInfo" parameterType="java.lang.String" resultType="com.hklmart.repository.MemberVO">
+	<select id="getMemberInfo" parameterType="java.lang.String" resultType="com.hklmart.domain.MemberVO">
 		<![CDATA[
 			SELECT /*+ INDEX_ASC(MEMBER MEMBER_PK_MEMBER_ID) */ * FROM MEMBER WHERE MEMBER_ID = #{param} 
 		]]>

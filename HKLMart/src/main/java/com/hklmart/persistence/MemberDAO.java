@@ -1,7 +1,7 @@
 package com.hklmart.persistence;
 
 
-import com.hklmart.repository.MemberVO;
+import com.hklmart.domain.MemberVO;
 
 public interface MemberDAO {
 

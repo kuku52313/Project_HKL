@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.hklmart.repository.MemberVO;
+import com.hklmart.domain.MemberVO;
 import com.hklmart.service.MemberService;
 
 @Controller

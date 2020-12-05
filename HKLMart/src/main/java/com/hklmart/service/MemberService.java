@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.hklmart.domain.MemberVO;
 import com.hklmart.persistence.MemberDAO;
-import com.hklmart.repository.MemberVO;
 
 @Service
 public class MemberService{

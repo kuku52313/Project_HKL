@@ -14,8 +14,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.hklmart.repository.MemberVO;
-import com.hklmart.repository.UserDetailsVO;
+import com.hklmart.domain.MemberVO;
+import com.hklmart.domain.UserDetailsVO;
 
 @Service
 public class LoginAuthenticationProvider implements AuthenticationProvider {

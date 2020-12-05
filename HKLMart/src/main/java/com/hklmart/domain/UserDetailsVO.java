@@ -1,4 +1,4 @@
-package com.hklmart.repository;
+package com.hklmart.domain;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,17 +7,21 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Repository;
 
-@Repository
+import lombok.Data;
+
+@Data
 public class UserDetailsVO implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
 
 	private String username;
 	private String password;
+	private String memberName;
+	private String memberEmail;
+	private String memberTel;
 	private List<GrantedAuthority> authorities;
-
+	
 	public void setUsername(String username) {
 		this.username = username;
 	}

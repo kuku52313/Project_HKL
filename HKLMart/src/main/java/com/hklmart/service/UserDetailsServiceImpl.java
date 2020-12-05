@@ -5,9 +5,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+import com.hklmart.domain.MemberVO;
+import com.hklmart.domain.UserDetailsVO;
 import com.hklmart.persistence.MemberDAO;
-import com.hklmart.repository.MemberVO;
-import com.hklmart.repository.UserDetailsVO;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -27,6 +27,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		} else {
 			userDetails.setUsername(member.getMemberId());
 			userDetails.setPassword(member.getMemberPw());
+			userDetails.setMemberName(member.getMemberName());
+			userDetails.setMemberEmail(member.getMemberEmail());
+			userDetails.setMemberTel(member.getMemberTel());
 			userDetails.setAuthorities(member.getMemberAuthorities());
 		}
 
