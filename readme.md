@@ -1,7 +1,5 @@
-[![HKLMart](https://user-images.githubusercontent.com/71188307/101260354-9628fc80-3772-11eb-99fc-8ce0923dca57.png)](https://github.com/jrdev4102/Project_HKL)
-
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/71188307/101260354-9628fc80-3772-11eb-99fc-8ce0923dca57.png">
+  <a href="https://github.com/jrdev4102/Project_HKL>"<img src="https://user-images.githubusercontent.com/71188307/101260354-9628fc80-3772-11eb-99fc-8ce0923dca57.png"></a>
   <h1 align="center"><b><i>Project_HKLMart</i><b></h1>
 </p>
 
