@@ -45,12 +45,12 @@
 --------------------------------------------------------
 
   CREATE TABLE "HKL"."MEMBER" 
-   (	"MEMBER_ID" CHAR(15 BYTE), 
-	"MEMBER_PW" VARCHAR2(30 BYTE), 
+   (	"MEMBER_ID" VARCHAR2(15 BYTE), 
+	"MEMBER_PW" CHAR(60 BYTE), 
 	"MEMBER_NAME" VARCHAR2(10 BYTE), 
 	"MEMBER_EMAIL" VARCHAR2(40 BYTE), 
-	"MEMBER_TEL" CHAR(12 BYTE), 
-	"MEMBER_ADDRESS" VARCHAR2(100 BYTE)
+	"MEMBER_TEL" VARCHAR2(15 BYTE), 
+	"MEMBER_AUTHORITIES" VARCHAR2(10 BYTE)
    );
 --------------------------------------------------------
 --  DDL for Table PRODUCT
