@@ -4,7 +4,7 @@
 ---
 
 ## Context Path
-> src/main/webapp/
+> *src/main/webapp/*
 
 ---
 
