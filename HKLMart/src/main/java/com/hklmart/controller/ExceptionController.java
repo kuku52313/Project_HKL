@@ -1,20 +1,18 @@
 package com.hklmart.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
-@Controller
-@RequestMapping("/access")
+@ControllerAdvice
 public class ExceptionController {
 	
-	@GetMapping("/403")
-	public String handlingException(Model model) {
+	@ExceptionHandler(Exception.class)
+	public String handlingException(Exception ex, Model model) {
+	
+		model.addAttribute("message", ex.getClass());
 		
-		model.addAttribute("message", "접근 권한이 없습니다");
-		
-		return "accessException";
+		return "exception";
 	}
 
 }
