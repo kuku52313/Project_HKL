@@ -3,7 +3,7 @@
 
 ---
 
-## Context Path
+## *Context Path*
 > *src/main/webapp/*
 
 ---
