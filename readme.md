@@ -1,10 +1,8 @@
 
-  .align-center{
-    text-align:center;
 
-[![HKLMart](https://user-images.githubusercontent.com/71188307/101260354-9628fc80-3772-11eb-99fc-8ce0923dca57.png)](https://github.com/jrdev4102/Project_HKL){:align-center}
+[![HKLMart](https://user-images.githubusercontent.com/71188307/101260354-9628fc80-3772-11eb-99fc-8ce0923dca57.png)](https://github.com/jrdev4102/Project_HKL)
 
-# ***<span style="color:red">Project_HKLMart</span>***
+# ***Project_HKLMart***
 
 ---
 
