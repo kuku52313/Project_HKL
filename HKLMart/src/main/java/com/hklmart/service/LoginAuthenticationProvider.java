@@ -21,7 +21,7 @@ import com.hklmart.domain.UserDetailsVO;
 public class LoginAuthenticationProvider implements AuthenticationProvider {
 
 	@Autowired
-	UserDetailsService userDetailsServcie;
+	private UserDetailsService userDetailsServcie;
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
