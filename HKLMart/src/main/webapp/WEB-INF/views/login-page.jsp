@@ -81,7 +81,7 @@
 				&nbsp;&nbsp;
 				<input type="button" id="telCheckBtn" class="telCheckBtn">
 
-				<button type="button" class="submitBtn" onclick="memberCheckfn()" >회원가입</button>
+				<button type="button" class="submitBtn" onclick="memberCheckfn()">회원가입</button>
 			</form>
 		</div>
 	</div>
@@ -243,10 +243,7 @@
 	}
 
 	
-	$(document).on(
-			'click',
-			'#loginBtn',
-			function () {
+	$(document).on('click','#loginBtn',function () {
 				var sendData = {
 					"memberId" : $('#loginId').val(),
 					"memberPw" : $('#loginPw').val()
@@ -258,12 +255,11 @@
 					dataType : 'json',
 					data : sendData,
 					beforeSend : function(xhr) { /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
-						xhr.setRequestHeader("${_csrf.headerName}",
-								"${_csrf.token}");
+						xhr.setRequestHeader("${_csrf.headerName}","${_csrf.token}");
 					},
 					success : function(data) {
 						if (data.loginStatus === true) {
-							alert("로그인에 성공하였습니다");
+							alert("로그인 하였습니다");
 							window.location.href = "/";
 						} else {
 							alert(data.loginFailMsg);
@@ -271,9 +267,8 @@
 						}
 						//data - response from server
 					},
-					error : function(loginStatus, loginFailMsg) {
-						alert("loginStatus = " + loginStatus, "loginFailMsg = "
-								+ loginFailMsg);
+					error : function() {
+						alert("Error. 관리자에게 문의하십시오.");
 					}
 				});
 			})
@@ -282,8 +277,6 @@
 			
 		function pressEnter(){
         if(event.keyCode == 13){
-        	
-        	
 				var sendData = {
 					"memberId" : $('#loginId').val(),
 					"memberPw" : $('#loginPw').val()
@@ -295,12 +288,11 @@
 					dataType : 'json',
 					data : sendData,
 					beforeSend : function(xhr) { /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
-						xhr.setRequestHeader("${_csrf.headerName}",
-								"${_csrf.token}");
+						xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
 					},
 					success : function(data) {
 						if (data.loginStatus === true) {
-							alert("로그인에 성공하였습니다");
+							alert("로그인 하였습니다");
 							window.location.href = "/";
 						} else {
 							alert(data.loginFailMsg);
@@ -308,9 +300,8 @@
 						}
 						//data - response from server
 					},
-					error : function(loginStatus, loginFailMsg) {
-						alert("loginStatus = " + loginStatus, "loginFailMsg = "
-								+ loginFailMsg);
+					error : function() {
+						alert("Error. 관리자에게 문의하십시오.");
 					}
 				});
 			
