@@ -17,9 +17,6 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Service;
 
-import lombok.extern.log4j.Log4j;
-
-@Log4j
 @Service
 public class LoginFailHandler implements AuthenticationFailureHandler {
 
@@ -48,9 +45,6 @@ public class LoginFailHandler implements AuthenticationFailureHandler {
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/member/loginFail");
 		dispatcher.forward(request, response);
-		
-		log.info("LoginFailHandler 동작");
-		log.info("loginFailMsg = " + request.getAttribute("loginFailMsg"));
 
 	}
 
