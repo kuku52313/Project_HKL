@@ -24,7 +24,7 @@ public class MemberController {
 	
 	@RequestMapping("/loginPage")
 	public String tryLogin() {
-		return "loginPage";
+		return "login-page";
 	}
 	
 	@PostMapping("/signup")
@@ -41,7 +41,7 @@ public class MemberController {
 		log.info("/loginFail Mapping");
 		log.info("loginFailMsg = " + request.getAttribute("loginFailMsg"));
 		 
-		return "loginPage";
+		return "login-page";
 	}
 	
 }
