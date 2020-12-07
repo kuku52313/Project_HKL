@@ -7,7 +7,7 @@
 <html>
 
 <head>
-<title>sign in/sign up</title>
+<title>HKLMart :: Login</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="_csrf" content="${_csrf.token}" />
