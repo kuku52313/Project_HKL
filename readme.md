@@ -10,9 +10,9 @@
 
 + *SQL 시스템 관리자 계정으로 로그인*
 
-+ *createUser.sql 를 참고하여 SQL 실행*
++ *createUser.sql 실행*
 
-+ *createTable.sql 를 참고하여 SQL 실행*
++ *createTable.sql 실행*
 
 + *HKLMart Pulling 후 실행*  
 
