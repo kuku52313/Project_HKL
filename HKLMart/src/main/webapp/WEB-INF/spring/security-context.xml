@@ -19,7 +19,7 @@
 		<s:intercept-url pattern="/" access="permitAll" />
 		
 		<!-- 로그인된 상태에서는 로그인이나 회원가입 화면에 접근 못하도록 함 -->
-		<s:intercept-url pattern="/member/loginPage" access="isAnonymous()" />
+		<s:intercept-url pattern="/member/login-page" access="isAnonymous()" />
 		
 		<!-- 관리자권한 테스트용 소스 -->
 		<s:intercept-url pattern="/test" access="hasRole('ROLE_ADMIN')" />
@@ -38,7 +38,12 @@
 		<s:form-login 
 			username-parameter="memberId"
 			password-parameter="memberPw"
+<<<<<<< HEAD
 			login-page="/member/loginPage"
+=======
+			login-processing-url="/login"
+			login-page="/member/login-page"
+>>>>>>> refs/remotes/origin/main
 			authentication-failure-url="/member/loginFail"
 			authentication-failure-handler-ref="loginFailHandler"
 			authentication-success-handler-ref="loginSuccessHandler"

@@ -25,7 +25,7 @@ public class MemberController {
 	
 	@RequestMapping("/loginPage")
 	public String tryLogin() {
-		return "loginPage";
+		return "login-page";
 	}
 	
 	@PostMapping("/signup")
@@ -42,7 +42,11 @@ public class MemberController {
 		loginObj.put("loginStatus", request.getAttribute("loginStatus"));
 		loginObj.put("loginFailMsg", request.getAttribute("loginFailMsg"));
 		 
+<<<<<<< HEAD
 		return loginObj;
+=======
+		return "login-page";
+>>>>>>> refs/remotes/origin/main
 	}
 
 	
