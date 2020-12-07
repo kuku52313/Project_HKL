@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.log4j.Log4j;
 
-@Log4j
 @Service
 public class LoginFailHandler implements AuthenticationFailureHandler {
 
@@ -45,12 +44,11 @@ public class LoginFailHandler implements AuthenticationFailureHandler {
 		} else if (exception instanceof CredentialsExpiredException) {
 			request.setAttribute("loginFailMsg", "비밀번호가 만료되었습니다");
 		}
-
+		
+		request.setAttribute("loginStatus", false);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/member/loginFail");
 		dispatcher.forward(request, response);
 		
-		log.info("LoginFailHandler 동작");
-		log.info("loginFailMsg = " + request.getAttribute("loginFailMsg"));
 
 	}
 

@@ -38,7 +38,6 @@
 		<s:form-login 
 			username-parameter="memberId"
 			password-parameter="memberPw"
-			login-processing-url="/login"
 			login-page="/member/loginPage"
 			authentication-failure-url="/member/loginFail"
 			authentication-failure-handler-ref="loginFailHandler"
@@ -47,7 +46,6 @@
 		
 		<!-- 로그아웃 처리 -->
 		<s:logout 
-			logout-url="/logout"
 			logout-success-url="/"
 			invalidate-session="true"
 			delete-cookies="JSESSIONID"

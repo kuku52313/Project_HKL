@@ -315,6 +315,7 @@
                     	
                     	<!-- Logout Form -->
 	                    <form id="logout-form" action="/logout" method="POST">
+	                    	<!-- 포스트방식으로 리퀘스트시 무조건 넣기 -->
 					    	<input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }">
 						</form>
 		
