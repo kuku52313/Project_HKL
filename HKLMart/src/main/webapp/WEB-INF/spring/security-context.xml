@@ -38,12 +38,7 @@
 		<s:form-login 
 			username-parameter="memberId"
 			password-parameter="memberPw"
-<<<<<<< HEAD
-			login-page="/member/loginPage"
-=======
-			login-processing-url="/login"
 			login-page="/member/login-page"
->>>>>>> refs/remotes/origin/main
 			authentication-failure-url="/member/loginFail"
 			authentication-failure-handler-ref="loginFailHandler"
 			authentication-success-handler-ref="loginSuccessHandler"

@@ -7,99 +7,97 @@
 <html>
 
 <head>
-	<title>sign in/sign up</title>
-	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/resources/css/loginCss.css">
+<title>sign in/sign up</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="_csrf" content="${_csrf.token}" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/resources/css/loginCss.css">
 </head>
 
 <body>
-    <input type="hidden" id="idCheckHidden" value="0">
-    <input type="hidden" id="pwCheckHidden" value="0">
-    <input type="hidden" id="pwckCheckHidden" value="0">
-    <input type="hidden" id="emailCheckHidden" value="0">
-    <input type="hidden" id="nameCheckHidden" value="0">
-    <input type="hidden" id="telCheckHidden" value="0">
+	<input type="hidden" id="idCheckHidden" value="0">
+	<input type="hidden" id="pwCheckHidden" value="0">
+	<input type="hidden" id="pwckCheckHidden" value="0">
+	<input type="hidden" id="emailCheckHidden" value="0">
+	<input type="hidden" id="nameCheckHidden" value="0">
+	<input type="hidden" id="telCheckHidden" value="0">
 
-    <div class="wrap">
-        <div class="form-wrap">
-        
-        	<!-- toggle -->
-            <div class="button-wrap">
-                <div id="btn"></div>
-                <button type="button" class="togglebtn" onclick="login()">LOG IN</button>
+	<div class="wrap">
+		<div class="form-wrap">
 
-                <button type="button" class="togglebtn" onclick="register()">REGISTER</button>
-            </div>
-            
-            <div class="logo" style="text-align: center;">
-                <a href="#"> <img src="../resources/img/login/twitter_header_photo_1.png"></a>
-            </div>
-			
+			<!-- toggle -->
+			<div class="button-wrap">
+				<div id="btn"></div>
+				<button type="button" class="togglebtn" onclick="login()">LOG
+					IN</button>
+
+				<button type="button" class="togglebtn" onclick="register()">REGISTER</button>
+			</div>
+
+			<div class="logo" style="text-align: center;">
+				<a href="#"> <img
+					src="../resources/img/login/twitter_header_photo_1.png"></a>
+			</div>
+
 			<!-- Login -->
-            <form class="input-group" id="login" action="/login" method="POST">
-                <input type="text" class="input-field_log" id="loginId" name="memberId" placeholder="User ID" required>
+			<form class="input-group" id="login" name="memberLogin"
+				action="/login" method="POST">
+				<input type="text" class="input-field_log" id="loginId"
+					name="memberId" placeholder="User ID" required> <input
+					type="password" class="input-field_log" id="loginPw"
+					name="memberPw" placeholder="Enter Password" required> <input
+					type="button" id="loginBtn" class="submitBtn" value="Login" />
+			</form>
 
-                <input type="password" class="input-field_log" id="loginPw" name="memberPw" placeholder="Enter Password" required>
-                
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-                <button class="submit" onclick="loginCheckfn()">Login</button>
-            </form>
-            
 			<!-- Sign up -->
-            <form class="input-group" id="register" name="memberForm" action="/member/signup" method="POST">
-            
-            	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+			<form class="input-group" id="register" name="memberForm"
+				action="/member/signup" method="POST">
 
-                <input type="text" class="input-check" id="userId" name="memberId" placeholder="User ID ex) hkl123" onchange="idCheck()" required>
+				<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" /> <input type="text" class="input-check"
+					id="userId" name="memberId" placeholder="User ID ex) hkl123"
+					onchange="idCheck()" required> <input type="button"
+					id="idCheckBtn" class="idCheckBtn" value="ID Check"> <input
+					type="password" class="input-field" onkeyup="checkPwfn()"
+					id="userPw" name="memberPw" placeholder="PW : 알파벳 대,소문자,특수문자,숫자 포함"
+					required> &nbsp;&nbsp; <input type="button" id="pwCheckBtn"
+					class="pwCheckBtn"> <input type="password"
+					class="input-field" onkeyup="checkPwfn()" id="userPwCk"
+					placeholder="PW 확인" required> &nbsp;&nbsp; <input
+					type="button" id="pwckCheckBtn" class="pwckCheckBtn"> <input
+					type="text" class="input-field" id="userEmail"
+					onkeyup="checkEmailfn()" name="memberEmail"
+					placeholder="Email ex) qwer1@hkl.com" required>
 
-                <input type="button" id="idCheckBtn" class="idCheckBtn" value="ID Check">
+				&nbsp;&nbsp; <input type="button" id="emailCheckBtn"
+					class="emailCheckBtn"> <input type="text"
+					class="input-field" id="userName" name="memberName"
+					onkeyup="checkNamefn()" placeholder="name ex) 홍길동" required>
 
-                <input type="password" class="input-field" onkeyup="checkPwfn()" id="userPw" name="memberPw" placeholder="PW : 알파벳 대,소문자,특수문자,숫자 포함" required>
-               
-                &nbsp;&nbsp;
+				&nbsp;&nbsp; <input type="button" id="nameCheckBtn"
+					class="nameCheckBtn"> <input type="text"
+					class="input-field" id="userTel" name="memberTel"
+					onkeyup="telCheckfn()" placeholder="Tel ex) 010-1234-5678" required>
 
-                <input type="button" id="pwCheckBtn" class="pwCheckBtn">
-                
-                <input type="password" class="input-field" onkeyup="checkPwfn()" id="userPwCk" placeholder="PW 확인" required>
-                    
-                &nbsp;&nbsp;
+				&nbsp;&nbsp; <input type="button" id="telCheckBtn"
+					class="telCheckBtn">
 
-                <input type="button" id="pwckCheckBtn" class="pwckCheckBtn">
-
-                <input type="text" class="input-field" id="userEmail" onkeyup="checkEmailfn()" name="memberEmail" placeholder="Email ex) qwer1@hkl.com" required>
-
-                &nbsp;&nbsp;
-
-                <input type="button" id="emailCheckBtn" class="emailCheckBtn">
-
-                <input type="text" class="input-field" id="userName" name="memberName" onkeyup="checkNamefn()" placeholder="name ex) 홍길동" required>
-                
-                &nbsp;&nbsp;
-
-                <input type="button" id="nameCheckBtn" class="nameCheckBtn">
-
-                <input type="text" class="input-field" id="userTel" name="memberTel" onkeyup="telCheckfn()" placeholder="Tel ex) 010-1234-5678" required>
-
-                &nbsp;&nbsp;
-
-                <input type="button" id="telCheckBtn" class="telCheckBtn">
-
-                <button onclick="memberCheckfn()" class="submit">REGISTER</button>
-            </form>
-        </div>
-    </div>
+				<button type="button" class="submitBtn" onclick="memberCheckfn()">REGISTER</button>
+			</form>
+		</div>
+	</div>
 
 </body>
 
 <script>
 
-    const x = document.getElementById("login");
-    const y = document.getElementById("register");
-    const z = document.getElementById("btn");
+  	var x = document.getElementById("login");
+  	var y = document.getElementById("register");
+    var z = document.getElementById("btn");
 
 
 
@@ -121,7 +119,15 @@
     function idCheck() {
         var userId = $("#userId").val();
         var checkId = /^[a-zA-Z0-9]{2,15}$/;
-
+		
+        /* id사용가능 db체크
+        $.ajax({
+        	data : text,
+        	url : 
+        })
+        
+        */
+        
         if (!checkId.test(userId)) {
             document.getElementById('idCheckBtn').value = "사용불가";
             document.getElementById('idCheckBtn').style.background = '#6c757d';
@@ -238,7 +244,8 @@
     }
 
     function memberCheckfn() {
-
+    	 var subForm = document.memberForm;
+    	
         if (
             ($("#idCheckHidden").val() == 1 &&
              $("#pwCheckHidden").val() == 1 &&
@@ -247,39 +254,46 @@
              $("#nameCheckHidden").val() == 1 &&
              $("#telCheckHidden").val() == 1)
         ) { 
-        	alert("회원가입을 환영합니다");
-        	window.location.href = "/";	
+        alert("회원가입을 환영합니다");
+        	subForm.submit();
         }
         else {
-            alert("양식에 오류가있습니다. 다시입력하여 주십시오.")
+            alert("양식에 오류가있습니다. 다시입력하여 주십시오.");
+            
         }
     }
-	
     
-    function loginCheckfn() {
-
-        var loginId = $("#loginId").val();
-        var loginIdcheckId = /^[a-zA-Z0-9]{2,15}$/;
-        var loginPw = $("#loginPw").val();
-        
-        /* 테스트끝나면 되돌리기
-        var logincheckPw = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$/;
-        
-        되돌릴때
-        아래 js 서브밋 조건식 바꾸기
-        if ((loginIdcheckId.test(loginId) && logincheckPw.test(loginPw)))
-        
-       */
-       
-        
-        if ((loginIdcheckId.test(loginId))) {
-        	alert("로그인하였습니다");
-        	
-        }else{
-            alert("입력하신 정보가 올바르지 않습니다");
-        }
-    }
-
+    $(document).on('click', '#loginBtn', function() {        
+       	var sendData = {"memberId" : $('#loginId').val(), "memberPw" : $('#loginPw').val() }
+       	
+        $.ajax({
+              url: '/login', 
+              type: 'POST', 
+              dataType: 'json', 
+              data: sendData,
+              beforeSend : function(xhr)
+              {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                  xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+              },
+              success: function(data)
+              {
+            	  if(data.loginStatus === true){
+           		   alert("로그인에 성공하였습니다");
+           		   window.location.href = "/";
+              }else {
+           	   	   alert(data.loginFailMsg);
+           	   
+              } 
+                  //data - response from server
+              },
+              error: function (loginStatus,loginFailMsg)
+              {
+                     alert("loginStatus = " + loginStatus, "loginFailMsg = " + loginFailMsg);
+              }
+            });
+    })
+   
+   
 </script>
 
 
