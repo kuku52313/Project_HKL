@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.hklmart.domain.MemberVO;
 import com.hklmart.service.MemberService;
 
+import lombok.extern.log4j.Log4j;
+
+@Log4j
 @Controller
 @RequestMapping("/member")
 public class MemberController {
@@ -31,11 +34,14 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("loginFail")
+	@PostMapping("loginFail")
 	public String failLogin(Model model, HttpServletRequest request, HttpServletResponse response) {
 		
 		model.addAttribute("loginFailMsg", request.getAttribute("loginFailMsg"));
 		
+		log.info("/loginFail Mapping");
+		log.info("loginFailMsg = " + request.getAttribute("loginFailMsg"));
+		 
 		return "loginPage";
 	}
 	

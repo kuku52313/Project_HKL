@@ -50,6 +50,7 @@ public class LoginFailHandler implements AuthenticationFailureHandler {
 		dispatcher.forward(request, response);
 		
 		log.info("LoginFailHandler 동작");
+		log.info("loginFailMsg = " + request.getAttribute("loginFailMsg"));
 
 	}
 
