@@ -32,7 +32,7 @@ public class MainController {
 		return map;
 	}
 
-	@GetMapping("/tester")
+	@GetMapping("/test")
 	public String goProductRegist() {
 		return "product-regist";
 	}
