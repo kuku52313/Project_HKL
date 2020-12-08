@@ -6,16 +6,7 @@
 
 <%@include file="includes/header.jsp" %>
 
-
-
- 
 <body>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/resources/css/addProductCss.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
-
     <form class="insertform">
  
         <!-- form header -->
@@ -25,30 +16,30 @@
 
         <!-- form body -->
         <div>
-            <div class="row">
+            <div class="record">
                 <label>제품명 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="text" class="formText" id="nameProduct" name="productName">
             </div>
             <hr style="border: solid 1px #ffb6b6;">
-            <div class="row">
+            <div class="record">
                 <label>브랜드 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="text" class="formText" id="brandProduct" name="productBrand">
             </div>
             <hr style="border: solid 1px #ffb6b6;">
-            <div class="row">
+            <div class="record">
                 <label>제품 코드</label>&nbsp;&nbsp;
                 <input type="text" class="formText" id="codeProduct" name="productCode" minlength="6" maxlength="6"
                     placeholder="예시 코드 ex) AA0010">
             </div>
             <hr style="border: solid 1px #ffb6b6;">
-            <div class="row">
+            <div class="record">
                 <label>제품 가격</label>&nbsp;&nbsp;
                 <input type="text" class="formText" id="priceProduct" name="productPrice"
                     placeholder="주의사항) ,와 원 미입력 ex) 30000">
             </div>
             <hr style="border: solid 1px #ffb6b6;">
         </div>
-        <div class="row">
+        <div class="record">
             <label>제품 종류</label>&nbsp;&nbsp;
             <select class="formText" id="kindProduct" name="productKind">
                 <option value="1" name="none">- 세부코드를 선택하여주세요 -</option>
@@ -72,12 +63,12 @@
             </select>
         </div>
         <hr style="border: solid 1px #ffb6b6;">
-        <div class="row">
+        <div class="record">
             <label>제품 설명</label>
 
         </div>
         <div>
-            <textarea id="content" name="productContent" cols="90" rows="10" style="border-color:#ffb6b6 ;"></textarea>
+            <textarea id="content" name="productContent" cols="90" row="10" style="border-color:#ffb6b6 ;"></textarea>
 
             <div class="form-group left">
                 <label for="contentFile" class="fileTitle"></label>
@@ -91,15 +82,12 @@
             <label style="margin-left: 7px; ">240</label>
             <input type="number" class="stockInt" id="" name="stock240" value="0" min="0" step="1">
             <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
-
             <label style="margin-left: 7px;">245</label>
             <input type="number" class="stockInt" id="" name="stock245" value="0" min="0" step="1">
             <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
-
             <label style="margin-left: 7px;">250</label>
             <input type="number" class="stockInt" id="" name="stock250" value="0" min="0" step="1">
             <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
-
             <label style="margin-left: 7px;">255</label>
             <input type="number" class="stockInt" id="" name="stock255" value="0" min="0" step="1">
             <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
@@ -111,15 +99,12 @@
             <label style="margin-left: 7px;">260</label>
             <input type="number" class="stockInt" id="" name="stock260" value="0" min="0" step="1">
             <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
-
             <label style="margin-left: 7px;">265</label>
             <input type="number" class="stockInt" id="" name="stock265" value="0" min="0" step="1">
             <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
-
             <label style="margin-left: 7px;">270</label>
             <input type="number" class="stockInt" id="" name="stock270" value="0" min="0" step="1">
             <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
-
             <label style="margin-left: 7px;">275</label>
             <input type="number" class="stockInt" id="" name="stock275" value="0" min="0" step="1">
             <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
@@ -131,15 +116,12 @@
             <label style="margin-left: 7px;">280</label>
             <input type="number" class="stockInt" id="" name="stock280" value="0" min="0" step="1">
             <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
-
             <label style="margin-left: 7px;">285</label>
             <input type="number" class="stockInt" id="" name="stock285" value="0" min="0" step="1">
             <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
-
             <label style="margin-left: 7px;">290</label>
             <input type="number" class="stockInt" id="" name="stock290" value="0" min="0" step="1">
             <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
-
             <label style="margin-left: 7px;">295</label>
             <input type="number" class="stockInt" id="" name="stock295" value="0" min="0" step="1">
             <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
@@ -152,9 +134,8 @@
         
     <br>
     <br>
-	<hr style="border: solid 1px #ffb6b6;">
-
-
+    <hr style="border: solid 1px #ffb6b6;">
+</body>
 
     <script>
 
@@ -190,16 +171,6 @@
                 submit()
             }
         }
-
-
-
-
-
     </script>
-</body>
-
-
-
-
 
 <%@include file="includes/footer.jsp" %>
