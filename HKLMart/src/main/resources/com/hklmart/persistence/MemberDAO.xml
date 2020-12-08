@@ -14,5 +14,5 @@
 			SELECT /*+ INDEX_ASC(MEMBER MEMBER_PK_MEMBER_ID) */ * FROM MEMBER WHERE MEMBER_ID = #{param} 
 		]]>
 	</select>
-
+	
 </mapper>

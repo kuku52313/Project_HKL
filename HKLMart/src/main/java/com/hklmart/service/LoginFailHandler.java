@@ -44,7 +44,7 @@ public class LoginFailHandler implements AuthenticationFailureHandler {
 		}
 		
 		request.setAttribute("loginStatus", false);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/member/loginFail");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/member/login-fail");
 		dispatcher.forward(request, response);
 
 	}

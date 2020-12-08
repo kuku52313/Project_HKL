@@ -19,7 +19,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 			Authentication authentication) throws IOException, ServletException {
 
 		request.setAttribute("loginStatus", true);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/member/loginSuccess");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/member/login-success");
 		dispatcher.forward(request, response);
 
 	}

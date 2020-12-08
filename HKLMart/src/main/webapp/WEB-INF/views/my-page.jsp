@@ -9,18 +9,25 @@
 <html lang="ko">
 
 <head>
-    <title>:: HKL Mart ::</title>
+    <title>HKL Mart :: My Page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/resources/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/resources/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="stylesheet" href="/resources/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/resources/css/indexCss.css">
-    <script src="/resources//jquery/3.5.1/jquery.min.js"></script>
-    <script src="/resources//bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/resources/css/loginCss.css"/>
+
+    <style>
     
+        
+
+    </style>
 </head>
 
 <body>
+	<sec:authentication property="principal" var="user"/>
     <!-- Header -->
     <header id="header" class="container-fluid">
 
@@ -53,24 +60,8 @@
 
             <!-- NavMenu -->
             <!-- 비로그인 상태 -->
-            <sec:authorize access="isAnonymous()">
-            <div class="col-4">
-                <a class="navbar_toggleBtn">
-                    <i class="fas fa-bars"></i>
-                </a>
-                <br>
-                <ul class="navbar_menu font-set">
-                    <li><a href="/member/loginPage">로그인</a></li>
-                    <li><a href="/member/loginPage">회원가입</a></li>
-                    <li><a href="#">고객센터</a></li>
-                    <li><a href="#">장바구니</a></li>
-                </ul>
-            </div>
-            </sec:authorize>
-            
+         
             <!-- 로그인 상태 -->
-            <sec:authorize access="isAuthenticated()">
-            <sec:authentication property="principal" var="user"/>
             <div class="col-4">
                 <a class="navbar_toggleBtn">
                     <i class="fas fa-bars"></i>
@@ -79,20 +70,18 @@
                 <ul class="navbar_menu font-set">
                		<li><a href="#"><i><u>${user.memberName}님</u></i></a>
                     <li><a href="/member/my-page">마이페이지</a></li>
-                    <li><a href="#" onclick="$('#logout-form').submit();">로그아웃</a>
+                    <li><a href="#" onclick="$('#logout-form').submit()">로그아웃</a>
                     	
                     	<!-- Logout Form -->
 	                    <form id="logout-form" action="/logout" method="POST">
-	                    	<!-- 포스트방식으로 리퀘스트시 무조건 넣기 -->
 					    	<input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }">
 						</form>
 		
 					</li>
                     <li><a href="#">고객센터</a></li>
-                    <li><a href="/member/my-page">장바구니</a></li>
+                    <li><a href="#shopping-basket">장바구니</a></li>
                 </ul>                
             </div>
-            </sec:authorize>
            
         </nav>
         <div class="col-1">
@@ -155,79 +144,127 @@
                 </ul>
             </div>
         </div>
-
         <div class="col-1">
-        </div>
-
-        <br>
-
-        <!-- Slide Menu -->
-        <div class="container-fluid">
-
-            <div class="row">
-
-                <div class="col-1"></div>
-
-                <div class="col-10">
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-                        <!-- Indicators -->
-                        <ul class="carousel-indicators">
-                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#myCarousel" data-slide-to="1"></li>
-                            <li data-target="#myCarousel" data-slide-to="2"></li>
-                            <li data-target="#myCarousel" data-slide-to="3"></li>
-                            <li data-target="#myCarousel" data-slide-to="4"></li>
-                            <li data-target="#myCarousel" data-slide-to="5"></li>
-                            <li data-target="#myCarousel" data-slide-to="6"></li>
-                        </ul>
-
-                        <!-- The slideshow -->
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="/resources/img/slide/1.jpg" width="100%">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/resources/img/slide/2.jpg" width="100%">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/resources/img/slide/3.jpg" width="100%">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/resources/img/slide/4.jpg" width="100%">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/resources/img/slide/5.jpg" width="100%">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/resources/img/slide/6.jpg" width="100%">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/resources/img/slide/7.jpg" width="100%">
-                            </div>
-                        </div>
-
-                        <!-- Left and right controls -->
-                        <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </a>
-                        <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-1"></div>
-
-            </div>
         </div>
     </header>
 
-    <br><br>
-
     <!-- Body -->
     <div id="body" class="container-fluid">
-    <!-- 여기에 본문 기입 -->    
+
+        <div class="row">
+
+            <!-- 왼쪽 공백 -->
+            <div class="col-1">
+            </div>
+            
+            <!-- 사이드 메뉴 -->
+            <div class="col-2">
+                    <ul class="sidebar" id="sidebar">
+                        <hr>
+                        <li><a class="sidebarMain" href="#header">MY 쇼핑</a></li>
+                        <li><a href="#order-history">주문내역</a></li>
+                        <li><a href="#shopping-basket">장바구니</a></li>
+                        <hr>
+                        <li><a class="sidebarMain" href="#header">MY 활동</a></li>
+                        <li><a href="#">문의하기</a></li>
+                        <li><a href="#inquire_history">문의내역</a></li>
+                        <li><a href="#reviews">구매후기</a></li>
+                        <li><a href="#wishlist">찜한상품</a></li>
+                        <hr>
+                        <li><a class="sidebarMain" href="#header">MY 정보</a></li>
+                        <li><a href="#privacy">개인정보확인/수정</a></li>
+                        <hr>
+                    </ul>
+            </div>
+
+            <!-- 작업중 -->
+            <div class="col-7" style="font-family: Godo; text-align: center;">
+                <br><br>
+                <div id="order-history">
+                    <h3 class="font-set">주문내역</h3>
+                    <hr>
+                </div>
+
+                <br><br>
+                <div id="shopping-basket">
+                    <h3 class="font-set">장바구니</h3>
+                    <hr>
+                </div>
+
+                <br><br>
+                <div id="inquire_history">
+                    <h3 class="font-set">문의내역</h3>
+                    <hr>
+                </div>
+
+                <br><br>
+                <div id="reviews">
+                    <h3 class="font-set">구매후기</h3>
+                    <hr>
+                </div>
+
+                <br><br>
+                <div id="wishlist">
+                    <h3 class="font-set">찜한상품</h3>
+                    <hr>
+                </div>
+
+                <br><br>
+                <div id="privacy">
+                    <h3 class="font-set">개인정보확인/수정</h3>
+                    <hr>
+                    <!-- 개인정보 보기 -->
+                    <table class="table-hover info-table">
+                        <tr>
+                            <td class="font-set">ID</td>
+                            <td class="font-set"><input type="text" class="input-check" id="userId" value="${user.username}" readonly style="width: 80%;"/></td>
+                        </tr>
+                        <tr>
+                            <td class="font-set">성명</td>
+                            <td class="font-set"><input type="text" class="input-field" id="userName" value="${user.memberName}" readonly /></td>
+                        </tr>
+                        <tr>
+                            <td class="font-set">Email</td>
+                            <td class="font-set"><input type="text" class="input-field" id="userEmail" value="${user.memberEmail}" readonly /></td>
+                        </tr>
+                        <tr> 
+                            <td class="font-set">전화번호</td>
+                            <td class="font-set"><input type="text" class="input-field" id="userTel" value="${user.memberTel}" readonly /></td>
+                        </tr>
+                        </table>
+
+                        <hr>
+
+                    <!-- 비밀번호 변경 -->
+                    <form name="passwordForm" action="/member/update" method="POST">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                        <table class="table-hover info-table">
+                            <tr>
+                                <td class="font-set">비밀번호</td>
+                                <td class="font-set"> <input type="password" class="input-field" onkeyup="checkPwfn()" id="userPw" name="memberPw" placeholder="알파벳 대,소문자,특수문자,숫자 포함" required /></td>
+                                <td><input type="button" id="pwCheckBtn" class="pwCheckBtn" /></td>
+                                <input type="hidden" id="pwCheckHidden" value="0" />
+                            </tr>
+                            <tr>
+                                <td class="font-set">비밀번호확인</td>
+                                <td class="font-set"> <input type="password" class="input-field" onkeyup="checkPwfn(),enterKeyUp()" id="userPwCk" placeholder="알파벳 대,소문자,특수문자,숫자 포함" required /></td>
+                                <td><input type="button" id="pwckCheckBtn" class="pwckCheckBtn" /></td>
+                                <input type="hidden" id="pwckCheckHidden" value="0" />
+                            </tr>
+                            </table>
+                            <br>                
+                            <button type="button" class="submitBtn font-set" onclick="updatePassword()">수정하기</button>
+                    </form>
+                </div>
+                
+            </div>
+
+            <!-- 오른쪽 공백 -->
+            <div class="col-2">
+            </div>
+
+        </div>
+
     </div>
 
     <br><br><hr>
@@ -321,22 +358,68 @@
         search.classList.toggle('active');
         menu.classList.toggle('active');
     });
-    
-    $(document).ready(function(){
-	    $('a[href^="#"]').on('click',function (e) {
-	        e.preventDefault();
 
-	        var target = this.hash;
-	        var $target = $(target);
+    function checkPwfn() {
+        const checkPwSik = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$/;
+        var userPw = $("#userPw").val();
+        var checkpw = $("#userPw").val() === $("#userPwCk").val();
 
-	        $('html, body').stop().animate({
-	            'scrollTop': $target.offset().top
-	        }, 900, 'swing', function () {
-	            window.location.hash = target;
-	        });
-	    });
-	});
+        if (checkPwSik.test(userPw)) {
+            $("#pwCheckBtn").css("border", "");
+            $("#pwCheckBtn").css("border", "solid 5px #007bff");
+            $("#pwCheckHidden").val("1");
+        }
 
+        if (!checkPwSik.test(userPw)) {
+            $("#pwCheckBtn").css("border", "");
+            $("#pwCheckBtn").css("border", "solid 5px rgb(245, 99, 99)");
+            $("#pwCheckHidden").val("0");
+        }
+
+        if (checkpw) {
+            $("#pwckCheckBtn").css("border", "");
+            $("#pwckCheckBtn").css("border", "solid 5px #007bff");
+            $("#pwckCheckHidden").val("1");
+        } else {
+            $("#pwckCheckBtn").css("border", "");
+            $("#pwckCheckBtn").css("border", "solid 5px rgb(245, 99, 99)");
+            $("#pwckCheckHidden").val("0");
+        }
+    }
+
+    function enterKeyUp() {
+			if (event.keyCode == 13) {
+				updatePassword();
+			}
+		}
+
+		function updatePassword() {
+			var submitPasswordForm = document.passwordForm;
+			if (
+				$("#pwCheckHidden").val() == 1 &&
+				$("#pwckCheckHidden").val() == 1
+			) {
+				alert("비밀번호가 변경되었습니다");
+				submitPasswordForm.submit();
+			} else {
+				alert("비밀번호 양식이 틀렸습니다");
+			}
+		}
+		
+		$(document).ready(function(){
+		    $('a[href^="#"]').on('click',function (e) {
+		        e.preventDefault();
+
+		        var target = this.hash;
+		        var $target = $(target);
+
+		        $('html, body').stop().animate({
+		            'scrollTop': $target.offset().top
+		        }, 900, 'swing', function () {
+		            window.location.hash = target;
+		        });
+		    });
+		});
 
 </script>
 
