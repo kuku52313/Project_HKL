@@ -171,18 +171,13 @@
     </style>
 </head>
 
-
-
-
 <body>
 
     <div class="error-page">
         <div style="width: 100%;">
-            <h1 data-h1="ERROR">ERROR</h1>
+            <h1 data-h1="${error}">${error}</h1>
             <div>
-                <p data-p="${message}" style="font-size: 3vh;">
-                    ${message}
-                </p>
+                <p data-p="${message}" style="font-size: 10vh;">${message}</p>
             </div>
             <div id="particles-js">
                 <a class="back" href="/"><i class="fas fa-home"></i></a>

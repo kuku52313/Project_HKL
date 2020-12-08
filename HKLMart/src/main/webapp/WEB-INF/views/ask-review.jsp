@@ -1,11 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="askreview.css">
+    <link rel="stylesheet" href="/resources/css/ask-review.css">
     <title>1:1문의, 나의 리뷰내역 조회 페이지</title>
 </head>
 <body>
@@ -21,10 +26,9 @@
                 <th class="ask_kind" >문의 유형</th>
                 <th class="ask_content">내용</th>
             </tr>
-
             <tr>
-                <td class="ask_kind">${문의유형}</td>
-                <td class="ask_content">${내용}</td>
+                <td class="ask_kind">${a}</td>
+                <td class="ask_content">${a}</td>
             </tr>
         </table>
        </figure>

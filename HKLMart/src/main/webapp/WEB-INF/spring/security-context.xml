@@ -18,11 +18,9 @@
 		<!-- 메인화면은 모두 접근 허용 -->
 		<s:intercept-url pattern="/" access="permitAll" />
 		
-		<!-- 비회원은 로그인 페이지에 접근 가능 -->
-		<s:intercept-url pattern="/member/login-page" access="permitAll" />
-		
-		<!-- 비회원은 로그인 페이지에 접근 가능 -->
-		<s:intercept-url pattern="/member/signup" access="permitAll" />
+		<!-- 로그인 페이지는 비회원만 접근 가능 -->
+		<s:intercept-url pattern="/member/login-page" access="isAnonymous()" />
+		<s:intercept-url pattern="/member/signup" access="isAnonymous()" />
 		
 		<!-- member url은 회원만 접근 가능 -->
 		<s:intercept-url pattern="/member/*" access="hasRole('ROLE_MEMBER')" />
@@ -37,8 +35,11 @@
 	
 		<!-- 중복 로그인 방지 | 중복가능한 최대 세션 수 1 | 중복로그인시 / 으로 리다이렉트 -->	
 		<!-- 로그인된 상태에서는 로그인이나 회원가입 화면에 접근 못하도록 함 -->
-		<s:session-management invalid-session-url="/">
-        	<s:concurrency-control max-sessions="1" expired-url="/"/>
+		<s:session-management invalid-session-url="/" session-authentication-error-url="/exception">
+        	<s:concurrency-control 
+        	max-sessions="1"
+        	expired-url="/"
+        	error-if-maximum-exceeded="true"/>
    	 	</s:session-management>
    	 	
    	 	<!-- 로그인 처리 -->
@@ -46,7 +47,6 @@
 			username-parameter="memberId"
 			password-parameter="memberPw"
 			login-page="/member/login-page"
-			authentication-failure-url="/member/login-fail"
 			authentication-failure-handler-ref="loginFailHandler"
 			authentication-success-handler-ref="loginSuccessHandler"
 		/>
@@ -57,6 +57,8 @@
 			invalidate-session="true"
 			delete-cookies="JSESSIONID"
 		/>
+		
+		<s:access-denied-handler error-page="/exception"/>
 		
 	</s:http>
 

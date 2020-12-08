@@ -22,9 +22,7 @@
 		<input type="hidden" id="emailCheckHidden" value="0" />
 		<input type="hidden" id="nameCheckHidden" value="0" />
 		<input type="hidden" id="telCheckHidden" value="0" />
-		<input type="hidden" id="pwCheckHidden" value="0" />
-        <input type="hidden" id="pwckCheckHidden" value="0" />
-
+		
 		<div class="wrap">
 			<div class="form-wrap">
 				<!-- toggle -->
@@ -98,7 +96,6 @@
 		function idCheck() {
 			var userId = $("#userId").val();
 			var checkId = /^[a-zA-Z0-9]{6,15}$/;	
-			console.log(userId);
 			if (!checkId.test(userId)) {
 				document.getElementById('idCheckBtn').value = "사용불가";
 				document.getElementById('idCheckBtn').style.background = '#6c757d';

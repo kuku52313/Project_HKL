@@ -8,15 +8,20 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-				/WEB-INF/spring/root-context.xml, 
-				/WEB-INF/spring/security-context.xml,
+				/WEB-INF/spring/root-context.xml
+				/WEB-INF/spring/security-context.xml
 				/WEB-INF/spring/mybatis-config.xml
 		</param-value>
 	</context-param>
 
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+		<listener-class>
+		org.springframework.security.web.session.HttpSessionEventPublisher
+		</listener-class>
 	</listener>
 
 	<!-- Processes application requests -->

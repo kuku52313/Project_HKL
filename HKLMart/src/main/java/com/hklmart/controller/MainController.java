@@ -26,17 +26,20 @@ public class MainController {
 
 	@PostMapping("/idCheck")
 	@ResponseBody
-	public Map<String, Object> idcheck(@RequestBody String userId) {
-		int count = 0;
+	public Map<String, Object> idCheck(@RequestBody String userId) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		count = memberService.idCheckTest(userId);
-		map.put("cnt", count);
+		map.put("cnt", memberService.idCheckTest(userId));
 		return map;
 	}
 
-	@GetMapping("test")
+	@GetMapping("/test")
 	public String goProductRegist() {
 		return "product-regist";
+	}
+	
+	@RequestMapping("/ask-review")
+	public String goAskReview() {
+		return "ask-review";
 	}
 
 }

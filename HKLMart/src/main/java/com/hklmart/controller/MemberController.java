@@ -72,8 +72,4 @@ public class MemberController {
 		return "my-page";
 	}
 	
-
-	
-	
-	
 }
