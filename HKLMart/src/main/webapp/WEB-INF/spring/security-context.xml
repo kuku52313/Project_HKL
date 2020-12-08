@@ -25,7 +25,7 @@
 		<s:intercept-url pattern="/member/*" access="hasRole('ROLE_MEMBER')" />
 		
 		<!-- 관리자권한 테스트용 소스 -->
-		<s:intercept-url pattern="/test" access="hasRole('ROLE_ADMIN')" />
+		<s:intercept-url pattern="/test" access="hasRole('ROLE_MEMBER')" />
 		
 		<!-- ########################################################### 설정 ########################################################### -->
 		

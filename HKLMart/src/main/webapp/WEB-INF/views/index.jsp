@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="/resources/css/indexCss.css">
     <script src="/resources//jquery/3.5.1/jquery.min.js"></script>
     <script src="/resources//bootstrap/4.5.3/js/bootstrap.min.js"></script>
-    
 </head>
 
 <body>
