@@ -21,6 +21,9 @@
 		<!-- 비회원은 로그인 페이지에 접근 가능 -->
 		<s:intercept-url pattern="/member/login-page" access="permitAll" />
 		
+		<!-- 비회원은 로그인 페이지에 접근 가능 -->
+		<s:intercept-url pattern="/member/signup" access="permitAll" />
+		
 		<!-- member url은 회원만 접근 가능 -->
 		<s:intercept-url pattern="/member/*" access="hasRole('ROLE_MEMBER')" />
 		
