@@ -54,7 +54,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 400%;
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.25);
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.247);
             animation: animateTextBackground 10s ease-in-out infinite;
         }
 
@@ -76,7 +76,7 @@
             color: transparent;
             background: -webkit-repeating-linear-gradient(-45deg, #6CEFF5, #6ED4C8, #85EBCE, #8ED1B3, #BCFBD5);
            /*  background: -webkit-repeating-linear-gradient(-45deg, #71b7e6, #69a6ce, #b98acc, #ee8176, #b98acc, #69a6ce, #9b59b6); */
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.247);
             -webkit-background-clip: text;
             -moz-background-clip: text;
             background-clip: text;
@@ -98,7 +98,7 @@
             left: 0;
             right: 0;
             color: transparent;
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.247);
             -webkit-background-clip: text;
             -moz-background-clip: text;
             background-clip: text;
