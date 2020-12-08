@@ -247,7 +247,7 @@
 								</tr>
 							</table>
 							<br />
-							<button type="button" class="submitBtn font-set" onclick="updatePassword()">수정하기</button>
+							<button type="button" class="submitBtn font-set" onclick="updatePassword()" style="color: white; font-weight: bold">수정하기</button>
 						</form>
 					</div>
 				</div>
