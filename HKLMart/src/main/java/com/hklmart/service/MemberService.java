@@ -36,8 +36,6 @@ public class MemberService{
 	
 	
 	public int idCheckTest(String userId) {
-	
-		
 		return memberDAO.idDuplicatiedInspection(userId);
 	}
 	

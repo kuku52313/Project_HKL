@@ -27,12 +27,10 @@ public class MainController {
 	@PostMapping("/idCheck")
 	@ResponseBody
 	public Map<String, Object> idcheck(@RequestBody String userId) {
-
 		int count = 0;
 		Map<String, Object> map = new HashMap<String, Object>();
 		count = memberService.idCheckTest(userId);
 		map.put("cnt", count);
-
 		return map;
 	}
 
