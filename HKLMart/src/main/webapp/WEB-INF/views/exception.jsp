@@ -18,6 +18,7 @@
         body {
             height: 100%;
             overflow: hidden;
+            background-image: url("/resources/img/back_exception.jpeg");
         }
 
         .error-page {
