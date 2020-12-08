@@ -16,9 +16,13 @@
     <style>
         html,
         body {
+       
+			width: 100%;
             height: 100%;
             overflow: hidden;
-            background-image: url("/resources/img/back_exception.jpeg");
+            background-position: center;
+            background-image: url("/resources/img/back_exception.jpg");
+            background-repeat: no-repeat;
         }
 
         .error-page {
@@ -46,7 +50,7 @@
             right: 0;
             color: transparent;
             /* webkit only for graceful degradation to IE */
-            background: -webkit-repeating-linear-gradient(-45deg, #71b7e6, #69a6ce, #b98acc, #ee8176, #b98acc, #69a6ce, #9b59b6);
+            background: -webkit-repeating-linear-gradient(-45deg,#6CEFF5,#6ED4C8,#85EBCE,#8ED1B3,#BCFBD5);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 400%;
@@ -70,7 +74,8 @@
             left: 0;
             right: 0;
             color: transparent;
-            background: -webkit-repeating-linear-gradient(-45deg, #71b7e6, #69a6ce, #b98acc, #ee8176, #b98acc, #69a6ce, #9b59b6);
+            background: -webkit-repeating-linear-gradient(-45deg, #6CEFF5, #6ED4C8, #85EBCE, #8ED1B3, #BCFBD5);
+           /*  background: -webkit-repeating-linear-gradient(-45deg, #71b7e6, #69a6ce, #b98acc, #ee8176, #b98acc, #69a6ce, #9b59b6); */
             text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
             -webkit-background-clip: text;
             -moz-background-clip: text;
@@ -154,7 +159,8 @@
             left: 45%;
             right: 45%;
             bottom: 40px;
-            background: -webkit-repeating-linear-gradient(-45deg, #71b7e6, #69a6ce, #b98acc, #ee8176);
+            background: -webkit-repeating-linear-gradient(-45deg, #6CEFF5, #6ED4C8, #85EBCE, #8ED1B3, #BCFBD5);
+         /*    background: -webkit-repeating-linear-gradient(-45deg, #71b7e6, #69a6ce, #b98acc, #ee8176); */
             border-radius: 5px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             color: #fff;
