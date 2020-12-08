@@ -9,24 +9,19 @@
 <html lang="ko">
 	<head>
 		<title>HKL Mart :: My Page</title>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<script src="/resources/jquery/3.5.1/jquery.min.js"></script>
-		<script src="/resources/bootstrap/4.5.3/js/bootstrap.min.js"></script>
-		<link
-			rel="stylesheet"
-			href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-			integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
-			crossorigin="anonymous"
-		/>
-		<link rel="stylesheet" href="/resources/bootstrap/4.5.3/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="/resources/css/indexCss.css" />
-		<link rel="stylesheet" href="/resources/css/loginCss.css" />
-
-		<style></style>
+		<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" href="/resources/bootstrap/4.5.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/indexCss.css">
+    <link rel="stylesheet" href="/resources/css/loginCss.css">
+    <script src="/resources//jquery/3.5.1/jquery.min.js"></script>
+    <script src="/resources//bootstrap/4.5.3/js/bootstrap.min.js"></script>
 	</head>
 
 	<body>
+		<input type="hidden" id="pwCheckHidden" value="0" />
+		<input type="hidden" id="pwckCheckHidden" value="0" />
 		<sec:authentication property="principal" var="user" />
 		<!-- Header -->
 		<header id="header" class="container-fluid">
@@ -243,13 +238,12 @@
 									<td class="font-set">비밀번호</td>
 									<td class="font-set"><input type="password" class="input-field" onkeyup="checkPwfn()" id="userPw" name="memberPw" placeholder="알파벳 대,소문자,특수문자,숫자 포함" required /></td>
 									<td><input type="button" id="pwCheckBtn" class="pwCheckBtn" /></td>
-									<input type="hidden" id="pwCheckHidden" value="0" />
+									
 								</tr>
 								<tr>
 									<td class="font-set">비밀번호확인</td>
 									<td class="font-set"><input type="password" class="input-field" onkeyup="checkPwfn(),enterKeyUp()" id="userPwCk" placeholder="비밀번호 재입력" required /></td>
 									<td><input type="button" id="pwckCheckBtn" class="pwckCheckBtn" /></td>
-									<input type="hidden" id="pwckCheckHidden" value="0" />
 								</tr>
 							</table>
 							<br />
