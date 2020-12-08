@@ -93,25 +93,46 @@
 
 		function idCheck() {
 			var userId = $("#userId").val();
-			var checkId = /^[a-zA-Z0-9]{6,15}$/;
-
-			/* id사용가능 db체크
-		$.ajax({
-			data : text,
-			url : 
-		})
-		
-		 */
-
+			var checkId = /^[a-zA-Z0-9]{6,15}$/;	
+			console.log(userId);
 			if (!checkId.test(userId)) {
-				document.getElementById("idCheckBtn").value = "사용불가";
-				document.getElementById("idCheckBtn").style.background = "#6c757d";
+				document.getElementById('idCheckBtn').value = "사용불가";
+				document.getElementById('idCheckBtn').style.background = '#6c757d';
 				$("#idCheckHidden").val("0");
 			} else if (checkId.test(userId)) {
-				document.getElementById("idCheckBtn").value = "사용가능";
-				document.getElementById("idCheckBtn").style.background = "#a7e3ff";
-				$("#idCheckHidden").val("1");
+				//유효성검사 테스트후
+	
+				$.ajax({			 
+			            type : 'post',
+			            data : userId,
+			            url : '/idCheck',
+			            dataType : 'json',
+			            contentType: "application/json; charset=UTF-8",
+			            beforeSend : function(xhr) { /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+							xhr.setRequestHeader("${_csrf.headerName}","${_csrf.token}");
+						},
+			            success : function(data)  {
+						if (data.cnt > 0) {
+							
+							document.getElementById('idCheckBtn').value = "사용불가";
+							document.getElementById('idCheckBtn').style.background = '#6c757d';
+							$("#idCheckHidden").val("0");
+					}else {
+						
+						document.getElementById('idCheckBtn').value = "사용가능";
+						document.getElementById('idCheckBtn').style.background = '#a7e3ff';
+						$("#idCheckHidden").val("1");
+					
+					
+					}
+					},
+					error : function() {
+						alert("Error. 관리자에게 문의하십시오.");
+					}
+				}); 
+				
 			}
+
 		}
 
 		function checkPwfn() {

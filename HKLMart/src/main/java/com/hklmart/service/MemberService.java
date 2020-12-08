@@ -34,4 +34,14 @@ public class MemberService{
 		memberDAO.updatePassword(memberId, passwordEncoder.encode(memberPw));
 	}
 	
+	
+	public int idCheckTest(String userId) {
+	
+		
+		return memberDAO.idDuplicatiedInspection(userId);
+	}
+	
+	
+	
+	
 }

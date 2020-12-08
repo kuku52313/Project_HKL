@@ -14,4 +14,6 @@ public interface MemberDAO {
 	@Insert("UPDATE MEMBER SET MEMBER_PW = #{param2} WHERE MEMBER_ID = #{param1}")
 	public void updatePassword(String memberId, String memberPw);
 	
+	public int idDuplicatiedInspection(String userId);
+	
 }
