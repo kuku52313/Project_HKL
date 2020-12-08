@@ -56,7 +56,6 @@
         }
         .error-page h1+div>p {
             color: #d6d6d6;
-            font-size: 8vh;
             font-weight: bold;
             line-height: 10vh;
             max-width: 100%;
@@ -96,13 +95,7 @@
             -moz-background-clip: text;
             background-clip: text;
         }
-        #particles-js {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-        }
+
         @keyframes animateTextBackground {
             0% {
                 background-position: 0 0;
@@ -136,19 +129,20 @@
             }
         }
         a.back {
-            position: fixed;
-            left: 45%;
-            right: 45%;
-            bottom: 50%;
+        	width: 15%;
+        	height: 15%;
+        	position: fixed;
+        	top: 50%;
+        	left: 50%;
+		    background-color: #000;    
+		    transform: translate(-50%, -50%); 
             background: -webkit-repeating-linear-gradient(-45deg, #6CEFF5, #6ED4C8, #85EBCE, #8ED1B3, #BCFBD5);
          /*    background: -webkit-repeating-linear-gradient(-45deg, #71b7e6, #69a6ce, #b98acc, #ee8176); */
             border-radius: 5px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             color: #fff;
-            font-size: 16px;
             font-weight: bold;
             line-height: 24px;
-            padding: 50px 50px;
             text-decoration: none;
             transition: 0.25s all ease-in-out;
         }
@@ -161,17 +155,12 @@
 <body>
 
     <div class="error-page">
-        <div style="width: 100%;">
-            <h1 data-h1="${error}">${error}</h1>
+        <div>
+            <h1 data-h1="${error}" style="position: fixed; top: 35%; left: 50%; transform: translate(-50%, -50%); font-size: 25vh">${error}</h1>
             <div>
-            	<br><br><br><br><br><br><br><br><br><br>
-                <p data-p="${message}" style="font-size: 10vh;">${message}</p>
-                <br><br><br><br><br><br><br><br><br><br>
+                <p data-p="${message}" style="position: fixed; top: 60%; left: 50%; transform: translate(-50%, -50%); font-size: 7vh">${message}</p>
             </div>
-            <div id="particles-js">
-                <a class="back" href="/"><i class="fas fa-home"></i></a>
-            </div>
-        </div>
+            <a class="back" href="/"><i class="fas fa-home" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i></a>
     </div>
 
 
