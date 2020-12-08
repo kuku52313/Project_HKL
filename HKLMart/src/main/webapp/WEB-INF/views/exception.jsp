@@ -20,11 +20,10 @@
 			width: 100%;
             height: 100%;
             overflow: hidden;
-            background-position: center;
+            background-size: 100% 100%;
             background-image: url("/resources/img/back_exception.jpg");
             background-repeat: no-repeat;
         }
-
         .error-page {
             display: flex;
             align-items: center;
@@ -33,7 +32,6 @@
             height: 100%;
             font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
         }
-
         .error-page h1 {
             font-size: 30vh;
             font-weight: bold;
@@ -41,7 +39,6 @@
             margin: -8vh 0 0;
             padding: 0;
         }
-
         .error-page h1:after {
             content: attr(data-h1);
             position: absolute;
@@ -57,7 +54,6 @@
             text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.247);
             animation: animateTextBackground 10s ease-in-out infinite;
         }
-
         .error-page h1+div>p {
             color: #d6d6d6;
             font-size: 8vh;
@@ -66,7 +62,6 @@
             max-width: 100%;
             position: relative;
         }
-
         .error-page h1+div>p:after {
             content: attr(data-p);
             position: absolute;
@@ -81,7 +76,6 @@
             -moz-background-clip: text;
             background-clip: text;
         }
-
         .error-page i {
             color: #d6d6d6;
             font-size: 8vh;
@@ -90,7 +84,6 @@
             max-width: 600px;
             position: relative;
         }
-
         .error-page h1+i:after {
             content: attr(data-p);
             position: absolute;
@@ -103,7 +96,6 @@
             -moz-background-clip: text;
             background-clip: text;
         }
-
         #particles-js {
             position: fixed;
             top: 0;
@@ -111,54 +103,43 @@
             bottom: 0;
             left: 0;
         }
-
-
         @keyframes animateTextBackground {
             0% {
                 background-position: 0 0;
             }
-
             25% {
                 background-position: 100% 0;
             }
-
             50% {
                 background-position: 100% 100%;
             }
-
             75% {
                 background-position: 0 100%;
             }
-
             100% {
                 background-position: 0 0;
             }
         }
-
         @media (max-width: 767px) {
             .error-page h1 {
                 font-size: 32vw;
             }
-
             .error-page h1+p {
                 font-size: 8vw;
                 line-height: 10vw;
                 max-width: 70vw;
             }
-
             .error-page i {
                 font-size: 8vw;
                 line-height: 10vw;
                 max-width: 70vw;
             }
-
         }
-
         a.back {
             position: fixed;
             left: 45%;
             right: 45%;
-            bottom: 40px;
+            bottom: 50%;
             background: -webkit-repeating-linear-gradient(-45deg, #6CEFF5, #6ED4C8, #85EBCE, #8ED1B3, #BCFBD5);
          /*    background: -webkit-repeating-linear-gradient(-45deg, #71b7e6, #69a6ce, #b98acc, #ee8176); */
             border-radius: 5px;
@@ -167,11 +148,10 @@
             font-size: 16px;
             font-weight: bold;
             line-height: 24px;
-            padding: 15px 30px;
+            padding: 50px 50px;
             text-decoration: none;
             transition: 0.25s all ease-in-out;
         }
-
         a.back:hover {
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
@@ -184,7 +164,9 @@
         <div style="width: 100%;">
             <h1 data-h1="${error}">${error}</h1>
             <div>
+            	<br><br><br><br><br><br><br><br><br><br>
                 <p data-p="${message}" style="font-size: 10vh;">${message}</p>
+                <br><br><br><br><br><br><br><br><br><br>
             </div>
             <div id="particles-js">
                 <a class="back" href="/"><i class="fas fa-home"></i></a>
