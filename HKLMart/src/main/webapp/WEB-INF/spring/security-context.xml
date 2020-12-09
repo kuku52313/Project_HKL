@@ -7,7 +7,7 @@
 	
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />	
 	
-	<s:http auto-config="true" use-expressions="true">
+	<s:http  auto-config="true" use-expressions="true">
 	
 	
 		<!-- ########################################################### 권한 ########################################################### -->
