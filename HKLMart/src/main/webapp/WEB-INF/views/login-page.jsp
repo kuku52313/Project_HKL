@@ -105,10 +105,10 @@
 	
 				$.ajax({			 
 			            type : 'post',
-			            data : userId,
+			            data : userId, //서버로 보낼 data
 			            url : '/idCheck',
-			            dataType : 'json',
-			            contentType: "application/json; charset=UTF-8",
+			            dataType : 'json', //서버에서 받을 데이터
+			            contentType: "application/json; charset=UTF-8", //보낼 data 타입을 json으로 설정
 			            beforeSend : function(xhr) { /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
 							xhr.setRequestHeader("${_csrf.headerName}","${_csrf.token}");
 						},
