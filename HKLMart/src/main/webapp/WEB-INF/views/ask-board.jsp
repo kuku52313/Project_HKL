@@ -25,6 +25,7 @@
 
 
     <form class="insertform" name="insertFor">
+   		 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <input type="hidden" id="codeProductHidden" value="0">
         <input type="hidden" id="orderNumHidden" value="0">
         <!-- form header -->
@@ -33,7 +34,7 @@
         </div>
         
         <!-- form body -->
-        <select class="formText" id="askType" name="productKind" onchange="askTypeFn()">
+        <select class="formText" id="askType" name="boardAskKind" onchange="askTypeFn()">
             <option value="0" name="none">- 문의 종류 -</option>
             <option value="1" name="none">- 환불 -</option>
             <option value="2" name="none">- 교환 및 A/S -</option>
@@ -53,7 +54,7 @@
           <div class="row">
           &nbsp;&nbsp;
             <label>주문 번호 </label>&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="text" class="formText" id="orderNum" name="orderNumber" placeholder="문의종류를 입력하여주세요">
+            <input type="text" class="formText" id="orderNum" name="orderNumber" placeholder="문의종류를 입력하여주세요" value="${orderNumber}">
         </div>
         
         </div>
