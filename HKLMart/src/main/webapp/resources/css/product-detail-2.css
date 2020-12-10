@@ -196,7 +196,7 @@ font-family: $
   .Artc_review-conts .wrap-score .score[data-v-1b035faf] {
         width: 0;
         height: 100%;
-        background: url("/img/star-solid.svg") repeat-x left 50%;
+        background: url("../img/product-detail/star-solid.svg") repeat-x left 50%;
         background-size: 16px 16px;
         overflow: hidden;
         text-indent: -999px;
