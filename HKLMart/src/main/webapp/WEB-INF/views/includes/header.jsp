@@ -5,19 +5,16 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 
-<!DOCTYPE html>
-<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <link rel="stylesheet" href="/resources/bootstrap/4.5.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/resources/css/indexCss.css">
-    <link rel="stylesheet" href="/resources/css/addProductCss.css">
-    <script src="/resources//jquery/3.5.1/jquery.min.js"></script>
-    <script src="/resources//bootstrap/4.5.3/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" href="../resources/bootstrap/4.5.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../resources/css/indexCss.css">
+    <script src="../resources//jquery/3.5.1/jquery.min.js"></script>
+    <script src="../resources//bootstrap/4.5.3/js/bootstrap.min.js"></script>
+    
     
 </head>
 

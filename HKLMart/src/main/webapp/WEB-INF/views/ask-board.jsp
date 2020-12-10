@@ -13,19 +13,20 @@
 <head>
   <meta charset="utf-8">
   <title>HKLMart :: 1:1문의</title>
-  <link rel="stylesheet" href="resources/css/addProductCss.css">
+  <link rel="stylesheet" href="/resources/css/addProductCss.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/resources/css/addProductCss.css">
+    
+   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 
-    <form class="insertform" name="insertFor">
-   		 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    <form class="insertform" name="insertForm" action="/board/ask-board" method="post">
+   		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+   		<input type="hidden" id="boardAskId" name="boardAskMemberId" value="${user.username}" />
         <input type="hidden" id="codeProductHidden" value="0">
         <input type="hidden" id="orderNumHidden" value="0">
         <!-- form header -->
@@ -47,14 +48,20 @@
         <div class="row">
         &nbsp;&nbsp;
             <label>제품 코드</label>&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="text" class="formText" id="codeProduct" name="productCode"
+            <input type="text" class="formText" id="codeProduct" name="boardAskProductCode"
             minlength="6" maxlength="6" placeholder="문의종류를 입력하여주세요" value="${productCode}">
           </div>
           <hr style="border: solid 1px #ffb6b6;">
           <div class="row">
           &nbsp;&nbsp;
             <label>주문 번호 </label>&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="text" class="formText" id="orderNum" name="orderNumber" placeholder="문의종류를 입력하여주세요" value="${orderNumber}">
+            <input type="text" class="formText" id="orderNum" name="boardAskOrderNumber" placeholder="문의종류를 입력하여주세요" value="${orderNumber}">
+        </div>
+        <hr style="border: solid 1px #ffb6b6;">
+          <div class="row">
+          &nbsp;&nbsp;
+            <label>문의 제목 </label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" class="formText" id="askTitle" name="boardAskTitle" placeholder="제목을 입력하여 주세요">
         </div>
         
         </div>
@@ -65,7 +72,7 @@
 
         </div>
         <div>
-            <textarea id="content" name="productContent" cols="90" rows="10" style="border-color:#ffb6b6 ;"></textarea>
+            <textarea id="content" name="boardAskContent" cols="90" rows="10" style="border-color:#ffb6b6 ;"></textarea>
 
             <div class="form-group left">
                 <label for="contentFile" class="fileTitle"></label>
@@ -85,11 +92,13 @@
 
 //  document.getElementById('idCheckBtn').value = "사용불가";
 
+		console.log($("#boardAskId").val())
+
         function insertCheckfn() {
             //서프밋 전 확인
-            console.log($("#codeProduct").val());
+        
 
-            var subForm = document.insertform;
+            var subForm = document.insertForm;
 
             var codeProduct = $("#codeProduct").val();
             var orderNum = $("#orderNum").val();
