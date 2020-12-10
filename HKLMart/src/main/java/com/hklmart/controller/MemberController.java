@@ -72,4 +72,10 @@ public class MemberController {
 		return "my-page";
 	}
 	
+	@GetMapping("/my-page-ask-board")
+	public String goAskBoard() {
+		
+		return "ask-board";
+	}
+	
 }

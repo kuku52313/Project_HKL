@@ -64,7 +64,7 @@
             <input type="text" class="formText" id="askTitle" name="boardAskTitle" placeholder="제목을 입력하여 주세요">
         </div>
         
-        </div>
+        
         <hr style="border: solid 1px #ffb6b6;">
         <div class="row">
         &nbsp;&nbsp;
@@ -92,7 +92,6 @@
 
 //  document.getElementById('idCheckBtn').value = "사용불가";
 
-		console.log($("#boardAskId").val())
 
         function insertCheckfn() {
             //서프밋 전 확인

@@ -35,7 +35,7 @@ public class BoardController {
 		
 		boardService.insertAskBoardService(boardAskVO);
 		
-		return "ask-board";
+		return "my-page";
 	}
 	
 	

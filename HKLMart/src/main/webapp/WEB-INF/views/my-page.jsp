@@ -156,7 +156,7 @@
 						<li><a href="#shopping-basket">장바구니</a></li>
 						<hr />
 						<li><a class="sidebarMain" href="#header">MY 활동</a></li>
-						<li><a href="#">문의하기</a></li>
+						<li><a href="my-page-ask-board">문의하기</a></li>
 						<li><a href="#inquire_history">문의내역</a></li>
 						<li><a href="#reviews">구매후기</a></li>
 						<li><a href="#wishlist">찜한상품</a></li>
