@@ -1,6 +1,8 @@
-<!-- Footer -->
-    <footer id="footer" class="container-fluid footer-wrap">
+<%@ page contentType="text/html; charset=UTF-8" %>
 
+      <!-- Footer -->
+    <footer id="footer" class="container-fluid footer-wrap">
+	 <meta charset="UTF-8">
         <br>
         <div class="row">
 
@@ -75,7 +77,6 @@
         </div>
 
     </footer>
-</body>
 
 <script>
     const toggleBtn = document.querySelector('.navbar_toggleBtn');

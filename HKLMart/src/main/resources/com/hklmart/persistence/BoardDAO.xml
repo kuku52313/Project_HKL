@@ -11,6 +11,13 @@
 			(seq_board_ask.nextval,#{boardAskMemberId}, sysdate, #{boardAskKind} ,#{boardAskTitle}, #{boardAskContent}, #{boardAskProductCode}, #{boardAskOrderNumber} )
 		]]>
 	</insert>
+	
+	<insert id="insertBoardReview">
+		<![CDATA[
+			insert INTO board_review(board_review_number, board_review_member_id, board_review_product_code, board_review_score,board_review_content) 
+							VALUES (seq_board_review.nextval, #{boardReviewMemberId},#{boardReviewProductCode}, #{boardReviewScore}, #{boardReviewContent} )
+		]]>
+	</insert>
 
 
 	

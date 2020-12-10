@@ -13,7 +13,7 @@
 <head>
   <meta charset="utf-8">
   <title>HKLMart :: 1:1문의</title>
-  <link rel="stylesheet" href="/resources/css/addProductCss.css">
+  <link rel="stylesheet" href="/resources/css/add-product.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
@@ -23,7 +23,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
-
+	
     <form class="insertform" name="insertForm" action="/board/ask-board" method="post">
    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
    		<input type="hidden" id="boardAskId" name="boardAskMemberId" value="${user.username}" />
@@ -33,7 +33,7 @@
         <div class="form-header">
             <h1> 1:1문의 </h1>
         </div>
-        
+		<br>
         <!-- form body -->
         <select class="formText" id="askType" name="boardAskKind" onchange="askTypeFn()">
             <option value="0" name="none">- 문의 종류 -</option>

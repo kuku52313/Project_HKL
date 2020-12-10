@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hklmart.domain.BoardAskVO;
+import com.hklmart.domain.BoardReviewVO;
 import com.hklmart.service.BoardService;
 
 import lombok.extern.log4j.Log4j;
@@ -32,9 +33,30 @@ public class BoardController {
 		
 		log.info(boardAskVO);
 		
-		boardService.insertBoardService(boardAskVO);
+		boardService.insertAskBoardService(boardAskVO);
 		
 		return "ask-board";
+	}
+	
+	
+	
+	
+	@GetMapping("/review-insert")
+	private String goBoardReview() {
+		
+		
+		return "review-insert";
+		
+
+	}
+	
+	@PostMapping("/review-insert")
+	private  String insertBoardReview(BoardReviewVO boardReviewVO) {
+		
+		boardService.insertBoardReviewService(boardReviewVO);
+
+		return "my-page";
+		
 	}
 	
 }
