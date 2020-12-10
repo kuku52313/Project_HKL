@@ -257,3 +257,11 @@
 
   ALTER TABLE "HKL"."PRODUCT_STOCK" ADD CONSTRAINT "PRODUCT_STOCK_FK_STOCK_PRODUCT_CODE" FOREIGN KEY ("STOCK_PRODUCT_CODE")
      REFERENCES "HKL"."PRODUCT" ("PRODUCT_CODE") ENABLE;
+
+--------------------------------------------------------
+--  create SEQUENCE
+--------------------------------------------------------
+
+
+create SEQUENCE seq_board_ask;
+
