@@ -264,4 +264,4 @@
 
 
 create SEQUENCE seq_board_ask;
-
+create SEQUENCE seq_board_review;
