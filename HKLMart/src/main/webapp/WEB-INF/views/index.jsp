@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="stylesheet" href="/resources/bootstrap/4.5.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/resources/css/indexCss.css">
+    <link rel="stylesheet" href="/resources/css/index.css">
     <script src="/resources//jquery/3.5.1/jquery.min.js"></script>
     <script src="/resources//bootstrap/4.5.3/js/bootstrap.min.js"></script>
 </head>
@@ -155,73 +155,73 @@
             </div>
         </div>
 
-        <div class="col-1">
-        </div>
-
+        <div class="col-1"> </div>
+        
         <br>
-
-        <!-- Slide Menu -->
-        <div class="container-fluid">
-
-            <div class="row">
-
-                <div class="col-1"></div>
-
-                <div class="col-10">
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-                        <!-- Indicators -->
-                        <ul class="carousel-indicators">
-                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#myCarousel" data-slide-to="1"></li>
-                            <li data-target="#myCarousel" data-slide-to="2"></li>
-                            <li data-target="#myCarousel" data-slide-to="3"></li>
-                            <li data-target="#myCarousel" data-slide-to="4"></li>
-                            <li data-target="#myCarousel" data-slide-to="5"></li>
-                            <li data-target="#myCarousel" data-slide-to="6"></li>
-                        </ul>
-
-                        <!-- The slideshow -->
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="/resources/img/slide/1.jpg" width="100%">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/resources/img/slide/2.jpg" width="100%">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/resources/img/slide/3.jpg" width="100%">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/resources/img/slide/4.jpg" width="100%">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/resources/img/slide/5.jpg" width="100%">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/resources/img/slide/6.jpg" width="100%">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/resources/img/slide/7.jpg" width="100%">
-                            </div>
-                        </div>
-
-                        <!-- Left and right controls -->
-                        <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </a>
-                        <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-1"></div>
-
-            </div>
-        </div>
+       
     </header>
 
+    <!-- Slide Menu -->
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-1"></div>
+
+            <div class="col-10">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                        <li data-target="#myCarousel" data-slide-to="3"></li>
+                        <li data-target="#myCarousel" data-slide-to="4"></li>
+                        <li data-target="#myCarousel" data-slide-to="5"></li>
+                        <li data-target="#myCarousel" data-slide-to="6"></li>
+                    </ul>
+
+                    <!-- The slideshow -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="/resources/img/slide/1.jpg" width="100%">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/resources/img/slide/2.jpg" width="100%">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/resources/img/slide/3.jpg" width="100%">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/resources/img/slide/4.jpg" width="100%">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/resources/img/slide/5.jpg" width="100%">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/resources/img/slide/6.jpg" width="100%">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/resources/img/slide/7.jpg" width="100%">
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-1"></div>
+
+        </div>
+    </div>
+   
     <br><br>
 
     <!-- Body -->

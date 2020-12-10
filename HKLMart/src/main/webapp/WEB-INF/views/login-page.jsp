@@ -12,7 +12,7 @@
 		<meta name="_csrf" content="${_csrf.token}" />
 		<script src="/resources//jquery/3.5.1/jquery.min.js"></script>
 		<script src="/resources//bootstrap/4.5.3/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="/resources/css/loginCss.css" />
+		<link rel="stylesheet" href="/resources/css/login.css" />
 	</head>
 
 	<body>

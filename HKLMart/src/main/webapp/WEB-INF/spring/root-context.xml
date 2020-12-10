@@ -14,6 +14,9 @@
 	<!-- Service Scan -->
 	<context:component-scan base-package="com.hklmart.service" />
 	
+	<!-- Test Service Scan -->
+	<context:component-scan base-package="com.hklmart.test" />
+	
 	<!-- MyBatis-Scan -->
 	<mybatis-spring:scan  base-package="com.hklmart.persistence"/>
 	
@@ -38,6 +41,15 @@
 		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:orcl"></property>
 		<property name="username" value="hkl"></property>
 		<property name="password" value="root"></property>
-	</bean>			
+	</bean>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="3145728" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+	
+	<bean id="uploadPath" class="java.lang.String">
+    	<constructor-arg value="" />
+ 	</bean>		
 	
 </beans>
