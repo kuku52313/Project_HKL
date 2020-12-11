@@ -9,7 +9,7 @@
 <html lang="ko">
 	<head>
 		<title>HKL Mart :: My Page</title>
-		<meta charset="UTF-8">
+	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="stylesheet" href="/resources/bootstrap/4.5.3/css/bootstrap.min.css">
@@ -60,9 +60,7 @@
 					<br />
 					<ul class="navbar_menu font-set">
 						<li>
-							<a href="/member/my-page"
-								><i><u class="font-set">${user.memberName}님</u></i></a
-							>
+							<a href="/member/my-page"><i><u class="font-set">${user.memberName}님</u></i></a>
 						</li>
 						<li><a href="/member/my-page">마이페이지</a></li>
 						<li>

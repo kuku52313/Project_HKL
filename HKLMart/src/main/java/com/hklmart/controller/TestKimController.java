@@ -13,7 +13,7 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Controller
-@RequestMapping("/testKim/*")
+@RequestMapping("/testKim")
 public class TestKimController {
 	
 	@Autowired
@@ -37,4 +37,20 @@ public class TestKimController {
 		
 	}
 	
+	
+	@GetMapping("/manager-page")
+	private String goManagerPage() {
+		
+		return "manager-page";
+		
+
+	}
+	
+	@GetMapping("/manager-product")
+	private String goManagerProduct() {
+		
+		return "manager-product";
+		
+
+	}
 }
