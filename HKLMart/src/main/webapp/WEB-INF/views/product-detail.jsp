@@ -106,7 +106,6 @@
 
 
                                 <form id="wrap-btn-purchase" method="GET">
-                                    <div data-v-a489fb08="" class="wrap-btn-purchase"><a data-v-a489fb08="" href="#" id="btn_cart" class="btn-cart">장바구니</a>
                                         <a data-v-a489fb08="" href="#" id="btn_buy" class="btn-buy">바로 구매</a>
                                         <a data-v-a489fb08="" href="#" id="btn_cart_ico" class="btn-cart-ico" onclick="addCart()"></a>
                                         <a data-v-a489fb08="" href="#" id="btn_favor_ico" class="btn-favor-ico" onclick="likeClick()"></a>
