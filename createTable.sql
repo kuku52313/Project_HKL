@@ -17,7 +17,9 @@
    "BOARD_ASK_CONTENT" VARCHAR2(3000 BYTE), 
    "BOARD_ASK_TITLE" VARCHAR2(200 BYTE), 
    "BOARD_ASK_STATE" CHAR(10 BYTE) DEFAULT '접수', 
-   "BOARD_ASK_KIND" CHAR(10 BYTE)
+   "BOARD_ASK_KIND" CHAR(10 BYTE),
+   "BOARD_ASK_PRODUCT_CODE" CHAR(6 BYTE),
+    "BOARD_ASK_ORDER_NUMBER" NUMBER,
    );
 --------------------------------------------------------
 --  DDL for Table BOARD_COMMENT
@@ -38,7 +40,10 @@
    "BOARD_REVIEW_MEMBER_ID" VARCHAR2(15 BYTE), 
    "BOARD_REVIEW_PRODUCT_CODE" CHAR(6 BYTE), 
    "BOARD_REVIEW_TITLE" VARCHAR2(100 BYTE), 
-   "BOARD_REVIEW_CONTENT" VARCHAR2(3000 BYTE)
+   "BOARD_REVIEW_CONTENT" VARCHAR2(3000 BYTE),
+   "BOARD_REVIEW_score" number,
+   "BOARD_REVIEW_date" date
+    
    );
 --------------------------------------------------------
 --  DDL for Table MEMBER
