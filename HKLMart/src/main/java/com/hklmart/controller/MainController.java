@@ -40,5 +40,12 @@ public class MainController {
 		return "ask-review";
 	}
 	
+	@GetMapping("/product-list")
+	public String goManagerProduct() {
+		
+		return "product-list";
+		
 
+	}
+	
 }

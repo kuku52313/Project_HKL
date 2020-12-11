@@ -20,7 +20,7 @@ public class TestKimController {
 	BoardServiceTest boardService;
 	
 	@GetMapping("/review-insert")
-	private String goBoardReview() {
+	public String goBoardReview() {
 		
 		
 		return "review-insert";
@@ -29,7 +29,7 @@ public class TestKimController {
 	}
 	
 	@PostMapping("/review-insert")
-	private  String insertBoardReview(BoardReviewVO boardReviewVO) {
+	public  String insertBoardReview(BoardReviewVO boardReviewVO) {
 		
 		boardService.insertBoardReviewService(boardReviewVO);
 
@@ -39,17 +39,17 @@ public class TestKimController {
 	
 	
 	@GetMapping("/manager-page")
-	private String goManagerPage() {
+	public String goManagerPage() {
 		
 		return "manager-page";
 		
 
 	}
 	
-	@GetMapping("/manager-product")
-	private String goManagerProduct() {
+	@GetMapping("/product-list")
+	public String goManagerProduct() {
 		
-		return "manager-product";
+		return "product-list";
 		
 
 	}

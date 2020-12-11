@@ -42,7 +42,7 @@ public class BoardController {
 	
 	
 	@GetMapping("/review-insert")
-	private String goBoardReview() {
+	public String goBoardReview() {
 		
 		
 		return "review-insert";
@@ -51,7 +51,7 @@ public class BoardController {
 	}
 	
 	@PostMapping("/review-insert")
-	private  String insertBoardReview(BoardReviewVO boardReviewVO) {
+	public  String insertBoardReview(BoardReviewVO boardReviewVO) {
 		
 		boardService.insertBoardReviewService(boardReviewVO);
 
