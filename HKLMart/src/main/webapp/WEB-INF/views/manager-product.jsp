@@ -55,46 +55,65 @@
 	vertical-align: bottom;
 	border-bottom: 2px solid #ffb6b6;
 }
+
 </style>
 </head>
 
 <body>
-<div id="body" class="container-fluid">
-<div class="row">
-<!-- 왼쪽 공백 -->
-				<div class="col-2"></div>
-				
-	
-	<!-- 
+	<div id="body" class="container-fluid">
+		<div class="row">
+			<!-- 왼쪽 공백 -->
+			<div class="col-2"></div>
+
+
+			<!-- 
 				<div class="col-2">
 					사이드 메뉴 
 				</div> -->
+			<br>
+			<div class="col-8">
 				<br>
-				<div class="col-8">
+				<div class="form-header">
+					<h1>제품 조회 리스트</h1>
+				</div>
 				<br>
-	<div class="form-header">
-		<h1>제품 조회 리스트</h1>
-	</div>
-	<br>
-	
-		<table class="table table-bordered table-striped"
-			style="background-color: #ffffff;">
 
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>제품 코드</th>
-					<th>제품명</th>
-					<th>브랜드</th>
-					<th>제품 종류</th>
-				</tr>
-			</thead>
-		</table>
-		<hr style="border: solid 1px #ffb6b6;">
-		</div>
+				<table class="table table-bordered table-striped"
+					style="background-color: #ffffff;">
+
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>제품 코드</th>
+							<th>제품명</th>
+							<th>브랜드</th>
+							<th>제품 종류</th>
+						</tr>
+					</thead>
+
+<%-- <td><a href='/board/get?bno=<c:out value="${board.bno}" />'>
+									<c:out value="${board.title}" />
+							</a></td> --%>
+					<c:forEach items="${productList}" var="list" varStatus="status">
+						<tr>
+							<th><c:out value="${status.count}"/></th>
+							<th><a href="<c:out value="${list.productCode}" />" style="color: black">
+									<c:out value="${list.productCode}" /></a></th>
+							<th><c:out value="${list.productName}" /></th>
+							<th><c:out value="${list.productBrand}" /></th>
+							<th><c:out value="${list.productKind}" /></th>
+						</tr>
+					</c:forEach>
+
+
+
+
+				</table>
+				<hr style="border: solid 1px #ffb6b6;">
+			</div>
 		</div>
 		<!-- 오른쪽 공백 -->
-				<div class="col-2"></div>
+		<div class="col-2"></div>
 	</div>
 
 

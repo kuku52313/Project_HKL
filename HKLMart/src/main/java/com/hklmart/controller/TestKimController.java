@@ -2,12 +2,11 @@ package com.hklmart.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.hklmart.domain.BoardReviewVO;
-import com.hklmart.service.BoardServiceTest;
+import com.hklmart.service.ManagementService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -17,40 +16,8 @@ import lombok.extern.log4j.Log4j;
 public class TestKimController {
 	
 	@Autowired
-	BoardServiceTest boardService;
+	ManagementService managementService;
 	
-	@GetMapping("/review-insert")
-	public String goBoardReview() {
-		
-		
-		return "review-insert";
-		
+	
 
-	}
-	
-	@PostMapping("/review-insert")
-	public  String insertBoardReview(BoardReviewVO boardReviewVO) {
-		
-		boardService.insertBoardReviewService(boardReviewVO);
-
-		return "my-page";
-		
-	}
-	
-	
-	@GetMapping("/manager-page")
-	public String goManagerPage() {
-		
-		return "manager-page";
-		
-
-	}
-	
-	@GetMapping("/product-list")
-	public String goManagerProduct() {
-		
-		return "product-list";
-		
-
-	}
 }
