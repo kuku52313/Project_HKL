@@ -17,4 +17,8 @@ public class TestLeeController {
 		return "/product-detail";
 	}
 	
+	@GetMapping("order")
+	public String goOrder() {
+		return "/order";
+	}
 }
