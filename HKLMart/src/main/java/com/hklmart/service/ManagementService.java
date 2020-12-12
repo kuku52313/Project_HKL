@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hklmart.domain.BoardAskVO;
 import com.hklmart.domain.ProductListDTO;
 import com.hklmart.persistence.ManagementDAO;
 
@@ -20,6 +21,11 @@ public class ManagementService {
 	public List<ProductListDTO> getProductList() {
 		
 		return managmentDAO.getProductList();
+	}
+
+	public List<BoardAskVO> getAskBoardList() {
+		// TODO Auto-generated method stub
+		return managmentDAO.getAskBoardList();
 	}
 	
 	

@@ -19,5 +19,12 @@ public class TestKimController {
 	ManagementService managementService;
 	
 	
+	@GetMapping("/manager-ask-board")
+	public String goManagerProduct(Model model) {
+		
+		model.addAttribute("AskBoardList", managementService.getAskBoardList());
+		
+		return "manager-ask-board";
+	}
 
 }

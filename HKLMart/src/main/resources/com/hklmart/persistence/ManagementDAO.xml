@@ -10,4 +10,10 @@
 	]]>
 	</select>
 	
+	<select id="getAskBoardList" resultType="com.hklmart.domain.BoardAskVO">
+	<![CDATA[
+	select * from board_ask
+	]]>
+	</select>
+	
 </mapper>

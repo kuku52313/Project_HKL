@@ -13,6 +13,8 @@ public class BoardAskVO {
 	private String boardAskContent;
 	private String boardAskProductCode;
 	private String boardAskOrderNumber;
+	private String boardAskState;
+	
 	
 	
 }
