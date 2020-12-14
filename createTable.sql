@@ -19,10 +19,17 @@ CREATE USER hkl IDENTIFIED BY root;
 --------------------------------------------------------
 GRANT DBA TO hkl;
 
-Drop SEQUENCE seq_board_ask;
-Drop SEQUENCE seq_board_review;
-Drop SEQUENCE seq_order_number;
+--------------------------------------------------------
+--  create SEQUENCE
+--------------------------------------------------------
 
+DROP SEQUENCE SEQ_BOARD_ASK;
+DROP SEQUENCE SEQ_BOARD_REVIEW;
+DROP SEQUENCE SEQ_ORDER_NUMBER;
+
+CREATE SEQUENCE SEQ_BOARD_ASK;
+CREATE SEQUENCE SEQ_BOARD_REVIEW;
+CREATE SEQUENCE SEQ_ORDER_NUMBER;
 
 --------------------------------------------------------
 --  파일이 생성됨 - 월요일-12월-14-2020   
@@ -373,10 +380,5 @@ SET DEFINE OFF;
   ALTER TABLE "HKL"."PRODUCT_ORDER" ADD CONSTRAINT "PRODUCT_ORDER_MEMBER_ID_FK_MEMBER_ID" FOREIGN KEY ("ORDER_MEMBER_ID")
 	  REFERENCES "HKL"."MEMBER" ("MEMBER_ID") ENABLE;
 
---------------------------------------------------------
---  create SEQUENCE
---------------------------------------------------------
 
-create SEQUENCE seq_board_ask;
-create SEQUENCE seq_board_review;
-create SEQUENCE seq_order_number;
+
