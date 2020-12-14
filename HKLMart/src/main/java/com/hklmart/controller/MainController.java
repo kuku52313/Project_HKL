@@ -35,9 +35,9 @@ public class MainController {
 		return map;
 	}
 
-	@RequestMapping("/ask-review")
+	@RequestMapping("/user-review-list")
 	public String goAskReview() {
-		return "ask-review";
+		return "user-review-list";
 	}
 	
 	@GetMapping("/product-list")

@@ -27,4 +27,6 @@ public class TestKimController {
 		return "manager-ask-board";
 	}
 
+
+	
 }

@@ -33,4 +33,23 @@ public class ManagementController {
 		
 		return "manager-product";
 	}
+	
+	@GetMapping("/manager-ask-board")
+	public String goManagerAskBoard(Model model) {
+		
+		model.addAttribute("AskBoardList", managementService.getAskBoardList());
+		
+		return "manager-ask-board";
+	}
+
+	
+	@GetMapping("/manager-review-list")
+	public String goManagerReviewList(Model model) {
+		
+		model.addAttribute("BoardReviewList", managementService.getBoardReviewList());
+		
+		return "manager-review-list";
+	}
+	
+	
 }

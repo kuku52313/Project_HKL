@@ -5,6 +5,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 
+<%@include file="includes/header.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,7 +56,7 @@
             </tr>
 
             <tr>
-                <td><a href="/" id="product">상품사진 넣는곳</a> <!--각 product로 갈 수 있게 해야함--></td>
+                <td><a href="/" id="product" style="color: black">상품사진 넣는곳</a> <!--각 product로 갈 수 있게 해야함--></td>
                 <td class="">
                     <dt><span class="st_on" style="width:85.4%">만족도 별점</span></dt>
                     <dt>상품코드 <span>${product_code}</span></dt>
@@ -79,4 +81,6 @@
      </form>
 
 </body>
-</html>
+
+
+<%@include file="includes/footer.jsp" %>
