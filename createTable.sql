@@ -19,6 +19,11 @@ CREATE USER hkl IDENTIFIED BY root;
 --------------------------------------------------------
 GRANT DBA TO hkl;
 
+Drop SEQUENCE seq_board_ask;
+Drop SEQUENCE seq_board_review;
+Drop SEQUENCE seq_order_number;
+
+
 --------------------------------------------------------
 --  파일이 생성됨 - 월요일-12월-14-2020   
 --------------------------------------------------------
