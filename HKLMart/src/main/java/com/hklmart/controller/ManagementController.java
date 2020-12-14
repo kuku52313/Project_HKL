@@ -23,7 +23,6 @@ public class ManagementController {
 		
 		return "manager-page";
 		
-
 	}
 	
 	

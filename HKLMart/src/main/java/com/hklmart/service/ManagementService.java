@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hklmart.domain.BoardAskVO;
-import com.hklmart.domain.ProductListDTO;
+import com.hklmart.domain.ProductListVO;
 import com.hklmart.persistence.ManagementDAO;
 
 import lombok.extern.log4j.Log4j;
@@ -18,13 +18,13 @@ public class ManagementService {
 	@Autowired
 	ManagementDAO managmentDAO;
 	
-	public List<ProductListDTO> getProductList() {
+	public List<ProductListVO> getProductList() {
 		
 		return managmentDAO.getProductList();
 	}
 
 	public List<BoardAskVO> getAskBoardList() {
-		// TODO Auto-generated method stub
+		
 		return managmentDAO.getAskBoardList();
 	}
 	

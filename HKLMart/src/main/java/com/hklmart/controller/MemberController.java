@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hklmart.domain.BoardAskVO;
 import com.hklmart.domain.MemberVO;
+import com.hklmart.service.BoardService;
 import com.hklmart.service.MemberService;
 
 import lombok.extern.log4j.Log4j;
@@ -26,6 +28,8 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @RequestMapping("/member")
 public class MemberController {
+
+
 
 	@Autowired
 	private MemberService memberService;
@@ -71,13 +75,13 @@ public class MemberController {
 		memberService.updatePassword(principal.getName(), memberPw);
 		return "my-page";
 	}
-	
+
 	@GetMapping("/my-page-ask-board")
-	public String goAskBoard() {
-		
+	public String goMyAskBoard() {
+
 		return "ask-board";
 	}
-	
-	
-	
+
+
+
 }
