@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hklmart.persistence.ProductDAO">
+
+	<insert id="saveFile">
+		<![CDATA[
+			INSERT INTO PRODUCT VALUES 
+			(#{productCode}, #{productName}, #{productBrand}, #{productPrice}, #{productType}, #{productImgPath}, #{productImg}, #{productThumbnail}, #{productContent}, SYSDATE) 
+		]]>
+	</insert>
+	
+	<insert id="saveStock">
+		<![CDATA[
+			INSERT INTO STOCK VALUES 
+			(#{StockProductCode}, #{Stock240}, #{Stock245}, #{Stock250}, #{Stock255}, #{Stock260}, #{Stock265}, #{Stock270}, #{Stock275}, #{Stock280}, #{Stock285}, #{Stock290}, #{Stock295})
+		]]>
+	</insert>
+
+</mapper>
