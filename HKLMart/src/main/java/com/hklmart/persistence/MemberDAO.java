@@ -9,6 +9,8 @@ public interface MemberDAO {
 	
 	public void registMember(MemberVO memberVO);
 	
+	public void registAuthorities(MemberVO memberVO);
+	
 	public MemberVO getMemberInfo(String memberId);
 	
 	@Insert("UPDATE MEMBER SET MEMBER_PW = #{param2} WHERE MEMBER_ID = #{param1}")

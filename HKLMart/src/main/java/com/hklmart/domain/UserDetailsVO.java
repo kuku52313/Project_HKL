@@ -21,7 +21,7 @@ public class UserDetailsVO implements UserDetails {
 	private String memberEmail;
 	private String memberTel;
 	private List<GrantedAuthority> authorities;
-	
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -30,12 +30,14 @@ public class UserDetailsVO implements UserDetails {
 		this.password = password;
 	}
 
-	public void setAuthorities(String auth) {
-
+	public void setAuthorities(String member, String manager, String admin) {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-
-		authorities.add(new SimpleGrantedAuthority(auth));
-
+		if (member != null)
+			authorities.add(new SimpleGrantedAuthority(member));
+		if (manager != null)
+			authorities.add(new SimpleGrantedAuthority(manager));
+		if (admin != null)
+			authorities.add(new SimpleGrantedAuthority(admin));
 		this.authorities = authorities;
 	}
 

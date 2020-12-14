@@ -5,13 +5,23 @@
 
 	<insert id="registMember">
 		<![CDATA[
-			INSERT INTO MEMBER VALUES (#{memberId}, #{memberPw}, #{memberName}, #{memberEmail}, #{memberTel}, #{memberAuthorities})
+			INSERT INTO MEMBER VALUES (#{memberId}, #{memberPw}, #{memberName}, #{memberEmail}, #{memberTel})
+		]]>
+	</insert>
+	
+	<insert id="registAuthorities">
+		<![CDATA[
+			INSERT INTO AUTHORITIES VALUES (#{memberId}, #{authoritiesMember}, #{authoritiesManager, jdbcType=NULL}, #{authoritiesAdmin, jdbcType=NULL})
 		]]>
 	</insert>
 	
 	<select id="getMemberInfo" parameterType="java.lang.String" resultType="com.hklmart.domain.MemberVO">
 		<![CDATA[
-			SELECT /*+ INDEX_ASC(MEMBER MEMBER_PK_MEMBER_ID) */ * FROM MEMBER WHERE MEMBER_ID = #{param} 
+			select * from 
+			(SELECT /*+ INDEX_ASC(MEMBER MEMBER_PK_MEMBER_ID) */
+			m.member_id, m.member_pw, m.member_name, m.member_email, m.member_tel, a.authorities_member, a.authorities_manager, a.authorities_admin 
+			FROM 
+			member m, authorities a WHERE m.member_id = a.member_id) where member_id = #{param}
 		]]>
 	</select>
 	

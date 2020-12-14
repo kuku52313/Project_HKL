@@ -30,7 +30,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			userDetails.setMemberName(member.getMemberName());
 			userDetails.setMemberEmail(member.getMemberEmail());
 			userDetails.setMemberTel(member.getMemberTel());
-			userDetails.setAuthorities(member.getMemberAuthorities());
+			userDetails.setAuthorities(member.getAuthoritiesMember(), member.getAuthoritiesManager(), member.getAuthoritiesAdmin());
 		}
 
 		return userDetails;

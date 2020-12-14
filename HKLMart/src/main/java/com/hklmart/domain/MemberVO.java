@@ -9,5 +9,7 @@ public class MemberVO {
 	private String memberName;
 	private String memberEmail;
 	private String memberTel;
-	private String memberAuthorities;
+	private String authoritiesMember;
+	private String authoritiesManager;
+	private String authoritiesAdmin;
 }

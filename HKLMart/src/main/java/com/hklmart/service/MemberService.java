@@ -20,9 +20,12 @@ public class MemberService{
 	private MemberDAO memberDAO;
 
 	public void registMember(MemberVO memberVO) {
-		memberVO.setMemberAuthorities("ROLE_MEMBER");
+		memberVO.setAuthoritiesMember("ROLE_MEMBER");
+		memberVO.setAuthoritiesManager(null);
+		memberVO.setAuthoritiesAdmin(null);
 		memberVO.setMemberPw(passwordEncoder.encode(memberVO.getMemberPw()));
 		memberDAO.registMember(memberVO);
+		memberDAO.registAuthorities(memberVO);
 	}
 	
 	public MemberVO getMemberInfo(String memberId) {

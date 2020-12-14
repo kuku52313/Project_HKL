@@ -48,8 +48,4 @@
 		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
 	
-	<bean id="uploadPath" class="java.lang.String">
-    	<constructor-arg value="" />
- 	</bean>		
-	
 </beans>

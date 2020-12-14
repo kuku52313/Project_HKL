@@ -34,9 +34,12 @@ public class ProductController {
 
 	@PostMapping("/product-regist-up")
 	public String registProduct(HttpServletRequest request, RegistProductDTO productDTO) {
-		String path = fileService.getFolderPath(request.getSession()
+		String path = fileService
+				.getFolderPath(
+				request.getSession()
 				.getServletContext()
-				.getRealPath("/resources/product"));
+				.getRealPath("/resources/product")
+				);
 		
 		log.info("path = " + path);
 		
