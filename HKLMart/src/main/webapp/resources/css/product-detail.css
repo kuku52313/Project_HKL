@@ -262,7 +262,7 @@ font-family: $
       width: 80px;
       height: 16px;
       margin: 1px 4px 0 0;
-      background: url("/img/star-solid.svg") repeat-x left 50%;
+      background: url("../img/product-detail/star-solid.svg") repeat-x left 50%;
       background-size: 16px 16px;
       overflow: hidden;
 }
@@ -277,7 +277,7 @@ font-family: $
 .detail_basic-info .detail_purchaser-reaction .ico-score .score[data-v-a489fb08] {
         width: 0%;
         height: 100%;
-        background: url("/static/20.09.01/images/ic-favorite-s-18-pt.svg") repeat-x left 50%;
+        background: url("../img/product-detail/star-solid.svg") repeat-x left 50%;
         background-size: 16px 16px;
         overflow: hidden;
         text-indent: -999px;
@@ -367,7 +367,7 @@ font-family: $
       width: 16px;
       height: 16px;
       border: 0;
-      background: transparent url("/static/20.09.01/images/ic-drop-down-black-16-pt.svg") no-repeat 50%;
+      background: transparent url("../product-detail/arrow-right-solid.svg") no-repeat 50%;
       background-size: 100% 100%;
       overflow: hidden;
       text-indent: -999px;
@@ -543,7 +543,7 @@ font-family: $
       width: 16px;
       height: 16px;
       border: 0;
-      background: transparent url("/static/20.09.01/images/ic-drop-down-black-16-pt.svg") no-repeat 50%;
+      background: transparent url("../product-detail/arrow-right-solid.svg") no-repeat 50%;
       background-size: 100% 100%;
       overflow: hidden;
       text-indent: -999px;
@@ -666,13 +666,13 @@ font-family: $
       margin-top: calc(env(safe-area-inset-bottom) / -2);
       border: 0;
       background-color: transparent;
-      background-image: url("/img/heart-regular.svg");
+      background-image: url("../img/product-detail/heart-regular.svg");
       background-repeat: no-repeat;
       background-position: 50%;
       background-size: 22px 19px;
 }
 .Mod_goods-option-payment .wrap-btn-purchase-wish .btn-wish.active[data-v-a489fb08] {
-        background-image: url("/img/heart-solid.svg");
+        background-image: url("../img/product-detail/heart-solid.svg");
 }
 .Mod_goods-option-payment .wrap-btn-purchase-wish .btn-wish .txt[data-v-a489fb08] {
         display: block;
@@ -928,15 +928,15 @@ font-family: $
         opacity: 0;
 }
 .Mod_goods-option-payment .wrap-goods-options .btn-cart-ico[data-v-a489fb08] {
-      background-image: url("/img/shopping-cart-solid.svg");
+      background-image: url("../img/product-detail/shopping-cart-solid.svg");
       background-size: 50%;
 }
 .Mod_goods-option-payment .wrap-goods-options .btn-favor-ico[data-v-a489fb08] {
-      background-image: url("/img/heart-regular.svg");
+      background-image: url("../img/product-detail/heart-regular.svg");
       background-size: 50%;
 }
 .Mod_goods-option-payment .wrap-goods-options .btn-favor-ico.active[data-v-a489fb08] {
-        background-image: url("/img/heart-solid.svg");
+        background-image: url("../img/product-detail/heart-solid.svg");
         background-size: 50%;
 }
 .show_today_only label[data-v-a489fb08] {

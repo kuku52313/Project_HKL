@@ -78,7 +78,7 @@
                         <div data-v-a489fb08="" class="wrap-goods-options">
                             <div data-v-a489fb08="" class="inner">
                                 <div data-v-a489fb08="" class="detail_options padding-top-20">
-                                    <select id="ui-id-2" style="display: none;">
+                                    <select id="ui-id-1" style="display: none;">
                                         <option value="" data-title="true" disabled="disabled">[size]를 선택하세요.</option>
                                         <option data-add="0" data-date="" sku="22846679" value="230">230</option>
                                         <option data-add="0" data-date="" sku="22846680" value="235">235</option>
@@ -86,7 +86,7 @@
                                         <option data-add="0" data-date="" sku="22846682" value="245">245</option>
                                         <option data-add="0" data-date="" sku="22846683" value="250">250</option>
                                     </select>
-                                    <span tabindex="-1" id="ui-id-2-button" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-owns="ui-id-2-menu" aria-haspopup="true" class="ui-selectmenu-button Slct_prod-button ui-selectmenu-button-closed ui-corner-all ui-button ui-widget custom-optionSelectMenu-disabled ui-state-disabled" aria-disabled="true">
+                                    <span tabindex="-1" id="ui-id-1-button" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-owns="ui-id-1-menu" aria-haspopup="true" class="ui-selectmenu-button Slct_prod-button ui-selectmenu-button-closed ui-corner-all ui-button ui-widget custom-optionSelectMenu-disabled ui-state-disabled" aria-disabled="true">
                                         <span class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span>
                                         <span class="ui-selectmenu-text">[size]를 선택하세요.
                                         </span>

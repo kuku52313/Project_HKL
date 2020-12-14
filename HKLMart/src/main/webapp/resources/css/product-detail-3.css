@@ -481,8 +481,8 @@ font-family: $
 }
 .wrap-qna-list .conts.secret {
     padding-left: 16px;
-    background: url("/static/20.09.01/images/ic-key-s-22-pt.svg") no-repeat left 2px;
-    background-size: 12px 12px;
+/*     background: url("/static/20.09.01/images/ic-key-s-22-pt.svg") no-repeat left 2px;
+ */    background-size: 12px 12px;
 }
 @media screen and (min-width: 769px) {
 .wrap-qna-list .conts.secret {

@@ -64,7 +64,7 @@ font-family: $
       width: 90px;
       height: 18px;
       margin-top: 1px;
-      background: url("/static/20.09.01/images/ic-favorite-n-18-pt.svg") repeat-x left 50%;
+      background: url("../img/product-detail/star-regular.svg") repeat-x left 50%;
       background-size: 18px 18px;
       overflow: hidden;
   }
@@ -79,7 +79,7 @@ font-family: $
   .review_view-rating .ico-score .score[data-v-1c49b806] {
         width: 0%;
         height: 100%;
-        background: url("/static/20.09.01/images/ic-favorite-s-18-pt-y.svg") repeat-x left 50%;
+        background: url("../img/product-detail/star-solid.svg") repeat-x left 50%;
         background-size: 18px 18px;
   }
   @media screen and (min-width: 769px) {
@@ -181,7 +181,7 @@ font-family: $
       height: 16px;
       margin-top: 2px;
       margin-right: 6px;
-      background: url("/static/20.09.01/images/ic-favorite-n-18-pt.svg") repeat-x left 50%;
+      background: url("../img/product-detail/star-regular.svg") repeat-x left 50%;
       background-size: 16px 16px;
       overflow: hidden;
   }
