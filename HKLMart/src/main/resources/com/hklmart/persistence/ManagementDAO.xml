@@ -10,13 +10,13 @@
 	]]>
 	</select>
 	
-	<select id="getAskBoardList" resultType="com.hklmart.domain.BoardAskVO">
+	<select id="getAskBoardList" resultType="com.hklmart.domain.BoardAskDTO">
 	<![CDATA[
 	select * from board_ask
 	]]>
 	</select>
 	
-	<select id="getBoardReviewList" resultType="com.hklmart.domain.BoardReviewListVO">
+	<select id="getBoardReviewList" resultType="com.hklmart.domain.BoardReviewListDTO">
 	<![CDATA[
 	select r.board_review_number,r.board_review_member_id, p.product_name,r.board_review_score,r.board_review_date
 	from product p, board_review r

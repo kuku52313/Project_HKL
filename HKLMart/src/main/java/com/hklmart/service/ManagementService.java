@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hklmart.domain.BoardAskVO;
-import com.hklmart.domain.BoardReviewListVO;
+import com.hklmart.domain.BoardAskDTO;
+import com.hklmart.domain.BoardReviewListDTO;
 import com.hklmart.domain.ProductListDTO;
 import com.hklmart.persistence.ManagementDAO;
 
@@ -24,12 +24,12 @@ public class ManagementService {
 		return managmentDAO.getProductList();
 	}
 
-	public List<BoardAskVO> getAskBoardList() {
+	public List<BoardAskDTO> getAskBoardList() {
 		
 		return managmentDAO.getAskBoardList();
 	}
 
-	public List<BoardReviewListVO> getBoardReviewList() {
+	public List<BoardReviewListDTO> getBoardReviewList() {
 		
 		return managmentDAO.getBoardReviewList();
 	}
