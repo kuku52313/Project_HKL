@@ -35,7 +35,7 @@
         </div>
 		<br>
         <!-- form body -->
-        <select class="formText" id="askType" name="boardAskKind" onchange="askTypeFn()">
+        <select class="formText" id="askType" name="boardAskType" onchange="askTypeFn()">
             <option value="0" name="none">- 문의 종류 -</option>
             <option value="1" name="none">- 환불 -</option>
             <option value="2" name="none">- 교환 및 A/S -</option>

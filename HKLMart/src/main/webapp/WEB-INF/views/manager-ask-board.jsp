@@ -100,7 +100,7 @@
 						<tr>
 							<th><a href="<c:out value="${list.boardAskNumber}" />" style="color: black">
 									<c:out value="${list.boardAskNumber}" /></a></th>
-							<th><c:out value="${list.boardAskKind}" /></th>
+							<th><c:out value="${list.boardAskType}" /></th>
 							<th><c:out value="${list.boardAskTitle}" /></th>
 							<th><c:out value="${list.boardAskDate}" /></th>
 							<th><c:out value="${list.boardAskState}" /></th>

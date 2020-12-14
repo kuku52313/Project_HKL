@@ -102,7 +102,7 @@
 									<c:out value="${list.productCode}" /></a></th>
 							<th><c:out value="${list.productName}" /></th>
 							<th><c:out value="${list.productBrand}" /></th>
-							<th><c:out value="${list.productKind}" /></th>
+							<th><c:out value="${list.productType}" /></th>
 						</tr>
 					</c:forEach>
 

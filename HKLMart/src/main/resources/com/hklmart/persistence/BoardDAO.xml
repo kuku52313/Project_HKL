@@ -6,9 +6,9 @@
 <insert id="insertAskBoard">
 		<![CDATA[
 			insert INTO board_ask
-			(board_ask_number, board_ask_member_id, board_ask_date, board_ask_kind, board_ask_title, board_ask_content,board_ask_product_code, board_ask_order_number)  
+			(board_ask_number, board_ask_member_id, board_ask_date, board_ask_Type, board_ask_title, board_ask_content,board_ask_product_code, board_ask_order_number)  
 			VALUES
-			(seq_board_ask.nextval,#{boardAskMemberId}, sysdate, #{boardAskKind} ,#{boardAskTitle}, #{boardAskContent}, #{boardAskProductCode}, #{boardAskOrderNumber} )
+			(seq_board_ask.nextval,#{boardAskMemberId}, sysdate, #{boardAskType} ,#{boardAskTitle}, #{boardAskContent}, #{boardAskProductCode}, #{boardAskOrderNumber} )
 		]]>
 	</insert>
 	

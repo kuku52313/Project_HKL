@@ -10,7 +10,7 @@ public class ProductListVO {
 	private String productCode;
 	private String productBrand;
 	private String productPrice;
-	private String productKind;
+	private String productType;
 	
 	
 }

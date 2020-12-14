@@ -199,7 +199,7 @@
 
 		function telCheckfn() {
 			var userTel = $("#userTel").val();
-			var checkTel = /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$/;
+			var checkTel = /^[0-9]{11}$/;
 			if (checkTel.test(userTel)) {
 				$("#telCheckBtn").css("border", "");
 				$("#telCheckBtn").css("border", "solid 5px #007bff");

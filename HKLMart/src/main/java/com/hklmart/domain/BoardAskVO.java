@@ -8,7 +8,7 @@ public class BoardAskVO {
 	private String boardAskNumber;
 	private String boardAskMemberId;
 	private String boardAskDate;
-	private String boardAskKind;
+	private String boardAskType;
 	private String boardAskTitle;
 	private String boardAskContent;
 	private String boardAskProductCode;

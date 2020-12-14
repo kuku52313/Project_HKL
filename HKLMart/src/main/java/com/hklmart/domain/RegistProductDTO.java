@@ -10,7 +10,7 @@ public class RegistProductDTO {
 	private String productBrand;
 	private String productCode;
 	private String productPrice;
-	private String productKind;
+	private String productType;
 	private String productContent;
 	private MultipartFile uploadImg;
 	private String stock240;

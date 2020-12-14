@@ -182,28 +182,28 @@
 		</div>
 		<div class="record">
 			<label>제품 종류</label>&nbsp;&nbsp;
-			<select class="formText" id="kindProduct" name="productKind">
+			<select class="formText" id="kindProduct" name="productType">
 				<option value="1" name="none">- 세부코드를 선택하여주세요 -</option>
 				<option value="1" name="none">-운동화 (10 ~ 29) -</option>
-				<option value="11" name="productKind">스니커즈 (11)</option>
-				<option value="12" name="productKind">캔버스화 (12)</option>
-				<option value="13" name="productKind">슬립온 (13)</option>
+				<option value="11" name="productType">스니커즈 (11)</option>
+				<option value="12" name="productType">캔버스화 (12)</option>
+				<option value="13" name="productType">슬립온 (13)</option>
 
 				<option value="1" name="none">-스포츠 (30 ~ 49) -</option>
-				<option value="31" name="productKind">런닝화 (31)</option>
-				<option value="32" name="productKind">축구화 (32)</option>
-				<option value="33" name="productKind">등산화 (33)</option>
+				<option value="31" name="productType">런닝화 (31)</option>
+				<option value="32" name="productType">축구화 (32)</option>
+				<option value="33" name="productType">등산화 (33)</option>
 
 				<option value="1" name="none">-구두 (50 ~ 69) -</option>
-				<option value="51" name="productKind">로퍼 (51)</option>
-				<option value="52" name="productKind">레이스업 (52)</option>
-				<option value="53" name="productKind">힐/펌프스 (53)</option>
-				<option value="54" name="productKind">플랫슈즈 (54)</option>
+				<option value="51" name="productType">로퍼 (51)</option>
+				<option value="52" name="productType">레이스업 (52)</option>
+				<option value="53" name="productType">힐/펌프스 (53)</option>
+				<option value="54" name="productType">플랫슈즈 (54)</option>
 
 				<option value="1" name="none">-부츠 (70 ~ 99) -</option>
-				<option value="71" name="productKind">첼시부츠 (71)</option>
-				<option value="72" name="productKind">워크부츠 (72)</option>
-				<option value="73" name="productKind">퍼부츠 (73)</option>
+				<option value="71" name="productType">첼시부츠 (71)</option>
+				<option value="72" name="productType">워크부츠 (72)</option>
+				<option value="73" name="productType">퍼부츠 (73)</option>
 			</select>
 		</div>
 		<hr style="border: solid 1px #ffb6b6;">
