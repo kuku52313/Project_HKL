@@ -10,7 +10,7 @@
 
 + *SQL 시스템 관리자 계정으로 로그인*
 
-+ *createTable.sql 실행*
++ *excuteSQL.sql 실행*
 
 + *HKLMart Pulling 후 실행*  
 
