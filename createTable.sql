@@ -18,16 +18,15 @@ CREATE USER hkl IDENTIFIED BY root;
 --  hkl 계정에 DBA 권한 부여
 --------------------------------------------------------
 GRANT DBA TO hkl;
-
 --------------------------------------------------------
---  DDL for Table AUTHOLITIES
+--  DDL for Table AUTHORITIES
 --------------------------------------------------------
 
-  CREATE TABLE "HKL"."AUTHOLITIES" 
-   (	"AUTHOLITIES_MEMBER_ID" VARCHAR2(15 BYTE), 
-	"AUTHOLITIES_MEMBER" VARCHAR2(20 BYTE), 
-	"AUTHOLITIES_MANAGER" VARCHAR2(20 BYTE), 
-	"AUTHOLITIES_ADMIN" VARCHAR2(20 BYTE)
+  CREATE TABLE "HKL"."AUTHORITIES" 
+   (	"AUTHORITIES_MEMBER_ID" VARCHAR2(15 BYTE), 
+	"AUTHORITIES_MEMBER" VARCHAR2(20 BYTE), 
+	"AUTHORITIES_MANAGER" VARCHAR2(20 BYTE), 
+	"AUTHORITIES_ADMIN" VARCHAR2(20 BYTE)
    ) ;
 --------------------------------------------------------
 --  DDL for Table BOARD_REVIEW
@@ -151,8 +150,9 @@ GRANT DBA TO hkl;
 	"MEMBER_REGDATE" DATE DEFAULT sysdate, 
 	"MEMBER_ADDRESS" VARCHAR2(150 BYTE) DEFAULT '주소를 입력하여 주세요'
    ) ;
-REM INSERTING into HKL.AUTHOLITIES
+REM INSERTING into HKL.AUTHORITIES
 SET DEFINE OFF;
+Insert into HKL.AUTHORITIES (AUTHORITIES_MEMBER_ID,AUTHORITIES_MEMBER,AUTHORITIES_MANAGER,AUTHORITIES_ADMIN) values ('kuku52313','ROLE_MEMBER',null,null);
 REM INSERTING into HKL.BOARD_REVIEW
 SET DEFINE OFF;
 REM INSERTING into HKL.STOCK
@@ -173,6 +173,7 @@ REM INSERTING into HKL.PRODUCT_LIKE
 SET DEFINE OFF;
 REM INSERTING into HKL.MEMBER
 SET DEFINE OFF;
+Insert into HKL.MEMBER (MEMBER_ID,MEMBER_PW,MEMBER_NAME,MEMBER_EMAIL,MEMBER_TEL,MEMBER_REGDATE,MEMBER_ADDRESS) values ('kuku52313','$2a$10$BM7FI3Xq6TwEmARKLSt84eKG8UTj3eQEFZdNkDM5j6qW3TwhNADTC','김희곤','lars523@naver.com','01099961644',to_date('20/12/14','RR/MM/DD'),null);
 --------------------------------------------------------
 --  DDL for Index BOARD_REVIEW_PK
 --------------------------------------------------------
@@ -204,11 +205,11 @@ SET DEFINE OFF;
   CREATE UNIQUE INDEX "HKL"."MEMBER_PK" ON "HKL"."MEMBER" ("MEMBER_ID") 
   ;
 --------------------------------------------------------
---  Constraints for Table AUTHOLITIES
+--  Constraints for Table AUTHORITIES
 --------------------------------------------------------
 
-  ALTER TABLE "HKL"."AUTHOLITIES" MODIFY ("AUTHOLITIES_MEMBER_ID" NOT NULL ENABLE);
-  ALTER TABLE "HKL"."AUTHOLITIES" MODIFY ("AUTHOLITIES_MEMBER" NOT NULL ENABLE);
+  ALTER TABLE "HKL"."AUTHORITIES" MODIFY ("AUTHORITIES_MEMBER_ID" NOT NULL ENABLE);
+  ALTER TABLE "HKL"."AUTHORITIES" MODIFY ("AUTHORITIES_MEMBER" NOT NULL ENABLE);
 --------------------------------------------------------
 --  Constraints for Table BOARD_REVIEW
 --------------------------------------------------------
@@ -295,10 +296,10 @@ SET DEFINE OFF;
   ALTER TABLE "HKL"."MEMBER" ADD CONSTRAINT "MEMBER_PK" PRIMARY KEY ("MEMBER_ID")
   USING INDEX  ENABLE;
 --------------------------------------------------------
---  Ref Constraints for Table AUTHOLITIES
+--  Ref Constraints for Table AUTHORITIES
 --------------------------------------------------------
 
-  ALTER TABLE "HKL"."AUTHOLITIES" ADD CONSTRAINT "AUTHOLITIES_MEMBER_ID_FK_MEMBER_ID" FOREIGN KEY ("AUTHOLITIES_MEMBER_ID")
+  ALTER TABLE "HKL"."AUTHORITIES" ADD CONSTRAINT "AUTHOLITIES_MEMBER_ID_FK_MEMBER_ID" FOREIGN KEY ("AUTHORITIES_MEMBER_ID")
 	  REFERENCES "HKL"."MEMBER" ("MEMBER_ID") ON DELETE CASCADE ENABLE;
 --------------------------------------------------------
 --  Ref Constraints for Table BOARD_REVIEW
