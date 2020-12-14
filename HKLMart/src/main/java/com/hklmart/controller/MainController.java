@@ -48,4 +48,12 @@ public class MainController {
 
 	}
 	
+	@GetMapping("/admin/product-list")
+	public String goAdmin() {
+		
+		return "product-list";
+		
+
+	}
+	
 }
