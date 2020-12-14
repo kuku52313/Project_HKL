@@ -24,12 +24,9 @@ import com.hklmart.service.MemberService;
 
 import lombok.extern.log4j.Log4j;
 
-@Log4j
 @Controller
 @RequestMapping("/member")
 public class MemberController {
-
-
 
 	@Autowired
 	private MemberService memberService;
@@ -78,10 +75,7 @@ public class MemberController {
 
 	@GetMapping("/my-page-ask-board")
 	public String goMyAskBoard() {
-
 		return "ask-board";
 	}
-
-
 
 }

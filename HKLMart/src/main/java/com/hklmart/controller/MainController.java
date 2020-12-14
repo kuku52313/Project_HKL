@@ -15,7 +15,6 @@ import com.hklmart.service.MemberService;
 
 import lombok.extern.log4j.Log4j;
 
-@Log4j
 @Controller
 public class MainController {
 
@@ -39,21 +38,15 @@ public class MainController {
 	public String goAskReview() {
 		return "user-review-list";
 	}
-	
+
 	@GetMapping("/product-list")
 	public String goManagerProduct() {
-		
 		return "product-list";
-		
-
 	}
-	
+
 	@GetMapping("/admin/product-list")
 	public String goAdmin() {
-		
 		return "product-list";
-		
-
 	}
-	
+
 }

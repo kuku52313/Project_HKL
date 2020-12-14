@@ -12,45 +12,32 @@ import com.hklmart.service.BoardService;
 
 import lombok.extern.log4j.Log4j;
 
-@Log4j
 @Controller
 @RequestMapping("/board")
 public class BoardController {
 
 	@Autowired
 	BoardService boardService;
-	
+
 	@GetMapping("/ask-board")
 	public String goAskBoard() {
-
 		return "ask-board";
-
 	}
 
 	@PostMapping("/ask-board")
 	public String insertAskBoard(BoardAskVO boardAskVO) {
-
-		log.info(boardAskVO);
-
 		boardService.insertAskBoardService(boardAskVO);
-
 		return "redirect:/member/my-page";
 	}
 
 	@GetMapping("/review-insert")
 	public String goBoardReview() {
-
 		return "review-insert";
-
 	}
 
 	@PostMapping("/review-insert")
 	public String insertBoardReview(BoardReviewVO boardReviewVO) {
-
 		boardService.insertBoardReviewService(boardReviewVO);
-
 		return "my-page";
-
 	}
-
 }
