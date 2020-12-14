@@ -4,12 +4,12 @@ import java.util.List;
 
 import com.hklmart.domain.BoardAskVO;
 import com.hklmart.domain.BoardReviewListVO;
-import com.hklmart.domain.ProductListVO;
+import com.hklmart.domain.ProductListDTO;
 
 
 public interface ManagementDAO {
 	
-	public List<ProductListVO> getProductList();
+	public List<ProductListDTO> getProductList();
 
 	public List<BoardAskVO> getAskBoardList();
 

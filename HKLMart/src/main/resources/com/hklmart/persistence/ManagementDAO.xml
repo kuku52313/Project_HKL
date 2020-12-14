@@ -4,7 +4,7 @@
 <mapper namespace="com.hklmart.persistence.ManagementDAO">
 
 <!-- getProductList -->
-	<select id="getProductList" resultType="com.hklmart.domain.ProductListVO" >
+	<select id="getProductList" resultType="com.hklmart.domain.ProductListDTO" >
 	<![CDATA[
 	select * from product
 	]]>

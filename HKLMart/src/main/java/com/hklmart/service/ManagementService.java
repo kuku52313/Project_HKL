@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.hklmart.domain.BoardAskVO;
 import com.hklmart.domain.BoardReviewListVO;
-import com.hklmart.domain.ProductListVO;
+import com.hklmart.domain.ProductListDTO;
 import com.hklmart.persistence.ManagementDAO;
 
 import lombok.extern.log4j.Log4j;
@@ -19,7 +19,7 @@ public class ManagementService {
 	@Autowired
 	ManagementDAO managmentDAO;
 	
-	public List<ProductListVO> getProductList() {
+	public List<ProductListDTO> getProductList() {
 		
 		return managmentDAO.getProductList();
 	}
