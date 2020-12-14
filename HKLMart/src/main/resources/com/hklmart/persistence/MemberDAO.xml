@@ -5,7 +5,7 @@
 
 	<insert id="registMember">
 		<![CDATA[
-			INSERT INTO MEMBER VALUES (#{memberId}, #{memberPw}, #{memberName}, #{memberEmail}, #{memberTel})
+			INSERT INTO MEMBER VALUES (#{memberId}, #{memberPw}, #{memberName}, #{memberEmail}, #{memberTel}, sysdate, null)
 		]]>
 	</insert>
 	
@@ -21,7 +21,7 @@
 			(SELECT /*+ INDEX_ASC(MEMBER MEMBER_PK_MEMBER_ID) */
 			m.member_id, m.member_pw, m.member_name, m.member_email, m.member_tel, a.authorities_member, a.authorities_manager, a.authorities_admin 
 			FROM 
-			member m, authorities a WHERE m.member_id = a.member_id) where member_id = #{param}
+			member m, authorities a WHERE m.member_id = a.authorities_member_id) where member_id = #{param}
 		]]>
 	</select>
 	
