@@ -3,19 +3,19 @@
 
 <mapper namespace="com.hklmart.persistence.ManagementDAO">
 
-<!-- getProductList -->
-	<select id="getProductList" resultType="com.hklmart.domain.ProductListDTO" >
+	<!-- getProductList -->
+	<select id="getProductList" resultType="com.hklmart.domain.ProductListDTO">
 	<![CDATA[
 	select * from product
 	]]>
 	</select>
-	
+
 	<select id="getAskBoardList" resultType="com.hklmart.domain.BoardAskDTO">
 	<![CDATA[
 	select * from board_ask
 	]]>
 	</select>
-	
+
 	<select id="getBoardReviewList" resultType="com.hklmart.domain.BoardReviewListDTO">
 	<![CDATA[
 	select r.board_review_number,r.board_review_member_id, p.product_name,r.board_review_score,r.board_review_date
@@ -23,5 +23,13 @@
 	where r.board_review_product_code = p.product_code
 	]]>
 	</select>
-	
+
+	<select id="getMemberList" resultType="com.hklmart.domain.MemberListDTO">
+	<![CDATA[
+	select m.member_id, m.member_name, m.member_tel,  m.member_regdate, a.authorities_member, a.authorities_manager, a.authorities_admin
+	from member m,authorities a
+	where m.member_id = a.authorities_member_id
+	]]>
+	</select>
+
 </mapper>

@@ -27,6 +27,12 @@ public class TestKimController {
 		return "manager-ask-board";
 	}
 
-
+	@GetMapping("/manager-member-list")
+	public String goMemberList(Model model) {
+		
+		model.addAttribute("MemberList", managementService.getMemberList());
+		
+		return "manager-member-list";
+	}
 	
 }

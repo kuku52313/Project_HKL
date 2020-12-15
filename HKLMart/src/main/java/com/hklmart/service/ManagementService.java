@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.hklmart.domain.BoardAskDTO;
 import com.hklmart.domain.BoardReviewListDTO;
+import com.hklmart.domain.MemberListDTO;
 import com.hklmart.domain.ProductListDTO;
 import com.hklmart.persistence.ManagementDAO;
 
@@ -32,6 +33,11 @@ public class ManagementService {
 	public List<BoardReviewListDTO> getBoardReviewList() {
 		
 		return managmentDAO.getBoardReviewList();
+	}
+
+	public List<MemberListDTO> getMemberList() {
+		// TODO Auto-generated method stub
+		return managmentDAO.getMemberList();
 	}
 	
 	
