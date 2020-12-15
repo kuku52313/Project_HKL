@@ -106,9 +106,9 @@
 
 
                                 <form id="wrap-btn-purchase" method="GET">
-                                        <a data-v-a489fb08="" href="#" id="btn_buy" class="btn-buy">바로 구매</a>
-                                        <a data-v-a489fb08="" href="#" id="btn_cart_ico" class="btn-cart-ico" onclick="addCart()"></a>
-                                        <a data-v-a489fb08="" href="#" id="btn_favor_ico" class="btn-favor-ico" onclick="likeClick()"></a>
+                                        <button type="button" data-v-a489fb08="" id="btn_buy" class="btn-buy">바로 구매</button>
+                                        <button type="button" data-v-a489fb08="" id="btn_cart_ico" class="btn-cart-ico" onclick="addCart()"></button>
+                                        <button type="button" data-v-a489fb08="" id="btn_favor_ico" class="btn-favor-ico" onclick="likeClick()"></button>
                                     </div>
                                 </form>
 
@@ -492,10 +492,10 @@
 
 
 <script>
-   
-    function likeClick(){
-        $("btn-wish").css({"background":"url(/img/heart-solid.svg)"});
-    }
 
+    function addCart(){
+    	
+    }
+  
 </script>
 <%@include file="includes/footer.jsp" %>
