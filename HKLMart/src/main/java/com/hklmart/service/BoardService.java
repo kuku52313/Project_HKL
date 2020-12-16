@@ -9,19 +9,19 @@ import com.hklmart.persistence.BoardDAO;
 
 @Service
 public class BoardService {
-	
-	@Autowired
-	BoardDAO boardDAO;
-	
-	
-	public void insertAskBoardService(BoardAskVO boardAskVO) {
-		
-		boardDAO.insertAskBoard(boardAskVO);
-	}
-	
-	public void insertBoardReviewService(BoardReviewVO boardReviewVO) {
-		
-		boardDAO.insertBoardReview(boardReviewVO);
-		
-	}
+
+    @Autowired
+    BoardDAO boardDAO;
+
+
+    public void insertAskBoardService(BoardAskVO boardAskVO) {
+
+        boardDAO.insertAskBoard(boardAskVO);
+    }
+
+    public void insertBoardReviewService(BoardReviewVO boardReviewVO) {
+
+        boardDAO.insertBoardReview(boardReviewVO);
+
+    }
 }
