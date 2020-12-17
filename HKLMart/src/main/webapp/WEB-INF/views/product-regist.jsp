@@ -177,6 +177,15 @@
 
 			</div>
 			<hr style="border: solid 1px #ffb6b6;">
+			<label>제품 이미지</label>&nbsp;&nbsp;
+			<div class="form-group left">
+				<label for="contentFile" class="fileTitle"></label>
+				<input type="file" id="choose-file" name="uploadImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;" />
+				<div id="select_img" style="width: 100%; text-align: center">
+					<img src="" />
+				</div>
+			</div>
+			<hr style="border: solid 1px #ffb6b6;">
 			<div class="record">
 				<label>제품 가격</label>&nbsp;&nbsp;
 				<input type="text" class="formText" id="priceProduct" name="productPrice" placeholder="주의사항) ,와 원 미입력 ex) 30000" //>
@@ -216,11 +225,10 @@
 		</div>
 		<div>
 			<textarea id="content" name="productContent" cols="90" row="10" style="border-color: #ffb6b6;"></textarea>
-
 			<div class="form-group left">
 				<label for="contentFile" class="fileTitle"></label>
-				<input type="file" id="choose-file" name="uploadImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;" />
-				<div id="select_img" style="width: 100%; text-align: center">
+				<input type="file" id="content-file" name="contentImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;" />
+				<div id="select_content_img" style="width: 100%; text-align: center">
 					<img src="" />
 				</div>
 			</div>
@@ -415,6 +423,21 @@
     	return true;
     }
     
+    function contentCheckImage(fileName, fileSize){
+    	var imageExtension = /([^\s]+(?=\.(jpg|jpeg|png|bmp|JPG|JPEG|PNG|BMP))\.\2)/
+    	if (!imageExtension.test(fileName)) {
+            alert("이미지만 등록 가능합니다");
+            document.getElementById("choose-file").value = "";
+            return false;
+        } 
+    	if (fileSize >= 10485760) {
+           	alert("이미지 크기가 너무 큽니다");
+           	document.getElementById("choose-file").value = "";
+           	return false;
+        }
+    	return true;
+    }
+    
     $("#choose-file").change(function(){
     	var file = document.getElementById("choose-file");
     	var filePath = file.value;
@@ -433,6 +456,27 @@
 	 	    }
 		}else {
 			document.getElementById("choose-file").value = "";
+		}
+    });
+    
+    $("#content-file").change(function(){
+    	var file = document.getElementById("content-file");
+    	var filePath = file.value;
+    	var filePathSplit = filePath.split('\\'); 
+    	var filePathLength = filePathSplit.length;
+    	var fileName = filePathSplit[filePathLength-1];
+    	var fileSize = file.files[0].size;
+    	
+    	if (contentCheckImage(fileName, fileSize)) {
+			if(this.files && this.files[0]) {
+	 	    	var reader = new FileReader;
+	 	    	reader.onload = function(data) {
+	 	    		$("#select_content_img img").attr("src", data.target.result).width(300).height(300);        
+	 	    	}
+	 	   		reader.readAsDataURL(this.files[0]);
+	 	    }
+		}else {
+			document.getElementById("content-file").value = "";
 		}
     });
     

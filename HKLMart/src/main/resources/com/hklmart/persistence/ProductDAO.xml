@@ -5,7 +5,7 @@
 	<insert id="saveFile">
 		<![CDATA[
 			INSERT INTO PRODUCT VALUES 
-			(#{productCode}, #{productName}, #{productBrand}, #{productPrice}, #{productType}, #{productImgPath}, #{productImg}, #{productThumbnail}, #{productContent}, SYSDATE) 
+			(#{productCode}, #{productName}, #{productBrand}, #{productPrice}, #{productType}, #{productImgPath}, #{productImg}, #{productThumbnail}, #{productContent}, SYSDATE, #{productContentImg}, #{productContentImgpath}) 
 		]]>
 	</insert>
 	

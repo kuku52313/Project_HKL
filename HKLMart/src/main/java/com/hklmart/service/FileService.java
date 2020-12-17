@@ -44,6 +44,16 @@ public class FileService {
             productDTO.getUploadImg().transferTo(image);
             Thumbnails.of(image).size(300, 300).outputFormat("png").toFile(thumbnail);
         }
+        
+        String contentImgName = UUID.randomUUID().toString() + "_" + productDTO.getContentImg().getOriginalFilename();
+        File contentImgpath = new File(getFolderPath(request.getSession().getServletContext().getRealPath("/resources/product")));
+        File contentImgimage = new File(contentImgpath + "\\" + contentImgName);
+  
+
+        if (!contentImgimage.exists()) {
+        	contentImgpath.mkdirs();
+            productDTO.getContentImg().transferTo(contentImgimage);
+        }
 
         ProductVO productVO = new ProductVO();
         productVO.setProductCode(productDTO.getProductCode());
@@ -55,6 +65,8 @@ public class FileService {
         productVO.setProductImgPath(path.toString());
         productVO.setProductImg(image.toString().replace(path.toString(), ""));
         productVO.setProductThumbnail(thumbnail.toString().replace(path.toString(), ""));
+        productVO.setProductContentImgpath(contentImgpath.toString());
+        productVO.setProductContentImg(contentImgimage.toString().replace(contentImgpath.toString(), ""));
         product.saveFile(productVO);
 
         StockVO stockVO = new StockVO();

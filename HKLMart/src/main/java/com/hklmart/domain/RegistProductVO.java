@@ -13,6 +13,7 @@ public class RegistProductVO {
 	private String productType;
 	private String productContent;
 	private MultipartFile uploadImg;
+	private MultipartFile contentImg;
 	private String stock240;
 	private String stock245;
 	private String stock250;

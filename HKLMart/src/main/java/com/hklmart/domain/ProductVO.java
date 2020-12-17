@@ -16,4 +16,7 @@ public class ProductVO {
 	private String productImg;
 	private String productThumbnail;
 	private Date productRegdate;
+	private String productContentImg;
+	private String productContentImgpath;
+	
 }
