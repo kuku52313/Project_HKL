@@ -5,17 +5,22 @@
 
 <insert id="insertAskBoard">
 		<![CDATA[
-			insert INTO board_ask
-			(board_ask_number, board_ask_member_id, board_ask_date, board_ask_type, board_ask_title, board_ask_content,board_ask_product_code, board_ask_order_number)  
+			INSERT INTO BOARD_ASK
+			(BOARD_ASK_NUMBER, BOARD_ASK_MEMBER_ID, BOARD_ASK_DATE, BOARD_ASK_TYPE, BOARD_ASK_TITLE, BOARD_ASK_CONTENT,BOARD_ASK_PRODUCT_CODE, BOARD_ASK_ORDER_NUMBER)
 			VALUES
-			(seq_board_ask.nextval,#{boardAskMemberId}, sysdate, #{boardAskType} ,#{boardAskTitle}, #{boardAskContent}, #{boardAskProductCode}, #{boardAskOrderNumber} )
+			(SEQ_BOARD_ASK.NEXTVAL,#{boardaskmemberid}, sysdate, #{boardasktype} ,#{boardasktitle}, #{boardaskcontent}, #{boardaskproductcode}, #{boardaskordernumber} )
 		]]>
 	</insert>
 	
 	<insert id="insertBoardReview">
 		<![CDATA[
+<<<<<<< HEAD
 			insert INTO board_review(board_review_number, board_review_member_id, board_review_product_code, board_review_score, board_review_content, board_review_img, board_review_imgpath, board_review_thumbnail) 
 							VALUES (SEQ_BOARD_REVIEW.nextval, #{boardReviewMemberId},#{boardReviewProductCode}, #{boardReviewScore}, #{boardReviewContent},#{boardReviewImg},#{boardReviewImgpath},#{boardReviewThumbnail} )
+=======
+			INSERT INTO BOARD_REVIEW(BOARD_REVIEW_NUMBER, BOARD_REVIEW_MEMBER_ID, BOARD_REVIEW_PRODUCT_CODE, BOARD_REVIEW_SCORE,BOARD_REVIEW_CONTENT)
+							VALUES (SEQ_BOARD_REVIEW.NEXTVAL, #{boardReviewMemberId},#{boardReviewProductCode}, #{boardReviewScore}, #{boardReviewContent} )
+>>>>>>> refs/remotes/origin/main
 		]]>
 	</insert>
 

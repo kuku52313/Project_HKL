@@ -12,7 +12,7 @@
 	<insert id="saveStock">
 		<![CDATA[
 			INSERT INTO STOCK VALUES 
-			(#{StockProductCode}, #{Stock240}, #{Stock245}, #{Stock250}, #{Stock255}, #{Stock260}, #{Stock265}, #{Stock270}, #{Stock275}, #{Stock280}, #{Stock285}, #{Stock290}, #{Stock295})
+			(#{stockProductCode}, #{stock240}, #{stock245}, #{stock250}, #{stock255}, #{stock260}, #{stock265}, #{stock270}, #{stock275}, #{stock280}, #{stock285}, #{stock290}, #{stock295})
 		]]>
 	</insert>
 
