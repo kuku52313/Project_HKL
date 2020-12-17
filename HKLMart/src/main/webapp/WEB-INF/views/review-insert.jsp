@@ -15,7 +15,7 @@
 
 <body>
 
-    <form class="insertform" name="insertForm" action="/board/review-insert" method="post">
+    <form class="insertform" name="insertForm" action="/board/review-insert?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
    		<input type="hidden" id="boardReviewId" name="boardReviewMemberId" value="${user.username}" />
         
@@ -64,11 +64,13 @@
         </div>
         <div>
             <textarea id="content" name="boardReviewContent" cols="90" rows="10" style="border-color:#ffb6b6 ;"></textarea>
-
-            <div class="form-group left">
-                <label for="contentFile" class="fileTitle"></label>
-                <input type="file" id="choose-file" size="80" style="margin-top: 10px; margin-bottom: 10px;">
-            </div>
+			<div class="form-group left">
+				<label for="contentFile" class="fileTitle"></label>
+				<input type="file" id="choose-file" name="uploadImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;" />
+				<div id="select_img" style="width: 100%; text-align: center">
+					<img src="" />
+				</div>
+			</div>
         </div>
       
         <hr style="border: solid 1px #ffb6b6;">
@@ -116,7 +118,43 @@
         
 
         }
-
+		
+        
+        function checkImage(fileName, fileSize){
+        	var imageExtension = /([^\s]+(?=\.(jpg|jpeg|png|bmp|JPG|JPEG|PNG|BMP))\.\2)/
+        	if (!imageExtension.test(fileName)) {
+                alert("이미지만 등록 가능합니다");
+                document.getElementById("choose-file").value = "";
+                return false;
+            } 
+        	if (fileSize >= 3145728) {
+               	alert("이미지 크기가 너무 큽니다");
+               	document.getElementById("choose-file").value = "";
+               	return false;
+            }
+        	return true;
+        }
+        
+        $("#choose-file").change(function(){
+        	var file = document.getElementById("choose-file");
+        	var filePath = file.value;
+        	var filePathSplit = filePath.split('\\'); 
+        	var filePathLength = filePathSplit.length;
+        	var fileName = filePathSplit[filePathLength-1];
+        	var fileSize = file.files[0].size;
+        	
+        	if (checkImage(fileName, fileSize)) {
+    			if(this.files && this.files[0]) {
+    	 	    	var reader = new FileReader;
+    	 	    	reader.onload = function(data) {
+    	 	    		$("#select_img img").attr("src", data.target.result).width(300).height(300);        
+    	 	    	}
+    	 	   		reader.readAsDataURL(this.files[0]);
+    	 	    }
+    		}else {
+    			document.getElementById("choose-file").value = "";
+    		}
+        });
     </script>
 </body>
 

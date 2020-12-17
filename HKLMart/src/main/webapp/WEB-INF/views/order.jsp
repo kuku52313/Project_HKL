@@ -34,8 +34,8 @@
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-59629214-19"></script>
         <noscript><img height=1 width=1 style=display:none src="https://www.facebook.com/tr?id=1161187400597904&ev=Page_view&noscript=1"></noscript>
         <script type="text/javascript" charset="utf-8"></script>
-    
-    
+     </head>
+    <body>
         <div data-v-7b122ae2="" fragment="5c8f7b94a1" id="container">
             <!--fragment#9ce731cb19#head-->
             <div data-v-2c642cc6="" fragment="9ce731cb19" class="pagetitle">
@@ -138,6 +138,7 @@
                 </div>
                 <!---->
                 <!---->
+                <div data-v-2c642cc6="" fragment="9ce731cb19" class="frame">
                 <form class="last-check">
                 <h2 data-v-2c642cc6="">최종 결제 금액</h2>
                 <dl data-v-2c642cc6="" class="order_totalpay">
@@ -198,8 +199,10 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </div>
 
         </div>
-    </head>
+        </body>
+  
 <%@include file="includes/footer.jsp" %>

@@ -14,8 +14,8 @@
 	
 	<insert id="insertBoardReview">
 		<![CDATA[
-			insert INTO board_review(board_review_number, board_review_member_id, board_review_product_code, board_review_score,board_review_content) 
-							VALUES (seq_board_review.nextval, #{boardReviewMemberId},#{boardReviewProductCode}, #{boardReviewScore}, #{boardReviewContent} )
+			insert INTO board_review(board_review_number, board_review_member_id, board_review_product_code, board_review_score, board_review_content, board_review_img, board_review_imgpath, board_review_thumbnail) 
+							VALUES (SEQ_BOARD_REVIEW.nextval, #{boardReviewMemberId},#{boardReviewProductCode}, #{boardReviewScore}, #{boardReviewContent},#{boardReviewImg},#{boardReviewImgpath},#{boardReviewThumbnail} )
 		]]>
 	</insert>
 
