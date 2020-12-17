@@ -12,15 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hklmart.service.MemberService;
-
-import lombok.extern.log4j.Log4j;
+import com.hklmart.service.ProductServiceImpl;
 
 @Controller
 public class MainController {
 
 	@Autowired
 	private MemberService memberService;
-
+	@Autowired
+	private ProductServiceImpl productService;
+	
 	@RequestMapping("/")
 	public String showIndex() {
 		return "index";
@@ -31,6 +32,14 @@ public class MainController {
 	public Map<String, Object> idCheck(@RequestBody String userId) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("cnt", memberService.idCheckTest(userId));
+		return map;
+	}
+	
+	@PostMapping("/codeCheck")
+	@ResponseBody
+	public Map<String, Object> codeCheck(@RequestBody String insertCode) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("cnt", productService.codeCheckTest(insertCode));
 		return map;
 	}
 

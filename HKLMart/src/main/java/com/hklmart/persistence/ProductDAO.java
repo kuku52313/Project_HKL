@@ -10,4 +10,6 @@ public interface ProductDAO {
 	public void saveFile(ProductVO productVO);
 
 	public void saveStock(StockVO stockVO);
+	
+	public int codeCheck(String insertCode);
 }

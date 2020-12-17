@@ -153,6 +153,7 @@
 	</header>
 
 	<!-- form header -->
+	<input type="hidden" id="codeCheckHidden" value="0" />
 	<form class="insertform" name="productData" action="/product/product-regist-up?${_csrf.parameterName}=${_csrf.token}" method="POST"  enctype="multipart/form-data">
 		<div class="form-header">
 			<h1>제품 등록</h1>
@@ -171,7 +172,9 @@
 			<hr style="border: solid 1px #ffb6b6;">
 			<div class="record">
 				<label>제품 코드</label>&nbsp;&nbsp;
-				<input type="text" class="formText" id="codeProduct" name="productCode" minlength="6" maxlength="6" placeholder="예시 코드 ex) AA0010" />
+				<input type="text" class="formCode" id="codeProduct" name="productCode" minlength="6" maxlength="6" placeholder="예시 코드 ex) AA0010" onchange="codeCheck()" />
+				<input type="button" id="codeCheckBtn" class="codeCheckBtn" value="등록불가" />
+
 			</div>
 			<hr style="border: solid 1px #ffb6b6;">
 			<div class="record">
@@ -359,11 +362,15 @@
         var kindProduct = $("#kindProduct").val();
         var productContent = $("#content").val();
         var image = $("#choose-file").val();
+       
         
         var checkCode = /^[A-za-z0-9]{1,6}/;
         var checkprice = /^[0-9]+$/;
-
-		if(productName === '' || productName === null || productName === undefined || productName === 0 || productName === NaN){
+		
+        if(!$("#codeCheckHidden").val() == 1){
+        	alert("제품코드를 확인하여 주십시오");
+        }
+        else if(productName === '' || productName === null || productName === undefined || productName === 0 || productName === NaN){
 			alert("제품명을 입력하세요");
     	} 
 		else if (productBrand === '' || productBrand === null || productBrand === undefined || productBrand === 0 || productBrand === NaN) {
@@ -428,6 +435,44 @@
 			document.getElementById("choose-file").value = "";
 		}
     });
+    
+	function codeCheck() {
+		var insertCode = $("#codeProduct").val();
+		console.log(insertCode);
+		if (insertCode.length == 6) {
+			
+			$.ajax({			 
+		            type : 'post',
+		            data : insertCode, //서버로 보낼 data
+		            url : '/codeCheck',
+		            dataType : 'json', //서버에서 받을 데이터
+		            contentType: "application/json; charset=UTF-8", //보낼 data 타입을 json으로 설정
+		            beforeSend : function(xhr) { /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+						xhr.setRequestHeader("${_csrf.headerName}","${_csrf.token}");
+					},
+		            success : function(data)  {
+					if (data.cnt > 0) {
+						
+						document.getElementById('codeCheckBtn').value = "사용불가";
+						document.getElementById('codeCheckBtn').style.background = '#6c757d';
+						$("#codeCheckHidden").val("0");
+				}else {
+					
+					document.getElementById('codeCheckBtn').value = "사용가능";
+					document.getElementById('codeCheckBtn').style.background = '#a7e3ff';
+					$("#codeCheckHidden").val("1");
+				
+	
+				}
+				},
+				error : function() {
+					alert("Error. 관리자에게 문의하십시오.");
+				}
+			}); 
+			
+		}
+
+	}
     
 </script>
 

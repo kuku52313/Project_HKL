@@ -1,24 +1,31 @@
 package com.hklmart.service;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.hklmart.persistence.ProductDAO;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
+	@Autowired
+	private ProductDAO productDAO;
+	
 	@Override
 	public void registProduct() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void deleteProduct() {
-		// TODO Auto-generated method stub
 		
+		
+	}
+
+	public int codeCheckTest(String insertCode) {
+		
+		return productDAO.codeCheck(insertCode);
 	}
 
 }

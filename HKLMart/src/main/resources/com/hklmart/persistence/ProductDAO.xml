@@ -15,5 +15,10 @@
 			(#{stockProductCode}, #{stock240}, #{stock245}, #{stock250}, #{stock255}, #{stock260}, #{stock265}, #{stock270}, #{stock275}, #{stock280}, #{stock285}, #{stock290}, #{stock295})
 		]]>
 	</insert>
-
+	
+	<select id="codeCheck" parameterType="String" resultType="Integer">
+      SELECT COUNT(*) FROM product
+      WHERE product_code = #{insertCode}
+	</select>
+	
 </mapper>

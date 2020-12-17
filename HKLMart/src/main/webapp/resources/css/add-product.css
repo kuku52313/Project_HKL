@@ -46,7 +46,7 @@
 .formText {
     font-size: 17px;
     box-sizing: border-box;
-    width: 100%;
+    width: 70%;
     height: 34px;
     color: #333333;
     text-align: left;
@@ -54,9 +54,32 @@
     border-radius: 4px;
     background: white;
     outline: none;
-    width: 70%;
+
 }
 
+.formCode {
+    font-size: 17px;
+    box-sizing: border-box;
+    height: 34px;
+    color: #333333;
+    text-align: left;
+    border: 1px solid #ffb6b6;
+    border-radius: 4px;
+    background: white;
+    outline: none;
+    width: 60%;
+}
+ .codeCheckBtn {
+	width: 10%;
+	cursor: pointer;
+	height: 37.78px;
+	background-color: #6c757d;
+	border: 0;
+	outline: none;
+	border-radius: 30px;
+	text-align: center;
+	font-family: "godoM";
+}
 .insertBtn {
     display:inline-block;
     padding:7px 18px;

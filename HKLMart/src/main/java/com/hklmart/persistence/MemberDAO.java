@@ -17,5 +17,7 @@ public interface MemberDAO {
 	public void updatePassword(String memberId, String memberPw);
 	
 	public int idDuplicatiedInspection(String userId);
+
+	
 	
 }
