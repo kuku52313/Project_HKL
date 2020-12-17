@@ -35,4 +35,13 @@ public class TestKimController {
 		return "manager-member-list";
 	}
 	
+	@GetMapping("/product-modify")
+	public String goProductModify(Model model) {
+		
+
+		
+		return "product-modify";
+	}
+	
+	
 }
