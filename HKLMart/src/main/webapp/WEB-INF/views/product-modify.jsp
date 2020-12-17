@@ -161,17 +161,17 @@
 		<div>
 			<div class="record">
 				<label>제품명 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="text" class="formText" id="nameProduct" name="productName" value="1" readonly="readonly" />
+				<input type="text" class="formText" id="nameProduct" name="productName" value="1" readonly="readonly" style="background-color: #e1e4ee" />
 			</div>
 			<hr style="border: solid 1px #ffb6b6;">
 			<div class="record">
 				<label>브랜드 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="text" class="formText" id="brandProduct" name="productBrand" value="1" readonly="readonly" />
+				<input type="text" class="formText" id="brandProduct" name="productBrand" value="1" readonly="readonly" style="background-color: #e1e4ee" />
 			</div>
 			<hr style="border: solid 1px #ffb6b6;">
 			<div class="record">
 				<label>제품 코드</label>&nbsp;&nbsp;
-				<input type="text" class="formText" id="codeProduct" name="productCode" value="1" readonly="readonly" />
+				<input type="text" class="formText" id="codeProduct" name="productCode" value="1" readonly="readonly" style="background-color: #e1e4ee" />
 			</div>
 			<hr style="border: solid 1px #ffb6b6;">
 			<div class="record">
@@ -182,12 +182,11 @@
 		</div>
 		<div class="record">
 			<label>제품 종류</label>&nbsp;&nbsp;
-			<input type="text" class="formText" id="kindProduct" name="productType" value="1" readonly="readonly">
+			<input type="text" class="formText" id="kindProduct" name="productType" value="1" readonly="readonly" style="background-color: #e1e4ee" />
 		</div>
 		<hr style="border: solid 1px #ffb6b6;">
 		<div class="record">
 			<label>제품 설명</label>
-
 		</div>
 		<div>
 			<textarea id="content" name="productContent" cols="90" row="10" style="border-color: #ffb6b6;"></textarea>
