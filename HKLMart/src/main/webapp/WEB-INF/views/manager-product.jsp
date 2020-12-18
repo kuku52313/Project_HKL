@@ -98,7 +98,7 @@
 					<c:forEach items="${productList}" var="list" varStatus="status">
 						<tr>
 							<th><c:out value="${status.count}"/></th>
-							<th><a href="<c:out value="${list.productCode}" />" style="color: black">
+							<th><a href="/manager/product-modify?productCode=<c:out value="${list.productCode}" />" style="color: black">
 									<c:out value="${list.productCode}" /></a></th>
 							<th><c:out value="${list.productName}" /></th>
 							<th><c:out value="${list.productBrand}" /></th>

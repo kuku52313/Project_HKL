@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.hklmart.domain.ProductModifyDTO;
 import com.hklmart.domain.RegistProductVO;
 import com.hklmart.service.FileService;
 
@@ -30,4 +31,14 @@ public class ProductController {
 		fileService.saveFile(request, productDTO);
 		return "product-regist";
 	}
+	
+	@PostMapping("/product-modify-up")
+	public String modifyProduct(HttpServletRequest request, ProductModifyDTO productDTO) throws IllegalStateException, IOException {
+		
+		fileService.modifyProduct(request,productDTO);
+		
+		return "redirect:/manager/manager-product";
+		
+	}
+	
 }

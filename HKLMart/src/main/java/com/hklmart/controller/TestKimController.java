@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hklmart.service.ManagementService;
 
@@ -33,14 +34,6 @@ public class TestKimController {
 		model.addAttribute("MemberList", managementService.getMemberList());
 		
 		return "manager-member-list";
-	}
-	
-	@GetMapping("/product-modify")
-	public String goProductModify(Model model) {
-		
-
-		
-		return "product-modify";
 	}
 	
 	

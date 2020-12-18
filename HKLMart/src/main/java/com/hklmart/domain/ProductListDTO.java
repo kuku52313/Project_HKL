@@ -1,5 +1,7 @@
 package com.hklmart.domain;
 
+import java.util.Date;
+
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
@@ -11,7 +13,8 @@ public class ProductListDTO {
 	private String productCode;
 	private String productBrand;
 	private String productPrice;
-
+	private String productContent;
+	private String productRegdate;
 	@Setter(AccessLevel.PROTECTED)
 	private String productType;
 

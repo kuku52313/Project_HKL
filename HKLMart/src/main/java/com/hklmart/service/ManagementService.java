@@ -9,6 +9,7 @@ import com.hklmart.domain.BoardAskDTO;
 import com.hklmart.domain.BoardReviewListDTO;
 import com.hklmart.domain.MemberListDTO;
 import com.hklmart.domain.ProductListDTO;
+import com.hklmart.domain.ProductModifyDTO;
 import com.hklmart.persistence.ManagementDAO;
 
 import lombok.extern.log4j.Log4j;
@@ -38,6 +39,11 @@ public class ManagementService {
 	public List<MemberListDTO> getMemberList() {
 		// TODO Auto-generated method stub
 		return managmentDAO.getMemberList();
+	}
+
+	public ProductModifyDTO getModify(String productCode) {
+		
+		return managmentDAO.getModify(productCode);
 	}
 	
 	

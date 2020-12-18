@@ -4,11 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hklmart.service.ManagementService;
 
 import lombok.extern.log4j.Log4j;
+import oracle.jdbc.proxy.annotation.Post;
 
 @Log4j
 @Controller
@@ -49,6 +52,12 @@ public class ManagementController {
 		return "manager-review-list";
 	}
 	
-	
+	@GetMapping("/product-modify")
+	public String goProductModify(@RequestParam("productCode") String productCode, Model model) {
+		
+		model.addAttribute("product", managementService.getModify(productCode));
+		
+		return "product-modify";
+	}
 
 }

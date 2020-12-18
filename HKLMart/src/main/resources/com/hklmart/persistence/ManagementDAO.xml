@@ -31,5 +31,11 @@
 	WHERE M.MEMBER_ID = A.AUTHORITIES_MEMBER_ID
 	]]>
 	</select>
+	
+	<select id="getModify" resultType="com.hklmart.domain.ProductModifyDTO">
+	<![CDATA[
+	select * from product,stock where product.product_code = stock.stock_product_code and product.product_code = #{productCode}
+	]]>
+	</select>
 
 </mapper>
