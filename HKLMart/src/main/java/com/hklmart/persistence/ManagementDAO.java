@@ -20,5 +20,7 @@ public interface ManagementDAO {
 	public List<MemberListDTO> getMemberList();
 
 	public ProductModifyDTO getModify(String productCode);
+
+	public BoardAskDTO getAskAnswer(String boardAskNumber);
 	
 }

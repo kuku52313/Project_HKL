@@ -59,5 +59,12 @@ public class ManagementController {
 		
 		return "product-modify";
 	}
-
+	
+	@GetMapping("/manager-member-list")
+	public String goMemberList(Model model) {
+		
+		model.addAttribute("MemberList", managementService.getMemberList());
+		
+		return "manager-member-list";
+	}
 }

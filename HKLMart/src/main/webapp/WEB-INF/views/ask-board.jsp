@@ -74,10 +74,7 @@
         <div>
             <textarea id="content" name="boardAskContent" cols="90" rows="10" style="border-color:#ffb6b6 ;"></textarea>
 
-            <div class="form-group left">
-                <label for="contentFile" class="fileTitle"></label>
-                <input type="file" id="choose-file" size="80" style="margin-top: 10px; margin-bottom: 10px;">
-            </div>
+         
         </div>
       
         <hr style="border: solid 1px #ffb6b6;">

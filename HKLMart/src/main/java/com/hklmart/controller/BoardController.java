@@ -43,5 +43,9 @@ public class BoardController {
 		return "redirect:/member/my-page";
 	}
 	
-
+	@PostMapping("/ask-answer-up")
+	public String askAnswerUp(BoardAskVO boardAskVO) {
+		boardService.updateAskAnswer(boardAskVO);
+		return "redirect:/manager/manager-ask-board";
+	}
 }

@@ -14,7 +14,7 @@ public class BoardAskVO {
 	private String boardAskProductCode;
 	private String boardAskOrderNumber;
 	private String boardAskState;
-	
+	private String boardAskAnswer;
 	
 	
 }

@@ -37,5 +37,11 @@
 	select * from product,stock where product.product_code = stock.stock_product_code and product.product_code = #{productCode}
 	]]>
 	</select>
+	
+	<select id="getAskAnswer" resultType="com.hklmart.domain.BoardAskDTO">
+	<![CDATA[
+	select * from board_ask where board_ask_number = #{boardAskNumber}
+	]]>
+	</select>
 
 </mapper>

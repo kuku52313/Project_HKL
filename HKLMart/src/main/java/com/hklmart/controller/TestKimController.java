@@ -28,13 +28,15 @@ public class TestKimController {
 		return "manager-ask-board";
 	}
 
-	@GetMapping("/manager-member-list")
-	public String goMemberList(Model model) {
-		
-		model.addAttribute("MemberList", managementService.getMemberList());
-		
-		return "manager-member-list";
-	}
 	
+	
+	@GetMapping("/manager-ask-answer")
+	public String goManagerAskAnawer(@RequestParam("boardAskNumber") String boardAskNumber, Model model) {
+		
+		model.addAttribute("answer", managementService.getAskAnswer(boardAskNumber));
+		
+		return "manager-ask-answer";
+	}
+
 	
 }

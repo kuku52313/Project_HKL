@@ -19,7 +19,15 @@
 							VALUES (SEQ_BOARD_REVIEW.nextval, #{boardReviewMemberId},#{boardReviewProductCode}, #{boardReviewScore}, #{boardReviewContent},#{boardReviewImg},#{boardReviewImgpath},#{boardReviewThumbnail} )
 		]]>
 	</insert>
-
+	<update id="updateAskAnswer">
+	<![CDATA[ 
+	update board_ask
+	set 
+	board_ask_state = #{boardAskState},
+	board_ask_answer = #{boardAskAnswer}
+	where board_ask_number = #{boardAskNumber}
+	]]>
+	</update>
 
 	
 </mapper>

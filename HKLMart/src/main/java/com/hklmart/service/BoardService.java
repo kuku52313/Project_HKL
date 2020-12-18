@@ -14,9 +14,6 @@ import org.springframework.stereotype.Service;
 import com.hklmart.domain.BoardAskVO;
 import com.hklmart.domain.BoardReviewDTO;
 import com.hklmart.domain.BoardReviewVO;
-import com.hklmart.domain.ProductVO;
-import com.hklmart.domain.RegistProductVO;
-import com.hklmart.domain.StockVO;
 import com.hklmart.persistence.BoardDAO;
 
 import net.coobird.thumbnailator.Thumbnails;
@@ -68,6 +65,11 @@ public class BoardService {
 		String datePath = sdf.format(date).replace("-", File.separator);
 		String path = absolutePath + "\\" + datePath;
 		return path;
+	}
+
+	public void updateAskAnswer(BoardAskVO boardAskVO) {
+		
+		boardDAO.updateAskAnswer(boardAskVO);
 	}
 
 	

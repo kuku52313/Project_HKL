@@ -19,6 +19,8 @@ public class BoardAskDTO {
 	private String boardAskProductCode;
 	private String boardAskOrderNumber;
 	private String boardAskState;
+	private String boardAskAnswer;
+	
 	
 	protected void setboardAskType(String boardAskType) {
 		

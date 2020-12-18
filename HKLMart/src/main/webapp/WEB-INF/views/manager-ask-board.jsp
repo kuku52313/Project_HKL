@@ -75,7 +75,7 @@
 			<div class="col-8">
 				<br>
 				<div class="form-header">
-					<h1>제품 조회 리스트</h1>
+					<h1>1:1 문의 답변</h1>
 				</div>
 				<br>
 
@@ -98,7 +98,7 @@
 							</a></td> --%>
 					<c:forEach items="${AskBoardList}" var="list" varStatus="status">
 						<tr>
-							<th><a href="<c:out value="${list.boardAskNumber}" />" style="color: black">
+							<th><a href="/testKim//manager-ask-answer?boardAskNumber=<c:out value="${list.boardAskNumber}" />" style="color: black">
 									<c:out value="${list.boardAskNumber}" /></a></th>
 							<th><c:out value="${list.boardAskType}" /></th>
 							<th><c:out value="${list.boardAskTitle}" /></th>

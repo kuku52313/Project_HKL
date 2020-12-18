@@ -45,6 +45,11 @@ public class ManagementService {
 		
 		return managmentDAO.getModify(productCode);
 	}
+
+	public BoardAskDTO getAskAnswer(String boardAskNumber) {
+	
+		return managmentDAO.getAskAnswer(boardAskNumber);
+	}
 	
 	
 }
