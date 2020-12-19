@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 
@@ -11,7 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HKL Mart :: 관리자 1:1 문의 처리</title>
+<title>HKL Mart :: 관리자 리뷰 전체 조회</title>
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
 	integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
@@ -21,7 +22,9 @@
 <link rel="stylesheet" href="/resources/css/index.css">
 <script src="/resources//jquery/3.5.1/jquery.min.js"></script>
 <script src="/resources//bootstrap/4.5.3/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/resources/css/ask-review.css">
 <link rel="stylesheet" href="/resources/css/add-product.css">
+
 
 <style>
 .table-bordered {
@@ -75,42 +78,43 @@
 			<div class="col-8">
 				<br>
 				<div class="form-header">
-					<h1>제품 조회 리스트</h1>
+					<h1>리뷰 리스트</h1>
 				</div>
 				<br>
 
-				<table class="table table-bordered table-striped"
-					style="background-color: #ffffff;">
+			<c:forEach items="${BoardReviewList}" var="list" varStatus="status">
+				 <table class="ask_table">
+            <tr>
+                <th class="product_info" >상품 정보</th>
+                <th class="product"></th> <!-- 여긴 빈칸-->
+            </tr>
 
-					<thead>
-						<tr>
-							<th>리뷰 번호</th>
-							<th>제품명</th>
-							<th>리뷰 별점</th>
-							<th>작성 날짜</th>
-							<th>작성 ID</th>
-						</tr>
-					</thead>
+            <tr>
+                <td><a href="/" id="product" style="color: black"><img src="${list.boardReviewImgpath}${list.boardReviewThumbnail}"></a> <!--각 product로 갈 수 있게 해야함--></td>
+                <td class="">
+               		<dt>리뷰번호 <span> : ${list.boardReviewNumber}</span></dt>
+                    <dt><span class="st_on" style="width:85.4%">리뷰 별점 : ${list.boardReviewScore} </span></dt>
+                    <dt>작성자 <span> : ${list.boardReviewMemberId}</span></dt>
+                    <dt>상품이름 <span> : ${list.productName}</span></dt>
+                    <dt>리뷰 코멘트 <span> : ${list.boardReviewContent}</span></dt>
+                </td>
+            </tr>
 
-<%-- <td><a href='/board/get?bno=<c:out value="${board.bno}" />'>
-									<c:out value="${board.title}" />
-							</a></td> --%>
-					<c:forEach items="${BoardReviewList}" var="list" varStatus="status">
-						<tr>
-							<th><a href="<c:out value="${list.boardReviewNumber}" />" style="color: black">
-									<c:out value="${list.boardReviewNumber}" /></a></th>
-							<th><c:out value="${list.productName}" /></th>
-							<th><c:out value="${list.boardReviewScore}" /></th>
-							<th><c:out value="${list.boardReviewDate}" /></th>
-							<th><c:out value="${list.boardReviewMemberId}"/></th>
-						</tr>
+            <tr>
+                <td></td> <!-- 빈칸 맞음.-->
+                <td><span>${review_content}</span></td>
+
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><span>${review_comment}</span></td>
+            </tr>
+
+        </table>
+        <br>
 					</c:forEach>
-
-
-
-
-				</table>
-				<hr style="border: solid 1px #ffb6b6;">
+			<hr style="border: solid 1px #ffb6b6;">		
 			</div>
 		</div>
 		<!-- 오른쪽 공백 -->

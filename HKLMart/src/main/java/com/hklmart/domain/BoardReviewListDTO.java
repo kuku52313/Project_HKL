@@ -16,6 +16,9 @@ public class BoardReviewListDTO {
 	private String boardReviewScore;
 	private String boardReviewContent;	
 	private String boardReviewDate;
+	private String boardReviewImg;
+	private String boardReviewImgpath;
+	private String boardReviewThumbnail;
 	
 	protected void setboardReviewScore(String boardReviewScore) {
 		

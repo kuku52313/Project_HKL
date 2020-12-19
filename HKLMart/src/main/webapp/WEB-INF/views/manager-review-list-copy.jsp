@@ -11,8 +11,8 @@
 
 <head>
 <meta charset="UTF-8">
-<title>HKL Mart :: 관리자 제품관리</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HKL Mart :: 관리자 1:1 문의 처리</title>
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
 	integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
@@ -85,27 +85,25 @@
 
 					<thead>
 						<tr>
-							<th>번호</th>
-							<th>회원 아이디</th>
-							<th>회원 이름</th>
-							<th>전화번호</th>
-							<th>가입일자</th>
-							<th>회원권한</th>
+							<th>리뷰 번호</th>
+							<th>제품명</th>
+							<th>리뷰 별점</th>
+							<th>작성 날짜</th>
+							<th>작성 ID</th>
 						</tr>
 					</thead>
 
 <%-- <td><a href='/board/get?bno=<c:out value="${board.bno}" />'>
 									<c:out value="${board.title}" />
 							</a></td> --%>
-					<c:forEach items="${MemberList}" var="list" varStatus="status">
+					<c:forEach items="${BoardReviewList}" var="list" varStatus="status">
 						<tr>
-							<th><c:out value="${status.count}"/></th>
-							<th><a href="<c:out value="${list.memberId}" />" style="color: black">
-									<c:out value="${list.memberId}" /></a></th>
-							<th><c:out value="${list.memberName}" /></th>
-							<th><c:out value="${list.memberTel}" /></th>
-							<th><c:out value="${list.memberRegdate}" /></th>
-							<th><c:out value="${list.memberAuthority}" /></th>
+							<th><a href="<c:out value="${list.boardReviewNumber}" />" style="color: black">
+									<c:out value="${list.boardReviewNumber}" /></a></th>
+							<th><c:out value="${list.productName}" /></th>
+							<th><c:out value="${list.boardReviewScore}" /></th>
+							<th><c:out value="${list.boardReviewDate}" /></th>
+							<th><c:out value="${list.boardReviewMemberId}"/></th>
 						</tr>
 					</c:forEach>
 
