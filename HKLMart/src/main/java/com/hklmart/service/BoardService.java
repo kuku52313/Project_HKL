@@ -34,7 +34,7 @@ public class BoardService {
 		
 		String fileName = UUID.randomUUID().toString() + "_" + boardReviewDTO.getUploadImg().getOriginalFilename();
 		File path = new File(getFolderPath(request.getSession().getServletContext().getRealPath("/resources/reviewImg")));
-		File contextpath = new File(getFolderPath(request.getSession().getServletContext().getContextPath()+"/resources/reviewImg"));
+		File contextPath = new File(getFolderPath(request.getSession().getServletContext().getContextPath()+"/resources/reviewImg"));
 		File image = new File(path + "\\" + fileName);
 		File thumbnail = new File(path + "\\S_" + fileName);
 
@@ -53,7 +53,7 @@ public class BoardService {
 		boardReviewVO.setBoardReviewContent(boardReviewDTO.getBoardReviewContent());
 		boardReviewVO.setBoardReviewDate(boardReviewDTO.getBoardReviewDate());
 		boardReviewVO.setBoardReviewImg(image.toString().replace(path.toString(), ""));
-		boardReviewVO.setBoardReviewImgpath(contextpath.toString());
+		boardReviewVO.setBoardReviewImgpath(contextPath.toString());
 		boardReviewVO.setBoardReviewThumbnail(thumbnail.toString().replace(path.toString(), ""));
 	
 		boardDAO.insertBoardReview(boardReviewVO);

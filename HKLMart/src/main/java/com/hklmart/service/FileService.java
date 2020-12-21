@@ -39,6 +39,7 @@ public class FileService {
 
         String fileName = UUID.randomUUID().toString() + "_" + productDTO.getUploadImg().getOriginalFilename();
         File path = new File(getFolderPath(request.getSession().getServletContext().getRealPath("/resources/product")));
+        File contextPath = new File(getFolderPath(request.getSession().getServletContext().getContextPath()+"/resources/product"));
         File image = new File(path + "\\" + fileName);
         File thumbnail = new File(path + "\\S_" + fileName);
 
@@ -49,7 +50,8 @@ public class FileService {
         }
         
         String contentImgName = UUID.randomUUID().toString() + "_" + productDTO.getContentImg().getOriginalFilename();
-        File contentImgpath = new File(getFolderPath(request.getSession().getServletContext().getRealPath("/resources/product")));
+        File contentImgpath = new File(getFolderPath(request.getSession().getServletContext().getRealPath("/resources/product/content")));
+        File contentImgContextPath = new File(getFolderPath(request.getSession().getServletContext().getContextPath()+"/resources/product/content"));
         File contentImgimage = new File(contentImgpath + "\\" + contentImgName);
   
 
@@ -66,10 +68,10 @@ public class FileService {
         productVO.setProductPrice(productDTO.getProductPrice());
         productVO.setProductType(productDTO.getProductType());
         productVO.setProductContent(productDTO.getProductContent());
-        productVO.setProductImgPath(path.toString());
+        productVO.setProductImgPath(contextPath.toString());
         productVO.setProductImg(image.toString().replace(path.toString(), ""));
         productVO.setProductThumbnail(thumbnail.toString().replace(path.toString(), ""));
-        productVO.setProductContentImgpath(contentImgpath.toString());
+        productVO.setProductContentImgpath(contentImgContextPath.toString());
         productVO.setProductContentImg(contentImgimage.toString().replace(contentImgpath.toString(), ""));
         product.saveFile(productVO);
 
@@ -106,6 +108,7 @@ public class FileService {
 			log.info("업로드 dto 실행 ---------------------------------------");
 		String fileName = UUID.randomUUID().toString() + "_" + productDTO.getUploadImg().getOriginalFilename();
         File path = new File(getFolderPath(request.getSession().getServletContext().getRealPath("/resources/product")));
+        File contextPath = new File(getFolderPath(request.getSession().getServletContext().getContextPath()+"/resources/product"));
         File image = new File(path + "\\" + fileName);
         File thumbnail = new File(path + "\\S_" + fileName);
 
@@ -115,7 +118,7 @@ public class FileService {
             Thumbnails.of(image).size(300, 300).outputFormat("png").toFile(thumbnail);
         }
         
-        productVO.setProductImgPath(path.toString());
+        productVO.setProductImgPath(contextPath.toString());
         productVO.setProductImg(image.toString().replace(path.toString(), ""));
         productVO.setProductThumbnail(thumbnail.toString().replace(path.toString(), ""));
         
@@ -131,7 +134,8 @@ public class FileService {
         	log.info("컨텐츠파일메소드 실행 ---------------------------------------");
         //컨텐츠파일 업로드
         String contentImgName = UUID.randomUUID().toString() + "_" + productDTO.getContentImg().getOriginalFilename();
-        File contentImgpath = new File(getFolderPath(request.getSession().getServletContext().getRealPath("/resources/product")));
+        File contentImgpath = new File(getFolderPath(request.getSession().getServletContext().getRealPath("/resources/product/content")));
+        File contentImgContextPath = new File(getFolderPath(request.getSession().getServletContext().getContextPath()+"/resources/product/content"));
         File contentImgimage = new File(contentImgpath + "\\" + contentImgName);
   
 
@@ -140,7 +144,7 @@ public class FileService {
             productDTO.getContentImg().transferTo(contentImgimage);
         }
         
-        productVO.setProductContentImgpath(contentImgpath.toString());
+        productVO.setProductContentImgpath(contentImgContextPath.toString());
         productVO.setProductContentImg(contentImgimage.toString().replace(contentImgpath.toString(), ""));
         
         }else {
