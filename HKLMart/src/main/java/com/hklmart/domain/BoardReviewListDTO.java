@@ -3,9 +3,24 @@ package com.hklmart.domain;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.ContextLoader;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.context.support.ServletContextResourceLoader;
 
+import javax.servlet.ServletContext;
+import java.time.Clock;
+
+@Log4j
 @Data
 public class BoardReviewListDTO {
+
+/*	@Autowired
+	private WebApplicationContext ctx;*/
+
 	//board_review 테이블과 product테이블 조인용 vo
 	private String boardReviewNumber;
 	private String productName;	
@@ -53,8 +68,10 @@ public class BoardReviewListDTO {
 
 	protected void setBoardReviewImgpath(String boardReviewImgpath) {
 
-		String pathReplace1 = boardReviewImgpath.replace("D:\\HKLMart\\HKLMart\\src\\main\\webapp","");
-		String pathReplace = pathReplace1.replace('\\', '/');
+		/*log.info("was 로그 ========"+context);
+		log.info("서블렛 컨텍스트 패스 ======"+context.getServletContext().getContextPath());*/
+	/*	String pathReplace1 = boardReviewImgpath.replace(ctx.getServletContext().getRealPath("/"),"");*/
+		String pathReplace = boardReviewImgpath.replace('\\', '/');
 		this.boardReviewImgpath = pathReplace;
 
 	}

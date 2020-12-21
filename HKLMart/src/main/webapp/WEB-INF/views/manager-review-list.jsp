@@ -90,7 +90,8 @@
             </tr>
 
             <tr>
-                <td><a href="/" id="product" style="color: black"><img src="${list.boardReviewImgpath}${list.boardReviewThumbnail}.png"></a> <!--각 product로 갈 수 있게 해야함--></td>
+             <!--  <td><a href="/" id="product" style="color: black"><img src="${list.boardReviewImgpath}${list.boardReviewThumbnail}.png"></a></td> -->
+                   <td><a href="/" id="product" style="color: black"><img src="<%=request.getContextPath() %>${list.boardReviewImgpath}${list.boardReviewThumbnail}.png"></a> <!--각 product로 갈 수 있게 해야함--></td>
                 <td class="">
                		<dt>리뷰번호 <span> : ${list.boardReviewNumber}</span></dt>
                     <dt><span class="st_on" style="width:85.4%">리뷰 별점 : ${list.boardReviewScore} </span></dt>
