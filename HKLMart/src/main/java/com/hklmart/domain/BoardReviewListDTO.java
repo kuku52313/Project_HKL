@@ -16,8 +16,12 @@ public class BoardReviewListDTO {
 	private String boardReviewScore;
 	private String boardReviewContent;	
 	private String boardReviewDate;
+
+	@Setter(AccessLevel.PROTECTED)
 	private String boardReviewImg;
+	@Setter(AccessLevel.PROTECTED)
 	private String boardReviewImgpath;
+	@Setter(AccessLevel.PROTECTED)
 	private String boardReviewThumbnail;
 	
 	protected void setboardReviewScore(String boardReviewScore) {
@@ -37,7 +41,31 @@ public class BoardReviewListDTO {
 		
 		this.boardReviewScore = boardReviewScore;
 	}
-	
-	
+
+		protected void setBoardReviewImg(String boardReviewImg) {
+
+
+		String pathReplace = boardReviewImg.replace('\\', '/');
+
+		this.boardReviewImg = pathReplace;
+
+	}
+
+	protected void setBoardReviewImgpath(String boardReviewImgpath) {
+
+		String pathReplace1 = boardReviewImgpath.replace("D:\\HKLMart\\HKLMart\\src\\main\\webapp","");
+		String pathReplace = pathReplace1.replace('\\', '/');
+		this.boardReviewImgpath = pathReplace;
+
+	}
+
+	protected void setBoardReviewThumbnail(String boardReviewThumbnail) {
+
+//	String pathReplace = boardReviewThumbnail.replace("D:", "");
+	String pathReplace = boardReviewThumbnail.replace('\\', '/');
+
+	this.boardReviewThumbnail = pathReplace;
+
+}
 	
 }
