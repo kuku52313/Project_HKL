@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hklmart.persistence.BasketDAO">
+
+    <insert id="putProductBasket">
+        <![CDATA[
+			INSERT INTO BASKET
+			(BASKET_MEMBER_ID, BASKET_PRODUCT_CODE)
+			VALUES
+			(#{memberId}, #{productCode})
+		]]>
+    </insert>
+
+    <select id="takeProductBasket">
+        SELECT BASKET_PRODUCT_CODE FROM BASKET WHERE BASKET_MEMBER_ID = #{memberId}
+    </select>
+
+</mapper>

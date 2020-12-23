@@ -1,24 +1,21 @@
 package com.hklmart.service;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.UUID;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.hklmart.domain.ProductModifyDTO;
 import com.hklmart.domain.ProductVO;
 import com.hklmart.domain.RegistProductVO;
 import com.hklmart.domain.StockVO;
 import com.hklmart.persistence.ProductDAO;
-
 import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnails;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
 
 @Log4j
 @Service
@@ -38,7 +35,8 @@ public class FileService {
     public void saveFile(HttpServletRequest request, RegistProductVO productDTO) throws IllegalStateException, IOException {
 
         String fileName = UUID.randomUUID().toString() + "_" + productDTO.getUploadImg().getOriginalFilename();
-        File path = new File(getFolderPath(request.getSession().getServletContext().getRealPath("/resources/product")));
+        File path = new File(getFolderPath(request.getSession().getServletContext().getContextPath()));
+        log.info("path =" + path);
         File contextPath = new File(getFolderPath(request.getSession().getServletContext().getContextPath()+"/resources/product"));
         File image = new File(path + "\\" + fileName);
         File thumbnail = new File(path + "\\S_" + fileName);
