@@ -9,14 +9,14 @@
 <html lang="ko">
 	<head>
 		<title>HKL Mart :: My Page</title>
-	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <link rel="stylesheet" href="/resources/bootstrap/4.5.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/resources/css/index.css">
-    <link rel="stylesheet" href="/resources/css/login.css">
-    <script src="/resources//jquery/3.5.1/jquery.min.js"></script>
-    <script src="/resources//bootstrap/4.5.3/js/bootstrap.min.js"></script>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous" />
+		<link rel="stylesheet" href="/resources/bootstrap/4.5.3/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/resources/css/index.css" />
+		<link rel="stylesheet" href="/resources/css/login.css" />
+		<script src="/resources//jquery/3.5.1/jquery.min.js"></script>
+		<script src="/resources//bootstrap/4.5.3/js/bootstrap.min.js"></script>
 	</head>
 
 	<body>
@@ -60,7 +60,9 @@
 					<br />
 					<ul class="navbar_menu font-set">
 						<li>
-							<a href="/member/my-page"><i><u class="font-set">${user.memberName}님</u></i></a>
+							<a href="/member/my-page"
+								><i><u class="font-set">${user.memberName}님</u></i></a
+							>
 						</li>
 						<li><a href="/member/my-page">마이페이지</a></li>
 						<li>
@@ -163,9 +165,9 @@
 						<li><a href="#privacy">개인정보확인/수정</a></li>
 						<hr />
 						<sec:authorize access="hasRole('ROLE_ADMIN')">
-						<li><a class="sidebarMain" href="#header">관리자</a></li>
-						<li><a href="/manager/manager-page">관리자 페이지</a></li>
-						<hr />
+							<li><a class="sidebarMain" href="#header">관리자</a></li>
+							<li><a href="/manager/manager-page">관리자 페이지</a></li>
+							<hr />
 						</sec:authorize>
 					</ul>
 				</div>
@@ -184,6 +186,71 @@
 						<span class="font-set" style="font-size: 25px">장바구니</span>
 						<a href="#" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
 						<hr />
+						<div class="row basket-card">
+							<div class="card col-1">
+								<img class="card-img-top" src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile7.uf.tistory.com%2Fimage%2F24283C3858F778CA2EFABE" alt="Card image" style="width: 100%" />
+								<div class="card-body">
+									<h6 class="card-title">상품명</h6>
+								</div>
+							</div>
+							<div class="card col-1">
+								<img class="card-img-top" src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile7.uf.tistory.com%2Fimage%2F24283C3858F778CA2EFABE" alt="Card image" style="width: 100%" />
+								<div class="card-body">
+									<h6 class="card-title">상품명</h6>
+								</div>
+							</div>
+							<div class="card col-1">
+								<img class="card-img-top" src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile7.uf.tistory.com%2Fimage%2F24283C3858F778CA2EFABE" alt="Card image" style="width: 100%" />
+								<div class="card-body">
+									<h6 class="card-title">상품명</h6>
+								</div>
+                            </div>
+                            <div class="card col-1">
+								<img class="card-img-top" src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile7.uf.tistory.com%2Fimage%2F24283C3858F778CA2EFABE" alt="Card image" style="width: 100%" />
+								<div class="card-body">
+									<h6 class="card-title">상품명</h6>
+								</div>
+                            </div>
+                            <div class="card col-1">
+								<img class="card-img-top" src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile7.uf.tistory.com%2Fimage%2F24283C3858F778CA2EFABE" alt="Card image" style="width: 100%" />
+								<div class="card-body">
+									<h6 class="card-title">상품명</h6>
+								</div>
+                            </div>
+                            <div class="card col-1">
+								<img class="card-img-top" src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile7.uf.tistory.com%2Fimage%2F24283C3858F778CA2EFABE" alt="Card image" style="width: 100%" />
+								<div class="card-body">
+									<h6 class="card-title">상품명</h6>
+								</div>
+                            </div>
+                            <div class="card col-1">
+								<img class="card-img-top" src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile7.uf.tistory.com%2Fimage%2F24283C3858F778CA2EFABE" alt="Card image" style="width: 100%" />
+								<div class="card-body">
+									<h6 class="card-title">상품명</h6>
+								</div>
+                            </div>
+                            <div class="card col-1">
+								<img class="card-img-top" src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile7.uf.tistory.com%2Fimage%2F24283C3858F778CA2EFABE" alt="Card image" style="width: 100%" />
+								<div class="card-body">
+									<h6 class="card-title">상품명</h6>
+								</div>
+                            </div>
+                            <div class="card col-1">
+								<img class="card-img-top" src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile7.uf.tistory.com%2Fimage%2F24283C3858F778CA2EFABE" alt="Card image" style="width: 100%" />
+								<div class="card-body">
+									<h6 class="card-title">상품명</h6>
+								</div>
+							</div>
+							<div class="card col-1">
+								<img class="card-img-top" src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile7.uf.tistory.com%2Fimage%2F24283C3858F778CA2EFABE" alt="Card image" style="width: 100%" />
+								<div class="card-body">
+									<h6 class="card-title">상품명</h6>
+								</div>
+							</div>
+							<div class="col-1" style="margin:auto">
+								<i class="fas fa-ellipsis-h fa-2x" style="color:grey"></i>
+							</div>
+						</div>
 					</div>
 
 					<br /><br />
@@ -241,7 +308,6 @@
 									<td class="font-set">비밀번호</td>
 									<td class="font-set"><input type="password" class="input-field" onkeyup="checkPwfn()" id="userPw" name="memberPw" placeholder="알파벳 대,소문자,특수문자,숫자 포함" required /></td>
 									<td><input type="button" id="pwCheckBtn" class="pwCheckBtn" /></td>
-									
 								</tr>
 								<tr>
 									<td class="font-set">비밀번호확인</td>
@@ -411,3 +477,7 @@
 		});
 	</script>
 </html>
+
+
+
+
