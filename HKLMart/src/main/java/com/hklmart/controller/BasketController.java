@@ -1,7 +1,6 @@
 package com.hklmart.controller;
 
 import com.hklmart.service.BasketService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +15,11 @@ import java.util.List;
 @RequestMapping("/basket")
 public class BasketController {
 
-    @Autowired
-    private BasketService basket;
+    private final BasketService basket;
+
+    public BasketController(BasketService basket) {
+        this.basket = basket;
+    }
 
     @PostMapping("/put")
     public void putProductBasket(Principal principal, @RequestParam("productCode") String productCode) {

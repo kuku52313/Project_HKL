@@ -2,7 +2,6 @@ package com.hklmart.controller;
 
 import com.hklmart.domain.MemberVO;
 import com.hklmart.service.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +17,11 @@ import java.util.Map;
 @RequestMapping("/member")
 public class MemberController {
 
-    @Autowired
-    private MemberService memberService;
+    private final MemberService memberService;
+
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService;
+    }
 
     @RequestMapping("/login-page")
     public String tryLogin(Authentication authentication) {

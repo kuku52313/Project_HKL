@@ -3,7 +3,6 @@ package com.hklmart.controller;
 import com.hklmart.domain.ProductModifyDTO;
 import com.hklmart.domain.RegistProductVO;
 import com.hklmart.service.FileService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,8 +15,11 @@ import java.io.IOException;
 @RequestMapping("/product")
 public class ProductController {
 
-    @Autowired
-    private FileService fileService;
+    private final FileService fileService;
+
+    public ProductController(FileService fileService) {
+        this.fileService = fileService;
+    }
 
     @GetMapping("/product-regist")
     public String goProductRegist() {
