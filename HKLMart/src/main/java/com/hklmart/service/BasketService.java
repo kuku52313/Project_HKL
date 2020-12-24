@@ -10,8 +10,8 @@ public class BasketService {
     @Autowired
     private BasketDAO basket;
 
-    public void putProductBasket(String memberId, String productCode) {
-        basket.putProductBasket(memberId, productCode);
+    public void putProductBasket(String basketMemberId, String basketProductCode) {
+        basket.putProductBasket(basketMemberId, basketProductCode);
     }
 
     public void takeProductBasket(String memberId){

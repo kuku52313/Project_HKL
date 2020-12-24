@@ -3,17 +3,17 @@
 
 <mapper namespace="com.hklmart.persistence.BasketDAO">
 
-    <insert id="putProductBasket">
+    <insert id="putProductBasket" parameterType="String">
         <![CDATA[
 			INSERT INTO BASKET
 			(BASKET_MEMBER_ID, BASKET_PRODUCT_CODE)
 			VALUES
-			(#{memberId}, #{productCode})
+			(#{basketMemberId}, #{basketProductCode})
 		]]>
     </insert>
 
-    <select id="takeProductBasket">
-        SELECT BASKET_PRODUCT_CODE FROM BASKET WHERE BASKET_MEMBER_ID = #{memberId}
+    <select id="takeProductBasket" parameterType="String">
+        SELECT BASKET_PRODUCT_CODE FROM BASKET WHERE BASKET_MEMBER_ID = #{basketMemberId}
     </select>
 
 </mapper>

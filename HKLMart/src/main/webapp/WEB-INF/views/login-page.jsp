@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<title>HKLMart :: Login</title>
-		<meta charset="UTF-8" />
+		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="_csrf" content="${_csrf.token}" />
 		<script src="/resources/jquery/3.5.1/jquery.min.js"></script>

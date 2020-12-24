@@ -1,19 +1,16 @@
 package com.hklmart.persistence;
 
-import org.springframework.stereotype.Repository;
-
 import com.hklmart.domain.ProductVO;
 import com.hklmart.domain.StockVO;
 
-@Repository
 public interface ProductDAO {
-	public void saveFile(ProductVO productVO);
+	void saveFile(ProductVO productVO);
 
-	public void saveStock(StockVO stockVO);
+	void saveStock(StockVO stockVO);
 	
-	public int codeCheck(String insertCode);
+	int codeCheck(String insertCode);
 
-	public void modifyFile(ProductVO productVO);
+	void modifyFile(ProductVO productVO);
 
-	public void modifyStock(StockVO stockVO);
+	void modifyStock(StockVO stockVO);
 }

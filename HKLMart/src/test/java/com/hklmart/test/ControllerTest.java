@@ -12,7 +12,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Log4j
@@ -27,14 +27,14 @@ public class ControllerTest {
     private MockMvc mockMvc;
 
     @Before
-    public void init() throws Exception {
+    public void init() {
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
         log.info("Controller Test init.......");
     }
 
     @Test
     public void test() throws Exception {
-        mockMvc.perform(post("/basket/put")
+        mockMvc.perform(get("/basket/put")
                 .param("memberId", "hch4102")
                 .param("productCode", "A00001"))
                 .andExpect(status().isOk());

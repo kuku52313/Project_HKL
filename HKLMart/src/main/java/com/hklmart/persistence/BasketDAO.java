@@ -1,10 +1,9 @@
 package com.hklmart.persistence;
 
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Param;
 
-@Repository
 public interface BasketDAO {
-    public void putProductBasket(String memberId, String productCode);
+    void putProductBasket(@Param("basketMemberId") String basketMemberId, @Param("basketProductCode") String basketProductCode);
 
-    public void takeProductBasket(String memberId);
+    void takeProductBasket(String basketMemberId);
 }
