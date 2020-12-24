@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hklmart.persistence.ManagementDAO">
+
+	<!-- getProductList -->
+	<select id="getProductList" resultType="com.hklmart.domain.ProductListDTO">
+	<![CDATA[
+	SELECT * FROM PRODUCT
+	]]>
+	</select>
+
+	<select id="getAskBoardList" resultType="com.hklmart.domain.BoardAskDTO">
+	<![CDATA[
+	SELECT * FROM BOARD_ASK
+	]]>
+	</select>
+	<select id="getBoardReviewList" resultType="com.hklmart.domain.BoardReviewListDTO">
+	<![CDATA[
+	SELECT R.BOARD_REVIEW_NUMBER,R.BOARD_REVIEW_MEMBER_ID, P.PRODUCT_NAME,R.BOARD_REVIEW_SCORE,R.BOARD_REVIEW_DATE, R.BOARD_REVIEW_CONTENT, R.BOARD_REVIEW_Img, R.BOARD_REVIEW_Imgpath, R.BOARD_REVIEW_Thumbnail
+	FROM PRODUCT P, BOARD_REVIEW R
+	WHERE R.BOARD_REVIEW_PRODUCT_CODE = P.PRODUCT_CODE
+	]]>
+	</select>
+
+	<select id="getMemberList" resultType="com.hklmart.domain.MemberListDTO">
+	<![CDATA[
+	SELECT M.MEMBER_ID, M.MEMBER_NAME, M.MEMBER_TEL,  M.MEMBER_REGDATE, A.AUTHORITIES_MEMBER, A.AUTHORITIES_MANAGER, A.AUTHORITIES_ADMIN
+	FROM MEMBER M,AUTHORITIES A
+	WHERE M.MEMBER_ID = A.AUTHORITIES_MEMBER_ID
+	]]>
+	</select>
+	
+	<select id="getModify" resultType="com.hklmart.domain.ProductModifyDTO">
+	<![CDATA[
+	select * from product,stock where product.product_code = stock.stock_product_code and product.product_code = #{productCode}
+	]]>
+	</select>
+	
+	<select id="getAskAnswer" resultType="com.hklmart.domain.BoardAskDTO">
+	<![CDATA[
+	select * from board_ask where board_ask_number = #{boardAskNumber}
+	]]>
+	</select>
+
+</mapper>

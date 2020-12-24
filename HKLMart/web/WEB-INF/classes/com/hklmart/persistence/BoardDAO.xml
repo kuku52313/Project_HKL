@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hklmart.persistence.BoardDAO">
+
+<insert id="insertAskBoard">
+		<![CDATA[
+			INSERT INTO BOARD_ASK
+			(board_ask_number, board_ask_member_id, board_ask_date, board_ask_type, board_ask_title, board_ask_content, board_ask_product_code, board_ask_order_number)
+			VALUES
+			(SEQ_BOARD_ASK.NEXTVAL,#{boardAskMemberId}, sysdate, #{boardAskType} ,#{boardAskTitle}, #{boardAskContent}, #{boardAskProductCode}, #{boardAskOrderNumber} )
+		]]>
+	</insert>
+	
+	<insert id="insertBoardReview">
+		<![CDATA[
+
+			insert INTO board_review(board_review_number, board_review_member_id, board_review_product_code, board_review_score, board_review_content, board_review_img, board_review_imgpath, board_review_thumbnail) 
+							VALUES (SEQ_BOARD_REVIEW.nextval, #{boardReviewMemberId},#{boardReviewProductCode}, #{boardReviewScore}, #{boardReviewContent},#{boardReviewImg},#{boardReviewImgpath},#{boardReviewThumbnail} )
+		]]>
+	</insert>
+	<update id="updateAskAnswer">
+	<![CDATA[ 
+	update board_ask
+	set 
+	board_ask_state = #{boardAskState},
+	board_ask_answer = #{boardAskAnswer}
+	where board_ask_number = #{boardAskNumber}
+	]]>
+	</update>
+
+	
+</mapper>
