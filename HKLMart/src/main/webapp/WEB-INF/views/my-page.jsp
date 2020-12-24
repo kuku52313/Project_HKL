@@ -13,12 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
           crossorigin="anonymous"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/4.5.3/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/index.css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css"/>
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/img/back_exception.jpg">
-    <script src="${pageContext.request.contextPath}/resources/jquery/3.5.1/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/bootstrap/4.5.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/resources/bootstrap/4.5.3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/resources/css/index.css"/>
+    <link rel="stylesheet" href="/resources/css/login.css"/>
+    <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
+    <script src="/resources/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/resources/bootstrap/4.5.3/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -32,7 +32,7 @@
         <div class="col-1"></div>
         <div class="navbar_logo col-1">
             <a class="logo" style="height: 100px" href="/">
-                <img class="logo" src="${pageContext.request.contextPath}/resources/img/top_logo.png"/>
+                <img class="logo" src="/resources/img/top_logo.png"/>
             </a>
         </div>
 
@@ -62,16 +62,16 @@
             <br/>
             <ul class="navbar_menu font-set">
                 <li>
-                    <a href="${pageContext.request.contextPath}/member/my-page"
+                    <a href="/member/my-page"
                     ><i><u class="font-set">${user.memberName}님</u></i></a
                     >
                 </li>
-                <li><a href="${pageContext.request.contextPath}/member/my-page">마이페이지</a></li>
+                <li><a href="/member/my-page">마이페이지</a></li>
                 <li>
                     <a href="#" onclick="$('#logout-form').submit()">로그아웃</a>
 
                     <!-- Logout Form -->
-                    <form id="logout-form" action="${pageContext.request.contextPath}/logout" method="POST">
+                    <form id="logout-form" action="/logout" method="POST">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     </form>
                 </li>
@@ -158,7 +158,7 @@
                 <li><a href="#shopping-basket">장바구니</a></li>
                 <hr/>
                 <li><a class="sidebarMain" href="#header">MY 활동</a></li>
-                <li><a href="${pageContext.request.contextPath}/member/my-page-ask-board">문의하기</a></li>
+                <li><a href="/member/my-page-ask-board">문의하기</a></li>
                 <li><a href="#inquire_history">문의내역</a></li>
                 <li><a href="#reviews">구매후기</a></li>
                 <li><a href="#wishlist">찜한상품</a></li>
@@ -168,7 +168,7 @@
                 <hr/>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
                     <li><a class="sidebarMain" href="#header">관리자</a></li>
-                    <li><a href="${pageContext.request.contextPath}/manager/manager-page">관리자 페이지</a></li>
+                    <li><a href="/manager/manager-page">관리자 페이지</a></li>
                     <hr/>
                 </sec:authorize>
             </ul>
@@ -276,7 +276,7 @@
                 <hr/>
 
                 <!-- 비밀번호 변경 -->
-                <form name="passwordForm" action="${pageContext.request.contextPath}/member/update" method="POST">
+                <form name="passwordForm" action="/member/update" method="POST">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <table class="table-hover info-table">
                         <tr>
@@ -287,7 +287,7 @@
                         </tr>
                         <tr>
                             <td class="font-set">비밀번호확인</td>
-                            <td class="font-set"><input type="password" class="input-field" onkeyup="checkPwfn(),enterKeyUp()" id="userPwCk" placeholder="비밀번호 재입력" required/></td>
+                            <td class="font-set"><input type="password" class="input-field" onkeyup="checkPwfn(), enterKeyUp()" id="userPwCk" placeholder="비밀번호 재입력" required/></td>
                             <td><input type="button" id="pwckCheckBtn" class="pwckCheckBtn"/></td>
                         </tr>
                     </table>
@@ -365,7 +365,7 @@
     <div class="row footer-bottom">
         <p class="col-12 text-center">
             <a href="#header">
-                <img src="${pageContext.request.contextPath}/resources/img/bottom_logo.png"/>
+                <img src="/resources/img/bottom_logo.png"/>
             </a>
             <br/><br/>
             본 상품의 상품 이미지 저작권은 ㈜에이치케이엘에 있으며 내용의 무단복제를 금합니다.
@@ -378,8 +378,8 @@
 
 <script>
     const toggleBtn = document.querySelector(".navbar_toggleBtn");
-    const search = document.querySelector(".navbar_search");
-    const menu = document.querySelector(".navbar_menu");
+    let search = document.querySelector(".navbar_search");
+    let menu = document.querySelector(".navbar_menu");
 
     toggleBtn.addEventListener("click", () => {
         search.classList.toggle("active");
@@ -388,8 +388,8 @@
 
     function checkPwfn() {
         const checkPwSik = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$/;
-        const userPw = $("#userPw").val();
-        const checkpw = $("#userPw").val() === $("#userPwCk").val();
+        let userPw = $("#userPw").val();
+        let checkpw = $("#userPw").val() === $("#userPwCk").val();
 
         if (checkPwSik.test(userPw)) {
             $("#pwCheckBtn").css("border", "");
@@ -421,7 +421,7 @@
     }
 
     function updatePassword() {
-        const submitPasswordForm = document.passwordForm;
+        let submitPasswordForm = document.passwordForm;
         if ($("#pwCheckHidden").val() === 1 && $("#pwckCheckHidden").val() === 1) {
             alert("비밀번호가 변경되었습니다");
             submitPasswordForm.submit();
@@ -434,8 +434,8 @@
         $('a[href^="#"]').on("click", function (e) {
             e.preventDefault();
 
-            const target = this.hash;
-            const $target = $(target);
+            let target = this.hash;
+            let $target = $(target);
 
             $("html, body")
                 .stop()
