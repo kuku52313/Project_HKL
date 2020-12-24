@@ -8,12 +8,13 @@
 			INSERT INTO BASKET
 			(BASKET_MEMBER_ID, BASKET_PRODUCT_CODE)
 			VALUES
-			(#{basketMemberId}, #{basketProductCode})
+			(#{param1}, #{param2})
 		]]>
     </insert>
 
-    <select id="takeProductBasket" parameterType="String">
-        SELECT BASKET_PRODUCT_CODE FROM BASKET WHERE BASKET_MEMBER_ID = #{basketMemberId}
+    <select id="takeProductBasket" parameterType="String" resultType="java.lang.String">
+        <![CDATA[
+            SELECT BASKET_PRODUCT_CODE FROM BASKET WHERE BASKET_MEMBER_ID = #{param}
+        ]]>
     </select>
-
 </mapper>

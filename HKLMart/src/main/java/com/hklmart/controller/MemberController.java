@@ -54,7 +54,7 @@ public class MemberController {
 
     @GetMapping("/my-page")
     public String goMyPage() {
-        return "my-page";
+        return "forward:/basket/take";
     }
 
     @PostMapping("/update")

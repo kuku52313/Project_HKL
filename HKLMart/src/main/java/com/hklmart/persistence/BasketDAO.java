@@ -1,9 +1,9 @@
 package com.hklmart.persistence;
 
-import org.apache.ibatis.annotations.Param;
+import java.util.List;
 
 public interface BasketDAO {
-    void putProductBasket(@Param("basketMemberId") String basketMemberId, @Param("basketProductCode") String basketProductCode);
+    void putProductBasket(String memberId, String productCode);
 
-    void takeProductBasket(String basketMemberId);
+    List<String> takeProductBasket(String basketMemberId);
 }
