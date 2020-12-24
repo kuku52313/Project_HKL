@@ -14,6 +14,7 @@
 <head>
   <meta charset="utf-8">
   <title>HKLMart :: 1:1문의</title>
+  <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
   <link rel="stylesheet" href="/resources/css/add-product.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>

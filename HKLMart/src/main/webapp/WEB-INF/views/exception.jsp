@@ -9,11 +9,12 @@
 <html lang="ko">
 
 <head>
+    <title>HKLMart :: ERROR</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
         integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <title>HKLMart :: ERROR</title>
+    <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
     <style>
         html,
         body {

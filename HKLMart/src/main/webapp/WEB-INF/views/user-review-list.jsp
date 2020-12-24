@@ -13,6 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/css/ask-review.css">
+    <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
     <title>1:1문의, 나의 리뷰내역 조회 페이지</title>
 </head>
 <body>

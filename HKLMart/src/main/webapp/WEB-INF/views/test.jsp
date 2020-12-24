@@ -11,6 +11,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<link rel="shortcut icon" href="/resources/img/back_exception.jpg">
 	</head>
 	<body>
 		<form action="/fuck2?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data">

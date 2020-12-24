@@ -11,6 +11,7 @@
 <head>
   <title>HKLMart :: Review 작성</title>
   <link rel="stylesheet" href="/resources/css/add-product.css">
+  <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 

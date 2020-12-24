@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="/resources/css/product-detail-2.css">
     <link rel="stylesheet" href="/resources/css/product-detail-3.css">
     <link rel="stylesheet" href="/resources/css/product-detail-all.css">
+    <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
     <div data-v-7b122ae2="" fragment="546c7337ea" id="container">

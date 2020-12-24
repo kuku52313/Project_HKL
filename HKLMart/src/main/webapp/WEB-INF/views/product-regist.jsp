@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="/resources/bootstrap/4.5.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/index.css">
 <link rel="stylesheet" href="/resources/css/add-product.css">
+<link rel="shortcut icon" href="/resources/img/back_exception.jpg">
 </head>
 
 <body>

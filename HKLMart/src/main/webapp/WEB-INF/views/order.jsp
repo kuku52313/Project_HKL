@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/resources/css/checkout-order-product.css">
     <link rel="stylesheet" href="/resources/css/checkout-order-adress.css">
     <link rel="stylesheet" href="/resources/css/checkout-order-payment.css">
+    <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
 
     <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
     <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>

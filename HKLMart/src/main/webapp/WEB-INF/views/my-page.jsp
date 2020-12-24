@@ -15,8 +15,9 @@
 		<link rel="stylesheet" href="/resources/bootstrap/4.5.3/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="/resources/css/index.css" />
 		<link rel="stylesheet" href="/resources/css/login.css" />
-		<script src="/resources//jquery/3.5.1/jquery.min.js"></script>
-		<script src="/resources//bootstrap/4.5.3/js/bootstrap.min.js"></script>
+		<link rel="shortcut icon" href="/resources/img/back_exception.jpg">
+		<script src="/resources/jquery/3.5.1/jquery.min.js"></script>
+		<script src="/resources/bootstrap/4.5.3/js/bootstrap.min.js"></script>
 	</head>
 
 	<body>
