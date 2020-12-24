@@ -1,13 +1,12 @@
 package com.hklmart.service;
 
+import com.hklmart.domain.MemberVO;
+import com.hklmart.domain.UserDetailsVO;
+import com.hklmart.persistence.MemberDAO;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import com.hklmart.domain.MemberVO;
-import com.hklmart.persistence.MemberDAO;
-
-import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Service
@@ -28,9 +27,8 @@ public class MemberService {
         memberDAO.registAuthorities(memberVO);
     }
 
-    public MemberVO getMemberInfo(String memberId) {
-        MemberVO memberVO = memberDAO.getMemberInfo(memberId);
-        return memberVO;
+    public UserDetailsVO getMemberInfo(String memberId) {
+        return memberDAO.getMemberInfo(memberId);
     }
 
     public void updatePassword(String memberId, String memberPw) {

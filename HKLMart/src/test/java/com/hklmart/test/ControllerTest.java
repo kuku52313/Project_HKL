@@ -24,7 +24,7 @@ public class ControllerTest {
     @Autowired
     private BasketController controller;
 
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
 
     @Before
     public void init() {

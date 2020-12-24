@@ -1,14 +1,13 @@
 package com.hklmart.domain;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import lombok.Data;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Data
 public class UserDetailsVO implements UserDetails {
@@ -17,9 +16,14 @@ public class UserDetailsVO implements UserDetails {
 
 	private String username;
 	private String password;
+	private String memberId;
+	private String memberPw;
 	private String memberName;
 	private String memberEmail;
 	private String memberTel;
+	private String authoritiesMember;
+	private String authoritiesManager;
+	private String authoritiesAdmin;
 	private List<GrantedAuthority> authorities;
 
 	public void setUsername(String username) {
@@ -31,7 +35,7 @@ public class UserDetailsVO implements UserDetails {
 	}
 
 	public void setAuthorities(String member, String manager, String admin) {
-		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		List<GrantedAuthority> authorities = new ArrayList<>();
 		if (member != null)
 			authorities.add(new SimpleGrantedAuthority(member));
 		if (manager != null)
