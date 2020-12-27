@@ -2,14 +2,10 @@ package com.hklmart.service;
 
 import java.util.List;
 
+import com.hklmart.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hklmart.domain.BoardAskDTO;
-import com.hklmart.domain.BoardReviewListDTO;
-import com.hklmart.domain.MemberListDTO;
-import com.hklmart.domain.ProductListDTO;
-import com.hklmart.domain.ProductModifyDTO;
 import com.hklmart.persistence.ManagementDAO;
 
 import lombok.extern.log4j.Log4j;
@@ -26,9 +22,9 @@ public class ManagementService {
 		return managmentDAO.getProductList();
 	}
 
-	public List<BoardAskDTO> getAskBoardList() {
+	public List<BoardAskDTO> getAskBoardList(PageCriteriaVO cri) {
 		
-		return managmentDAO.getAskBoardList();
+		return managmentDAO.getAskBoardList(cri);
 	}
 
 	public List<BoardReviewListDTO> getBoardReviewList() {

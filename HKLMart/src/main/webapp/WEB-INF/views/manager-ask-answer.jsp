@@ -27,6 +27,8 @@
 
 	
     <form class="insertform" name="insertForm" action="/board/ask-answer-up" method="post">
+        <input type="hidden" name="pageNum" value = "${pageMaker.cri.pageNum}" />
+        <input type="hidden" name="amount" value = "${pageMaker.cri.amount}" />
     	<input type="hidden" name="boardAskNumber" value="${answer.boardAskNumber}" />
    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <!-- form header -->
@@ -91,7 +93,11 @@
         <hr style="border: solid 1px #ffb6b6;">
         <button type="button" class="insertBtn"  onclick="insertCheckfn()">등록</button>
     </form>    
-        
+
+       <form id="pageForm" action="manager/manager-ask-board" method="get">
+       <input type="hidden" name="pageNum" value = "${pageMaker.cri.pageNum}" />
+       <input type="hidden" name="amount" value = "${pageMaker.cri.amount}" />
+       </form>
     <br>
     <br>
 	<hr style="border: solid 1px #ffb6b6;">
