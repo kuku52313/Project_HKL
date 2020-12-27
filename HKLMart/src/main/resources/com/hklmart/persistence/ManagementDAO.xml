@@ -12,9 +12,16 @@
 
 	<select id="getAskBoardList" resultType="com.hklmart.domain.BoardAskDTO">
 	<![CDATA[
-	SELECT * FROM BOARD_ASK
+	select * from (
+    select/*INDEX_DESC(board_ask BOARD_ASK_PK) */
+    rownum rn,board_ask_number, board_ask_member_id, board_ask_date, board_ask_title, board_ask_content, board_ask_state, board_ask_type
+    from board_ask
+  	where rownum <= #{pageNum} * #{amount}
+	)
+	where rn > (#{pageNum} -1)* #{amount}
 	]]>
 	</select>
+
 	<select id="getBoardReviewList" resultType="com.hklmart.domain.BoardReviewListDTO">
 	<![CDATA[
 	SELECT R.BOARD_REVIEW_NUMBER,R.BOARD_REVIEW_MEMBER_ID, P.PRODUCT_NAME,R.BOARD_REVIEW_SCORE,R.BOARD_REVIEW_DATE, R.BOARD_REVIEW_CONTENT, R.BOARD_REVIEW_Img, R.BOARD_REVIEW_Imgpath, R.BOARD_REVIEW_Thumbnail

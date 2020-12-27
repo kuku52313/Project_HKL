@@ -1,6 +1,9 @@
 package com.hklmart.controller;
 
+import com.hklmart.domain.PageCriteriaVO;
+import com.hklmart.domain.PageDTO;
 import com.hklmart.service.ManagementService;
+import com.hklmart.service.PageService;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/manager")
 public class ManagementController {
+
+
+    @Autowired
+    PageService pageService;
 
     @Autowired
     ManagementService managementService;
@@ -29,8 +36,13 @@ public class ManagementController {
     }
 
     @GetMapping("/manager-ask-board")
-    public String goManagerAskBoard(Model model) {
-        model.addAttribute("AskBoardList", managementService.getAskBoardList());
+    public String goManagerAskBoard(Model model, PageCriteriaVO cri) {
+
+        model.addAttribute("AskBoardList", managementService.getAskBoardList(cri));
+
+        int total = pageService.getAskBoardListTotal(cri);;
+
+        model.addAttribute("pageMaker", new PageDTO(cri,total));
         return "manager-ask-board";
     }
 
