@@ -382,11 +382,11 @@
         let checkCode = /^[A-za-z0-9]{1,6}/;
         let checkprice = /^[0-9]+$/;
 
-        if (!($("#codeCheckHidden").val() === 1)) {
+        if ($("#codeCheckHidden").val() === 0) {
             alert("제품코드를 확인하여 주십시오");
-        } else if (productName === '' || productName === null || productName === undefined || productName === 0 || isNaN(productName)) {
+        } else if (productName === '' || productName === null || productName === undefined || productName === 0) {
             alert("제품명을 입력하세요");
-        } else if (productBrand === '' || productBrand === null || productBrand === undefined || productBrand === 0 || isNaN(productBrand)) {
+        } else if (productBrand === '' || productBrand === null || productBrand === undefined || productBrand === 0) {
             alert("브랜드명을 입력하세요");
         } else if (!checkCode.test(codeProduct)) {
             alert("제품코드를 잘못입력하였습니다");
@@ -396,9 +396,9 @@
             alert("가격 형식에 문제가 있습니다. 숫자만 입력하여 주십시오");
         } else if (kindProduct === 1) {
             alert("제품종류를 잘못선택하였습니다");
-        } else if (productContent === '' || productContent === null || productContent === undefined || productContent === 0 || isNaN(productContent)) {
+        } else if (productContent === '' || productContent === null || productContent === undefined || productContent === 0) {
             alert("제품 설명을 입력하세요");
-        } else if (image === '' || image === null || image === undefined || image === 0 || isNaN(image)) {
+        } else if (image === '' || image === null || image === undefined || image === 0) {
             alert("제품 이미지를 등록하세요");
         } else {
             alert("등록하였습니다");
@@ -480,7 +480,6 @@
 
     function codeCheck() {
         let insertCode = $("#codeProduct").val();
-        console.log(insertCode);
         if (insertCode.length === 6) {
 
             $.ajax({

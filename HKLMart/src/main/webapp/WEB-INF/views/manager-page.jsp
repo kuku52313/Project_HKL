@@ -36,6 +36,7 @@
 						<li><a href="#askBoardPage">회원 문의 내역</a></li>
 						<li><a href="#boardReviews">리뷰 관리 페이지</a></li>
 						<li><a href="#memberList">회원 조회 페이지</a></li>
+						<li><a href="/product/product-regist">제품 등록 페이지</a></li>
 						<hr />
 					</ul>
 				</div>
