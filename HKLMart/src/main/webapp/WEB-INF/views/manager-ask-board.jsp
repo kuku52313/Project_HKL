@@ -60,6 +60,8 @@
 	border-bottom: 2px solid #ffb6b6;
 }
 
+
+
 </style>
 </head>
 
@@ -101,7 +103,7 @@
 							</a></td> --%>
 					<c:forEach items="${AskBoardList}" var="list" varStatus="status">
 						<tr>
-							<th><a href="/testKim/manager-ask-answer?boardAskNumber=<c:out value="${list.boardAskNumber}"/>&pageNum=<c:out value="${pageMaker.cri.pageNum}"/>&amount=<c:out value="${pageMaker.cri.amount}"/>" style="color: black">
+							<th><a href="/manager/manager-ask-answer?boardAskNumber=<c:out value="${list.boardAskNumber}"/>&pageNum=<c:out value="${pageMaker.cri.pageNum}"/>&amount=<c:out value="${pageMaker.cri.amount}"/>" style="color: black">
 									<c:out value="${list.boardAskNumber}" /></a></th>
 							<th><c:out value="${list.boardAskType}" /></th>
 							<th><c:out value="${list.boardAskTitle}" /></th>
@@ -111,32 +113,29 @@
 						</tr>
 					</c:forEach>
 
-
-
-
 				</table>
-
-                 <div class="pull-right">
-                                    	<ul class="pagination">
+                                    	<ul class="pagination justify-content-center" style="margin:20px 0">
 
                                     		<c:if test="${pageMaker.prev}">
-                                    			<li class="paginate_button previous"><a href="${pageMaker.startPage - 1}">Previous</a>
+                                    			<li class="page-item" ><a class="page-link" href="/manager/manager-ask-board?pageNum=${pageMaker.startPage - 1}&amount=10">Previous</a>
                                     			</li>
                                     			</c:if>
 
+
+
                                     			<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-                                    				<li class="paginate_button ${pageMaker.cri.pageNum == num ? "active":""} ">
-                                    				<a href="${num}">${num}</a>
+                                    				<li class="page-item">
+                                    				<a class="page-link" style="color: black;" href="/manager/manager-ask-board?pageNum=${num}&amount=10">${num}</a>
                                     				</li>
                                     			</c:forEach>
 
                                     			<c:if test="${pageMaker.next}">
-                                    				<li class="paginate_button next">
-                                    				<a href="${pageMaker.endPage + 1}">Next</a>
+                                    				<li class="page-item">
+                                    				<a class="page-link" style="color: black;" href="/manager/manager-ask-board?pageNum=${pageMaker.endPage + 1}&amount=10">Next</a>
                                     				</li>
                                     			</c:if>
                                     	</ul>
-                                    </div>
+
 
                                     <form id="pageForm" action="manager/manager-ask-board" method="get">
                                     	<input type="hidden" name="pageNum" value = "${pageMaker.cri.pageNum}" />
@@ -158,22 +157,6 @@
 
 </body>
 
-<script>
-var pageForm = $("#pageForm");
-
-                    $(".paginate_button a").on("click", function(e){
-					e.preventDefault();
-
-					console.log("click");
-
-					pageForm.find("input[name='pageNum']").val($(this).attr("href"));
-					pageForm.submit();
-
-				})
-
-
-
-</script>
 
 
 <%@include file="includes/footer.jsp"%>

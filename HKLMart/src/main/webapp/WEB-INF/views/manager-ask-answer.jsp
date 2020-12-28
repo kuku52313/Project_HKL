@@ -27,8 +27,8 @@
 
 	
     <form class="insertform" name="insertForm" action="/board/ask-answer-up" method="post">
-        <input type="hidden" name="pageNum" value = "${pageMaker.cri.pageNum}" />
-        <input type="hidden" name="amount" value = "${pageMaker.cri.amount}" />
+        <input type="hidden" name="pageNum" value = "${param.pageNum}" />
+        <input type="hidden" name="amount" value = "${param.amount}" />
     	<input type="hidden" name="boardAskNumber" value="${answer.boardAskNumber}" />
    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <!-- form header -->

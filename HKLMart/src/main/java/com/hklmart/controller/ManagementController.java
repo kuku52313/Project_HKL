@@ -46,6 +46,15 @@ public class ManagementController {
         return "manager-ask-board";
     }
 
+    @GetMapping("/manager-ask-answer")
+    public String goManagerAskAnawer(@RequestParam("boardAskNumber") String boardAskNumber, Model model) {
+        model.addAttribute("answer", managementService.getAskAnswer(boardAskNumber));
+
+
+        return "manager-ask-answer";
+    }
+
+
     @GetMapping("/manager-review-list")
     public String goManagerReviewList(Model model) {
         model.addAttribute("BoardReviewList", managementService.getBoardReviewList());
