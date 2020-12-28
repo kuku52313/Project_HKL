@@ -32,9 +32,13 @@
 
 	<select id="getMemberList" resultType="com.hklmart.domain.MemberListDTO">
 	<![CDATA[
-	SELECT M.MEMBER_ID, M.MEMBER_NAME, M.MEMBER_TEL,  M.MEMBER_REGDATE, A.AUTHORITIES_MEMBER, A.AUTHORITIES_MANAGER, A.AUTHORITIES_ADMIN
-	FROM MEMBER M,AUTHORITIES A
-	WHERE M.MEMBER_ID = A.AUTHORITIES_MEMBER_ID
+	  select * from (
+    select/*index_asc(member MEMBER_PK)*/
+    rownum rn,M.MEMBER_ID, M.MEMBER_NAME, M.MEMBER_TEL, M.MEMBER_REGDATE, A.AUTHORITIES_MEMBER, A.AUTHORITIES_MANAGER, A.AUTHORITIES_ADMIN
+    from member m, authorities a
+    WHERE M.MEMBER_ID = A.AUTHORITIES_MEMBER_ID and rownum <= #{pageNum} * #{amount}
+	)
+	where rn > (#{pageNum} -1)* #{amount}
 	]]>
 	</select>
 	

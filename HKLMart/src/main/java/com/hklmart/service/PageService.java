@@ -14,4 +14,8 @@ public class PageService {
     public int getAskBoardListTotal(PageCriteriaVO cri) {
         return pageingDAO.getAskBoardListTotalCount(cri);
     }
+
+    public int getMemberListTotal(PageCriteriaVO cri) {
+        return pageingDAO.getMemberListTotalCount(cri);
+    }
 }

@@ -13,7 +13,7 @@ public interface ManagementDAO {
 
 	public List<BoardReviewListDTO> getBoardReviewList();
 
-	public List<MemberListDTO> getMemberList();
+	public List<MemberListDTO> getMemberList(PageCriteriaVO cri);
 
 	public ProductModifyDTO getModify(String productCode);
 

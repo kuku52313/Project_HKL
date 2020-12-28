@@ -40,7 +40,7 @@ public class ManagementController {
 
         model.addAttribute("AskBoardList", managementService.getAskBoardList(cri));
 
-        int total = pageService.getAskBoardListTotal(cri);;
+        int total = pageService.getAskBoardListTotal(cri);
 
         model.addAttribute("pageMaker", new PageDTO(cri,total));
         return "manager-ask-board";
@@ -68,8 +68,13 @@ public class ManagementController {
     }
 
     @GetMapping("/manager-member-list")
-    public String goMemberList(Model model) {
-        model.addAttribute("MemberList", managementService.getMemberList());
+    public String goMemberList(Model model, PageCriteriaVO cri) {
+
+        model.addAttribute("MemberList", managementService.getMemberList(cri));
+
+        int total = pageService.getMemberListTotal(cri);
+
+        model.addAttribute("pageMaker", new PageDTO(cri,total));
         return "manager-member-list";
     }
 }

@@ -9,5 +9,11 @@
 	]]>
     </select>
 
+    <select id="getMemberListTotalCount" resultType="int">
+        <![CDATA[
+	select count(*) from member
+	]]>
+    </select>
+
 
 </mapper>

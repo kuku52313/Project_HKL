@@ -32,9 +32,9 @@ public class ManagementService {
 		return managmentDAO.getBoardReviewList();
 	}
 
-	public List<MemberListDTO> getMemberList() {
+	public List<MemberListDTO> getMemberList(PageCriteriaVO cri) {
 		// TODO Auto-generated method stub
-		return managmentDAO.getMemberList();
+		return managmentDAO.getMemberList(cri);
 	}
 
 	public ProductModifyDTO getModify(String productCode) {
