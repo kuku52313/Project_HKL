@@ -183,15 +183,7 @@
 
         </div>
         <hr style="border: solid 1px #ffb6b6;">
-        <label>제품 이미지</label>&nbsp;&nbsp;
-        <div class="form-group left">
-            <label for="contentFile" class="fileTitle"></label>
-            <input type="file" id="choose-file" name="uploadImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;"/>
-            <div id="select_img" style="width: 100%; text-align: center">
-                <img src=""/>
-            </div>
-        </div>
-        <hr style="border: solid 1px #ffb6b6;">
+
         <div class="record">
             <label>제품 가격</label>&nbsp;&nbsp;
             <input type="text" class="formText" id="priceProduct" name="productPrice" placeholder="주의사항) ,와 원 미입력 ex) 30000"/>
@@ -225,20 +217,24 @@
         </select>
     </div>
     <hr style="border: solid 1px #ffb6b6;">
-    <div class="record">
-        <label>제품 설명</label>
 
-    </div>
-    <div>
-        <textarea id="content" name="productContent" cols="90" row="10" style="border-color: #ffb6b6;"></textarea>
-        <div class="form-group left">
-            <label for="contentFile" class="fileTitle"></label>
-            <input type="file" id="content-file" name="contentImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;"/>
-            <div id="select_content_img" style="width: 100%; text-align: center">
-                <img src=""/>
-            </div>
+    <div class="form-group left">
+        <label>제품 이미지</label><br/>
+        <input type="file" id="choose-file" name="uploadImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;"/>
+        <div id="select_img" style="width: 100%; text-align: center">
+            <img src=""/>
         </div>
     </div>
+    <hr style="border: solid 1px #ffb6b6;">
+
+    <div class="form-group left">
+        <label>제품 상세 이미지</label><br/>
+        <input type="file" id="content-file" name="contentImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;"/>
+        <div id="select_content_img" style="width: 100%; text-align: center">
+            <img src=""/>
+        </div>
+    </div>
+
     <hr style="border: solid 1px #ffb6b6;">
     <!-- 재고 등록 -->
     <label>사이즈별 재고 수량</label>
@@ -375,9 +371,8 @@
         let codeProduct = $("#codeProduct").val();
         let priceProduct = $("#priceProduct").val();
         let kindProduct = $("#kindProduct").val();
-        let productContent = $("#content").val();
         let image = $("#choose-file").val();
-
+        let productContent = $("#content-file").val();
 
         let checkCode = /^[A-za-z0-9]{1,6}/;
         let checkprice = /^[0-9]+$/;
@@ -396,10 +391,10 @@
             alert("가격 형식에 문제가 있습니다. 숫자만 입력하여 주십시오");
         } else if (kindProduct === 1) {
             alert("제품종류를 잘못선택하였습니다");
-        } else if (productContent === '' || productContent === null || productContent === undefined || productContent === 0) {
-            alert("제품 설명을 입력하세요");
         } else if (image === '' || image === null || image === undefined || image === 0) {
             alert("제품 이미지를 등록하세요");
+        } else if (productContent === '' || productContent === null || productContent === undefined || productContent === 0) {
+            alert("제품 상세 이미지를 등록하세요");
         } else {
             alert("등록하였습니다");
             productDataForm.submit();
@@ -425,12 +420,12 @@
         let imageExtension = /([^\s]+(?=\.(jpg|jpeg|png|bmp|JPG|JPEG|PNG|BMP))\.\2)/
         if (!imageExtension.test(fileName)) {
             alert("이미지만 등록 가능합니다");
-            document.getElementById("choose-file").value = "";
+            document.getElementById("content-file").value = "";
             return false;
         }
         if (fileSize >= 10485760) {
             alert("이미지 크기가 너무 큽니다");
-            document.getElementById("choose-file").value = "";
+            document.getElementById("content-file").value = "";
             return false;
         }
         return true;

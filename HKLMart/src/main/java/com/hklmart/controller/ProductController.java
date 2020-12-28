@@ -1,7 +1,9 @@
 package com.hklmart.controller;
 
 import com.hklmart.domain.ProductModifyDTO;
-import com.hklmart.domain.RegistProductVO;
+import com.hklmart.domain.ProductVO;
+import com.hklmart.domain.RegistImageVO;
+import com.hklmart.domain.StockVO;
 import com.hklmart.service.FileService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,8 +29,8 @@ public class ProductController {
     }
 
     @PostMapping("/product-regist-up")
-    public String registProduct(HttpServletRequest request, RegistProductVO productDTO) throws IllegalStateException, IOException {
-        fileService.saveFile(request, productDTO);
+    public String registProduct(HttpServletRequest request, ProductVO productVO, RegistImageVO imageVO, StockVO stockVO) throws IllegalStateException, IOException {
+        fileService.saveFile(request, productVO, imageVO, stockVO);
         return "product-regist";
     }
 
