@@ -14,15 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/testKim")
 public class TestKimController {
 
-    @Autowired
-    ManagementService managementService;
-
-
-    @GetMapping("/manager-ask-answer")
-    public String goManagerAskAnawer(@RequestParam("boardAskNumber") String boardAskNumber, Model model) {
-        model.addAttribute("answer", managementService.getAskAnswer(boardAskNumber));
-        return "manager-ask-answer";
-    }
 
 
 }
