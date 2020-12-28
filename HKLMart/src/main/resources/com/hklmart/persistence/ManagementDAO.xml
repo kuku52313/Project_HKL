@@ -6,7 +6,14 @@
 	<!-- getProductList -->
 	<select id="getProductList" resultType="com.hklmart.domain.ProductListDTO">
 	<![CDATA[
-	SELECT * FROM PRODUCT
+	SELECT * FROM(
+    select/*INDEX_DESC(PRODUCT PRODUCT_PK) */
+    rownum rn, p.product_code, p.product_name,p.product_brand,p.product_price,p.product_type
+    ,p.product_imgpath,p.product_img,p.product_thumbnail,p.product_content,p.product_regdate,p.product_content_img,p.product_content_imgpath
+    from product p
+    where rownum <= #{pageNum} * #{amount}
+	)
+	where rn > (#{pageNum} -1)* #{amount}
 	]]>
 	</select>
 
@@ -24,9 +31,13 @@
 
 	<select id="getBoardReviewList" resultType="com.hklmart.domain.BoardReviewListDTO">
 	<![CDATA[
-	SELECT R.BOARD_REVIEW_NUMBER,R.BOARD_REVIEW_MEMBER_ID, P.PRODUCT_NAME,R.BOARD_REVIEW_SCORE,R.BOARD_REVIEW_DATE, R.BOARD_REVIEW_CONTENT, R.BOARD_REVIEW_Img, R.BOARD_REVIEW_Imgpath, R.BOARD_REVIEW_Thumbnail
+	select * from (
+	select/*INDEX_DESC(board_review BOARD_REVIEW_PK)*/
+    rownum rn,R.BOARD_REVIEW_NUMBER,R.BOARD_REVIEW_MEMBER_ID, P.PRODUCT_NAME,R.BOARD_REVIEW_SCORE,R.BOARD_REVIEW_DATE, R.BOARD_REVIEW_CONTENT, R.BOARD_REVIEW_Img, R.BOARD_REVIEW_Imgpath, R.BOARD_REVIEW_Thumbnail
 	FROM PRODUCT P, BOARD_REVIEW R
-	WHERE R.BOARD_REVIEW_PRODUCT_CODE = P.PRODUCT_CODE
+	WHERE R.BOARD_REVIEW_PRODUCT_CODE = P.PRODUCT_CODE and rownum <= #{pageNum} * #{amount}
+    )
+    where rn > (#{pageNum} -1)* #{amount}
 	]]>
 	</select>
 

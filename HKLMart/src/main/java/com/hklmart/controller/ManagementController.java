@@ -30,8 +30,13 @@ public class ManagementController {
     }
 
     @GetMapping("/manager-product")
-    public String goManagerProduct(Model model) {
-        model.addAttribute("productList", managementService.getProductList());
+    public String goManagerProduct(Model model, PageCriteriaVO cri) {
+        model.addAttribute("productList", managementService.getProductList(cri));
+
+        int total = pageService.getProductListTotal(cri);
+
+        model.addAttribute("pageMaker", new PageDTO(cri, total));
+
         return "manager-product";
     }
 
@@ -42,7 +47,7 @@ public class ManagementController {
 
         int total = pageService.getAskBoardListTotal(cri);
 
-        model.addAttribute("pageMaker", new PageDTO(cri,total));
+        model.addAttribute("pageMaker", new PageDTO(cri, total));
         return "manager-ask-board";
     }
 
@@ -56,8 +61,14 @@ public class ManagementController {
 
 
     @GetMapping("/manager-review-list")
-    public String goManagerReviewList(Model model) {
-        model.addAttribute("BoardReviewList", managementService.getBoardReviewList());
+    public String goManagerReviewList(Model model, PageCriteriaVO cri) {
+
+        model.addAttribute("BoardReviewList", managementService.getBoardReviewList(cri));
+
+        int total = pageService.getReviewListTotal(cri);
+
+        model.addAttribute("pageMaker", new PageDTO(cri, total));
+
         return "manager-review-list";
     }
 
@@ -74,7 +85,7 @@ public class ManagementController {
 
         int total = pageService.getMemberListTotal(cri);
 
-        model.addAttribute("pageMaker", new PageDTO(cri,total));
+        model.addAttribute("pageMaker", new PageDTO(cri, total));
         return "manager-member-list";
     }
 }

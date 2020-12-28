@@ -116,6 +116,35 @@
         </table>
         <br>
 					</c:forEach>
+
+
+		<ul class="pagination justify-content-center" style="margin:20px 0">
+
+                        	<c:if test="${pageMaker.prev}">
+                         <li class="page-item" ><a class="page-link" href="/manager/manager-review-list?pageNum=${pageMaker.startPage - 1}&amount=10">Previous</a>
+                          </li>
+                         </c:if>
+
+
+
+                                                            			<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+                                                            				<li class="page-item">
+                                                            				<a class="page-link" style="color: black;" href="/manager/manager-review-list?pageNum=${num}&amount=10">${num}</a>
+                                                            				</li>
+                                                            			</c:forEach>
+
+                                                            			<c:if test="${pageMaker.next}">
+                                                            				<li class="page-item">
+                                                            				<a class="page-link" style="color: black;" href="/manager/manager-review-list?pageNum=${pageMaker.endPage + 1}&amount=10">Next</a>
+                                                            				</li>
+                                                            			</c:if>
+                                                            	</ul>
+
+
+                                                            <form id="pageForm" action="/manager/manager-review-list" method="get">
+                                                            	<input type="hidden" name="pageNum" value = "${pageMaker.cri.pageNum}" />
+                                                            	<input type="hidden" name="amount" value = "${pageMaker.cri.amount}" />
+                                                            </form>
 			<hr style="border: solid 1px #ffb6b6;">		
 			</div>
 		</div>

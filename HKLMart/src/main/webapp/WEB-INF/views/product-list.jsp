@@ -5,6 +5,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 
+<%@include file="includes/header.jsp"%>
+
 <!DOCTYPE html>
 <head>
   <title>HKL Mart :: 제품 조회</title>
@@ -25,7 +27,8 @@
     <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:10px">
 
       <div class="w3-row-padding w3-padding-16 w3-center">
-        <p style="font-size : 40px;">부츠</p>
+        <!-- ${param.type} 로 제품종류 가져오기 -->
+        <p style="font-size : 40px;">구두</p>
       </div>
       <!-- s : 190412 수정 // 카테고리 리스트 page-title-wrap 밖으로 마크업 위치 변경  -->
 
@@ -103,9 +106,41 @@
     </div>
   </div>
 
+
+  <ul class="pagination justify-content-center" style="margin:20px 0">
+
+                                              	<c:if test="${pageMaker.prev}">
+                                               <li class="page-item" ><a class="page-link" href="/product-list?pageNum=${pageMaker.startPage - 1}&amount=10">Previous</a>
+                                                </li>
+                                               </c:if>
+
+
+
+                                                                                  			<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+                                                                                  				<li class="page-item">
+                                                                                  				<a class="page-link" style="color: black;" href="/product-list?pageNum=${num}&amount=10">${num}</a>
+                                                                                  				</li>
+                                                                                  			</c:forEach>
+
+                                                                                  			<c:if test="${pageMaker.next}">
+                                                                                  				<li class="page-item">
+                                                                                  				<a class="page-link" style="color: black;" href="/product-list?pageNum=${pageMaker.endPage + 1}&amount=10">Next</a>
+                                                                                  				</li>
+                                                                                  			</c:if>
+                                                                                  	</ul>
+
+
+                                                                                  <form id="pageForm" action="/product-list" method="get">
+                                                                                  	<input type="hidden" name="pageNum" value = "${pageMaker.cri.pageNum}" />
+                                                                                  	<input type="hidden" name="amount" value = "${pageMaker.cri.amount}" />
+                                                                                  </form>
+
+<hr style="border: solid 1px #ffb6b6;">
+
+
   </body>
 
   <script>
   </script>
 
-</html>
+<%@include file="includes/footer.jsp"%>

@@ -104,7 +104,7 @@
 					<c:forEach items="${AskBoardList}" var="list" varStatus="status">
 						<tr>
 							<th><a href="/manager/manager-ask-answer?boardAskNumber=<c:out value="${list.boardAskNumber}"/>&pageNum=<c:out value="${pageMaker.cri.pageNum}"/>&amount=<c:out value="${pageMaker.cri.amount}"/>" style="color: black">
-									<c:out value="${list.boardAskNumber}" /></a></th>
+							<c:out value="${list.boardAskNumber}" /></a></th>
 							<th><c:out value="${list.boardAskType}" /></th>
 							<th><c:out value="${list.boardAskTitle}" /></th>
 							<th><c:out value="${list.boardAskDate}" /></th>

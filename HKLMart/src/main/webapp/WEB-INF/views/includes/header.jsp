@@ -128,7 +128,7 @@
                             </div>
                         </div>
                     </li>
-                    <li><a href="#header">구두</a>
+                    <li><a href="/product-list?pageNum=1&amount=12">구두</a>
                         <div>
                             <div class="menu-column">
                                 <ul>

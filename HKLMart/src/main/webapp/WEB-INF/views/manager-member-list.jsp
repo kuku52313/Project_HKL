@@ -116,10 +116,10 @@
 				</table>
 					<ul class="pagination justify-content-center" style="margin:20px 0">
 
-                                                    		<c:if test="${pageMaker.prev}">
-                                                    			<li class="page-item" ><a class="page-link" href="/manager/manager-member-list?pageNum=${pageMaker.startPage - 1}&amount=10">Previous</a>
-                                                    			</li>
-                                                    			</c:if>
+                	<c:if test="${pageMaker.prev}">
+                 <li class="page-item" ><a class="page-link" href="/manager/manager-member-list?pageNum=${pageMaker.startPage - 1}&amount=10">Previous</a>
+                  </li>
+                 </c:if>
 
 
 

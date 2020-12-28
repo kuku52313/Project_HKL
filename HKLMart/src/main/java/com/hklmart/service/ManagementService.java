@@ -17,9 +17,9 @@ public class ManagementService {
 	@Autowired
 	ManagementDAO managmentDAO;
 	
-	public List<ProductListDTO> getProductList() {
+	public List<ProductListDTO> getProductList(PageCriteriaVO cri) {
 		
-		return managmentDAO.getProductList();
+		return managmentDAO.getProductList(cri);
 	}
 
 	public List<BoardAskDTO> getAskBoardList(PageCriteriaVO cri) {
@@ -27,13 +27,13 @@ public class ManagementService {
 		return managmentDAO.getAskBoardList(cri);
 	}
 
-	public List<BoardReviewListDTO> getBoardReviewList() {
+	public List<BoardReviewListDTO> getBoardReviewList(PageCriteriaVO cri) {
 		
-		return managmentDAO.getBoardReviewList();
+		return managmentDAO.getBoardReviewList(cri);
 	}
 
 	public List<MemberListDTO> getMemberList(PageCriteriaVO cri) {
-		// TODO Auto-generated method stub
+
 		return managmentDAO.getMemberList(cri);
 	}
 

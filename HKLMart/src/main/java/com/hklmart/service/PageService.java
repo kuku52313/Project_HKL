@@ -16,6 +16,19 @@ public class PageService {
     }
 
     public int getMemberListTotal(PageCriteriaVO cri) {
+
         return pageingDAO.getMemberListTotalCount(cri);
     }
+
+    public int getReviewListTotal(PageCriteriaVO cri) {
+
+        return pageingDAO.getReviewListTotalCount(cri);
+    }
+
+    public int getProductListTotal(PageCriteriaVO cri) {
+
+        return pageingDAO.getProductListTotalCount(cri);
+    }
+
+
 }

@@ -7,11 +7,11 @@ import com.hklmart.domain.*;
 
 public interface ManagementDAO {
 	
-	public List<ProductListDTO> getProductList();
+	public List<ProductListDTO> getProductList(PageCriteriaVO cri);
 
 	public List<BoardAskDTO> getAskBoardList(PageCriteriaVO cri);
 
-	public List<BoardReviewListDTO> getBoardReviewList();
+	public List<BoardReviewListDTO> getBoardReviewList(PageCriteriaVO cri);
 
 	public List<MemberListDTO> getMemberList(PageCriteriaVO cri);
 

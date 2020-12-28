@@ -15,5 +15,18 @@
 	]]>
     </select>
 
+    <select id="getReviewListTotalCount" resultType="int">
+        <![CDATA[
+	select count(*) from board_review
+	]]>
+    </select>
+
+    <select id="getProductListTotalCount" resultType="int">
+        <![CDATA[
+	select count(*) from product
+	]]>
+    </select>
+
+
 
 </mapper>
