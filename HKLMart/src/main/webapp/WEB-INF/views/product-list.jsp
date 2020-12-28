@@ -47,14 +47,17 @@
         </ul>
       </div>
       <!-- First Photo Grid 제품 1번라인-->
+      <c:forEach items="${productList}" var="list" varStatus="status">
+
       <div class="w3-row-padding w3-padding-16" id="food">
         <div class="w3-quarter">
-          <a href=""><img src="/resources/img/product-list/1.jpg" style="width:100%"/></a>
-          <a href=""><h3>마크모크</h3> <!-- 브랜드--></a>
-          <a href=""><p style="font-size : 19px;">Kalli</p> </a><!-- 제품명-->
-          <a href=""><p id="price" style="font-size : 28px; display: inline;">99,000 </p> <span>원</span></a>
-          <!--가격-->
-        </div>		
+          <a href=""><img src="<%=request.getContextPath()%>${list.productImgpath}${list.productThumbnail}.png" style="width:100%"/></a>
+          <a href=""><h3>${list.productBrand}</h3> <!-- 브랜드--></a>
+          <a href=""><p style="font-size : 19px;">${list.productName}</p> </a><!-- 제품명-->
+          <a href=""><p id="price" style="font-size : 28px; display: inline;">${list.productPrice}</p> <span>원</span></a>
+        </div>
+
+        </c:forEach>
         <div class="w3-quarter">
           <img src="/resources/img/product-list/2.jpg" style="width:100%"/>
           <h3>호킨스</h3>

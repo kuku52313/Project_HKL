@@ -57,7 +57,7 @@ public class BoardReviewListDTO {
 		this.boardReviewScore = boardReviewScore;
 	}
 
-		protected void setBoardReviewImg(String boardReviewImg) {
+	protected void setBoardReviewImg(String boardReviewImg) {
 
 
 		String pathReplace = boardReviewImg.replace('\\', '/');
@@ -68,9 +68,7 @@ public class BoardReviewListDTO {
 
 	protected void setBoardReviewImgpath(String boardReviewImgpath) {
 
-		/*log.info("was 로그 ========"+context);
-		log.info("서블렛 컨텍스트 패스 ======"+context.getServletContext().getContextPath());*/
-	/*	String pathReplace1 = boardReviewImgpath.replace(ctx.getServletContext().getRealPath("/"),"");*/
+
 		String pathReplace = boardReviewImgpath.replace('\\', '/');
 		this.boardReviewImgpath = pathReplace;
 
@@ -78,7 +76,7 @@ public class BoardReviewListDTO {
 
 	protected void setBoardReviewThumbnail(String boardReviewThumbnail) {
 
-//	String pathReplace = boardReviewThumbnail.replace("D:", "");
+
 	String pathReplace = boardReviewThumbnail.replace('\\', '/');
 
 	this.boardReviewThumbnail = pathReplace;

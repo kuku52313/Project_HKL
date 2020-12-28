@@ -1,6 +1,7 @@
 package com.hklmart.service;
 
 import com.hklmart.domain.PageCriteriaVO;
+import com.hklmart.domain.ProductListDTO;
 import com.hklmart.domain.ProductVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,10 +28,11 @@ public class ProductServiceImpl implements ProductService {
 		
 	}
 
-	@Override
-	public List<ProductVO> getUserProductList(PageCriteriaVO cri) {
+
+	public List<ProductListDTO> getUserProductList(PageCriteriaVO cri) {
 		return productDAO.getUserProductList(cri);
 	}
+
 
 	public int codeCheckTest(String insertCode) {
 		

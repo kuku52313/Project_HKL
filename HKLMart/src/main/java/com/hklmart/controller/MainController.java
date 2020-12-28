@@ -62,7 +62,7 @@ public class MainController {
     @GetMapping("/product-list")
     public String goManagerProduct(Model model, PageCriteriaVO cri) {
 
-        model.addAttribute("product",  productService.getUserProductList(cri));
+        model.addAttribute("productList", productService.getUserProductList(cri));
 
         int total = pageService.getProductListTotal(cri);
 
@@ -71,9 +71,9 @@ public class MainController {
         return "product-list";
     }
 
-    @GetMapping("/admin/product-list")
+  /*  @GetMapping("/admin/product-list")
     public String goAdmin() {
         return "product-list";
-    }
+    }*/
 
 }

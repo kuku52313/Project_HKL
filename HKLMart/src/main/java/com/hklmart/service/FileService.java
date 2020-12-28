@@ -35,7 +35,7 @@ public class FileService {
     public void saveFile(HttpServletRequest request, RegistProductVO productDTO) throws IllegalStateException, IOException {
 
         String fileName = UUID.randomUUID().toString() + "_" + productDTO.getUploadImg().getOriginalFilename();
-        File path = new File(getFolderPath(request.getSession().getServletContext().getContextPath()));
+        File path = new File(getFolderPath(request.getSession().getServletContext().getRealPath("/resources/product")));
         log.info("path =" + path);
         File contextPath = new File(getFolderPath(request.getSession().getServletContext().getContextPath()+"/resources/product"));
         File image = new File(path + "\\" + fileName);

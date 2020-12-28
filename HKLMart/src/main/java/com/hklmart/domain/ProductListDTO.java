@@ -4,6 +4,8 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Data
 public class ProductListDTO {
 
@@ -13,6 +15,19 @@ public class ProductListDTO {
     private String productPrice;
     private String productContent;
     private String productRegdate;
+
+    @Setter(AccessLevel.PROTECTED)
+    private String productImgpath;
+    @Setter(AccessLevel.PROTECTED)
+    private String productImg;
+    @Setter(AccessLevel.PROTECTED)
+    private String productThumbnail;
+
+    @Setter(AccessLevel.PROTECTED)
+    private String productContentImg;
+    @Setter(AccessLevel.PROTECTED)
+    private String productContentImgpath;
+
 
     @Setter(AccessLevel.PROTECTED)
     private String productType;
@@ -54,4 +69,32 @@ public class ProductListDTO {
         this.productType = productType;
 
     }
+
+    protected void setProductImg(String productImg) {
+
+
+        String pathReplace = productImg.replace('\\', '/');
+
+        this.productImg = pathReplace;
+
+    }
+
+    protected void setProductImgpath(String productImgpath) {
+
+
+        String pathReplace = productImgpath.replace('\\', '/');
+        this.productImgpath = pathReplace;
+
+    }
+
+    protected void setProductThumbnail(String productThumbnail) {
+
+
+        String pathReplace = productThumbnail.replace('\\', '/');
+
+        this.productThumbnail = pathReplace;
+
+    }
+
+
 }
