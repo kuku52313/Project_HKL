@@ -1,4 +1,3 @@
-
 --------------------------------------------------------
 --  오라클 12c 계정 설정을 위한 세션 변경 
 --------------------------------------------------------
@@ -120,10 +119,8 @@ CREATE SEQUENCE "HKL"."SEQ_ORDER_NUMBER";
 	"PRODUCT_IMGPATH" VARCHAR2(200 BYTE), 
 	"PRODUCT_IMG" VARCHAR2(100 BYTE), 
 	"PRODUCT_THUMBNAIL" VARCHAR2(100 BYTE),
-    	"PRODUCT_CONTENT" VARCHAR2(1000 BYTE),
-    	"PRODUCT_REGDATE" DATE, 
-	"PRODUCT_CONTENT_IMG" VARCHAR2(100 BYTE), 
-	"PRODUCT_CONTENT_IMGPATH" VARCHAR2(200 BYTE)
+    	"PRODUCT_CONTENT" VARCHAR2(100 BYTE),
+    	"PRODUCT_REGDATE" DATE
    ) ;
 --------------------------------------------------------
 --  DDL for Table PRODUCT_LIKE
