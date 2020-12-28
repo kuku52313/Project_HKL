@@ -12,7 +12,6 @@
   <title>HKL Mart :: 제품 조회</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -46,65 +45,20 @@
 
         </ul>
       </div>
-      <!-- First Photo Grid 제품 1번라인-->
-      <c:forEach items="${productList}" var="list" varStatus="status">
 
-      <div class="w3-row-padding w3-padding-16" id="food">
-        <div class="w3-quarter">
+      <div class="w3-row-padding w3-padding-16 w3-center">
+      <c:forEach items="${productList}" var="list" varStatus="status">
+        <c:if test="${status.index%4==0}">
+        <br>
+        </c:if>
+        <div class="w3-quarter" style= "float:left;">
           <a href=""><img src="<%=request.getContextPath()%>${list.productImgpath}${list.productThumbnail}.png" style="width:100%"/></a>
-          <a href=""><h3>${list.productBrand}</h3> <!-- 브랜드--></a>
-          <a href=""><p style="font-size : 19px;">${list.productName}</p> </a><!-- 제품명-->
+          <a href=""><h3>${list.productBrand}</h3></a>
+          <a href=""><p style="font-size : 19px;">${list.productName}</p> </a>
           <a href=""><p id="price" style="font-size : 28px; display: inline;">${list.productPrice}</p> <span>원</span></a>
         </div>
-
         </c:forEach>
-        <div class="w3-quarter">
-          <img src="/resources/img/product-list/2.jpg" style="width:100%"/>
-          <h3>호킨스</h3>
-          <p style="font-size : 19px;">첼시부츠</p>
-          <p id="price" style="font-size : 28px; display: inline;">49,000</p> <span>원</span>
         </div>
-        <div class="w3-quarter">
-          <img src="/resources/img/product-list/3.jpg" style="width:100%"/>
-          <h3>호킨스</h3>
-          <p style="font-size : 19px;">버널</p>
-          <p id="price" style="font-size : 28px; display: inline;">119,000</p> <span>원</span>
-        </div>
-        <div class="w3-quarter">
-          <img src="/resources/img/product-list/4.jpg" style="width:100%"/>
-          <h3>호킨스</h3>
-          <p style="font-size : 19px;">킹스키너</p>
-          <p id="price" style="font-size : 28px; display: inline;">29,000</p> <span>원</span>
-        </div>
-      </div>
-
-      <!-- Second Photo Grid 제품 2번 라인-->
-      <div class="w3-row-padding w3-padding-16">
-        <div class="w3-quarter">
-          <img src="/resources/img/product-list/5.jpg" style="width:100%"/>
-          <h3>호킨스</h3>
-          <p style="font-size : 19px;">알피</p>
-          <p id="price" style="font-size : 28px; display: inline;">29,000</p> <span>원</span>
-        </div>
-        <div class="w3-quarter">
-          <img src="/resources/img/product-list/6.jpg" style="width:100%"/>
-          <h3>호킨스</h3>
-          <p style="font-size : 19px;">옥스포드</p>
-          <p id="price" style="font-size : 28px; display: inline;">99,000</p> <span>원</span>
-        </div>
-        <div class="w3-quarter">
-          <img src="/resources/img/product-list/7.jpg" style="width:100%"/>
-          <h3>레브</h3>
-          <p style="font-size : 19px;">레브 스웨이드 삭스 부츠 포 키즈</p>
-          <p id="price" style="font-size : 28px; display: inline;">59,000</p> <span>원</span>
-        </div>
-        <div class="w3-quarter">
-          <img src="/resources/img/product-list/8.jpg" style="width:100%"/>
-          <h3>휠라</h3>
-          <p style="font-size : 19px;">디스럽터 쉐어링 케이디</p>
-          <p id="price" style="font-size : 28px; display: inline;">47,000</p> <span>원</span>
-        </div>
-      </div>
 
     </div>
   </div>
