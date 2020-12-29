@@ -59,31 +59,61 @@ public class FileService {
     }
 
     public void modifyProduct(HttpServletRequest request, ProductVO productVO, RegistImageVO imageVO, StockVO stockVO) throws IllegalStateException, IOException {
+        String mainImageName = UUID.randomUUID().toString() + "_" + imageVO.getUploadImg().getOriginalFilename();
         ImageVO imageInfo = product.getImageInfo(productVO.getProductCode());
         File path = new File(getFolderPath(request.getSession().getServletContext().getRealPath("/resources/product")));
         File getImage = new File(path + imageInfo.getProductImg());
         File getThumbnail = new File(path + imageInfo.getProductThumbnail());
         File getContent = new File(path + imageInfo.getProductContent());
-
-        String mainImageName = UUID.randomUUID().toString() + "_" + imageVO.getUploadImg().getOriginalFilename();
         File contextPath = new File(getFolderPath(request.getSession().getServletContext().getContextPath() + "/resources/product"));
         File image = new File(path + "\\M_" + mainImageName);
         File thumbnail = new File(path + "\\S_" + mainImageName);
         File contentImage = new File(path + "\\C_" + mainImageName);
 
-        if (!(imageVO.getUploadImg().getOriginalFilename().equals(""))) {
-            if (getImage.exists()) {
+        if (!(imageVO.getUploadImg().getOriginalFilename().equals("")) && !(imageVO.getContentImg().getOriginalFilename().equals(""))) {
+            if (getImage.exists() && getContent.exists()) {
                 getImage.delete();
                 getThumbnail.delete();
                 getContent.delete();
             }
 
             if (!image.exists()) {
+                path.mkdirs();
                 imageVO.getUploadImg().transferTo(image);
                 imageVO.getContentImg().transferTo(contentImage);
                 Thumbnails.of(image).size(300, 300).toFile(thumbnail);
             }
+            productVO.setProductImgPath(contextPath.toString());
+            productVO.setProductImg(image.toString().replace(path.toString(), ""));
+            productVO.setProductThumbnail(thumbnail.toString().replace(path.toString(), ""));
+            productVO.setProductContent(contentImage.toString().replace(path.toString(), ""));
+        } else if (!(imageVO.getUploadImg().getOriginalFilename().equals("")) && imageVO.getContentImg().getOriginalFilename().equals("")) {
+            if (getImage.exists()) {
+                getImage.delete();
+                getThumbnail.delete();
+            }
 
+            if (!image.exists()) {
+                path.mkdirs();
+                imageVO.getUploadImg().transferTo(image);
+                Thumbnails.of(image).size(300, 300).toFile(thumbnail);
+                getContent.renameTo(contentImage);
+            }
+            productVO.setProductImgPath(contextPath.toString());
+            productVO.setProductImg(image.toString().replace(path.toString(), ""));
+            productVO.setProductThumbnail(thumbnail.toString().replace(path.toString(), ""));
+            productVO.setProductContent(contentImage.toString().replace(path.toString(), ""));
+        } else if (imageVO.getUploadImg().getOriginalFilename().equals("") && !(imageVO.getContentImg().getOriginalFilename().equals(""))) {
+            if (getContent.exists()) {
+                getContent.delete();
+            }
+
+            if (!contentImage.exists()) {
+                path.mkdirs();
+                getImage.renameTo(image);
+                getThumbnail.renameTo(thumbnail);
+                imageVO.getContentImg().transferTo(contentImage);
+            }
             productVO.setProductImgPath(contextPath.toString());
             productVO.setProductImg(image.toString().replace(path.toString(), ""));
             productVO.setProductThumbnail(thumbnail.toString().replace(path.toString(), ""));
