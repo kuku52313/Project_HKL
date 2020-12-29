@@ -4,7 +4,6 @@ import com.hklmart.domain.*;
 
 import java.util.List;
 
-
 public interface ManagementDAO {
 
     List<ProductListDTO> getProductList(PageCriteriaVO cri);

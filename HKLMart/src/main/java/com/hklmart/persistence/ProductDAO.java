@@ -1,9 +1,6 @@
 package com.hklmart.persistence;
 
-import com.hklmart.domain.PageCriteriaVO;
-import com.hklmart.domain.ProductListDTO;
-import com.hklmart.domain.ProductVO;
-import com.hklmart.domain.StockVO;
+import com.hklmart.domain.*;
 
 import java.util.List;
 
@@ -20,5 +17,7 @@ public interface ProductDAO {
     void modifyStock(StockVO stockVO);
 
     List<ProductListDTO> getUserProductList(PageCriteriaVO cri);
+
+    ImageVO getImageInfo(String productCode);
 
 }

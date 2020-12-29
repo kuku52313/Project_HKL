@@ -1,5 +1,6 @@
 package com.hklmart.service;
 
+import com.hklmart.domain.ImageVO;
 import com.hklmart.domain.ProductVO;
 import com.hklmart.domain.RegistImageVO;
 import com.hklmart.domain.StockVO;
@@ -58,33 +59,43 @@ public class FileService {
     }
 
     public void modifyProduct(HttpServletRequest request, ProductVO productVO, RegistImageVO imageVO, StockVO stockVO) throws IllegalStateException, IOException {
+        ImageVO imageInfo = product.getImageInfo(productVO.getProductCode());
+        File path = new File(getFolderPath(request.getSession().getServletContext().getRealPath("/resources/product")));
+        File getImage = new File(path + imageInfo.getProductImg());
+        File getThumbnail = new File(path + imageInfo.getProductThumbnail());
+        File getContent = new File(path + imageInfo.getProductContent());
 
         String mainImageName = UUID.randomUUID().toString() + "_" + imageVO.getUploadImg().getOriginalFilename();
-        File path = new File(getFolderPath(request.getSession().getServletContext().getRealPath("/resources/product")));
         File contextPath = new File(getFolderPath(request.getSession().getServletContext().getContextPath() + "/resources/product"));
         File image = new File(path + "\\M_" + mainImageName);
         File thumbnail = new File(path + "\\S_" + mainImageName);
         File contentImage = new File(path + "\\C_" + mainImageName);
 
-        if (imageVO.getUploadImg() == null) {
+        if (!(imageVO.getUploadImg().getOriginalFilename().equals(""))) {
+            if (getImage.exists()) {
+                getImage.delete();
+                getThumbnail.delete();
+                getContent.delete();
+            }
 
+            if (!image.exists()) {
+                imageVO.getUploadImg().transferTo(image);
+                imageVO.getContentImg().transferTo(contentImage);
+                Thumbnails.of(image).size(300, 300).toFile(thumbnail);
+            }
+
+            productVO.setProductImgPath(contextPath.toString());
+            productVO.setProductImg(image.toString().replace(path.toString(), ""));
+            productVO.setProductThumbnail(thumbnail.toString().replace(path.toString(), ""));
+            productVO.setProductContent(contentImage.toString().replace(path.toString(), ""));
+        } else {
+            productVO.setProductImgPath(imageInfo.getProductImgPath());
+            productVO.setProductImg(imageInfo.getProductImg());
+            productVO.setProductThumbnail(imageInfo.getProductThumbnail());
+            productVO.setProductContent(imageInfo.getProductContent());
         }
-
-
-        if (!image.exists()) {
-            path.mkdirs();
-            imageVO.getUploadImg().transferTo(image);
-            imageVO.getContentImg().transferTo(contentImage);
-            Thumbnails.of(image).size(300, 300).toFile(thumbnail);
-        }
-
-        productVO.setProductImgPath(contextPath.toString());
-        productVO.setProductImg(image.toString().replace(path.toString(), ""));
-        productVO.setProductThumbnail(thumbnail.toString().replace(path.toString(), ""));
-        productVO.setProductContent(contentImage.toString().replace(path.toString(), ""));
         stockVO.setStockProductCode(productVO.getProductCode());
-        product.saveFile(productVO);
-        product.saveStock(stockVO);
+        product.modifyFile(productVO);
+        product.modifyStock(stockVO);
     }
-
 }

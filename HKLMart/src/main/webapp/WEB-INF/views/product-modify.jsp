@@ -160,10 +160,6 @@
 
 <!-- form header -->
 <form class="insertform" name="productData" action="/product/product-modify-up?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="productImgPath" value="${product.productImgPath}"/>
-    <input type="hidden" name="productImg" value="${product.productImg}"/>
-    <input type="hidden" name="productThumbnail" value="${product.productThumbnail}"/>
-    <input type="hidden" name="productContent" value="${product.productContent}"/>
     <div class="form-header">
         <h1>제품 수정 및 재고 수정</h1>
     </div>
@@ -199,7 +195,7 @@
         <label>제품 이미지</label><br/>
         <input type="file" id="choose-file" name="uploadImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;"/>
         <div id="select_img" style="width: 100%; text-align: center">
-            <img src=""/>
+            <img src="<%=request.getContextPath()%>${product.productImgPath}${product.productImg}"/>
         </div>
     </div>
     <hr style="border: solid 1px #ffb6b6;">
@@ -208,7 +204,7 @@
         <label>제품 상세 이미지</label><br/>
         <input type="file" id="content-file" name="contentImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;"/>
         <div id="select_content_img" style="width: 100%; text-align: center">
-            <img src=""/>
+            <img src="<%=request.getContextPath()%>${product.productImgPath}${product.productContent}"/>
         </div>
     </div>
 
@@ -255,13 +251,10 @@
         <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
     </div>
 
-
     <hr style="border: solid 1px #ffb6b6;">
 
-
     <input type="button" class="insertBtn" onclick="insertCheckfn()" value="수정"/>
-
-    <input type="button" class="insertBtn" onclick="goHome()" value="홈으로"/>
+    <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-product';" value="홈으로"/>
 </form>
 
 <br>
@@ -313,7 +306,7 @@
             <br> <br> 본 상품의 상품 이미지 저작권은 ㈜에이치케이엘에 있으며 내용의 무단복제를 금합니다. <br> COPYRIGHT Ⓒ HKL-MART CO,LTD. ALL RIGHTS RESERVED.
         </p>
     </div>
-    </form>
+</footer>
 </body>
 
 <script>
@@ -331,8 +324,8 @@
         $('a[href^="#"]').on('click', function (e) {
             e.preventDefault();
 
-            var target = this.hash;
-            var $target = $(target);
+            let target = this.hash;
+            let $target = $(target);
 
             $('html, body').stop().animate({
                 'scrollTop': $target.offset().top
@@ -344,34 +337,33 @@
 
     function insertCheckfn() {
 
-        var productDataForm = document.productData;
+        let productDataForm = document.productData;
 
-        var productName = $("#nameProduct").val();
-        var productBrand = $("#brandProduct").val();
-        var codeProduct = $("#codeProduct").val();
-        var priceProduct = $("#priceProduct").val();
-        var kindProduct = $("#kindProduct").val();
-        var productContent = $("#content").val();
-        var image = $("#choose-file").val();
+        let productName = $("#nameProduct").val();
+        let productBrand = $("#brandProduct").val();
+        let codeProduct = $("#codeProduct").val();
+        let priceProduct = $("#priceProduct").val();
+        let kindProduct = $("#kindProduct").val();
+        let image = $("#choose-file").val();
+        let productContent = $("#content-file").val();
 
+        let checkCode = /^[A-za-z0-9]{1,6}/;
+        let checkprice = /^[0-9]+$/;
 
-        var checkCode = /^[A-za-z0-9]{1,6}/;
-        var checkprice = /^[0-9]+$/;
-
-        if (productName === '' || productName === null || productName === undefined || productName === 0 || productName === NaN) {
+        if ($("#codeCheckHidden").val() === 0) {
+            alert("제품코드를 확인하여 주십시오");
+        } else if (productName === '' || productName === null || productName === undefined || productName === 0) {
             alert("제품명을 입력하세요");
-        } else if (productBrand === '' || productBrand === null || productBrand === undefined || productBrand === 0 || productBrand === NaN) {
+        } else if (productBrand === '' || productBrand === null || productBrand === undefined || productBrand === 0) {
             alert("브랜드명을 입력하세요");
         } else if (!checkCode.test(codeProduct)) {
             alert("제품코드를 잘못입력하였습니다");
-        } else if (!codeProduct.length == 6) {
+        } else if (!(codeProduct.length === 6)) {
             alert("제품코드 자릿수 형식이 다릅니다");
         } else if (!checkprice.test(priceProduct)) {
             alert("가격 형식에 문제가 있습니다. 숫자만 입력하여 주십시오");
-        } else if (kindProduct == 1) {
+        } else if (kindProduct === 1) {
             alert("제품종류를 잘못선택하였습니다");
-        } else if (productContent === '' || productContent === null || productContent === undefined || productContent === 0 || productContent === NaN) {
-            alert("제품 설명을 입력하세요");
         } else {
             alert("등록하였습니다");
             productDataForm.submit();
@@ -379,7 +371,7 @@
     }
 
     function checkImage(fileName, fileSize) {
-        var imageExtension = /([^\s]+(?=\.(jpg|jpeg|png|bmp|JPG|JPEG|PNG|BMP))\.\2)/
+        let imageExtension = /([^\s]+(?=\.(jpg|jpeg|png|bmp|JPG|JPEG|PNG|BMP))\.\2)/
         if (!imageExtension.test(fileName)) {
             alert("이미지만 등록 가능합니다");
             document.getElementById("choose-file").value = "";
@@ -394,27 +386,27 @@
     }
 
     function contentCheckImage(fileName, fileSize) {
-        var imageExtension = /([^\s]+(?=\.(jpg|jpeg|png|bmp|JPG|JPEG|PNG|BMP))\.\2)/
+        let imageExtension = /([^\s]+(?=\.(jpg|jpeg|png|bmp|JPG|JPEG|PNG|BMP))\.\2)/
         if (!imageExtension.test(fileName)) {
             alert("이미지만 등록 가능합니다");
-            document.getElementById("choose-file").value = "";
+            document.getElementById("content-file").value = "";
             return false;
         }
         if (fileSize >= 10485760) {
             alert("이미지 크기가 너무 큽니다");
-            document.getElementById("choose-file").value = "";
+            document.getElementById("content-file").value = "";
             return false;
         }
         return true;
     }
 
     $("#choose-file").change(function () {
-        var file = document.getElementById("choose-file");
-        var filePath = file.value;
-        var filePathSplit = filePath.split('\\');
-        var filePathLength = filePathSplit.length;
-        var fileName = filePathSplit[filePathLength - 1];
-        var fileSize = file.files[0].size;
+        let file = document.getElementById("choose-file");
+        let filePath = file.value;
+        let filePathSplit = filePath.split('\\');
+        let filePathLength = filePathSplit.length;
+        let fileName = filePathSplit[filePathLength - 1];
+        let fileSize = file.files[0].size;
 
         if (checkImage(fileName, fileSize)) {
             if (this.files && this.files[0]) {
@@ -430,12 +422,12 @@
     });
 
     $("#content-file").change(function () {
-        var file = document.getElementById("content-file");
-        var filePath = file.value;
-        var filePathSplit = filePath.split('\\');
-        var filePathLength = filePathSplit.length;
-        var fileName = filePathSplit[filePathLength - 1];
-        var fileSize = file.files[0].size;
+        let file = document.getElementById("content-file");
+        let filePath = file.value;
+        let filePathSplit = filePath.split('\\');
+        let filePathLength = filePathSplit.length;
+        let fileName = filePathSplit[filePathLength - 1];
+        let fileSize = file.files[0].size;
 
         if (contentCheckImage(fileName, fileSize)) {
             if (this.files && this.files[0]) {
@@ -451,10 +443,9 @@
     });
 
     function codeCheck() {
-        var insertCode = $("#codeProduct").val();
+        let insertCode = $("#codeProduct").val();
         console.log(insertCode);
-        if (insertCode.length == 6) {
-
+        if (insertCode.length === 6) {
             $.ajax({
                 type: 'post',
                 data: insertCode, //서버로 보낼 data
@@ -466,26 +457,20 @@
                 },
                 success: function (data) {
                     if (data.cnt > 0) {
-
                         document.getElementById('codeCheckBtn').value = "사용불가";
                         document.getElementById('codeCheckBtn').style.background = '#6c757d';
                         $("#codeCheckHidden").val("0");
                     } else {
-
                         document.getElementById('codeCheckBtn').value = "사용가능";
                         document.getElementById('codeCheckBtn').style.background = '#a7e3ff';
                         $("#codeCheckHidden").val("1");
-
-
                     }
                 },
                 error: function () {
                     alert("Error. 관리자에게 문의하십시오.");
                 }
             });
-
         }
-
     }
 
 </script>
