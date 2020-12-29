@@ -12,13 +12,15 @@
     <title>:: HKL Mart ::</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="/resources//jquery/3.5.1/jquery.min.js"></script>
-    <script src="/resources//bootstrap/4.5.3/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="stylesheet" href="/resources/bootstrap/4.5.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="/resources/css/index.css">
     <link rel="stylesheet" href="/resources/css/add-product.css">
     <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
+    <script src="/resources/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/resources/bootstrap/4.5.3/js/bootstrap.min.js"></script>
+    <script src="/resources/jquery-ui/jquery-1.12.4.js"></script>
+    <script src="/resources/jquery-ui/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -40,7 +42,7 @@
             <div class="row form-inline">
 
                 <div class="col-10">
-                    <input class="form-control active-pink" type="search" placeholder="Search" style="width: 50%; float: right;">
+                    <input class="form-control active-pink" id="productSearch" type="search" placeholder="제품명 검색" onkeyup="searchFunc()" style="width:100%" autocomplete="off">
                 </div>
 
                 <div class="col-2">
@@ -509,7 +511,25 @@
         }
 
     }
-
+    function searchFunc() {
+        let productSearch = document.getElementById('productSearch').value;
+        $.ajax({
+            url: "/ajax/search",
+            type: "GET",
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            data: {"searchStr": productSearch},
+            success: function (data) {
+                let dataList = data.searchList;
+                $("#productSearch").autocomplete({
+                    source: dataList
+                });
+            },
+            error: function () {
+                alert("Error. 관리자에게 문의하십시오.");
+            },
+        });
+    }
 </script>
 
 </html>

@@ -16,9 +16,12 @@
     <link rel="stylesheet" href="/resources/bootstrap/4.5.3/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/index.css"/>
     <link rel="stylesheet" href="/resources/css/login.css"/>
+    <link rel="stylesheet" href="/resources/jquery-ui/jquery-ui.css">
     <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
     <script src="/resources/jquery/3.5.1/jquery.min.js"></script>
     <script src="/resources/bootstrap/4.5.3/js/bootstrap.min.js"></script>
+    <script src="/resources/jquery-ui/jquery-1.12.4.js"></script>
+    <script src="/resources/jquery-ui/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -26,26 +29,30 @@
 <input type="hidden" id="pwckCheckHidden" value="0"/>
 <sec:authentication property="principal" var="user"/>
 <!-- Header -->
+<!-- Header -->
 <header id="header" class="container-fluid">
+
     <!-- Navbar-->
     <nav class="navbar row">
-        <div class="col-1"></div>
+        <div class="col-1">
+        </div>
         <div class="navbar_logo col-1">
-            <a class="logo" style="height: 100px" href="/">
-                <img class="logo" src="/resources/img/top_logo.png"/>
+            <a class="logo" style="height: 100px;" href="/">
+                <img class="logo" src="/resources/img/top_logo.png">
             </a>
         </div>
 
         <!-- Search -->
         <div class="navbar_search col-5">
             <div class="row form-inline">
-                <div class="col-10">
-                    <input class="form-control active-pink" type="search" placeholder="Search" style="width: 50%; float: right"/>
+                <div class="col-5"></div>
+                <div class="col-5">
+                    <input class="form-control active-pink" id="productSearch" type="search" placeholder="제품명 검색" onkeyup="searchFunc()" style="width:100%" autocomplete="off">
                 </div>
 
                 <div class="col-2">
                     <a href="#" id="search">
-                        <i style="color: rgb(255, 48, 79)" class="fas fa-search fa-2x"></i>
+                        <i style="color: rgb(255, 48, 79);" class="fas fa-search fa-2x"></i>
                     </a>
                 </div>
             </div>
@@ -53,41 +60,58 @@
 
         <!-- NavMenu -->
         <!-- 비로그인 상태 -->
+        <sec:authorize access="isAnonymous()">
+            <div class="col-4">
+                <a class="navbar_toggleBtn">
+                    <i class="fas fa-bars"></i>
+                </a>
+                <br>
+                <ul class="navbar_menu font-set">
+                    <li><a href="/member/loginPage">로그인</a></li>
+                    <li><a href="/member/loginPage">회원가입</a></li>
+                    <li><a href="#">고객센터</a></li>
+                    <li><a href="#">장바구니</a></li>
+                </ul>
+            </div>
+        </sec:authorize>
 
         <!-- 로그인 상태 -->
-        <div class="col-4">
-            <a class="navbar_toggleBtn">
-                <i class="fas fa-bars"></i>
-            </a>
-            <br/>
-            <ul class="navbar_menu font-set">
-                <li>
-                    <a href="/member/my-page"
-                    ><i><u class="font-set">${user.memberName}님</u></i></a
-                    >
-                </li>
-                <li><a href="/member/my-page">마이페이지</a></li>
-                <li>
-                    <a href="#" onclick="$('#logout-form').submit()">로그아웃</a>
+        <sec:authorize access="isAuthenticated()">
+            <sec:authentication property="principal" var="user"/>
+            <div class="col-4">
+                <a class="navbar_toggleBtn">
+                    <i class="fas fa-bars"></i>
+                </a>
+                <br>
+                <ul class="navbar_menu font-set">
+                    <li><a href="/member/my-page"><i><u class="font-set">${user.memberName}님</u></i></a>
+                    <li><a href="/member/my-page">마이페이지</a></li>
+                    <li><a href="#" onclick="$('#logout-form').submit();">로그아웃</a>
 
-                    <!-- Logout Form -->
-                    <form id="logout-form" action="/logout" method="POST">
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    </form>
-                </li>
-                <li><a href="#">고객센터</a></li>
-                <li><a href="#shopping-basket">장바구니</a></li>
-            </ul>
-        </div>
+                        <!-- Logout Form -->
+                        <form id="logout-form" action="/logout" method="POST">
+                            <!-- 포스트방식으로 리퀘스트시 무조건 넣기 -->
+                            <input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }">
+                        </form>
+
+                    </li>
+                    <li><a href="#">고객센터</a></li>
+                    <li><a href="/member/my-page">장바구니</a></li>
+                </ul>
+            </div>
+        </sec:authorize>
+
     </nav>
-    <div class="col-1"></div>
+    <div class="col-1">
+    </div>
 
     <!-- Mega Drop Menu -->
     <div class="row">
-        <div class="col-1"></div>
+        <div class="col-1">
+        </div>
 
         <div class="col-10">
-            <ul class="menu" style="width: 100%">
+            <ul class="menu" style="width: 100%;">
                 <li>
                     <a href="#header">운동화</a>
                     <div>
@@ -112,8 +136,7 @@
                         </div>
                     </div>
                 </li>
-                <li>
-                    <a href="#header">구두</a>
+                <li><a href="/product-list?pageNum=1&amount=12">구두</a>
                     <div>
                         <div class="menu-column">
                             <ul>
@@ -125,8 +148,7 @@
                         </div>
                     </div>
                 </li>
-                <li>
-                    <a href="#header">부츠</a>
+                <li><a href="#header">부츠</a>
                     <div>
                         <div class="menu-column">
                             <ul>
@@ -140,7 +162,11 @@
             </ul>
         </div>
     </div>
+
     <div class="col-1"></div>
+
+    <br>
+
 </header>
 
 <!-- Body -->
@@ -451,6 +477,26 @@
                 );
         });
     });
+
+    function searchFunc() {
+        let productSearch = document.getElementById('productSearch').value;
+        $.ajax({
+            url: "/ajax/search",
+            type: "GET",
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            data: {"searchStr": productSearch},
+            success: function (data) {
+                let dataList = data.searchList;
+                $("#productSearch").autocomplete({
+                    source: dataList
+                });
+            },
+            error: function () {
+                alert("Error. 관리자에게 문의하십시오.");
+            },
+        });
+    }
 </script>
 </html>
 
