@@ -25,7 +25,6 @@
 
         <div class="w3-row-padding w3-padding-16 w3-center">
             <ul>
-
                 <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
                 <li style="display: inline; font-size : 19px;"><a href="/display/category?ctgrNo=1000000270" class="">첼시 부츠</a>
                     |
@@ -36,20 +35,22 @@
                 </li>
                 <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
                 <li style="display: inline; font-size : 19px;"><a href="/display/category?ctgrNo=1000000268" class="">퍼 부츠</a></li>
-
             </ul>
         </div>
 
-        <div class="w3-row-padding w3-padding-16 w3-center">
+        <div class="w3-row-padding w3-padding-16 w3-center product-card-wrapper">
             <c:forEach items="${productList}" var="list" varStatus="status">
-                <c:if test="${status.index%4==0}">
-                    <br>
-                </c:if>
-                <div class="w3-quarter" style="float:left;">
-                    <a href=""><img src="<%=request.getContextPath()%>${list.productImgpath}${list.productThumbnail}" style="width:100%"/></a>
-                    <a href=""><h3>${list.productBrand}</h3></a>
-                    <a href=""><p style="font-size : 19px;">${list.productName}</p></a>
-                    <a href=""><p id="price" style="font-size : 28px; display: inline;"><fmt:formatNumber value="${list.productPrice}" pattern="#,###"/></p> <span>원</span></a>
+                <div class="w3-quarter product-card">
+                    <span><img src="<%=request.getContextPath()%>${list.productImgpath}${list.productThumbnail}" style="width:100%"/><br></span>
+                    <span class="font-m">${list.productBrand}</span><br/>
+                    <p class="font-s">${list.productName}</p>
+                    <span class="font-b"><fmt:formatNumber value="${list.productPrice}" pattern="#,###"/>&nbsp;</span>원
+                    <br/><br/>
+                    <div class="basket">
+                        <i class="fas fa-shopping-basket fa-2x"></i>
+                        &nbsp;
+                        <i class="fas fa-heart fa-2x"></i>
+                    </div>
                 </div>
             </c:forEach>
         </div>
@@ -58,7 +59,7 @@
 </div>
 
 <ul class="pagination justify-content-center" style="margin:20px 0">
-    <c:set var="CategoryPath" value="${param.Category}" />
+    <c:set var="CategoryPath" value="${param.Category}"/>
 
     <c:if test="${pageMaker.prev}">
         <li class="page-item">

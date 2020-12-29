@@ -65,12 +65,6 @@
     <div class="row">
         <!-- 왼쪽 공백 -->
         <div class="col-2"></div>
-
-
-        <!--
-            <div class="col-2">
-                사이드 메뉴
-            </div> -->
         <br>
         <div class="col-8">
             <br>
@@ -79,8 +73,7 @@
             </div>
             <br>
 
-            <table class="table table-bordered table-striped"
-                   style="background-color: #ffffff;">
+            <table class="table table-bordered table-striped" style="background-color: #ffffff;">
 
                 <thead>
                 <tr>
@@ -92,9 +85,6 @@
                 </tr>
                 </thead>
 
-                <%-- <td><a href='/board/get?bno=<c:out value="${board.bno}" />'>
-                                                    <c:out value="${board.title}" />
-                                            </a></td> --%>
                 <c:forEach items="${productList}" var="list" varStatus="status">
                     <tr>
                         <th><c:out value="${status.count}"/></th>
@@ -105,17 +95,14 @@
                         <th><c:out value="${list.productType}"/></th>
                     </tr>
                 </c:forEach>
-
-
             </table>
 
             <ul class="pagination justify-content-center" style="margin:20px 0">
-
                 <c:if test="${pageMaker.prev}">
-                    <li class="page-item"><a class="page-link" href="/manager/manager-product?pageNum=${pageMaker.startPage - 1}&amount=10">Previous</a>
+                    <li class="page-item">
+                        <a class="page-link" href="/manager/manager-product?pageNum=${pageMaker.startPage - 1}&amount=10">Previous</a>
                     </li>
                 </c:if>
-
 
                 <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
                     <li class="page-item">
@@ -141,9 +128,6 @@
     <!-- 오른쪽 공백 -->
     <div class="col-2"></div>
 </div>
-
-
 </body>
-
 
 <%@include file="includes/footer.jsp" %>

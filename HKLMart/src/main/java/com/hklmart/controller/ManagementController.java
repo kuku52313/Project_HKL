@@ -31,12 +31,9 @@ public class ManagementController {
 
     @GetMapping("/manager-product")
     public String goManagerProduct(Model model, PageCriteriaVO cri) {
-        model.addAttribute("productList", managementService.getProductList(cri));
-
         int total = pageService.getProductListTotal(cri);
-
+        model.addAttribute("productList", managementService.getProductList(cri));
         model.addAttribute("pageMaker", new PageDTO(cri, total));
-
         return "manager-product";
     }
 
