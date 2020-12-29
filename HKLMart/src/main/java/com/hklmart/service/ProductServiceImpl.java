@@ -24,8 +24,8 @@ public class ProductServiceImpl implements ProductService {
     public void deleteProduct() {
     }
 
-    public List<ProductListDTO> getUserProductList(PageCriteriaVO cri) {
-        return productDAO.getUserProductList(cri);
+    public List<ProductListDTO> getUserProductList(PageCriteriaVO cri,String productType) {
+        return productDAO.getUserProductList(cri,productType);
     }
 
     public int codeCheckTest(String insertCode) {

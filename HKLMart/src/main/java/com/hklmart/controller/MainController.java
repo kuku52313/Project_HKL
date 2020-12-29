@@ -2,6 +2,7 @@ package com.hklmart.controller;
 
 import com.hklmart.domain.PageCriteriaVO;
 import com.hklmart.domain.PageDTO;
+import com.hklmart.domain.ProductVO;
 import com.hklmart.service.MemberService;
 import com.hklmart.service.PageService;
 import com.hklmart.service.ProductServiceImpl;
@@ -71,9 +72,11 @@ public class MainController {
     }*/
 
     @GetMapping("/product-list")
-    public String goManagerProduct(Model model, PageCriteriaVO cri) {
+    public String goManagerProduct(Model model, PageCriteriaVO cri, ProductVO productVO) {
 
-        model.addAttribute("productList", productService.getUserProductList(cri));
+        String productType = productVO.getProductType();
+
+        model.addAttribute("productList", productService.getUserProductList(cri,productType));
 
         int total = pageService.getProductListTotal(cri);
 

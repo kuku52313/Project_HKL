@@ -112,7 +112,7 @@
                     <div>
                         <div class="menu-column">
                             <ul>
-                                <li><a href="#">스니커즈</a></li>
+                                <li><a href="/product-list?pageNum=1&amount=12&productType=11">스니커즈</a></li>
                                 <li><a href="#">캔버스화</a></li>
                                 <li><a href="#">슬립온</a></li>
                             </ul>

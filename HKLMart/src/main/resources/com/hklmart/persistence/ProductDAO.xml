@@ -73,7 +73,7 @@
                           , P.PRODUCT_CONTENT
                           , P.PRODUCT_REGDATE
                      FROM PRODUCT P
-                     WHERE ROWNUM <= #{pageNum} * #{amount}
+                     WHERE ROWNUM <= #{pageNum} * #{amount} and P.PRODUCT_TYPE = #{productType}
                      )
         WHERE RN > (#{pageNum} - 1) * #{amount}
         ]]>
