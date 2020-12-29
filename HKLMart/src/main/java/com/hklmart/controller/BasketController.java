@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/basket")
 public class BasketController {
 
-    private BasketService basket;
+    private final BasketService basket;
 
     public BasketController(BasketService basket) {
         this.basket = basket;

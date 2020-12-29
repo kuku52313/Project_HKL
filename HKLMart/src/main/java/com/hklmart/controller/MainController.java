@@ -18,10 +18,10 @@ import java.util.Map;
 @Controller
 public class MainController {
 
-    private MemberService memberService;
-    private ProductServiceImpl productService;
-    private PageService pageService;
-    private SearchService searchService;
+    private final MemberService memberService;
+    private final ProductServiceImpl productService;
+    private final PageService pageService;
+    private final SearchService searchService;
 
     public MainController(MemberService memberService, ProductServiceImpl productService, PageService pageService, SearchService searchService) {
         this.memberService = memberService;

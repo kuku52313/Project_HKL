@@ -19,7 +19,7 @@ import java.util.UUID;
 @Service
 public class FileService {
 
-    private ProductDAO product;
+    private final ProductDAO product;
 
     public FileService(ProductDAO product) {
         this.product = product;
@@ -66,7 +66,7 @@ public class FileService {
         File thumbnail = new File(path + "\\S_" + mainImageName);
         File contentImage = new File(path + "\\C_" + mainImageName);
 
-        if(imageVO.getUploadImg() == null) {
+        if (imageVO.getUploadImg() == null) {
 
         }
 

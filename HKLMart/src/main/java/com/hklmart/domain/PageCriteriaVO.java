@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class PageCriteriaVO {
-
     private int pageNum;
     private int amount;
 

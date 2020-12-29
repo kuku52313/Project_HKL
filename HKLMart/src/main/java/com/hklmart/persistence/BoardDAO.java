@@ -4,11 +4,11 @@ import com.hklmart.domain.BoardAskVO;
 import com.hklmart.domain.BoardReviewVO;
 
 public interface BoardDAO {
-	
-	public void insertAskBoard(BoardAskVO boardAskVO);
 
-	public void insertBoardReview(BoardReviewVO boardReviewVO);
+    void insertAskBoard(BoardAskVO boardAskVO);
 
-	public void updateAskAnswer(BoardAskVO boardAskVO);
-	
+    void insertBoardReview(BoardReviewVO boardReviewVO);
+
+    void updateAskAnswer(BoardAskVO boardAskVO);
+
 }

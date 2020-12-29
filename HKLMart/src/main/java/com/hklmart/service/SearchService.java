@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public class SearchService {
 
-    private SearchDAO search;
+    private final SearchDAO search;
 
     public SearchService(SearchDAO search) {
         this.search = search;
@@ -17,4 +17,5 @@ public class SearchService {
     public List<String> searchProduct(String searchStr) {
         return search.searchProduct(searchStr);
     }
+
 }

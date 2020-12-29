@@ -1,12 +1,10 @@
 package com.hklmart.domain;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 public class BoardReviewDTO {
-
 	private String boardReviewNumber;
 	private String boardReviewMemberId;
 	private String boardReviewProductCode;
@@ -17,7 +15,4 @@ public class BoardReviewDTO {
 	private String boardReviewImgpath;
 	private String boardReviewThumbnail;
 	private MultipartFile UploadImg;
-	
-	
-	
 }

@@ -2,33 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.hklmart.persistence.MemberDAO">
+    <insert id="registMember">
+        <![CDATA[
+        INSERT INTO MEMBER
+        VALUES (#{memberId}, #{memberPw}, #{memberName}, #{memberEmail}, #{memberTel}, SYSDATE, null)
+        ]]>
+    </insert>
 
-	<insert id="registMember">
-		<![CDATA[
-			INSERT INTO MEMBER VALUES (#{memberId}, #{memberPw}, #{memberName}, #{memberEmail}, #{memberTel}, sysdate, null)
-		]]>
-	</insert>
-	
-	<insert id="registAuthorities">
-		<![CDATA[
-			INSERT INTO AUTHORITIES VALUES (#{memberId}, #{authoritiesMember}, #{authoritiesManager, jdbcType=NULL}, #{authoritiesAdmin, jdbcType=NULL})
-		]]>
-	</insert>
-	
-	<select id="getMemberInfo" parameterType="java.lang.String" resultType="com.hklmart.domain.UserDetailsVO">
-		<![CDATA[
-			SELECT * FROM
-			(SELECT /*+ INDEX_ASC(MEMBER MEMBER_PK_MEMBER_ID) */
-			M.MEMBER_ID, M.MEMBER_PW, M.MEMBER_NAME, M.MEMBER_EMAIL, M.MEMBER_TEL, A.AUTHORITIES_MEMBER, A.AUTHORITIES_MANAGER, A.AUTHORITIES_ADMIN
-			FROM
-			MEMBER M, AUTHORITIES A WHERE M.MEMBER_ID = A.AUTHORITIES_MEMBER_ID) WHERE MEMBER_ID = #{param}
-		]]>
-	</select>
-	
-	<select id="idDuplicatiedInspection" parameterType="String" resultType="Integer">
-      SELECT COUNT(*) FROM member
-      WHERE member_Id = #{userId}
-	</select>
-	
-	
+    <insert id="registAuthorities">
+        <![CDATA[
+        INSERT INTO AUTHORITIES
+        VALUES (#{memberId}, #{authoritiesMember}, #{authoritiesManager, jdbcType=NULL}, #{authoritiesAdmin, jdbcType=NULL})
+        ]]>
+    </insert>
+
+    <select id="getMemberInfo" parameterType="java.lang.String" resultType="com.hklmart.domain.UserDetailsVO">
+        <![CDATA[
+        SELECT *
+        FROM (SELECT /*+ INDEX_ASC(MEMBER MEMBER_PK_MEMBER_ID) */
+                      M.MEMBER_ID,
+                      M.MEMBER_PW,
+                      M.MEMBER_NAME,
+                      M.MEMBER_EMAIL,
+                      M.MEMBER_TEL,
+                      A.AUTHORITIES_MEMBER,
+                      A.AUTHORITIES_MANAGER,
+                      A.AUTHORITIES_ADMIN
+              FROM MEMBER M,
+                   AUTHORITIES A
+              WHERE M.MEMBER_ID = A.AUTHORITIES_MEMBER_ID)
+        WHERE MEMBER_ID = #{param}
+        ]]>
+    </select>
+
+    <select id="idDuplicatiedInspection" parameterType="String" resultType="Integer">
+        SELECT COUNT(*)
+        FROM member
+        WHERE MEMBER_ID = #{userId}
+    </select>
 </mapper>

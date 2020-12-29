@@ -5,7 +5,6 @@ import com.hklmart.domain.PageDTO;
 import com.hklmart.service.ManagementService;
 import com.hklmart.service.PageService;
 import lombok.extern.log4j.Log4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,12 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/manager")
 public class ManagementController {
 
+    private final PageService pageService;
+    private final ManagementService managementService;
 
-    @Autowired
-    PageService pageService;
-
-    @Autowired
-    ManagementService managementService;
+    public ManagementController(PageService pageService, ManagementService managementService) {
+        this.pageService = pageService;
+        this.managementService = managementService;
+    }
 
     @GetMapping("/manager-page")
     private String goManagerPage() {

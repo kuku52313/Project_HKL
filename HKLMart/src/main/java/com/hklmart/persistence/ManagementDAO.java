@@ -1,22 +1,22 @@
 package com.hklmart.persistence;
 
-import java.util.List;
-
 import com.hklmart.domain.*;
+
+import java.util.List;
 
 
 public interface ManagementDAO {
-	
-	public List<ProductListDTO> getProductList(PageCriteriaVO cri);
 
-	public List<BoardAskDTO> getAskBoardList(PageCriteriaVO cri);
+    List<ProductListDTO> getProductList(PageCriteriaVO cri);
 
-	public List<BoardReviewListDTO> getBoardReviewList(PageCriteriaVO cri);
+    List<BoardAskDTO> getAskBoardList(PageCriteriaVO cri);
 
-	public List<MemberListDTO> getMemberList(PageCriteriaVO cri);
+    List<BoardReviewListDTO> getBoardReviewList(PageCriteriaVO cri);
 
-	public ProductModifyDTO getModify(String productCode);
+    List<MemberListDTO> getMemberList(PageCriteriaVO cri);
 
-	public BoardAskDTO getAskAnswer(String boardAskNumber);
-	
+    ProductModifyDTO getModify(String productCode);
+
+    BoardAskDTO getAskAnswer(String boardAskNumber);
+
 }

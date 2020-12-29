@@ -4,7 +4,6 @@ import com.hklmart.domain.MemberVO;
 import com.hklmart.domain.UserDetailsVO;
 import com.hklmart.persistence.MemberDAO;
 import lombok.extern.log4j.Log4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +11,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class MemberService {
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder;
+    private final MemberDAO memberDAO;
 
-    @Autowired
-    private MemberDAO memberDAO;
+    public MemberService(BCryptPasswordEncoder passwordEncoder, MemberDAO memberDAO) {
+        this.passwordEncoder = passwordEncoder;
+        this.memberDAO = memberDAO;
+    }
 
     public void registMember(MemberVO memberVO) {
         memberVO.setAuthoritiesMember("ROLE_MEMBER");
@@ -35,12 +36,7 @@ public class MemberService {
         memberDAO.updatePassword(memberId, passwordEncoder.encode(memberPw));
     }
 
-
     public int idCheckTest(String userId) {
         return memberDAO.idDuplicatiedInspection(userId);
     }
-
-
-
-
 }

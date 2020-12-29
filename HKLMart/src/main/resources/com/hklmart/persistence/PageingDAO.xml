@@ -2,31 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.hklmart.persistence.PageingDAO">
-
     <select id="getAskBoardListTotalCount" resultType="int">
         <![CDATA[
-	select count(*) from board_ask where board_ask_number > 0
-	]]>
+        SELECT COUNT(*)
+        FROM BOARD_ASK
+        WHERE BOARD_ASK_NUMBER > 0
+        ]]>
     </select>
 
     <select id="getMemberListTotalCount" resultType="int">
         <![CDATA[
-	select count(*) from member
-	]]>
+        SELECT COUNT(*)
+        FROM MEMBER
+        ]]>
     </select>
 
     <select id="getReviewListTotalCount" resultType="int">
         <![CDATA[
-	select count(*) from board_review
-	]]>
+        SELECT COUNT(*)
+        FROM BOARD_REVIEW
+        ]]>
     </select>
 
     <select id="getProductListTotalCount" resultType="int">
         <![CDATA[
-	select count(*) from product
-	]]>
+        SELECT COUNT(*)
+        FROM PRODUCT
+        ]]>
     </select>
-
-
-
 </mapper>

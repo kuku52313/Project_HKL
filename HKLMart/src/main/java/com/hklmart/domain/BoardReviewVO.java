@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class BoardReviewVO {
-
 	private String boardReviewNumber;
 	private String boardReviewMemberId;
 	private String boardReviewProductCode;
@@ -14,7 +13,4 @@ public class BoardReviewVO {
 	private String boardReviewImg;
 	private String boardReviewImgpath;
 	private String boardReviewThumbnail;
-	
-	
-	
 }

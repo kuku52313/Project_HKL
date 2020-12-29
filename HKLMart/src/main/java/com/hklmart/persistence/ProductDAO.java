@@ -8,18 +8,17 @@ import com.hklmart.domain.StockVO;
 import java.util.List;
 
 public interface ProductDAO {
-	void saveFile(ProductVO productVO);
 
-	void saveStock(StockVO stockVO);
+    void saveFile(ProductVO productVO);
 
-	int codeCheck(String insertCode);
+    void saveStock(StockVO stockVO);
 
-	void modifyFile(ProductVO productVO);
+    int codeCheck(String insertCode);
 
-	void modifyStock(StockVO stockVO);
+    void modifyFile(ProductVO productVO);
 
-	public List<ProductListDTO> getUserProductList(PageCriteriaVO cri);
+    void modifyStock(StockVO stockVO);
 
-
+    List<ProductListDTO> getUserProductList(PageCriteriaVO cri);
 
 }

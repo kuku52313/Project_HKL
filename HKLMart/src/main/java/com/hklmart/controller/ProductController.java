@@ -16,7 +16,7 @@ import java.io.IOException;
 @RequestMapping("/product")
 public class ProductController {
 
-    private FileService fileService;
+    private final FileService fileService;
 
     public ProductController(FileService fileService) {
         this.fileService = fileService;
