@@ -1,6 +1,7 @@
 package com.hklmart.service;
 
 import com.hklmart.domain.PageCriteriaVO;
+import com.hklmart.domain.ProductPageCriteriaVO;
 import com.hklmart.persistence.PageingDAO;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +28,8 @@ public class PageService {
 
     public int getProductListTotal(PageCriteriaVO cri) {
         return pageingDAO.getProductListTotalCount(cri);
+    }
+    public int getUserProductListTotal(ProductPageCriteriaVO cri) {
+        return pageingDAO.getUserProductListTotalCount(cri);
     }
 }

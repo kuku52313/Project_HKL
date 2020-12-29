@@ -30,4 +30,11 @@
         FROM PRODUCT
         ]]>
     </select>
+    <select id="getUserProductListTotalCount" resultType="int">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM PRODUCT
+        WHERE PRODUCT_TYPE = #{Type}
+        ]]>
+    </select>
 </mapper>

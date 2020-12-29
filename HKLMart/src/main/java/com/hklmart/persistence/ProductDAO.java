@@ -16,7 +16,7 @@ public interface ProductDAO {
 
     void modifyStock(StockVO stockVO);
 
-    List<ProductListDTO> getUserProductList(PageCriteriaVO cri,String productType);
+    List<ProductListMainDTO> getUserProductList(ProductPageCriteriaVO cri);
 
     ImageVO getImageInfo(String productCode);
 

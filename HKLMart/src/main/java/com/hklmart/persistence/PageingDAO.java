@@ -1,6 +1,7 @@
 package com.hklmart.persistence;
 
 import com.hklmart.domain.PageCriteriaVO;
+import com.hklmart.domain.ProductPageCriteriaVO;
 
 public interface PageingDAO {
 
@@ -11,5 +12,7 @@ public interface PageingDAO {
     public int getReviewListTotalCount(PageCriteriaVO cri);
 
     public int getProductListTotalCount(PageCriteriaVO cri);
+
+    public int getUserProductListTotalCount(ProductPageCriteriaVO cri);
 
 }

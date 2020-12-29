@@ -67,7 +67,7 @@
 
     <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
         <li class="page-item">
-            <a class="page-link" style="color: black;" href="/product-list?pageNum=${num}&amount=12">${num}</a>
+            <a class="page-link" style="color: black;" href="/product-list?pageNum=${num}&amount=12&Type=${param.Type}">${num}</a>
         </li>
     </c:forEach>
 

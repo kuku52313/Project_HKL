@@ -55,7 +55,7 @@
         ]]>
     </update>
 
-    <select id="getUserProductList" resultType="com.hklmart.domain.ProductListDTO">
+    <select id="getUserProductList" resultType="com.hklmart.domain.ProductListMainDTO">
         <![CDATA[
         SELECT *
         FROM (
@@ -72,7 +72,7 @@
                           , P.PRODUCT_CONTENT
                           , P.PRODUCT_REGDATE
                      FROM PRODUCT P
-                     WHERE ROWNUM <= #{pageNum} * #{amount} and P.PRODUCT_TYPE = #{productType}
+                     WHERE ROWNUM <= #{pageNum} * #{amount} and P.PRODUCT_TYPE = ${Type}
                      )
         WHERE RN > (#{pageNum} - 1) * #{amount}
         ]]>
