@@ -4,8 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true" %>
-
 <%@include file="includes/header.jsp" %>
+
 <title>HKL Mart :: 제품 조회</title>
 
 <!-- Body -->
@@ -49,9 +49,9 @@
                 </div>
             </c:forEach>
         </div>
+
     </div>
 </div>
-
 
 <ul class="pagination justify-content-center" style="margin:20px 0">
 
@@ -73,7 +73,6 @@
         </li>
     </c:if>
 </ul>
-
 
 <form id="pageForm" action="/product-list" method="get">
     <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}"/>

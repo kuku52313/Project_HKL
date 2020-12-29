@@ -42,7 +42,7 @@
             <div class="row form-inline">
                 <div class="col-5"></div>
                 <div class="col-5">
-                    <input class="form-control active-pink" id="productSearch" type="search" placeholder="제품명 검색" onkeyup="searchFunc()" style="width:100%">
+                    <input class="form-control active-pink" id="productSearch" type="search" placeholder="제품명 검색" onkeyup="searchFunc()" style="width:100%" autocomplete="off">
                 </div>
 
                 <div class="col-2">
@@ -341,24 +341,22 @@
 
     function searchFunc() {
         let productSearch = document.getElementById('productSearch').value;
-        if (productSearch !== "") {
-            $.ajax({
-                url: "/ajax/search",
-                type: "GET",
-                dataType: "json",
-                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                data: {"searchStr": productSearch},
-                success: function (data) {
-                    var list = data.searchList;
-                    $("#productSearch").autocomplete({
-                        source: list
-                    })
-                },
-                error: function () {
-                    alert("Error. 관리자에게 문의하십시오.");
-                },
-            });
-        }
+        $.ajax({
+            url: "/ajax/search",
+            type: "GET",
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            data: {"searchStr": productSearch},
+            success: function (data) {
+                let dataList = data.searchList;
+                $("#productSearch").autocomplete({
+                    source: dataList
+                });
+            },
+            error: function () {
+                alert("Error. 관리자에게 문의하십시오.");
+            },
+        });
     }
 </script>
 
