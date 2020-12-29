@@ -58,22 +58,28 @@
 </div>
 
 <ul class="pagination justify-content-center" style="margin:20px 0">
+    <c:set var="CategoryPath" value="${param.Category}" />
 
     <c:if test="${pageMaker.prev}">
-        <li class="page-item"><a class="page-link" href="/product-list${param.Category}?pageNum=${pageMaker.startPage - 1}&amount=10">Previous</a>
+        <li class="page-item">
+            <a class="page-link"
+               href="/product-list${param.Category}?pageNum=${pageMaker.startPage - 1}&amount=10<c:if test="${CategoryPath eq '-MainCategory'}" >&Category=-MainCategory
+    </c:if>">Previous</a>
         </li>
     </c:if>
 
 
     <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
         <li class="page-item">
-            <a class="page-link" style="color: black;" href="/product-list${param.Category}?pageNum=${num}&amount=12&Type=${param.Type}">${num}</a>
+            <a class="page-link" style="color: black;" href="/product-list${param.Category}?pageNum=${num}&amount=12&Type=${param.Type}<c:if test="${CategoryPath eq '-MainCategory'}" >&Category=-MainCategory
+    </c:if>">${num}</a>
         </li>
     </c:forEach>
 
     <c:if test="${pageMaker.next}">
         <li class="page-item">
-            <a class="page-link" style="color: black;" href="/product-list${param.Category}?pageNum=${pageMaker.endPage + 1}&amount=12">Next</a>
+            <a class="page-link" style="color: black;" href="/product-list${param.Category}?pageNum=${pageMaker.endPage + 1}&amount=12<c:if test="${CategoryPath eq '-MainCategory'}" >&Category=-MainCategory
+    </c:if>">Next</a>
         </li>
     </c:if>
 </ul>
