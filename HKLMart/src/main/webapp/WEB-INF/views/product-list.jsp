@@ -6,6 +6,10 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@include file="includes/header.jsp" %>
 
+<head>
+    <link rel="stylesheet" href="/resources/css/product-list.css">
+</head>
+
 <title>HKL Mart :: 제품 조회</title>
 
 <!-- Body -->

@@ -22,6 +22,11 @@
     <script src="/resources/bootstrap/4.5.3/js/bootstrap.min.js"></script>
     <script src="/resources/jquery-ui/jquery-1.12.4.js"></script>
     <script src="/resources/jquery-ui/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="/resources/css/add-product.css">
+
+
+
 </head>
 
 <body>
@@ -43,7 +48,7 @@
             <div class="row form-inline">
                 <div class="col-5"></div>
                 <div class="col-5">
-                    <input class="form-control active-pink" id="productSearch" type="search" placeholder="제품명 검색" onkeyup="searchFunc()" style="width:100%">
+                    <input class="form-control active-pink" id="productSearch" type="search" placeholder="제품명 검색" onkeyup="searchFunc()" style="width:100%" autocomplete="off">
                 </div>
 
                 <div class="col-2">

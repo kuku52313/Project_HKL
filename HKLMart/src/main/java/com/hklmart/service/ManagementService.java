@@ -11,33 +11,33 @@ import java.util.List;
 @Service
 public class ManagementService {
 
-    private final ManagementDAO management;
+    private final ManagementDAO managmentDAO;
 
-    public ManagementService(ManagementDAO management) {
-        this.management = management;
+    public ManagementService(ManagementDAO managmentDAO) {
+        this.managmentDAO = managmentDAO;
     }
 
     public List<ProductListDTO> getProductList(PageCriteriaVO cri) {
-        return management.getProductList(cri);
+        return managmentDAO.getProductList(cri);
     }
 
     public List<BoardAskDTO> getAskBoardList(PageCriteriaVO cri) {
-        return management.getAskBoardList(cri);
+        return managmentDAO.getAskBoardList(cri);
     }
 
     public List<BoardReviewListDTO> getBoardReviewList(PageCriteriaVO cri) {
-        return management.getBoardReviewList(cri);
+        return managmentDAO.getBoardReviewList(cri);
     }
 
     public List<MemberListDTO> getMemberList(PageCriteriaVO cri) {
-        return management.getMemberList(cri);
+        return managmentDAO.getMemberList(cri);
     }
 
     public ProductModifyDTO getModify(String productCode) {
-        return management.getModify(productCode);
+        return managmentDAO.getModify(productCode);
     }
 
     public BoardAskDTO getAskAnswer(String boardAskNumber) {
-        return management.getAskAnswer(boardAskNumber);
+        return managmentDAO.getAskAnswer(boardAskNumber);
     }
 }
