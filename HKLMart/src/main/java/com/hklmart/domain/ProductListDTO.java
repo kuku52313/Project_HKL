@@ -13,6 +13,7 @@ public class ProductListDTO {
     private String productCode;
     private String productBrand;
     private String productPrice;
+    @Setter(AccessLevel.PROTECTED)
     private String productContent;
     private String productRegdate;
 
@@ -23,10 +24,6 @@ public class ProductListDTO {
     @Setter(AccessLevel.PROTECTED)
     private String productThumbnail;
 
-    @Setter(AccessLevel.PROTECTED)
-    private String productContentImg;
-    @Setter(AccessLevel.PROTECTED)
-    private String productContentImgpath;
 
 
     @Setter(AccessLevel.PROTECTED)
@@ -95,6 +92,13 @@ public class ProductListDTO {
         this.productThumbnail = pathReplace;
 
     }
+    protected void setProductContent(String productContent) {
 
+
+        String pathReplace = productContent.replace('\\', '/');
+
+        this.productContent = pathReplace;
+
+    }
 
 }
