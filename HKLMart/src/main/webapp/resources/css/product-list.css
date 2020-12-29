@@ -3,21 +3,18 @@
     font-family: "GodoM";
 }
 
-body, h1, h2, h3, h4, h5, h6, p {
-    font-family: "GodoM"
-}
-
 .font-s {
     padding: 5px;
     color: gray;
-    font-size: 15px;
+    font-size: 13px;
+    font-weight: bold;
 }
 
 .font-m {
     padding: 5px;
     color: black;
-    font-size: 20px;
-    font-family: "맑은 고딕";
+    font-size: 15px;
+    font-family: Godo;
 }
 
 .font-b {
@@ -60,7 +57,7 @@ body, h1, h2, h3, h4, h5, h6, p {
     height: 10%;
     position: absolute;
     left: 50%;
-    bottom: 10px;
+    bottom: 15px;
     z-index: 500;
     visibility: visible;
 }
