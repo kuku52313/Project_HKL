@@ -15,8 +15,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="stylesheet" href="/resources/bootstrap/4.5.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="/resources/css/index.css">
+    <link rel="stylesheet" href="/resources/jquery-ui/jquery-ui.css">
     <script src="/resources/jquery/3.5.1/jquery.min.js"></script>
     <script src="/resources/bootstrap/4.5.3/js/bootstrap.min.js"></script>
+    <script src="/resources/jquery-ui/jquery-1.12.4.js"></script>
+    <script src="/resources/jquery-ui/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -35,11 +38,10 @@
 
             <!-- Search -->
             <div class="navbar_search col-5">
-
                 <div class="row form-inline">
-
-                    <div class="col-10">
-                        <input class="form-control active-pink" type="search" placeholder="Search" style="width: 50%; float: right;">
+                    <div class="col-5"></div>
+                    <div class="col-5">
+                        <input class="form-control active-pink" id="productSearch" type="search" placeholder="제품명 검색" onkeyup="searchFunc()" style="width:100%">
                     </div>
 
                     <div class="col-2">

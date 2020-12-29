@@ -1,6 +1,5 @@
 package com.hklmart.controller;
 
-import com.hklmart.domain.ProductModifyDTO;
 import com.hklmart.domain.ProductVO;
 import com.hklmart.domain.RegistImageVO;
 import com.hklmart.domain.StockVO;
@@ -17,7 +16,7 @@ import java.io.IOException;
 @RequestMapping("/product")
 public class ProductController {
 
-    private final FileService fileService;
+    private FileService fileService;
 
     public ProductController(FileService fileService) {
         this.fileService = fileService;

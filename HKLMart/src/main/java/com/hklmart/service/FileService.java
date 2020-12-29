@@ -1,6 +1,5 @@
 package com.hklmart.service;
 
-import com.hklmart.domain.ProductModifyDTO;
 import com.hklmart.domain.ProductVO;
 import com.hklmart.domain.RegistImageVO;
 import com.hklmart.domain.StockVO;
@@ -20,7 +19,7 @@ import java.util.UUID;
 @Service
 public class FileService {
 
-    private final ProductDAO product;
+    private ProductDAO product;
 
     public FileService(ProductDAO product) {
         this.product = product;

@@ -4,9 +4,9 @@ import com.hklmart.domain.PageCriteriaVO;
 import com.hklmart.domain.PageDTO;
 import com.hklmart.service.MemberService;
 import com.hklmart.service.PageService;
-import com.hklmart.service.ProductService;
 import com.hklmart.service.ProductServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.hklmart.service.SearchService;
+import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,18 +14,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
+@Log4j
 @Controller
 public class MainController {
 
-    @Autowired
-    PageService pageService;
+    private MemberService memberService;
+    private ProductServiceImpl productService;
+    private PageService pageService;
+    private SearchService searchService;
 
-    private final MemberService memberService;
-    private final ProductServiceImpl productService;
-
-    public MainController(MemberService memberService, ProductServiceImpl productService) {
+    public MainController(MemberService memberService, ProductServiceImpl productService, PageService pageService, SearchService searchService) {
         this.memberService = memberService;
         this.productService = productService;
+        this.pageService = pageService;
+        this.searchService = searchService;
     }
 
     @RequestMapping("/")
@@ -46,6 +48,15 @@ public class MainController {
     public Map<String, Object> codeCheck(@RequestBody String insertCode) {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("cnt", productService.codeCheckTest(insertCode));
+        return map;
+    }
+
+    @GetMapping("/ajax/search")
+    @ResponseBody
+    public Map<String, Object> searchProduct(@RequestParam("searchStr") String searchStr) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("searchList", searchService.searchProduct(searchStr));
+        log.info(map);
         return map;
     }
 
