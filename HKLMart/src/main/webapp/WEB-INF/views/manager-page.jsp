@@ -29,7 +29,7 @@
             <ul class="sidebar" id="sidebar">
                 <hr/>
                 <li><a class="sidebarMain" href="#header">관리자 페이지</a></li>
-                <li><a href="#prudctListPage">제품 코드 리스트</a></li>
+                <li><a href="/manager/manager-product">제품 관리 페이지</a></li>
                 <li><a href="#orderListPage">주문 전체 내역</a></li>
                 <li><a href="#askBoardPage">회원 문의 내역</a></li>
                 <li><a href="#boardReviews">리뷰 관리 페이지</a></li>

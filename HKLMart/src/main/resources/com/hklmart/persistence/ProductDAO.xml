@@ -31,8 +31,7 @@
             PRODUCT_IMG             = #{productImg},
             PRODUCT_THUMBNAIL       = #{productThumbnail},
             PRODUCT_CONTENT         = #{productContent},
-            PRODUCT_CONTENT_IMGPATH = #{productContentImgpath},
-            PRODUCT_CONTENT_IMG     = #{productContentImg}
+            PRODUCT_REGDATE         = SYSDATE
         WHERE PRODUCT_CODE = #{productCode}
         ]]>
     </update>
@@ -76,6 +75,14 @@
                      WHERE ROWNUM <= #{pageNum} * #{amount} and P.PRODUCT_TYPE = #{productType}
                      )
         WHERE RN > (#{pageNum} - 1) * #{amount}
+        ]]>
+    </select>
+
+    <select id="getImageInfo" resultType="com.hklmart.domain.ImageVO">
+        <![CDATA[
+        SELECT PRODUCT_IMGPATH, PRODUCT_IMG, PRODUCT_THUMBNAIL, PRODUCT_CONTENT
+        FROM PRODUCT
+        WHERE PRODUCT_CODE = #{PARAM}
         ]]>
     </select>
 </mapper>

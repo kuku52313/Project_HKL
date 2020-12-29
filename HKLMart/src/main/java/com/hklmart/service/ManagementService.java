@@ -13,8 +13,8 @@ public class ManagementService {
 
     private final ManagementDAO managementDAO;
 
-    public ManagementService(ManagementDAO managementDAO) {
-        this.managementDAO = managementDAO;
+    public ManagementService(ManagementDAO managmentDAO) {
+        this.managementDAO = managmentDAO;
     }
 
     public List<ProductListDTO> getProductList(PageCriteriaVO cri) {
