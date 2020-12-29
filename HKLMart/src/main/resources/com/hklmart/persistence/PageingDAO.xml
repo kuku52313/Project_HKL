@@ -37,4 +37,12 @@
         WHERE PRODUCT_TYPE = #{Type}
         ]]>
     </select>
+
+    <select id="getMainCategoryUserProductListTotalCount" resultType="int">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM PRODUCT
+        WHERE PRODUCT_TYPE between #{Type} and (${Type}+19)
+        ]]>
+    </select>
 </mapper>

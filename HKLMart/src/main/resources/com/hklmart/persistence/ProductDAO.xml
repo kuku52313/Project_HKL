@@ -77,7 +77,28 @@
         WHERE RN > (#{pageNum} - 1) * #{amount}
         ]]>
     </select>
-
+    <select id="getMainCategoryUserProductList" resultType="com.hklmart.domain.ProductListMainDTO">
+        <![CDATA[
+        SELECT *
+        FROM (
+                     SELECT/*INDEX_DESC(PRODUCT PRODUCT_PK) */
+                             ROWNUM RN
+                          , P.PRODUCT_CODE
+                          , P.PRODUCT_NAME
+                          , P.PRODUCT_BRAND
+                          , P.PRODUCT_PRICE
+                          , P.PRODUCT_TYPE
+                          , P.PRODUCT_IMGPATH
+                          , P.PRODUCT_IMG
+                          , P.PRODUCT_THUMBNAIL
+                          , P.PRODUCT_CONTENT
+                          , P.PRODUCT_REGDATE
+                     FROM PRODUCT P
+                     WHERE ROWNUM <= #{pageNum} * #{amount} and P.PRODUCT_TYPE between ${Type} and (${Type}+19)
+                     )
+        WHERE RN > (#{pageNum} - 1) * #{amount}
+        ]]>
+    </select>
     <select id="getImageInfo" resultType="com.hklmart.domain.ImageVO">
         <![CDATA[
         SELECT PRODUCT_IMGPATH, PRODUCT_IMG, PRODUCT_THUMBNAIL, PRODUCT_CONTENT

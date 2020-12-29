@@ -79,7 +79,7 @@ public class MainController {
     }*/
 
     @GetMapping("/product-list")
-    public String goManagerProduct(Model model, ProductPageCriteriaVO cri) {
+    public String goUserProductList(Model model, ProductPageCriteriaVO cri) {
 
         model.addAttribute("productList", productService.getUserProductList(cri));
 
@@ -93,4 +93,16 @@ public class MainController {
         return "product-list";
     }
 
+
+    @GetMapping("/product-list-MainCategory")
+    public String goMainCategoryProduct(Model model, ProductPageCriteriaVO cri) {
+
+        model.addAttribute("productList", productService.getMainCategoryUserProductList(cri));
+
+        int total = pageService.getMainCategoryUserProductListTotal(cri);
+
+        model.addAttribute("pageMaker", new PageDTO(cri, total));
+
+        return "product-list";
+    }
 }

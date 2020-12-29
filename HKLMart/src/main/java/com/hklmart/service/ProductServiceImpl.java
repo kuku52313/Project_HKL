@@ -30,7 +30,12 @@ public class ProductServiceImpl implements ProductService {
         return productDAO.getUserProductList(cri);
     }
 
+    public List<ProductListMainDTO> getMainCategoryUserProductList(ProductPageCriteriaVO cri) {
+        return productDAO.getMainCategoryUserProductList(cri);
+    }
+
     public int codeCheckTest(String insertCode) {
         return productDAO.codeCheck(insertCode);
     }
+
 }

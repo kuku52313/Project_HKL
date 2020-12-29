@@ -108,7 +108,7 @@
         <div class="col-10">
             <ul class="menu" style="width: 100%;">
                 <li>
-                    <a href="#header">운동화</a>
+                    <a href="/product-list-MainCategory?pageNum=1&amount=12&Type=10&Category=-MainCategory">운동화</a>
                     <div>
                         <div class="menu-column">
                             <ul>

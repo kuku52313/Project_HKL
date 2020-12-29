@@ -18,6 +18,8 @@ public interface ProductDAO {
 
     List<ProductListMainDTO> getUserProductList(ProductPageCriteriaVO cri);
 
+    List<ProductListMainDTO> getMainCategoryUserProductList(ProductPageCriteriaVO cri);
+
     ImageVO getImageInfo(String productCode);
 
 }

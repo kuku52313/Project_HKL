@@ -15,4 +15,6 @@ public interface PageingDAO {
 
     public int getUserProductListTotalCount(ProductPageCriteriaVO cri);
 
+    public int getMainCategoryUserProductListTotalCount(ProductPageCriteriaVO cri);
+
 }

@@ -60,20 +60,20 @@
 <ul class="pagination justify-content-center" style="margin:20px 0">
 
     <c:if test="${pageMaker.prev}">
-        <li class="page-item"><a class="page-link" href="/product-list?pageNum=${pageMaker.startPage - 1}&amount=10">Previous</a>
+        <li class="page-item"><a class="page-link" href="/product-list${param.Category}?pageNum=${pageMaker.startPage - 1}&amount=10">Previous</a>
         </li>
     </c:if>
 
 
     <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
         <li class="page-item">
-            <a class="page-link" style="color: black;" href="/product-list?pageNum=${num}&amount=12&Type=${param.Type}">${num}</a>
+            <a class="page-link" style="color: black;" href="/product-list${param.Category}?pageNum=${num}&amount=12&Type=${param.Type}">${num}</a>
         </li>
     </c:forEach>
 
     <c:if test="${pageMaker.next}">
         <li class="page-item">
-            <a class="page-link" style="color: black;" href="/product-list?pageNum=${pageMaker.endPage + 1}&amount=12">Next</a>
+            <a class="page-link" style="color: black;" href="/product-list${param.Category}?pageNum=${pageMaker.endPage + 1}&amount=12">Next</a>
         </li>
     </c:if>
 </ul>
