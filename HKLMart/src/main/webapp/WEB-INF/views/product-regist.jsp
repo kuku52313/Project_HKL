@@ -41,7 +41,8 @@
 
             <div class="row form-inline">
 
-                <div class="col-10">
+                <div class="col-5"></div>
+                <div class="col-5">
                     <input class="form-control active-pink" id="productSearch" type="search" placeholder="제품명 검색" onkeyup="searchFunc()" style="width:100%" autocomplete="off">
                 </div>
 
