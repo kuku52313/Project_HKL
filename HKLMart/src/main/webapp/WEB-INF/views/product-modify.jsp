@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="/resources/css/index.css">
     <link rel="stylesheet" href="/resources/css/add-product.css">
     <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
+    <link rel="stylesheet" href="/resources/jquery-ui/jquery-ui.css">
+    <script src="/resources/jquery-ui/jquery-1.12.4.js"></script>
+    <script src="/resources/jquery-ui/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -32,13 +35,13 @@
             </a>
         </div>
 
+
         <!-- Search -->
         <div class="navbar_search col-5">
-
             <div class="row form-inline">
-
-                <div class="col-10">
-                    <input class="form-control active-pink" type="search" placeholder="Search" style="width: 50%; float: right;">
+                <div class="col-5"></div>
+                <div class="col-5">
+                    <input class="form-control active-pink" id="productSearch" type="search" placeholder="제품명 검색" onkeyup="searchFunc()" style="width:100%" autocomplete="off">
                 </div>
 
                 <div class="col-2">
@@ -48,6 +51,7 @@
                 </div>
             </div>
         </div>
+
 
         <!-- NavMenu -->
         <!-- 비로그인 상태 -->
@@ -470,7 +474,27 @@
             });
         }
     }
-
+    function searchFunc() {
+        let productSearch = document.getElementById('productSearch').value;
+        if (productSearch !== "") {
+            $.ajax({
+                url: "/ajax/search",
+                type: "GET",
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                data: {"searchStr": productSearch},
+                success: function (data) {
+                    var list = data.searchList;
+                    $("#productSearch").autocomplete({
+                        source: list
+                    })
+                },
+                error: function () {
+                    alert("Error. 관리자에게 문의하십시오.");
+                },
+            });
+        }
+    }
 </script>
 
 </html>

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/resources/css/index.css">
     <link rel="stylesheet" href="/resources/css/add-product.css">
     <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
+    <link rel="stylesheet" href="/resources/jquery-ui/jquery-ui.css">
     <script src="/resources/jquery/3.5.1/jquery.min.js"></script>
     <script src="/resources/bootstrap/4.5.3/js/bootstrap.min.js"></script>
     <script src="/resources/jquery-ui/jquery-1.12.4.js"></script>
