@@ -21,8 +21,6 @@ public class ProductModifyDTO {
 	private String productImg;
 	private String productThumbnail;
 	private String productRegdate;
-	private String productContentImg;
-	private String productContentImgpath;
 	private MultipartFile uploadImg;
 	private MultipartFile contentImg;
 	private int stock240;

@@ -158,8 +158,7 @@
 	<input type="hidden" name="productImgPath" value="${product.productImgPath}" />
 	<input type="hidden" name="productImg" value="${product.productImg}" />
 	<input type="hidden" name="productThumbnail" value="${product.productThumbnail}" />
-	<input type="hidden" name="productContentImg" value="${product.productContentImg}" />
-	<input type="hidden" name="productContentImgpath" value="${product.productContentImgpath}" />
+	<input type="hidden" name="productContent" value="${product.productContent}" />
 		<div class="form-header">
 			<h1>제품 수정 및 재고 수정</h1>
 		</div>
@@ -180,15 +179,6 @@
 				<input type="text" class="formText" id="codeProduct" name="productCode" value="${product.productCode}" readonly="readonly" style="background-color: #e1e4ee" />
 			</div>
 			<hr style="border: solid 1px #ffb6b6;">
-			<label>제품 이미지</label>&nbsp;&nbsp;
-			<div class="form-group left">
-				<label for="contentFile" class="fileTitle"></label>
-				<input type="file" id="choose-file" name="uploadImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;" />
-				<div id="select_img" style="width: 100%; text-align: center">
-					<img src="" />
-				</div>
-			</div>
-			<hr style="border: solid 1px #ffb6b6;">
 			<div class="record">
 				<label>제품 가격</label>&nbsp;&nbsp;
 				<input type="text" class="formText" id="priceProduct" name="productPrice" value="${product.productPrice}" />
@@ -200,20 +190,23 @@
 			<input type="text" class="formText" id="kindProduct" name="productType" value="${product.productType}" readonly="readonly" style="background-color: #e1e4ee" />
 		</div>
 		<hr style="border: solid 1px #ffb6b6;">
-		<div class="record">
-			<label>제품 설명</label>
-		</div>
-		<div>
-			<textarea id="content" name="productContent" cols="90" row="10" style="border-color: #ffb6b6;">${product.productContent}</textarea>
+		   <div class="form-group left">
+                <label>제품 이미지</label><br/>
+                <input type="file" id="choose-file" name="uploadImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;"/>
+                <div id="select_img" style="width: 100%; text-align: center">
+                    <img src=""/>
+                </div>
+            </div>
+            <hr style="border: solid 1px #ffb6b6;">
 
-			<div class="form-group left">
-				<label for="contentFile" class="fileTitle"></label>
-				<input type="file" id="content-file" name="contentImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;" />
-				<div id="select_content_img" style="width: 100%; text-align: center">
-					<img src="" />
-				</div>
-			</div>
-		</div>
+            <div class="form-group left">
+                <label>제품 상세 이미지</label><br/>
+                <input type="file" id="content-file" name="contentImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;"/>
+                <div id="select_content_img" style="width: 100%; text-align: center">
+                    <img src=""/>
+                </div>
+            </div>
+
 		<hr style="border: solid 1px #ffb6b6;">
 		<!-- 재고 등록 -->
 		<label>사이즈별 재고 수량</label>

@@ -35,8 +35,8 @@ public class ProductController {
     }
 
     @PostMapping("/product-modify-up")
-    public String modifyProduct(HttpServletRequest request, ProductModifyDTO productDTO) throws IllegalStateException, IOException {
-        fileService.modifyProduct(request, productDTO);
+    public String modifyProduct(HttpServletRequest request, ProductVO productVO, RegistImageVO imageVO, StockVO stockVO) throws IllegalStateException, IOException {
+        fileService.modifyProduct(request, productVO, imageVO, stockVO);
         return "redirect:/manager/manager-product";
     }
 
