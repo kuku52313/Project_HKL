@@ -113,13 +113,13 @@
         <div class="col-10">
             <ul class="menu" style="width: 100%;">
                 <li>
-                    <a href="#header">운동화</a>
+                    <a href="/product-list-MainCategory?pageNum=1&amount=12&Type=10&Category=-MainCategory">운동화</a>
                     <div>
                         <div class="menu-column">
                             <ul>
-                                <li><a href="#">스니커즈</a></li>
-                                <li><a href="#">캔버스화</a></li>
-                                <li><a href="#">슬립온</a></li>
+                                <li><a href="/product-list?pageNum=1&amount=12&Type=11">스니커즈</a></li>
+                                <li><a href="/product-list?pageNum=1&amount=12&Type=12">캔버스화</a></li>
+                                <li><a href="/product-list?pageNum=1&amount=12&Type=13">슬립온</a></li>
                             </ul>
                         </div>
                     </div>
