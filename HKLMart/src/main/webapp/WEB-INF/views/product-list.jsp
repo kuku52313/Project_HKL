@@ -52,7 +52,7 @@
         <br>
         </c:if>
         <div class="w3-quarter" style= "float:left;">
-          <a href=""><img src="<%=request.getContextPath()%>${list.productImgpath}${list.productThumbnail}.png" style="width:100%"/></a>
+          <a href=""><img src="<%=request.getContextPath()%>${list.productImgpath}${list.productThumbnail}" style="width:100%"/></a>
           <a href=""><h3>${list.productBrand}</h3></a>
           <a href=""><p style="font-size : 19px;">${list.productName}</p> </a>
           <a href=""><p id="price" style="font-size : 28px; display: inline;">${list.productPrice}</p> <span>원</span></a>
@@ -75,13 +75,13 @@
 
                                                                                   			<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
                                                                                   				<li class="page-item">
-                                                                                  				<a class="page-link" style="color: black;" href="/product-list?pageNum=${num}&amount=10">${num}</a>
+                                                                                  				<a class="page-link" style="color: black;" href="/product-list?pageNum=${num}&amount=12">${num}</a>
                                                                                   				</li>
                                                                                   			</c:forEach>
 
                                                                                   			<c:if test="${pageMaker.next}">
                                                                                   				<li class="page-item">
-                                                                                  				<a class="page-link" style="color: black;" href="/product-list?pageNum=${pageMaker.endPage + 1}&amount=10">Next</a>
+                                                                                  				<a class="page-link" style="color: black;" href="/product-list?pageNum=${pageMaker.endPage + 1}&amount=12">Next</a>
                                                                                   				</li>
                                                                                   			</c:if>
                                                                                   	</ul>

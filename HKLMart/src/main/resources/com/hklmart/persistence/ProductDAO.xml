@@ -63,7 +63,7 @@
 		SELECT * FROM(
 		select/*INDEX_DESC(PRODUCT PRODUCT_PK) */
 		rownum rn, p.product_code, p.product_name,p.product_brand,p.product_price,p.product_type
-		,p.product_imgpath, p.product_img,p.product_thumbnail,p.product_content,p.product_regdate,p.product_content_img,p.product_content_imgpath
+		,p.product_imgpath, p.product_img,p.product_thumbnail,p.product_content,p.product_regdate
 		from product p
 		where rownum <= #{pageNum} * #{amount}
 		)
