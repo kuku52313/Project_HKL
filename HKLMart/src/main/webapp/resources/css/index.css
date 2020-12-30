@@ -221,7 +221,7 @@ body > header > nav > div.col-4 > ul > li > a:hover {
     padding: 0;
     position: fixed;
     overflow: auto;
-    z-index: 100;
+    z-index: 400;
 }
 
 .sidebar li a {

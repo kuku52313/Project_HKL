@@ -81,7 +81,6 @@
             </c:when>
         </c:choose>
 
-
         <div class="w3-row-padding w3-padding-16 w3-center product-card-wrapper">
             <c:forEach items="${productList}" var="list" varStatus="status">
                 <div class="w3-quarter product-card">
@@ -113,7 +112,6 @@
         </li>
     </c:if>
 
-
     <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
         <li class="page-item ${pageMaker.productCri.pageNum == num ? "active":""}">
             <a class="page-link " style="color: black;"
@@ -136,8 +134,6 @@
 </form>
 
 <hr style="border: solid 1px #ffb6b6;">
-
-<%@include file="includes/footer.jsp" %>
 
 <script>
     function clickBasket(obj) {
@@ -177,3 +173,5 @@
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
+
+<%@include file="includes/footer.jsp" %>

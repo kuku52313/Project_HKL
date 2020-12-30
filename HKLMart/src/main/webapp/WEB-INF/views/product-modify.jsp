@@ -33,7 +33,7 @@
         </div>
 
         <!-- 작업중 -->
-        <div class="col-6" style="font-family: Godo; text-align: center; font-weight: bold">
+        <div class="col-6" style="font-family: Godo; text-align: center; font-weight: bold; z-index: 500">
             <br/><br/>
             <!-- form header -->
             <form class="insertform" name="productData" action="/product/product-modify-up?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data">
@@ -130,8 +130,8 @@
 
                 <hr style="border: solid 1px #ffb6b6;">
 
-                <input type="button" class="insertBtn" onclick="insertCheckfn()" value="수정"/>
-                <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-product';" value="홈으로"/>
+                <input type="button" class="insertBtn" onclick="insertCheckfn()" value="수정""/>
+                <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-product';" value="홈으로""/>
             </form>
         </div>
 

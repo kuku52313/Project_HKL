@@ -32,7 +32,7 @@
 
         <br>
 
-        <div class="col-6">
+        <div class="col-6" style="z-index: 500">
             <!-- form header -->
             <input type="hidden" id="codeCheckHidden" value="0"/>
             <form class="insertform" name="productData" action="/product/product-regist-up?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data">
