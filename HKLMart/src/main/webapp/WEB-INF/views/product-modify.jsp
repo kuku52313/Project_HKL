@@ -130,8 +130,8 @@
 
                 <hr style="border: solid 1px #ffb6b6;">
 
-                <input type="button" class="insertBtn" onclick="insertCheckfn()" value="수정""/>
-                <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-product';" value="홈으로""/>
+                <input type="button" class="insertBtn" onclick="insertCheckfn()" value="수정"/>
+                <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-product';" value="홈으로"/>
             </form>
         </div>
 
