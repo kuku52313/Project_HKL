@@ -4,11 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true" %>
-<%@include file="includes/header.jsp" %>
 
-<head>
-    <link rel="stylesheet" href="/resources/css/product-list.css">
-</head>
+<%@include file="includes/header.jsp" %>
 
 <title>HKL Mart :: 제품 조회</title>
 
@@ -22,98 +19,67 @@
 </sec:authorize>
 
 <div class="container-fluid">
-    <!-- !PAGE CONTENT! -->
     <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:10px">
-
-        <!-- s : 190412 수정 // 카테고리 리스트 page-title-wrap 밖으로 마크업 위치 변경  -->
-
         <c:set var="TypeValue" value="${param.Type}"/>
         <c:choose>
-
             <c:when test="${TypeValue >= 10 and TypeValue <= 29}">
                 <div class="w3-row-padding w3-padding-16 w3-center">
-                    <p style="font-size : 40px;">운동화</p>
+                    <p class="font-title">운동화</p>
                 </div>
-                <div class="w3-row-padding w3-padding-16 w3-center">
-                    <ul>
-                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
-                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=11" class="">스니커즈</a>
-                            |
-                        </li>
-                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
-                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=12" class="">캔버스화</a>
-                            |
-                        </li>
-                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
-                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=13" class="">슬립온</a></li>
-                    </ul>
+                <div class="subdivision">
+                    <table class="subtitle-table">
+                        <tr>
+                            <th class="font-subtitle"><a href="/product-list?pageNum=1&amount=12&Type=11" data-toggle="tooltip" data-placement="right" title="이동!">스니커즈</a></th>
+                            <th class="font-subtitle"><a href="/product-list?pageNum=1&amount=12&Type=12" data-toggle="tooltip" data-placement="right" title="이동!">캔버스화</a></th>
+                            <th class="font-subtitle"><a href="/product-list?pageNum=1&amount=12&Type=13" data-toggle="tooltip" data-placement="right" title="이동!">슬립온</a></th>
+                        </tr>
+                    </table>
                 </div>
             </c:when>
-
             <c:when test="${TypeValue >= 30 and TypeValue <= 49}">
                 <div class="w3-row-padding w3-padding-16 w3-center">
-                    <p style="font-size : 40px;">스포츠</p>
+                    <p class="font-title">스포츠</p>
                 </div>
-                <div class="w3-row-padding w3-padding-16 w3-center">
-                    <ul>
-                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
-                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=31" class="">런닝화</a>
-                            |
-                        </li>
-                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
-                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=32" class="">축구화</a>
-                            |
-                        </li>
-                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
-                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=33" class="">등산화</a></li>
-                    </ul>
+                <div class="subdivision">
+                    <table class="subtitle-table">
+                        <tr>
+                            <th class="font-subtitle"><a href="/product-list?pageNum=1&amount=12&Type=31" data-toggle="tooltip" data-placement="right" title="이동!">런닝화</a></th>
+                            <th class="font-subtitle"><a href="/product-list?pageNum=1&amount=12&Type=32" data-toggle="tooltip" data-placement="right" title="이동!">축구화</a></th>
+                            <th class="font-subtitle"><a href="/product-list?pageNum=1&amount=12&Type=33" data-toggle="tooltip" data-placement="right" title="이동!">등산화</a></th>
+                        </tr>
+                    </table>
                 </div>
             </c:when>
             <c:when test="${TypeValue >= 50 and TypeValue <= 69}">
                 <div class="w3-row-padding w3-padding-16 w3-center">
-                    <p style="font-size : 40px;">구두</p>
+                    <p class="font-title">구두</p>
                 </div>
-                <div class="w3-row-padding w3-padding-16 w3-center">
-                    <ul>
-                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
-                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=51" class="">로퍼</a>
-                            |
-                        </li>
-                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
-                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=52" class="">레이스업</a>
-                            |
-                        </li>
-                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=53" class="">힐/펌프스</a>
-                            |
-                        </li>
-
-                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=54" class="">플랫슈즈</a></li>
-
-                    </ul>
+                <div class="subdivision">
+                    <table class="subtitle-table">
+                        <tr>
+                            <th class="shoes-subtitle"><a href="/product-list?pageNum=1&amount=12&Type=51" data-toggle="tooltip" data-placement="right" title="이동!">로퍼</a></th>
+                            <th class="shoes-subtitle"><a href="/product-list?pageNum=1&amount=12&Type=52" data-toggle="tooltip" data-placement="right" title="이동!">레이스업</a></th>
+                            <th class="shoes-subtitle"><a href="/product-list?pageNum=1&amount=12&Type=53" data-toggle="tooltip" data-placement="right" title="이동!">펌프스</a></th>
+                            <th class="shoes-subtitle"><a href="/product-list?pageNum=1&amount=12&Type=54" data-toggle="tooltip" data-placement="right" title="이동!">플랫슈즈</a></th>
+                        </tr>
+                    </table>
                 </div>
             </c:when>
             <c:when test="${TypeValue >= 70 and TypeValue <= 99}">
                 <div class="w3-row-padding w3-padding-16 w3-center">
-                    <p style="font-size : 40px;">부츠</p>
+                    <p class="font-title">부츠</p>
                 </div>
-                <div class="w3-row-padding w3-padding-16 w3-center">
-                    <ul>
-                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
-                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=71" class="">첼시부츠</a>
-                            |
-                        </li>
-                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
-                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=72" class="">워크부츠</a>
-                            |
-                        </li>
-                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
-                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=73" class="">퍼부츠</a></li>
-                    </ul>
+                <div class="subdivision">
+                    <table class="subtitle-table">
+                        <tr>
+                            <th class="font-subtitle"><a href="/product-list?pageNum=1&amount=12&Type=71" data-toggle="tooltip" data-placement="right" title="이동!">첼시부츠</a></th>
+                            <th class="font-subtitle"><a href="/product-list?pageNum=1&amount=12&Type=72" data-toggle="tooltip" data-placement="right" title="이동!">워크부츠</a></th>
+                            <th class="font-subtitle"><a href="/product-list?pageNum=1&amount=12&Type=73" data-toggle="tooltip" data-placement="right" title="이동!">퍼부츠</a></th>
+                        </tr>
+                    </table>
                 </div>
             </c:when>
-
         </c:choose>
-
 
 
         <div class="w3-row-padding w3-padding-16 w3-center product-card-wrapper">
@@ -204,4 +170,8 @@
     function clickLike(obj) {
         alert("찜");
     }
+
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 </script>

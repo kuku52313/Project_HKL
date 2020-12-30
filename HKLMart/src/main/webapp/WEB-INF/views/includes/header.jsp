@@ -24,6 +24,8 @@
     <script src="/resources/bootstrap/4.5.3/js/bootstrap.min.js"></script>
     <script src="/resources/jquery-ui/jquery-1.12.4.js"></script>
     <script src="/resources/jquery-ui/jquery-ui.js"></script>
+    <script src="/resources/popper/popper.min.js"></script>
+    <script src="/resources/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>
