@@ -137,6 +137,8 @@
                 <hr/>
 
                 <!-- 비밀번호 변경 -->
+                <input type="hidden" id="pwCheckHidden" value="0"/>
+                <input type="hidden" id="pwckCheckHidden" value="0"/>
                 <form name="passwordForm" action="/member/update" method="POST">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <table class="table-hover info-table">
@@ -283,7 +285,9 @@
 
     function updatePassword() {
         let submitPasswordForm = document.passwordForm;
-        if ($("#pwCheckHidden").val() === 1 && $("#pwckCheckHidden").val() === 1) {
+        let pwCheck = $('#pwCheckHidden').val() == 1;
+        let pwCkCheck = $('#pwckCheckHidden').val() == 1;
+        if (pwCheck && pwCkCheck) {
             alert("비밀번호가 변경되었습니다");
             submitPasswordForm.submit();
         } else {

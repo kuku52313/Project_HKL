@@ -61,6 +61,7 @@ public class MemberController {
 
     @PostMapping("/update")
     public String passwordUpdate(Principal principal, @RequestParam("memberPw") String memberPw) {
+        System.out.println("principal.getName() = " + principal.getName());
         memberService.updatePassword(principal.getName(), memberPw);
         return "my-page";
     }
