@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -39,8 +38,7 @@ public class BasketController {
 
     @GetMapping("/take")
     public String takeProductBasket(Principal principal, Model model) {
-        List<String> productList = basket.takeProductBasket(principal.getName());
-        model.addAttribute("productList", productList);
+        model.addAttribute("productList", basket.basketList(principal.getName()));
         return "my-page";
     }
 }

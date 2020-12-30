@@ -22,4 +22,6 @@ public interface ProductDAO {
 
     ImageVO getImageInfo(String productCode);
 
+    ProductVO getProductInfo(String productCode);
+
 }

@@ -5,7 +5,7 @@
     <select id="searchProduct" parameterType="String" resultType="java.lang.String">
         <![CDATA[
         SELECT PRODUCT_NAME
-        FROM (SELECT ROWNUM RN, PRODUCT_NAME FROM PRODUCT WHERE PRODUCT_NAME LIKE '%' || #{PARAM} || '%')
+        FROM (SELECT ROWNUM RN, PRODUCT_NAME FROM PRODUCT WHERE PRODUCT_NAME LIKE '%' || #{param} || '%')
         WHERE RN <= 5
         ]]>
     </select>

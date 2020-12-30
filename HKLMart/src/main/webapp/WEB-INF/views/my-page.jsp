@@ -213,33 +213,29 @@
                 <a href="#" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
                 <hr/>
                 <c:choose>
-                    <c:when test="${fn:length(productList) > 0 && fn:length(productList) < 12}">
+                    <c:when test="${fn:length(productList) > 0 && fn:length(productList) < 6}">
                         <div class="row basket-card">
                             <c:forEach var="list" items="${productList}" varStatus="status">
-                                <div class="card col-1">
-                                    <img class="card-img-top"
-                                         src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile7.uf.tistory.com%2Fimage%2F24283C3858F778CA2EFABE"
-                                         alt="Card image" style="width: 100%"/>
+                                <div class="card col-2">
+                                    <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="장바구니" style="width: 100%"/>
                                     <div class="card-body">
-                                        <h6 class="card-title">상품명</h6>
+                                        <span class="card-title">${list.productName}</span>
                                     </div>
                                 </div>
                             </c:forEach>
                         </div
                     </c:when>
-                    <c:when test="${fn:length(productList) > 11}">
+                    <c:when test="${fn:length(productList) > 5}">
                         <div class="row basket-card">
-                            <c:forEach var="list" items="${productList}" varStatus="status">
-                                <div class="card col-1">
-                                    <img class="card-img-top"
-                                         src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile7.uf.tistory.com%2Fimage%2F24283C3858F778CA2EFABE"
-                                         alt="Card image" style="width: 100%"/>
+                            <c:forEach var="list" items="${productList}" varStatus="status" begin="0" end="4">
+                                <div class="card col-2">
+                                    <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="장바구니" style="width: 100%"/>
                                     <div class="card-body">
-                                        <h6 class="card-title">상품명</h6>s
+                                        <span class="card-title">${list.productName}</span>
                                     </div>
                                 </div>
                             </c:forEach>
-                            <div class="col-1" style="margin:auto">
+                            <div class="col-2" style="margin:auto">
                                 <i class="fas fa-ellipsis-h fa-2x" style="color:grey"></i>
                             </div>
                         </div

@@ -1,17 +1,22 @@
 package com.hklmart.service;
 
+import com.hklmart.domain.ProductVO;
 import com.hklmart.persistence.BasketDAO;
+import com.hklmart.persistence.ProductDAO;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class BasketService {
 
     private final BasketDAO basket;
+    private final ProductDAO product;
 
-    public BasketService(BasketDAO basket) {
+    public BasketService(BasketDAO basket, ProductDAO product) {
         this.basket = basket;
+        this.product = product;
     }
 
     public void putProductBasket(String memberId, String productCode) {
@@ -24,5 +29,14 @@ public class BasketService {
 
     public int checkBasket(String memberId, String productCode) {
         return basket.checkBasket(memberId, productCode);
+    }
+
+    public List<ProductVO> basketList(String memberId) {
+        List<String> codeList = basket.takeProductBasket(memberId);
+        List<ProductVO> productList = new ArrayList<>();
+        for (String code : codeList) {
+            productList.add(product.getProductInfo(code));
+        }
+        return productList;
     }
 }

@@ -103,7 +103,15 @@
         <![CDATA[
         SELECT PRODUCT_IMGPATH, PRODUCT_IMG, PRODUCT_THUMBNAIL, PRODUCT_CONTENT
         FROM PRODUCT
-        WHERE PRODUCT_CODE = #{PARAM}
+        WHERE PRODUCT_CODE = #{param}
+        ]]>
+    </select>
+
+    <select id="getProductInfo" resultType="com.hklmart.domain.ProductVO">
+        <![CDATA[
+        SELECT *
+        FROM PRODUCT
+        WHERE PRODUCT_CODE = #{param}
         ]]>
     </select>
 </mapper>
