@@ -57,11 +57,6 @@ public class MainController {
         return map;
     }
 
-    @RequestMapping("/user-review-list")
-    public String goAskReview() {
-        return "user-review-list";
-    }
-
    /* @GetMapping("/product-list")
     public String goManagerProduct() {
         return "product-list";

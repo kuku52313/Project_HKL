@@ -70,4 +70,9 @@ public class MemberController {
         return "ask-board";
     }
 
+    @RequestMapping("/user-review-list")
+    public String goAskReview() {
+        return "user-review-list";
+    }
+
 }

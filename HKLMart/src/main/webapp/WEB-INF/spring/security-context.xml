@@ -25,7 +25,12 @@
         <!-- member url은 회원만 접근 가능 -->
         <s:intercept-url pattern="/member/*" access="hasRole('ROLE_MEMBER')"/>
 
-        <!-- 관리자권한 테스트용 소스 -->
+        <!-- 관리자 권한 -->
+        <s:intercept-url pattern="/manager/*" access="hasRole('ROLE_ADMIN')"/>
+        <s:intercept-url pattern="/product/*" access="hasRole('ROLE_ADMIN')"/>
+        <s:intercept-url pattern="/board/*" access="hasRole('ROLE_ADMIN')"/>
+
+        <!-- 최고 관리자 권한 -->
         <s:intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')"/>
 
         <!-- ########################################################### 설정 ########################################################### -->
