@@ -29,12 +29,12 @@
 }
 
 .product-card-wrapper > div {
-    transition: all 1s;
-    border: 1px solid white;
+    transition: all 0.5s;
+    border: 2px solid white;
 }
 
 .product-card-wrapper > div:hover {
-    border: 1px solid black;
+    border: 2px solid crimson;
 }
 
 .product-card {
