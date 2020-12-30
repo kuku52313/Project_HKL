@@ -120,7 +120,7 @@
             <ul class="pagination justify-content-center" style="margin:20px 0">
 
                 <c:if test="${pageMaker.prev}">
-                    <li class="page-item"><a class="page-link" href="/manager/manager-review-list?pageNum=${pageMaker.startPage - 1}&amount=10">Previous</a>
+                    <li class="page-item"> <a class="page-link" style="color: black;" href="/manager/manager-review-list?pageNum=${pageMaker.startPage - 1}&amount=10">Previous</a>
                     </li>
                 </c:if>
 

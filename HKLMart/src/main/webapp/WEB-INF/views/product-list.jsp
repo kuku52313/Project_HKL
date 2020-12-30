@@ -66,7 +66,7 @@
 
     <c:if test="${pageMaker.prev}">
         <li class="page-item">
-            <a class="page-link" href="/product-list${param.Category}?pageNum=${pageMaker.startPage - 1}&amount=10<c:if test="${CategoryPath eq '-MainCategory'}" >&Category=-MainCategory
+            <a class="page-link" style="color: black;" href="/product-list${param.Category}?pageNum=${pageMaker.startPage - 1}&amount=10<c:if test="${CategoryPath eq '-MainCategory'}" >&Category=-MainCategory
     </c:if>">Previous</a>
         </li>
     </c:if>

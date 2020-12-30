@@ -7,6 +7,7 @@ import lombok.Setter;
 @Data
 public class ProductListDTO {
 
+    private int rn;
     private String productName;
     private String productCode;
     private String productBrand;
