@@ -99,13 +99,13 @@
 
             <ul class="pagination justify-content-center" style="margin:20px 0">
                 <c:if test="${pageMaker.prev}">
-                    <li class="page-item ${pageMaker.cri.pageNum == num ? "active":""}">
+                    <li class="page-item">
                         <a class="page-link" style="color: black;" href="/manager/manager-product?pageNum=${pageMaker.startPage - 1}&amount=10">Previous</a>
                     </li>
                 </c:if>
 
                 <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-                    <li class="page-item">
+                    <li class="page-item ${pageMaker.cri.pageNum == num ? "active":""}">
                         <a class="page-link" style="color: black;" href="/manager/manager-product?pageNum=${num}&amount=10">${num}</a>
                     </li>
                 </c:forEach>
