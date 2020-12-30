@@ -38,7 +38,7 @@
 
         <br>
 
-        <div class="col-6">
+        <div class="col-6" style="z-index: 500">
             <form class="insertform" name="insertForm" action="/board/ask-board" method="post">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <input type="hidden" id="boardAskId" name="boardAskMemberId" value="${user.username}"/>
