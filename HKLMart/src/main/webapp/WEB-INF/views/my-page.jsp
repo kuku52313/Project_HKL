@@ -215,11 +215,12 @@
                 <c:choose>
                     <c:when test="${fn:length(productList) > 0 && fn:length(productList) < 6}">
                         <div class="row basket-card">
-                            <c:forEach var="list" items="${productList}" varStatus="status">
+                            <c:forEach var="list" items="${productList}">
                                 <div class="card col-2">
                                     <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="장바구니" style="width: 100%"/>
                                     <div class="card-body">
-                                        <span class="card-title">${list.productName}</span>
+                                        <p class="card-title" style="font-size: 15px; color: pink">${list.productBrand}</p>
+                                        <span class="card-subtitle" style="font-size: 13px">${list.productName}</span>
                                     </div>
                                 </div>
                             </c:forEach>
@@ -227,11 +228,12 @@
                     </c:when>
                     <c:when test="${fn:length(productList) > 5}">
                         <div class="row basket-card">
-                            <c:forEach var="list" items="${productList}" varStatus="status" begin="0" end="4">
+                            <c:forEach var="list" items="${productList}" begin="0" end="4">
                                 <div class="card col-2">
                                     <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="장바구니" style="width: 100%"/>
                                     <div class="card-body">
-                                        <span class="card-title">${list.productName}</span>
+                                        <p class="card-title" style="font-size: 15px; color: pink">${list.productBrand}</p>
+                                        <span class="card-subtitle" style="font-size: 12px">${list.productName}</span>
                                     </div>
                                 </div>
                             </c:forEach>
