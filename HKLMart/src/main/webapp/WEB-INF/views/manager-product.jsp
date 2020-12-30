@@ -87,7 +87,7 @@
 
                 <c:forEach items="${productList}" var="list" varStatus="status">
                     <tr>
-                        <th><c:out value="${status.count}"/></th>
+                        <th><c:out value="${list.rn}"/></th>
                         <th><a href="/manager/product-modify?productCode=<c:out value="${list.productCode}" />" style="color: black">
                             <c:out value="${list.productCode}"/></a></th>
                         <th><c:out value="${list.productName}"/></th>
@@ -100,7 +100,7 @@
             <ul class="pagination justify-content-center" style="margin:20px 0">
                 <c:if test="${pageMaker.prev}">
                     <li class="page-item">
-                        <a class="page-link" href="/manager/manager-product?pageNum=${pageMaker.startPage - 1}&amount=10">Previous</a>
+                        <a class="page-link" style="color: black;" href="/manager/manager-product?pageNum=${pageMaker.startPage - 1}&amount=10">Previous</a>
                     </li>
                 </c:if>
 
