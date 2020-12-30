@@ -31,6 +31,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     public List<ProductListMainDTO> getMainCategoryUserProductList(ProductPageCriteriaVO cri) {
+
+
         return productDAO.getMainCategoryUserProductList(cri);
     }
 
@@ -38,4 +40,6 @@ public class ProductServiceImpl implements ProductService {
         return productDAO.codeCheck(insertCode);
     }
 
+
 }
+

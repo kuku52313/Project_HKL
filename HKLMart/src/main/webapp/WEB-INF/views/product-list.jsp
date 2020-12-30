@@ -25,26 +25,96 @@
     <!-- !PAGE CONTENT! -->
     <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:10px">
 
-        <div class="w3-row-padding w3-padding-16 w3-center">
-            <!-- ${param.type} 로 제품종류 가져오기 -->
-            <p style="font-size : 40px;">구두</p>
-        </div>
         <!-- s : 190412 수정 // 카테고리 리스트 page-title-wrap 밖으로 마크업 위치 변경  -->
 
-        <div class="w3-row-padding w3-padding-16 w3-center">
-            <ul>
-                <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
-                <li style="display: inline; font-size : 19px;"><a href="/display/category?ctgrNo=1000000270" class="">첼시 부츠</a>
-                    |
-                </li>
-                <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
-                <li style="display: inline; font-size : 19px;"><a href="/display/category?ctgrNo=1000000267" class="">워크 부츠</a>
-                    |
-                </li>
-                <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
-                <li style="display: inline; font-size : 19px;"><a href="/display/category?ctgrNo=1000000268" class="">퍼 부츠</a></li>
-            </ul>
-        </div>
+        <c:set var="TypeValue" value="${param.Type}"/>
+        <c:choose>
+
+            <c:when test="${TypeValue >= 10 and TypeValue <= 29}">
+                <div class="w3-row-padding w3-padding-16 w3-center">
+                    <p style="font-size : 40px;">운동화</p>
+                </div>
+                <div class="w3-row-padding w3-padding-16 w3-center">
+                    <ul>
+                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
+                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=11" class="">스니커즈</a>
+                            |
+                        </li>
+                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
+                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=12" class="">캔버스화</a>
+                            |
+                        </li>
+                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
+                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=13" class="">슬립온</a></li>
+                    </ul>
+                </div>
+            </c:when>
+
+            <c:when test="${TypeValue >= 30 and TypeValue <= 49}">
+                <div class="w3-row-padding w3-padding-16 w3-center">
+                    <p style="font-size : 40px;">스포츠</p>
+                </div>
+                <div class="w3-row-padding w3-padding-16 w3-center">
+                    <ul>
+                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
+                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=31" class="">런닝화</a>
+                            |
+                        </li>
+                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
+                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=32" class="">축구화</a>
+                            |
+                        </li>
+                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
+                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=33" class="">등산화</a></li>
+                    </ul>
+                </div>
+            </c:when>
+            <c:when test="${TypeValue >= 50 and TypeValue <= 69}">
+                <div class="w3-row-padding w3-padding-16 w3-center">
+                    <p style="font-size : 40px;">구두</p>
+                </div>
+                <div class="w3-row-padding w3-padding-16 w3-center">
+                    <ul>
+                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
+                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=51" class="">로퍼</a>
+                            |
+                        </li>
+                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
+                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=52" class="">레이스업</a>
+                            |
+                        </li>
+                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=53" class="">힐/펌프스</a>
+                            |
+                        </li>
+
+                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=54" class="">플랫슈즈</a></li>
+
+                    </ul>
+                </div>
+            </c:when>
+            <c:when test="${TypeValue >= 70 and TypeValue <= 99}">
+                <div class="w3-row-padding w3-padding-16 w3-center">
+                    <p style="font-size : 40px;">부츠</p>
+                </div>
+                <div class="w3-row-padding w3-padding-16 w3-center">
+                    <ul>
+                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
+                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=71" class="">첼시부츠</a>
+                            |
+                        </li>
+                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
+                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=72" class="">워크부츠</a>
+                            |
+                        </li>
+                        <!-- DESC : 선택된 소메뉴에 active 클래스 추가 -->
+                        <li style="display: inline; font-size : 19px;"><a href="/product-list?pageNum=1&amount=12&Type=73" class="">퍼부츠</a></li>
+                    </ul>
+                </div>
+            </c:when>
+
+        </c:choose>
+
+
 
         <div class="w3-row-padding w3-padding-16 w3-center product-card-wrapper">
             <c:forEach items="${productList}" var="list" varStatus="status">

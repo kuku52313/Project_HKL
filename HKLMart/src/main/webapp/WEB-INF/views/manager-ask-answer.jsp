@@ -56,7 +56,7 @@
     <div class="row">
         &nbsp;&nbsp;
         <label>문의 ID</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="text" class="formText" id="AskType" name="boardAskMemberId" value="${answer.boardAskMemberId}" readonly="readonly" style="background-color: #e1e4ee;">
+        <input type="text" class="formText" id="memberId" name="boardAskMemberId" value="${answer.boardAskMemberId}" readonly="readonly" style="background-color: #e1e4ee;">
     </div>
     <hr style="border: solid 1px #ffb6b6;">
     <div class="row">
@@ -80,11 +80,11 @@
         <label>답변</label>
     </div>
     <div>
-        <textarea id="content" name="boardAskAnswer" cols="90" rows="10" style="border-color:#ffb6b6 ;">${answer.boardAskAnswer}</textarea>
+        <textarea id="AnswerContent" name="boardAskAnswer" cols="90" rows="10" style="border-color:#ffb6b6 ;">${answer.boardAskAnswer}</textarea>
 
     </div>
     <hr style="border: solid 1px #ffb6b6;">
-    <select class="formText" id="askType" name="boardAskState">
+    <select class="formText" id="AnswerType" name="boardAskState">
         <option value="답변 완료" name="boardAskState">- 답변 완료 -</option>
     </select>
     <hr style="border: solid 1px #ffb6b6;">
