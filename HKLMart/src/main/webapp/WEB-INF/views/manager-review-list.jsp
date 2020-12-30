@@ -132,7 +132,7 @@
                 </c:forEach>
 
                 <c:if test="${pageMaker.next}">
-                    <li class="page-item">
+                    <li class="page-item ${pageMaker.cri.pageNum == num ? "active":""}">
                         <a class="page-link" style="color: black;" href="/manager/manager-review-list?pageNum=${pageMaker.endPage + 1}&amount=10">Next</a>
                     </li>
                 </c:if>

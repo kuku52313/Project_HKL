@@ -224,7 +224,7 @@
                                     </div>
                                 </div>
                             </c:forEach>
-                        </div
+                        </div>
                     </c:when>
                     <c:when test="${fn:length(productList) > 5}">
                         <div class="row basket-card">
@@ -240,7 +240,7 @@
                             <div class="col-2" style="margin:auto">
                                 <i class="fas fa-ellipsis-h fa-2x" style="color:grey"></i>
                             </div>
-                        </div
+                        </div>
                     </c:when>
                     <c:otherwise>
                         <div>
