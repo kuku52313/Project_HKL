@@ -33,7 +33,7 @@
         </div>
 
         <!-- 작업중 -->
-        <div class="col-7" style="font-family: Godo; text-align: center; font-weight: bold">
+        <div class="col-6" style="font-family: Godo; text-align: center; font-weight: bold">
             <br/><br/>
             <div id="prudctListPage">
                 <span class="font-set" style="font-size: 25px">제품 관리 페이지</span>
@@ -74,7 +74,7 @@
         </div>
 
         <!-- 오른쪽 공백 -->
-        <div class="col-2"></div>
+        <div class="col-3"></div>
     </div>
 </div>
 

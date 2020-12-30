@@ -5,311 +5,143 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 
-<!DOCTYPE html>
-<html lang="ko">
+<%@include file="includes/header.jsp" %>
 
-<head>
-    <title>:: HKL Mart ::</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <link rel="stylesheet" href="/resources/bootstrap/4.5.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/resources/css/index.css">
-    <link rel="stylesheet" href="/resources/css/add-product.css">
-    <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
-    <link rel="stylesheet" href="/resources/jquery-ui/jquery-ui.css">
-    <script src="/resources/jquery-ui/jquery-1.12.4.js"></script>
-    <script src="/resources/jquery-ui/jquery-ui.js"></script>
-</head>
+<title>HKLMart :: 제품 수정</title>
 
-<body>
-<!-- Header -->
-<header id="header" class="container-fluid">
-
-    <!-- Navbar-->
-    <nav class="navbar row">
-        <div class="col-1"></div>
-        <div class="navbar_logo col-1">
-            <a class="logo" style="height: 100px;" href="/">
-                <img class="logo" src="/resources/img/top_logo.png">
-            </a>
-        </div>
-
-
-        <!-- Search -->
-        <div class="navbar_search col-5">
-            <div class="row form-inline">
-                <div class="col-5"></div>
-                <div class="col-5">
-                    <input class="form-control active-pink" id="productSearch" type="search" placeholder="제품명 검색" onkeyup="searchFunc()" style="width:100%" autocomplete="off">
-                </div>
-
-                <div class="col-2">
-                    <a href="#" id="search">
-                        <i style="color: rgb(255, 48, 79);" class="fas fa-search fa-2x"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- NavMenu -->
-        <!-- 비로그인 상태 -->
-        <sec:authorize access="isAnonymous()">
-            <div class="col-4">
-                <a class="navbar_toggleBtn">
-                    <i class="fas fa-bars"></i>
-                </a>
-                <br>
-                <ul class="navbar_menu font-set">
-                    <li><a href="/member/loginPage">로그인</a></li>
-                    <li><a href="/member/loginPage">회원가입</a></li>
-                    <li><a href="#">고객센터</a></li>
-                    <li><a href="#">장바구니</a></li>
-                </ul>
-            </div>
-        </sec:authorize>
-
-        <!-- 로그인 상태 -->
-        <sec:authorize access="isAuthenticated()">
-            <sec:authentication property="principal" var="user"/>
-            <div class="col-4">
-                <a class="navbar_toggleBtn">
-                    <i class="fas fa-bars"></i>
-                </a>
-                <br>
-                <ul class="navbar_menu font-set">
-                    <li><a href="/member/my-page">
-                        <i>
-                            <u class="font-set">${user.memberName}님</u>
-                        </i>
-                    </a>
-                    <li><a href="/member/my-page">마이페이지</a></li>
-                    <li><a href="#" onclick="$('#logout-form').submit();">로그아웃</a> <!-- Logout Form -->
-                        <form id="logout-form" action="/logout" method="POST">
-                            <!-- 포스트방식으로 리퀘스트시 무조건 넣기 -->
-                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-                        </form>
-                    </li>
-                    <li><a href="#">고객센터</a></li>
-                    <li><a href="/member/my-page">장바구니</a></li>
-                </ul>
-            </div>
-        </sec:authorize>
-
-    </nav>
-    <div class="col-1"></div>
-
-    <!-- Mega Drop Menu -->
+<!-- Body -->
+<div class="container-fluid">
     <div class="row">
+        <!-- 왼쪽 공백 -->
         <div class="col-1"></div>
 
-        <div class="col-10">
-            <ul class="menu" style="width: 100%;">
-                <li><a href="#header">운동화</a>
-                    <div>
-                        <div class="menu-column">
-                            <ul>
-                                <li><a href="#">스니커즈</a></li>
-                                <li><a href="#">캔버스화</a></li>
-                                <li><a href="#">슬립온</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li><a href="#header">스포츠</a>
-                    <div>
-                        <div class="menu-column">
-                            <ul>
-                                <li><a href="#">런닝화</a></li>
-                                <li><a href="#">축구화</a></li>
-                                <li><a href="#">등산화</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li><a href="#header">구두</a>
-                    <div>
-                        <div class="menu-column">
-                            <ul>
-                                <li><a href="#">로퍼</a></li>
-                                <li><a href="#">레이스업</a></li>
-                                <li><a href="#">힐/펌프스</a></li>
-                                <li><a href="#">플랫슈즈</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li><a href="#header">부츠</a>
-                    <div>
-                        <div class="menu-column">
-                            <ul>
-                                <li><a href="#">첼시부츠</a></li>
-                                <li><a href="#">워크부츠</a></li>
-                                <li><a href="#">퍼부츠</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
+        <!-- 사이드 메뉴 -->
+        <div class="col-2">
+            <ul class="sidebar" id="sidebar">
+                <hr/>
+                <li><a class="sidebarMain" href="/manager/manager-page">MANAGER</a></li>
+                <li><a href="/manager/manager-product">제품 관리 페이지</a></li>
+                <li><a href="#orderListPage">주문 전체 내역</a></li>
+                <li><a href="/manager/manager-ask-board">회원 문의 내역</a></li>
+                <li><a href="/manager/manager-review-list">리뷰 관리 페이지</a></li>
+                <li><a href="/manager/manager-member-list">회원 조회 페이지</a></li>
+                <li><a href="/product/product-regist">제품 등록 페이지</a></li>
+                <li><a class="sidebarMain" href="/member/my-page">MEMBER</a></li>
+                <li><a href="/member/my-page">내 정보</a></li>
+                <hr/>
             </ul>
         </div>
-    </div>
 
-    <div class="col-1"></div>
+        <!-- 작업중 -->
+        <div class="col-6" style="font-family: Godo; text-align: center; font-weight: bold">
+            <br/><br/>
+            <!-- form header -->
+            <form class="insertform" name="productData" action="/product/product-modify-up?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data">
+                <div class="form-header">
+                    <h1>제품 수정 및 재고 수정</h1>
+                </div>
+                <!-- form body -->
+                <div>
+                    <div class="record">
+                        <label>제품명 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="text" class="formText" id="nameProduct" name="productName" value="${product.productName}"/>
+                    </div>
+                    <hr style="border: solid 1px #ffb6b6;">
+                    <div class="record">
+                        <label>브랜드 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="text" class="formText" id="brandProduct" name="productBrand" value="${product.productBrand}"/>
+                    </div>
+                    <hr style="border: solid 1px #ffb6b6;">
+                    <div class="record">
+                        <label>제품 코드</label>&nbsp;&nbsp;
+                        <input type="text" class="formText" id="codeProduct" name="productCode" value="${product.productCode}" readonly="readonly" style="background-color: #e1e4ee"/>
+                    </div>
+                    <hr style="border: solid 1px #ffb6b6;">
+                    <div class="record">
+                        <label>제품 가격</label>&nbsp;&nbsp;
+                        <input type="text" class="formText" id="priceProduct" name="productPrice" value="${product.productPrice}"/>
+                    </div>
+                    <hr style="border: solid 1px #ffb6b6;">
+                </div>
+                <div class="record">
+                    <label>제품 종류</label>&nbsp;&nbsp;
+                    <input type="text" class="formText" id="kindProduct" name="productType" value="${product.productType}" readonly="readonly" style="background-color: #e1e4ee"/>
+                </div>
+                <hr style="border: solid 1px #ffb6b6;">
+                <div class="form-group left">
+                    <label>제품 이미지</label><br/>
+                    <input type="file" id="choose-file" name="uploadImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;"/>
+                    <div id="select_img" style="width: 100%; text-align: center">
+                        <img src="<%=request.getContextPath()%>${product.productImgPath}${product.productImg}" width="300px" height="auto"/>
+                    </div>
+                </div>
+                <hr style="border: solid 1px #ffb6b6;">
 
-    <br>
-</header>
+                <div class="form-group left">
+                    <label>제품 상세 이미지</label><br/>
+                    <input type="file" id="content-file" name="contentImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;"/>
+                    <div id="select_content_img" style="width: 100%; text-align: center">
+                        <img src="<%=request.getContextPath()%>${product.productImgPath}${product.productContent}" width="300px" height="auto"/>
+                    </div>
+                </div>
 
-<!-- form header -->
-<form class="insertform" name="productData" action="/product/product-modify-up?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data">
-    <div class="form-header">
-        <h1>제품 수정 및 재고 수정</h1>
-    </div>
-    <!-- form body -->
-    <div>
-        <div class="record">
-            <label>제품명 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="text" class="formText" id="nameProduct" name="productName" value="${product.productName}"/>
-        </div>
-        <hr style="border: solid 1px #ffb6b6;">
-        <div class="record">
-            <label>브랜드 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="text" class="formText" id="brandProduct" name="productBrand" value="${product.productBrand}"/>
-        </div>
-        <hr style="border: solid 1px #ffb6b6;">
-        <div class="record">
-            <label>제품 코드</label>&nbsp;&nbsp;
-            <input type="text" class="formText" id="codeProduct" name="productCode" value="${product.productCode}" readonly="readonly" style="background-color: #e1e4ee"/>
-        </div>
-        <hr style="border: solid 1px #ffb6b6;">
-        <div class="record">
-            <label>제품 가격</label>&nbsp;&nbsp;
-            <input type="text" class="formText" id="priceProduct" name="productPrice" value="${product.productPrice}"/>
-        </div>
-        <hr style="border: solid 1px #ffb6b6;">
-    </div>
-    <div class="record">
-        <label>제품 종류</label>&nbsp;&nbsp;
-        <input type="text" class="formText" id="kindProduct" name="productType" value="${product.productType}" readonly="readonly" style="background-color: #e1e4ee"/>
-    </div>
-    <hr style="border: solid 1px #ffb6b6;">
-    <div class="form-group left">
-        <label>제품 이미지</label><br/>
-        <input type="file" id="choose-file" name="uploadImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;"/>
-        <div id="select_img" style="width: 100%; text-align: center">
-            <img src="<%=request.getContextPath()%>${product.productImgPath}${product.productImg}" width="300px" height="auto"/>
-        </div>
-    </div>
-    <hr style="border: solid 1px #ffb6b6;">
+                <hr style="border: solid 1px #ffb6b6;">
+                <!-- 재고 등록 -->
+                <label>사이즈별 재고 수량</label>
+                <div style="margin-top: 10px; margin-bottom: 10px; background-color: rgb(241, 213, 234);">
+                    <label style="margin-left: 7px;">240</label>
+                    <input type="number" class="stockInt" name="stock240" value="${product.stock240}" min="0" step="1"/>
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">245</label>
+                    <input type="number" class="stockInt" name="stock245" value="${product.stock245}" min="0" step="1">
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">250</label>
+                    <input type="number" class="stockInt" name="stock250" value="${product.stock250}" min="0" step="1"/>
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">255</label>
+                    <input type="number" class="stockInt" name="stock255" value="${product.stock255}" min="0" step="1"/>
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
+                </div>
 
-    <div class="form-group left">
-        <label>제품 상세 이미지</label><br/>
-        <input type="file" id="content-file" name="contentImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;"/>
-        <div id="select_content_img" style="width: 100%; text-align: center">
-            <img src="<%=request.getContextPath()%>${product.productImgPath}${product.productContent}" width="300px" height="auto" />
-        </div>
-    </div>
+                <hr style="border: thin 1px #ffb6b6">
 
-    <hr style="border: solid 1px #ffb6b6;">
-    <!-- 재고 등록 -->
-    <label>사이즈별 재고 수량</label>
-    <div style="margin-top: 10px; margin-bottom: 10px; background-color: rgb(241, 213, 234);">
-        <label style="margin-left: 7px;">240</label>
-        <input type="number" class="stockInt" name="stock240" value="${product.stock240}" min="0" step="1"/>
-        <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">245</label>
-        <input type="number" class="stockInt" name="stock245" value="${product.stock245}" min="0" step="1">
-        <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">250</label>
-        <input type="number" class="stockInt" name="stock250" value="${product.stock250}" min="0" step="1"/>
-        <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">255</label>
-        <input type="number" class="stockInt" name="stock255" value="${product.stock255}" min="0" step="1"/>
-        <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
-    </div>
+                <div style="margin-top: 10px; margin-bottom: 10px; background-color: rgb(238, 226, 235);">
+                    <label style="margin-left: 7px;">260</label>
+                    <input type="number" class="stockInt" name="stock260" value="${product.stock260}" min="0" step="1"/>
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">265</label>
+                    <input type="number" class="stockInt" name="stock265" value="${product.stock265}" min="0" step="1"/>
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">270</label>
+                    <input type="number" class="stockInt" name="stock270" value="${product.stock270}" min="0" step="1"/>
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">275</label>
+                    <input type="number" class="stockInt" name="stock275" value="${product.stock275}" min="0" step="1"/>
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
+                </div>
 
-    <hr style="border: thin 1px #ffb6b6">
+                <hr style="border: thin 1px #ffb6b6">
 
-    <div style="margin-top: 10px; margin-bottom: 10px; background-color: rgb(238, 226, 235);">
-        <label style="margin-left: 7px;">260</label>
-        <input type="number" class="stockInt" name="stock260" value="${product.stock260}" min="0" step="1"/>
-        <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">265</label>
-        <input type="number" class="stockInt" name="stock265" value="${product.stock265}" min="0" step="1"/>
-        <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">270</label>
-        <input type="number" class="stockInt" name="stock270" value="${product.stock270}" min="0" step="1"/>
-        <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">275</label>
-        <input type="number" class="stockInt" name="stock275" value="${product.stock275}" min="0" step="1"/>
-        <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
-    </div>
+                <div style="margin-top: 10px; margin-bottom: 10px; background-color: rgb(250, 248, 249);">
+                    <label style="margin-left: 7px;">280</label>
+                    <input type="number" class="stockInt" name="stock280" value="${product.stock280}" min="0" step="1"/>
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">285</label>
+                    <input type="number" class="stockInt" name="stock285" value="${product.stock285}" min="0" step="1"/>
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">290</label>
+                    <input type="number" class="stockInt" name="stock290" value="${product.stock290}" min="0" step="1"/>
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">295</label>
+                    <input type="number" class="stockInt" name="stock295" value="${product.stock295}" min="0" step="1"/>
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
+                </div>
 
-    <hr style="border: thin 1px #ffb6b6">
+                <hr style="border: solid 1px #ffb6b6;">
 
-    <div style="margin-top: 10px; margin-bottom: 10px; background-color: rgb(250, 248, 249);">
-        <label style="margin-left: 7px;">280</label>
-        <input type="number" class="stockInt" name="stock280" value="${product.stock280}" min="0" step="1"/>
-        <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">285</label>
-        <input type="number" class="stockInt" name="stock285" value="${product.stock285}" min="0" step="1"/>
-        <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">290</label>
-        <input type="number" class="stockInt" name="stock290" value="${product.stock290}" min="0" step="1"/>
-        <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">295</label>
-        <input type="number" class="stockInt" name="stock295" value="${product.stock295}" min="0" step="1"/>
-        <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
-    </div>
-
-    <hr style="border: solid 1px #ffb6b6;">
-
-    <input type="button" class="insertBtn" onclick="insertCheckfn()" value="수정"/>
-    <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-product';" value="홈으로"/>
-</form>
-
-<br>
-<br>
-<hr style="border: solid 1px #ffb6b6;">
-
-<!-- Footer top -->
-<footer>
-    <div class="row footer-top">
-
-        <div class="col-4"></div>
-
-        <div class="col-2 font-set text-left">
-            <p>
-                <span>고객센터</span><br> <span>080-1234-5678 · 1588-1234</span><br> <span>주소 : 서울특별시 종로구 청와대로 1</span>
-            </p>
-            <p>
-                <span>월~금 9:00 ~ 12:00 / 13:00 ~ 18:00</span>
-            </p>
-            <p>
-                <span>주말, 공휴일 휴무</span>
-            </p>
+                <input type="button" class="insertBtn" onclick="insertCheckfn()" value="수정"/>
+                <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-product';" value="홈으로"/>
+            </form>
         </div>
 
-        <div class="col-3 font-set text-left">
-            <p>
-                <span>(주)에이치케이엘</span><br> <span>대표이사 : 한김이</span><br> <span>주소 : 서울특별시 종로구 청와대로 1</span>
-            </p>
-            <p>
-                <span>사업자등록번호 : 111-11-11111</span> <br> <span>통신판매업신고 : 제 2020-서울종로구-1111호</span>
-            </p>
-            <p>
-                <span>개인정보보호 책임자 : 홍길동</span> <br> <span>이메일 : hklmart@hkl.com</span>
-            </p>
-        </div>
-
+        <!-- 오른쪽 공백 -->
         <div class="col-3"></div>
-
     </div>
+</div>
 
-    <hr>
-
-    <!-- Footer bottom -->
-    <div class="row footer-bottom">
-        <p class="col-12 text-center">
-            <a href="#header">
-                <img src="/resources/img/bottom_logo.png">
-            </a>
-            <br> <br> 본 상품의 상품 이미지 저작권은 ㈜에이치케이엘에 있으며 내용의 무단복제를 금합니다. <br> COPYRIGHT Ⓒ HKL-MART CO,LTD. ALL RIGHTS RESERVED.
-        </p>
-    </div>
-</footer>
-</body>
+<br><br>
+<hr style="border: solid 1px #ffb6b6;">
 
 <script>
     const toggleBtn = document.querySelector('.navbar_toggleBtn');
@@ -474,6 +306,7 @@
             });
         }
     }
+
     function searchFunc() {
         let productSearch = document.getElementById('productSearch').value;
         if (productSearch !== "") {
@@ -497,4 +330,4 @@
     }
 </script>
 
-</html>
+<%@include file="includes/footer.jsp" %>
