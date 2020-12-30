@@ -13,8 +13,13 @@
 <title>HKL Mart :: 제품 조회</title>
 
 <!-- Body -->
-<sec:authentication property="principal" var="user"/>
-<input type="hidden" id="memberId" value="${user.memberId}">
+<sec:authorize access="isAnonymous()">
+    <input type="hidden" id="memberId" value="none">
+</sec:authorize>
+<sec:authorize access="isAuthenticated()">
+    <sec:authentication property="principal" var="user"/>
+    <input type="hidden" id="memberId" value="${user.memberId}">
+</sec:authorize>
 
 <div class="container-fluid">
     <!-- !PAGE CONTENT! -->
@@ -100,6 +105,10 @@
     function clickBasket(obj) {
         let thisCode = $(obj).attr('class');
         let memberId = document.getElementById('memberId').value;
+        if (memberId === "none") {
+            alert("로그인이 필요한 서비스입니다");
+            location.href = "/member/login-page";
+        }
         let sendData = {memberId: memberId, productCode: thisCode};
         console.log(sendData);
         $.ajax({
