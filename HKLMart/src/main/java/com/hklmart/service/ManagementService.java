@@ -40,4 +40,8 @@ public class ManagementService {
     public BoardAskDTO getAskAnswer(String boardAskNumber) {
         return managementDAO.getAskAnswer(boardAskNumber);
     }
+
+    public void deleteAskManager(String boardAskNumber){
+        managementDAO.deleteAskManager(boardAskNumber);
+    }
 }

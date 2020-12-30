@@ -8,6 +8,7 @@ import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -55,7 +56,13 @@ public class ManagementController {
 
         return "manager-ask-answer";
     }
+    @PostMapping("/manager-ask-delete")
+    public String deleteAskManager(@RequestParam("boardAskNumber") String boardAskNumber) {
 
+        managementService.deleteAskManager(boardAskNumber);
+
+        return "redirect:/manager/manager-ask-board";
+    }
 
     @GetMapping("/manager-review-list")
     public String goManagerReviewList(Model model, PageCriteriaVO cri) {

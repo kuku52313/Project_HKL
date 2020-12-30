@@ -95,9 +95,6 @@
                 </tr>
                 </thead>
 
-                <%-- <td><a href='/board/get?bno=<c:out value="${board.bno}" />'>
-                                                    <c:out value="${board.title}" />
-                                            </a></td> --%>
                 <c:forEach items="${AskBoardList}" var="list" varStatus="status">
                     <tr>
                         <th>

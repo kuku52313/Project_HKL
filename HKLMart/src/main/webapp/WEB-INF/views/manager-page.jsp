@@ -31,9 +31,9 @@
                 <li><a class="sidebarMain" href="#header">관리자 페이지</a></li>
                 <li><a href="/manager/manager-product">제품 관리 페이지</a></li>
                 <li><a href="#orderListPage">주문 전체 내역</a></li>
-                <li><a href="#askBoardPage">회원 문의 내역</a></li>
-                <li><a href="#boardReviews">리뷰 관리 페이지</a></li>
-                <li><a href="#memberList">회원 조회 페이지</a></li>
+                <li><a href="/manager/manager-ask-board">회원 문의 내역</a></li>
+                <li><a href="/manager/manager-review-list">리뷰 관리 페이지</a></li>
+                <li><a href="/manager/manager-member-list">회원 조회 페이지</a></li>
                 <li><a href="/product/product-regist">제품 등록 페이지</a></li>
                 <hr/>
             </ul>
@@ -44,7 +44,7 @@
             <br/><br/>
             <div id="prudctListPage">
                 <span class="font-set" style="font-size: 25px">제품 관리 페이지</span>
-                <a href="#" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
+                <a href="/manager/manager-product" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
                 <hr/>
             </div>
 
@@ -58,21 +58,21 @@
             <br/><br/>
             <div id="askBoardPage">
                 <span class="font-set" style="font-size: 25px">회원 문의 관리 페이지</span>
-                <a href="#" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
+                <a href="/manager/manager-ask-board" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
                 <hr/>
             </div>
 
             <br/><br/>
             <div id="boardReviews">
                 <span class="font-set" style="font-size: 25px">리뷰 관리 페이지</span>
-                <a href="#" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
+                <a href="/manager/manager-review-list" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
                 <hr/>
             </div>
 
             <br/><br/>
             <div id="memberList">
                 <span class="font-set" style="font-size: 25px">회원정보 조회 페이지</span>
-                <a href="#" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
+                <a href="/manager/manager-member-list" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
                 <hr/>
             </div>
 

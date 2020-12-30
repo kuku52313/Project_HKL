@@ -89,6 +89,7 @@
     </select>
     <hr style="border: solid 1px #ffb6b6;">
     <button type="button" class="insertBtn" onclick="insertCheckfn()">등록</button>
+    <button type="button" class="insertBtn" onclick="DeleteCheckfn()">삭제</button>
 </form>
 
 <form id="pageForm" action="manager/manager-ask-board" method="get">
@@ -113,6 +114,15 @@
 
     }
 
+    function DeleteCheckfn() {
+
+        var subForm = document.insertForm;
+
+        subForm.action = "/manager/manager-ask-delete";
+
+        subForm.submit();
+
+        }
 
 </script>
 </body>

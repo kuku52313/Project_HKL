@@ -18,4 +18,6 @@ public interface ManagementDAO {
 
     BoardAskDTO getAskAnswer(String boardAskNumber);
 
+    void deleteAskManager(String boardAskNumber);
+
 }

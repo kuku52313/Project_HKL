@@ -108,4 +108,10 @@
         WHERE BOARD_ASK_NUMBER = #{boardAskNumber}
         ]]>
     </select>
+
+    <delete id="deleteAskManager" >
+        DELETE FROM BOARD_ASK WHERE BOARD_ASK_NUMBER= #{boardAskNumber}
+
+    </delete>
+
 </mapper>
