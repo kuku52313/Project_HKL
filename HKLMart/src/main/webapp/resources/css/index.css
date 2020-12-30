@@ -254,6 +254,7 @@ body > header > nav > div.col-4 > ul > li > a:hover {
     width: 100%;
     margin-bottom: 1rem;
     color: #212529;
+    text-align: center;
 }
 
 .table td, .table th {
