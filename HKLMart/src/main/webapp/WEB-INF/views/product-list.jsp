@@ -85,15 +85,16 @@
         <div class="w3-row-padding w3-padding-16 w3-center product-card-wrapper">
             <c:forEach items="${productList}" var="list" varStatus="status">
                 <div class="w3-quarter product-card">
-                    <span><img src="<%=request.getContextPath()%>${list.productImgpath}${list.productThumbnail}" style="width:100%"/><br></span>
+                    <span data-toggle="tooltip" data-placement="top" title="제품 상세 페이지로 이동"><img src="<%=request.getContextPath()%>${list.productImgpath}${list.productThumbnail}"
+                                                                                                style="width:100%"/><br></span>
                     <span class="font-m">${list.productBrand}</span><br/>
                     <p class="font-s">${list.productName}</p>
                     <span class="font-b"><fmt:formatNumber value="${list.productPrice}" pattern="#,###"/>&nbsp;</span>원
                     <br/><br/>
                     <div class="basket">
-                        <a class="${list.productCode}" href="#" onclick="clickBasket(this)"><i class="fas fa-shopping-basket fa-2x"></i></a>
-                        &nbsp;
-                        <a href="#" onclick="clickLike(this)"><i class="fas fa-heart fa-2x"></i></a>
+                        <a class="${list.productCode}" onclick="clickBasket(this)"><i class="fas fa-shopping-basket fa-2x" data-toggle="tooltip" data-placement="top" title="장바구니에 추가하기"></i></a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a onclick="clickLike(this)"><i class="fas fa-heart fa-2x" data-toggle="tooltip" data-placement="top" title="찜하기"></i></a>
                     </div>
                 </div>
             </c:forEach>
