@@ -65,7 +65,6 @@
 
     </div>
 </div>
-
 <ul class="pagination justify-content-center" style="margin:20px 0">
     <c:set var="CategoryPath" value="${param.Category}"/>
 
@@ -78,8 +77,9 @@
 
 
     <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-        <li class="page-item">
-            <a class="page-link" style="color: black;" href="/product-list${param.Category}?pageNum=${num}&amount=12&Type=${param.Type}<c:if test="${CategoryPath eq '-MainCategory'}" >&Category=-MainCategory
+        <li class="page-item ${pageMaker.productCri.pageNum == num ? "active":""}">
+            <a class="page-link " style="color: black;"
+               href="/product-list${param.Category}?pageNum=${num}&amount=12&Type=${param.Type}<c:if test="${CategoryPath eq '-MainCategory'}" >&Category=-MainCategory
     </c:if>">${num}</a>
         </li>
     </c:forEach>
@@ -108,6 +108,7 @@
         if (memberId === "none") {
             alert("로그인이 필요한 서비스입니다");
             location.href = "/member/login-page";
+            return 0;
         }
         let sendData = {memberId: memberId, productCode: thisCode};
         console.log(sendData);
