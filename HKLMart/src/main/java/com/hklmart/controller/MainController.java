@@ -1,14 +1,11 @@
 package com.hklmart.controller;
 
-import com.hklmart.domain.PageCriteriaVO;
 import com.hklmart.domain.PageDTO;
 import com.hklmart.domain.ProductPageCriteriaVO;
-import com.hklmart.domain.ProductVO;
 import com.hklmart.service.MemberService;
 import com.hklmart.service.PageService;
 import com.hklmart.service.ProductServiceImpl;
 import com.hklmart.service.SearchService;
-import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
-@Log4j
 @Controller
 public class MainController {
 
@@ -58,7 +54,6 @@ public class MainController {
     public Map<String, Object> searchProduct(@RequestParam("searchStr") String searchStr) {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("searchList", searchService.searchProduct(searchStr));
-        log.info(map);
         return map;
     }
 
@@ -82,8 +77,6 @@ public class MainController {
     public String goUserProductList(Model model, ProductPageCriteriaVO cri) {
 
         model.addAttribute("productList", productService.getUserProductList(cri));
-
-
 
 
         int total = pageService.getUserProductListTotal(cri);
