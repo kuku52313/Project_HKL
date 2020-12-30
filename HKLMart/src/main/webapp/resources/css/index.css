@@ -101,7 +101,8 @@ body > header > nav > div.col-4 > ul > li > a:hover {
     cursor: default;
     z-index: 500;
     text-align: center;
-    box-shadow: 0 0 3px 3px rgb(255, 48, 79);
+    box-shadow: 0 0 1px 2px rgb(255, 48, 79);
+    border-radius: 0.25em;
 }
 
 .menu > li {
