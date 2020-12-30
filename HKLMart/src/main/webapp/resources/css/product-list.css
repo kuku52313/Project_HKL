@@ -62,6 +62,6 @@
     visibility: visible;
 }
 
-.product-card > .basket > i:hover {
+.product-card > .basket > a > i:hover {
     color: red;
 }

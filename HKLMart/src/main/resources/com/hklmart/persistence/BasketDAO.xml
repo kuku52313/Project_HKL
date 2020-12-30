@@ -17,4 +17,13 @@
         WHERE BASKET_MEMBER_ID = #{param}
         ]]>
     </select>
+
+    <select id="checkBasket" parameterType="String" resultType="Integer">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM BASKET
+        WHERE BASKET_MEMBER_ID = #{param1}
+          AND BASKET_PRODUCT_CODE = #{param2}
+        ]]>
+    </select>
 </mapper>

@@ -13,6 +13,9 @@
 <title>HKL Mart :: 제품 조회</title>
 
 <!-- Body -->
+<sec:authentication property="principal" var="user"/>
+<input type="hidden" id="memberId" value="${user.memberId}">
+
 <div class="container-fluid">
     <!-- !PAGE CONTENT! -->
     <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:10px">
@@ -47,9 +50,9 @@
                     <span class="font-b"><fmt:formatNumber value="${list.productPrice}" pattern="#,###"/>&nbsp;</span>원
                     <br/><br/>
                     <div class="basket">
-                        <i class="fas fa-shopping-basket fa-2x"></i>
+                        <a class="${list.productCode}" href="#" onclick="clickBasket(this)"><i class="fas fa-shopping-basket fa-2x"></i></a>
                         &nbsp;
-                        <i class="fas fa-heart fa-2x"></i>
+                        <a href="#" onclick="clickLike(this)"><i class="fas fa-heart fa-2x"></i></a>
                     </div>
                 </div>
             </c:forEach>
@@ -92,3 +95,33 @@
 <hr style="border: solid 1px #ffb6b6;">
 
 <%@include file="includes/footer.jsp" %>
+
+<script>
+    function clickBasket(obj) {
+        let thisCode = $(obj).attr('class');
+        let memberId = document.getElementById('memberId').value;
+        let sendData = {memberId: memberId, productCode: thisCode};
+        console.log(sendData);
+        $.ajax({
+            url: "/basket/check",
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=UTF-8",
+            data: sendData,
+            success: function (data) {
+                if (data.result === 0) {
+                    alert("해당 상품을 장바구니에 담았습니다")
+                } else if (data.result === 1) {
+                    alert("이미 장바구니에 있는 상품입니다");
+                }
+            },
+            error: function () {
+                alert("Error. 관리자에게 문의하십시오.");
+            },
+        });
+    }
+
+    function clickLike(obj) {
+        alert("찜");
+    }
+</script>

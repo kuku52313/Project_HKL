@@ -520,7 +520,7 @@
             type: "GET",
             dataType: "json",
             contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-            data: {"searchStr": productSearch},
+            data: {searchStr: productSearch},
             success: function (data) {
                 let dataList = data.searchList;
                 $("#productSearch").autocomplete({

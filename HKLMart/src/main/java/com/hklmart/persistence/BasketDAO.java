@@ -8,4 +8,6 @@ public interface BasketDAO {
 
     List<String> takeProductBasket(String basketMemberId);
 
+    int checkBasket(String memberId, String productCode);
+
 }

@@ -21,4 +21,8 @@ public class BasketService {
     public List<String> takeProductBasket(String memberId) {
         return basket.takeProductBasket(memberId);
     }
+
+    public int checkBasket(String memberId, String productCode) {
+        return basket.checkBasket(memberId, productCode);
+    }
 }

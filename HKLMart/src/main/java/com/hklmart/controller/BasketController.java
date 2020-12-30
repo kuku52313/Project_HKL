@@ -3,13 +3,12 @@ package com.hklmart.controller;
 import com.hklmart.service.BasketService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/basket")
@@ -21,9 +20,21 @@ public class BasketController {
         this.basket = basket;
     }
 
+    @GetMapping("/check")
+    @ResponseBody
+    public Map<String, Object> checkBasket(@RequestParam("memberId") String memberId, @RequestParam("productCode") String productCode) {
+        int count = basket.checkBasket(memberId, productCode);
+        if (count == 0) {
+            basket.putProductBasket(memberId, productCode);
+        }
+        Map<String, Object> map = new HashMap<>();
+        map.put("result", count);
+        return map;
+    }
+
     @PostMapping("/put")
-    public void putProductBasket(Principal principal, @RequestParam("productCode") String productCode) {
-        basket.putProductBasket(principal.getName(), productCode);
+    public void putProductBasket(@RequestParam("memberId") String memberId, @RequestParam("productCode") String productCode) {
+        basket.putProductBasket(memberId, productCode);
     }
 
     @GetMapping("/take")
