@@ -107,8 +107,7 @@
 
         <div class="col-10">
             <ul class="menu" style="width: 100%;">
-                <li>
-                    <a href="/product-list-MainCategory?pageNum=1&amount=12&Type=10&Category=-MainCategory">운동화</a>
+                <li><a href="/product-list-MainCategory?pageNum=1&amount=12&Type=10&Category=-MainCategory">운동화</a>
                     <div>
                         <div class="menu-column">
                             <ul>
@@ -119,37 +118,36 @@
                         </div>
                     </div>
                 </li>
-                <li>
-                    <a href="#header">스포츠</a>
+                <li><a href="/product-list-MainCategory?pageNum=1&amount=12&Type=30&Category=-MainCategory">스포츠</a>
                     <div>
                         <div class="menu-column">
                             <ul>
-                                <li><a href="#">런닝화</a></li>
-                                <li><a href="#">축구화</a></li>
-                                <li><a href="#">등산화</a></li>
+                                <li><a href="/product-list?pageNum=1&amount=12&Type=31">런닝화</a></li>
+                                <li><a href="/product-list?pageNum=1&amount=12&Type=32">축구화</a></li>
+                                <li><a href="/product-list?pageNum=1&amount=12&Type=33">등산화</a></li>
                             </ul>
                         </div>
                     </div>
                 </li>
-                <li><a href="/product-list?pageNum=1&amount=12">구두</a>
+                <li><a href="/product-list-MainCategory?pageNum=1&amount=12&Type=50&Category=-MainCategory">구두</a>
                     <div>
                         <div class="menu-column">
                             <ul>
-                                <li><a href="#">로퍼</a></li>
-                                <li><a href="#">레이스업</a></li>
-                                <li><a href="#">힐/펌프스</a></li>
-                                <li><a href="#">플랫슈즈</a></li>
+                                <li><a href="/product-list?pageNum=1&amount=12&Type=51">로퍼</a></li>
+                                <li><a href="/product-list?pageNum=1&amount=12&Type=52">레이스업</a></li>
+                                <li><a href="/product-list?pageNum=1&amount=12&Type=53">힐/펌프스</a></li>
+                                <li><a href="/product-list?pageNum=1&amount=12&Type=54">플랫슈즈</a></li>
                             </ul>
                         </div>
                     </div>
                 </li>
-                <li><a href="#header">부츠</a>
+                <li><a href="/product-list-MainCategory?pageNum=1&amount=12&Type=70&Category=-MainCategory">부츠</a>
                     <div>
                         <div class="menu-column">
                             <ul>
-                                <li><a href="#">첼시부츠</a></li>
-                                <li><a href="#">워크부츠</a></li>
-                                <li><a href="#">퍼부츠</a></li>
+                                <li><a href="/product-list?pageNum=1&amount=12&Type=71">첼시부츠</a></li>
+                                <li><a href="/product-list?pageNum=1&amount=12&Type=72">워크부츠</a></li>
+                                <li><a href="/product-list?pageNum=1&amount=12&Type=73">퍼부츠</a></li>
                             </ul>
                         </div>
                     </div>
