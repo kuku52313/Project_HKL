@@ -4640,7 +4640,7 @@ input[type="submit"].btn-block {
 	line-height: 1.25;
 	color: #007bff;
 	background-color: #fff;
-	border: 1px solid #dee2e6;
+	border-radius: 0.25rem;
 }
 .page-link:hover {
 	z-index: 2;

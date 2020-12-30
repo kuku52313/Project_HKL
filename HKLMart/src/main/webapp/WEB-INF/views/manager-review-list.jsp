@@ -7,74 +7,34 @@
 
 <%@include file="includes/header.jsp" %>
 
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HKL Mart :: 관리자 리뷰 전체 조회</title>
-    <link rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-          integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
-          crossorigin="anonymous">
-    <link rel="stylesheet"
-          href="/resources/bootstrap/4.5.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/resources/css/index.css">
-    <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
-    <link rel="stylesheet" href="/resources/css/ask-review.css">
-    <link rel="stylesheet" href="/resources/css/add-product.css">
-
-
-    <style>
-        .table-bordered {
-            border: 1px solid #ffb6b6;
-        }
-
-        .table {
-            width: 100%;
-            margin-bottom: 1rem;
-            color: #212529;
-        }
-
-        .table td, .table th {
-            padding: 0.75rem;
-            vertical-align: top;
-            border-top: 1px solid #ffb6b6;
-        }
-
-        .table-bordered {
-            border: 1px solid #ffb6b6;
-        }
-
-        .table-bordered td, .table-bordered th {
-            border: 1px solid #ffb6b6;
-        }
-
-        .table-bordered thead td, .table-bordered thead th {
-            border-bottom-width: 2px;
-        }
-
-        .table thead th {
-            vertical-align: bottom;
-            border-bottom: 2px solid #ffb6b6;
-        }
-
-    </style>
-</head>
+<title>HKLMart :: 리뷰 관리</title>
 
 <body>
-<div id="body" class="container-fluid">
+<div class="container-fluid">
     <div class="row">
         <!-- 왼쪽 공백 -->
-        <div class="col-2"></div>
+        <div class="col-1"></div>
 
+        <!-- 사이드 메뉴 -->
+        <div class="col-2">
+            <ul class="sidebar" id="sidebar">
+                <hr/>
+                <li><a class="sidebarMain" href="/manager/manager-page">MANAGER</a></li>
+                <li><a href="/manager/manager-product">제품 관리 페이지</a></li>
+                <li><a href="#orderListPage">주문 전체 내역</a></li>
+                <li><a href="/manager/manager-ask-board">회원 문의 내역</a></li>
+                <li><a href="/manager/manager-review-list">리뷰 관리 페이지</a></li>
+                <li><a href="/manager/manager-member-list">회원 조회 페이지</a></li>
+                <li><a href="/product/product-regist">제품 등록 페이지</a></li>
+                <li><a class="sidebarMain" href="/member/my-page">MEMBER</a></li>
+                <li><a href="/member/my-page">내 정보</a></li>
+                <hr/>
+            </ul>
+        </div>
 
-        <!--
-            <div class="col-2">
-                사이드 메뉴
-            </div> -->
         <br>
-        <div class="col-8">
+
+        <div class="col-6">
             <br>
             <div class="form-header">
                 <h1>리뷰 리스트</h1>
@@ -116,11 +76,10 @@
                 <br>
             </c:forEach>
 
-
             <ul class="pagination justify-content-center" style="margin:20px 0">
 
                 <c:if test="${pageMaker.prev}">
-                    <li class="page-item"> <a class="page-link" style="color: black;" href="/manager/manager-review-list?pageNum=${pageMaker.startPage - 1}&amount=10">Previous</a>
+                    <li class="page-item"><a class="page-link" style="color: black;" href="/manager/manager-review-list?pageNum=${pageMaker.startPage - 1}&amount=10">≪</a>
                     </li>
                 </c:if>
 
@@ -133,11 +92,10 @@
 
                 <c:if test="${pageMaker.next}">
                     <li class="page-item ">
-                        <a class="page-link" style="color: black;" href="/manager/manager-review-list?pageNum=${pageMaker.endPage + 1}&amount=10">Next</a>
+                        <a class="page-link" style="color: black;" href="/manager/manager-review-list?pageNum=${pageMaker.endPage + 1}&amount=10">≫</a>
                     </li>
                 </c:if>
             </ul>
-
 
             <form id="pageForm" action="/manager/manager-review-list" method="get">
                 <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}"/>
@@ -147,11 +105,10 @@
         </div>
     </div>
     <!-- 오른쪽 공백 -->
-    <div class="col-2"></div>
+    <div class="col-3"></div>
 </div>
 
-
-</body>
-
+<br><br>
+<hr style="border: solid 1px #ffb6b6;">
 
 <%@include file="includes/footer.jsp" %>

@@ -7,19 +7,10 @@
 
 <%@include file="includes/header.jsp" %>
 
-<head>
-    <title>HKL Mart :: manager-page</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <link rel="stylesheet" href="/resources/bootstrap/4.5.3/css/bootstrap.min.css">
-    <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
-    <link rel="stylesheet" href="/resources/css/index.css">
-    <link rel="stylesheet" href="/resources/css/login.css">
-</head>
+<title>HKLMart :: 관리자</title>
 
 <!-- Body -->
-<div id="body" class="container-fluid">
+<div class="container-fluid">
     <div class="row">
         <!-- 왼쪽 공백 -->
         <div class="col-1"></div>
@@ -28,13 +19,15 @@
         <div class="col-2">
             <ul class="sidebar" id="sidebar">
                 <hr/>
-                <li><a class="sidebarMain" href="#header">관리자 페이지</a></li>
+                <li><a class="sidebarMain" href="/manager/manager-page">MANAGER</a></li>
                 <li><a href="/manager/manager-product">제품 관리 페이지</a></li>
                 <li><a href="#orderListPage">주문 전체 내역</a></li>
                 <li><a href="/manager/manager-ask-board">회원 문의 내역</a></li>
                 <li><a href="/manager/manager-review-list">리뷰 관리 페이지</a></li>
                 <li><a href="/manager/manager-member-list">회원 조회 페이지</a></li>
                 <li><a href="/product/product-regist">제품 등록 페이지</a></li>
+                <li><a class="sidebarMain" href="/member/my-page">MEMBER</a></li>
+                <li><a href="/member/my-page">내 정보</a></li>
                 <hr/>
             </ul>
         </div>
@@ -85,7 +78,7 @@
     </div>
 </div>
 
-<br/><br/>
-<hr/>
+<br><br>
+<hr style="border: solid 1px #ffb6b6;">
 
 <%@include file="includes/footer.jsp" %>

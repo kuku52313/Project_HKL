@@ -15,17 +15,15 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="stylesheet" href="/resources/bootstrap/4.5.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="/resources/css/index.css">
+    <link rel="stylesheet" href="/resources/css/login.css"/>
     <link rel="stylesheet" href="/resources/jquery-ui/jquery-ui.css">
     <link rel="stylesheet" href="/resources/css/product-list.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="/resources/w3css/w3.css">
+    <link rel="stylesheet" href="/resources/css/add-product.css">
     <script src="/resources/jquery/3.5.1/jquery.min.js"></script>
     <script src="/resources/bootstrap/4.5.3/js/bootstrap.min.js"></script>
     <script src="/resources/jquery-ui/jquery-1.12.4.js"></script>
     <script src="/resources/jquery-ui/jquery-ui.js"></script>
-
-    <link rel="stylesheet" href="/resources/css/add-product.css">
-
-
 </head>
 
 <body>
