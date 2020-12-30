@@ -197,7 +197,7 @@
         <label>제품 이미지</label><br/>
         <input type="file" id="choose-file" name="uploadImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;"/>
         <div id="select_img" style="width: 100%; text-align: center">
-            <img src="<%=request.getContextPath()%>${product.productImgPath}${product.productImg}"/>
+            <img src="<%=request.getContextPath()%>${product.productImgPath}${product.productImg}" width="300px" height="auto"/>
         </div>
     </div>
     <hr style="border: solid 1px #ffb6b6;">
@@ -206,7 +206,7 @@
         <label>제품 상세 이미지</label><br/>
         <input type="file" id="content-file" name="contentImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;"/>
         <div id="select_content_img" style="width: 100%; text-align: center">
-            <img src="<%=request.getContextPath()%>${product.productImgPath}${product.productContent}"/>
+            <img src="<%=request.getContextPath()%>${product.productImgPath}${product.productContent}" width="300px" height="auto" />
         </div>
     </div>
 
