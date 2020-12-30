@@ -85,8 +85,9 @@
         <div class="w3-row-padding w3-padding-16 w3-center product-card-wrapper">
             <c:forEach items="${productList}" var="list" varStatus="status">
                 <div class="w3-quarter product-card">
-                    <span data-toggle="tooltip" data-placement="top" title="제품 상세 페이지로 이동"><img src="<%=request.getContextPath()%>${list.productImgpath}${list.productThumbnail}"
-                                                                                                style="width:100%"/><br></span>
+                    <span>
+                        <img src="<%=request.getContextPath()%>${list.productImgpath}${list.productThumbnail}" data-toggle="tooltip" data-placement="top" title="제품 상세 페이지로 이동" style="width:100%"/>
+                    </span>
                     <span class="font-m">${list.productBrand}</span><br/>
                     <p class="font-s">${list.productName}</p>
                     <span class="font-b"><fmt:formatNumber value="${list.productPrice}" pattern="#,###"/>&nbsp;</span>원
