@@ -219,7 +219,7 @@
                                 <div class="card col-2">
                                     <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="장바구니" style="width: 100%"/>
                                     <div class="card-body">
-                                        <p class="card-title" style="font-size: 15px; color: pink">${list.productBrand}</p>
+                                        <p class="card-title" style="font-size: 15px; color: #5a6268">${list.productBrand}</p>
                                         <span class="card-subtitle" style="font-size: 13px">${list.productName}</span>
                                     </div>
                                 </div>
@@ -232,7 +232,7 @@
                                 <div class="card col-2">
                                     <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="장바구니" style="width: 100%"/>
                                     <div class="card-body">
-                                        <p class="card-title" style="font-size: 15px; color: pink">${list.productBrand}</p>
+                                        <p class="card-title" style="font-size: 15px; color: #5a6268">${list.productBrand}</p>
                                         <span class="card-subtitle" style="font-size: 12px">${list.productName}</span>
                                     </div>
                                 </div>
