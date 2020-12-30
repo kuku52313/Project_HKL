@@ -100,7 +100,7 @@
                     <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
                 </div>
 
-                <hr style="border: thin 1px #ffb6b6">
+                <hr style="border: solid 1px #ffb6b6;">
 
                 <div style="margin-top: 10px; margin-bottom: 10px; background-color: rgb(238, 226, 235);">
                     <label style="margin-left: 7px;">260</label>
@@ -114,7 +114,7 @@
                     <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
                 </div>
 
-                <hr style="border: thin 1px #ffb6b6">
+                <hr style="border: solid 1px #ffb6b6;">
 
                 <div style="margin-top: 10px; margin-bottom: 10px; background-color: rgb(250, 248, 249);">
                     <label style="margin-left: 7px;">280</label>

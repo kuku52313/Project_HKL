@@ -78,6 +78,7 @@
                             <option value="73" name="productType">퍼부츠 (73)</option>
                         </select>
                     </div>
+                    <hr style="border: solid 1px #ffb6b6;">
                     <div class="record">
                         <label>제품 코드</label>&nbsp;&nbsp;
                         <input type="text" class="formCode" id="codeProduct" name="productCode" minlength="6" maxlength="6" placeholder="예시 코드 ex) AA0010" onkeyup="codeCheck()"/>
@@ -124,7 +125,7 @@
                     <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
                 </div>
 
-                <hr style="border: 1px thin #FFB6B6">
+                <hr style="border: solid 1px #ffb6b6;">
 
                 <div style="margin-top: 10px; margin-bottom: 10px; background-color: rgb(238, 226, 235);">
                     <label style="margin-left: 7px;">260</label>
@@ -138,7 +139,7 @@
                     <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
                 </div>
 
-                <hr style="border: thin 1px #ffb6b6">
+                <hr style="border: solid 1px #ffb6b6;">
 
                 <div style="margin-top: 10px; margin-bottom: 10px; background-color: rgb(250, 248, 249);">
                     <label style="margin-left: 7px;">280</label>
