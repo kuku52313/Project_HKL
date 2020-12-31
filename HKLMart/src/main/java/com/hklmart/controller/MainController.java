@@ -1,6 +1,7 @@
 package com.hklmart.controller;
 
 import com.hklmart.domain.PageDTO;
+import com.hklmart.domain.ProductDetailVO;
 import com.hklmart.domain.ProductPageCriteriaVO;
 import com.hklmart.service.MemberService;
 import com.hklmart.service.PageService;
@@ -92,5 +93,15 @@ public class MainController {
         model.addAttribute("pageMaker", new PageDTO(cri, total));
 
         return "product-list";
+    }
+    @GetMapping("/product-detail")
+    public String goProductDetail(Model model, @RequestParam("productCode") String productCode) {
+
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+productService.getProductDetail(productCode));
+
+        model.addAttribute("productInfo", productService.getProductDetail(productCode));
+
+
+        return "product-detail";
     }
 }

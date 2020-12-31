@@ -1,9 +1,6 @@
 package com.hklmart.service;
 
-import com.hklmart.domain.PageCriteriaVO;
-import com.hklmart.domain.ProductListDTO;
-import com.hklmart.domain.ProductListMainDTO;
-import com.hklmart.domain.ProductPageCriteriaVO;
+import com.hklmart.domain.*;
 import com.hklmart.persistence.ProductDAO;
 import org.springframework.stereotype.Service;
 
@@ -37,9 +34,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     public int codeCheckTest(String insertCode) {
+
         return productDAO.codeCheck(insertCode);
     }
 
+    public List<ProductDetailVO> getProductDetail(String productCode) {
 
+        return productDAO.getProductDetail(productCode);
+    }
 }
 

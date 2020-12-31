@@ -114,4 +114,32 @@
         WHERE PRODUCT_CODE = #{param}
         ]]>
     </select>
+
+    <select id="getProductDetail" resultType="com.hklmart.domain.ProductDetailVO">
+        <![CDATA[
+        SELECT P.PRODUCT_CODE,
+               P.PRODUCT_IMGPATH,
+               P.PRODUCT_IMG,
+               P.PRODUCT_BRAND,
+               P.PRODUCT_NAME,
+               P.PRODUCT_PRICE,
+               P.PRODUCT_CONTENT,
+               S.STOCK_240,
+               S.STOCK_245,
+               S.STOCK_250,
+               S.STOCK_255,
+               S.STOCK_260,
+               S.STOCK_265,
+               S.STOCK_270,
+               S.STOCK_275,
+               S.STOCK_280,
+               S.STOCK_285,
+               S.STOCK_290,
+               S.STOCK_295
+        FROM PRODUCT P, STOCK S
+        WHERE P.PRODUCT_CODE = S.STOCK_PRODUCT_CODE AND P.PRODUCT_CODE = #{productCode}
+        ]]>
+    </select>
+
+
 </mapper>

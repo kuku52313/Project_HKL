@@ -19,19 +19,23 @@
     <link rel="stylesheet" href="/resources/css/product-detail-tabs.css">
     <link rel="stylesheet" href="/resources/css/product-detail-1.css">
     <link rel="stylesheet" href="/resources/css/product-detail-2.css">
-    <link rel="stylesheet" href="/resources/css/product-detail-3.css">
     <link rel="stylesheet" href="/resources/css/product-detail-all.css">
     <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
+    <style>
+        select:not(:-internal-list-box) {
+            overflow: visible !important;
+        }
+
+    </style>
     <div data-v-7b122ae2="" fragment="546c7337ea" id="container">
         <div data-v-a489fb08="" class="Page_products-detail">
             <div data-v-a489fb08="" class="wrap-products-info">
                 <div data-v-060016d8="" data-v-a489fb08="" class="Mod_goods-thumbs">
                     <div data-v-060016d8="" class="swiper-container goods-thumbs-pic">
                         <div data-v-060016d8="" class="swiper-wrapper">
-                            <div data-v-060016d8="" data-thumb="https://image.brandi.me/cproduct/2020/11/03/22846694_1604364241_image1_L.jpg" class="swiper-slide"
-                                 style="background-image: url(&quot;https://image.brandi.me/cproduct/2020/11/03/22846694_1604364241_image1_L.jpg&quot;);"></div>
+                            <div data-v-060016d8="" data-thumb="https://image.brandi.me/cproduct/2020/11/03/22846694_1604364241_image1_L.jpg" class="swiper-slide" style="background-image: url(&quot;https://image.brandi.me/cproduct/2020/11/03/22846694_1604364241_image1_L.jpg&quot;);"></div>
                         </div>
                         <!---->
                     </div>
@@ -40,7 +44,7 @@
                 <div data-v-a489fb08="" class="wrap-detail_info">
                     <div data-v-a489fb08="" class="detail_basic-info">
                         <div data-v-04adba36="" data-v-a489fb08="" class="Mod_seller-info">
-                            <a data-v-04adba36="" href="#" class="seller-info-pc">공구홀릭</a>
+                            <a data-v-04adba36="" href="#" class="seller-info-pc">공구홀릭</a>${productInfo.productCode}
                         </div>
                         <!--브랜드 명-->
                         <h1 data-v-a489fb08="" class="detail_title">소피아 뽀글이 슈즈</h1>
@@ -70,148 +74,60 @@
                         </div>
                         <!---->
                         <!---->
-                        <form id="" method="GET">
-                            <div data-v-a489fb08="" class="Mod_goods-option-payment">
-                                <div data-v-a489fb08="" class="wrap-btn-purchase-wish">
-                                    <button data-v-a489fb08="" type="button" class="btn-purchase">구매하기</button>
-                                    <!--아무래도 필요없는 얘들인거 같음.-->
-                                    <button data-v-a489fb08="" type="button" class="btn-wish">
-                                        <span data-v-a489fb08="" class="txt">찜</span>
-                                    </button>
-                                </div>
-                        </form>
 
-                        <div data-v-a489fb08="" class="wrap-goods-options">
-                            <div data-v-a489fb08="" class="inner">
-                                <div data-v-a489fb08="" class="detail_options padding-top-20">
-                                    <select id="ui-id-1" style="display: none;">
-                                        <option value data-title="true" disabled="disabled">[size]를 선택하세요.</option>
-                                        <option data-add="0" data-date="" value="240">240</option>
-                                        <option data-add="0" data-date="" value="245">245</option>
-                                        <option data-add="0" data-date="" value="250">250</option>
-                                        <option data-add="0" data-date="" value="255">255</option>
-                                        <option data-add="0" data-date="" value="260">260</option>
-                                        <option data-add="0" data-date="" value="265">265</option>
-                                        <option data-add="0" data-date="" value="270">275</option>
-                                    </select>
-                                    <span tabindex="-1" id="ui-id-1-button" role="button" aria-haspopup="listbox"
-                                          class="ui-selectmenu-button Slct_prod-button ui-selectmenu-button-closed ui-corner-all ui-button ui-widget custom-optionSelectMenu-disabled ui-state-disabled"
-                                          aria-label="상품옵션 선택" aria-disabled="true">
-								<span class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span>
-								<span class="ui-selectmenu-text">[size]를 선택하세요.</span></span>
-                                    <div id="select-box-1" style="position: relative; z-index: 100;">
-                                        <div class="ui-selectmenu-menu Slct_prod-menu ui-front">
-                                            <ul aria-hidden="true" aria-labelledby="ui-id-1-button" id="ui-id-1-menu" role="listbox" tabindex="0"
-                                                class="ui-menu ui-corner-bottom ui-widget ui-widget-content ui-menu-disabled ui-state-disabled" aria-disabled="false"></ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="select-box-0" style="position: relative; z-index: 100;">
-                                    <div class="ui-selectmenu-menu Slct_prod-menu ui-front ui-selectmenu-open" style="top: 0px; left: 0px; position: relative;">
-                                        <ul aria-hidden="true" aria-labelledby="ui-id-1-button" id="ui-id-1-menu" role="listbox" tabindex="0"
-                                            class="ui-menu ui-corner-bottom ui-widget ui-widget-content" aria-activedescendant="ui-id-29" aria-disabled="false" style="width: 364px;">
-                                            <li class="ui-state-disabled ui-menu-item" aria-disabled="true" style="display: none;">
-                                                <div class="wrap ui-menu-item-wrapper" id="ui-id-28" tabindex="-1" role="option">
-                                                    <strong class="label">[size]를 선택하세요.</strong>
-                                                    <span class="add">+undefined원</span>
-                                                    <div class="delivery-info"></div>
-                                                </div>
-                                            </li>
-                                            <li class="ui-menu-item">
-                                                <div class="wrap ui-menu-item-wrapper ui-state-active" id="ui-id-29" tabindex="-1" role="option">
-                                                    <strong class="label">240</strong>
-                                                    <div class="delivery-info"></div>
-                                                </div>
-                                            </li>
-                                            <li class="ui-menu-item">
-                                                <div class="wrap ui-menu-item-wrapper" id="ui-id-30" tabindex="-1" role="option"> <!-- ui id 삭제해얄듯.  -->
-                                                    <strong class="label">245</strong>
-                                                    <div class="delivery-info"></div>
-                                                </div>
-                                            </li>
-                                            <li class="ui-menu-item">
-                                                <div class="wrap ui-menu-item-wrapper" id="ui-id-31" tabindex="-1" role="option">
-                                                    <strong class="label">250</strong>
-                                                    <div class="delivery-info"></div>
-                                                </div>
-                                            </li>
-
-                                            </li>
-                                            <li class="ui-menu-item">
-                                                <div class="wrap ui-menu-item-wrapper ui-state-active" id="ui-id-29" tabindex="-1" role="option">
-                                                    <strong class="label">255</strong>
-                                                    <div class="delivery-info"></div>
-                                                </div>
-                                            </li>
-                                            <li class="ui-menu-item">
-                                                <div class="wrap ui-menu-item-wrapper" id="ui-id-30" tabindex="-1" role="option">
-                                                    <strong class="label">260</strong>
-                                                    <div class="delivery-info"></div>
-                                                </div>
-                                            </li>
-                                            <li class="ui-menu-item">
-                                                <div class="wrap ui-menu-item-wrapper" id="ui-id-31" tabindex="-1" role="option">
-                                                    <strong class="label">265</strong>
-                                                    <div class="delivery-info"></div>
-                                                </div>
-                                            </li>
-                                            <li class="ui-menu-item">
-                                                <div class="wrap ui-menu-item-wrapper" id="ui-id-31" tabindex="-1" role="option">
-                                                    <strong class="label">270</strong>
-                                                    <div class="delivery-info"></div>
-                                                </div>
-                                            </li>
-                                            <li class="ui-menu-item">
-                                                <div class="wrap ui-menu-item-wrapper" id="ui-id-31" tabindex="-1" role="option">
-                                                    <strong class="label">275</strong>
-                                                    <div class="delivery-info"></div>
-                                                </div>
-                                            </li>
-                                            <li class="ui-menu-item">
-                                                <div class="wrap ui-menu-item-wrapper" id="ui-id-31" tabindex="-1" role="option">
-                                                    <strong class="label">280</strong>
-                                                    <div class="delivery-info"></div>
-                                                </div>
-                                            </li>
-                                            <li class="ui-menu-item">
-                                                <div class="wrap ui-menu-item-wrapper" id="ui-id-31" tabindex="-1" role="option">
-                                                    <strong class="label">285</strong>
-                                                    <div class="delivery-info"></div>
-                                                </div>
-                                            </li>
-                                            <li class="ui-menu-item">
-                                                <div class="wrap ui-menu-item-wrapper" id="ui-id-31" tabindex="-1" role="option">
-                                                    <strong class="label">290</strong>
-                                                    <div class="delivery-info"></div>
-                                                </div>
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div data-v-a489fb08="" class="wrap-selected-options"></div>
-                                <dl data-v-a489fb08="" class="wrap-price">
-                                    <dt data-v-a489fb08="">총 상품 금액</dt>
-                                    <dd data-v-a489fb08="">
-                                        <strong data-v-a489fb08="" class="price">0</strong>원
-                                    </dd>
-                                </dl>
-
-
-                                <form id="wrap-btn-purchase" method="GET">
-                                    <button type="button" data-v-a489fb08="" id="btn_buy" class="btn-buy">바로 구매</button>
-                                    <button type="button" data-v-a489fb08="" id="btn_cart_ico" class="btn-cart-ico" onclick="addCart()"></button>
-                                    <button type="button" data-v-a489fb08="" id="btn_favor_ico" class="btn-favor-ico" onclick="likeClick()"></button>
+                        <!-- 모바일 버전에서의 구매하기, 찜 버튼 -->
+                        <div data-v-a489fb08="" class="Mod_goods-option-payment">
+                            <div data-v-a489fb08="" class="wrap-btn-purchase-wish">
+                                <button data-v-a489fb08="" type="button" class="btn-purchase">구매하기</button>
+                                <button data-v-a489fb08="" type="button" class="btn-wish">
+                                    <span data-v-a489fb08="" class="txt">찜</span>
+                                </button>
                             </div>
                             </form>
 
+                            <div data-v-a489fb08="" class="wrap-goods-options">
+                                <div data-v-a489fb08="" class="detail_options padding-top-20">
+                                    <select id="ui-id-1" >
+                                        <option value data-title="true" class="ui-selectmenu-text"> [size]를 선택하세요.</option>
+                                        <option data-date value="240">240 ( EA)</option>
+                                        <option data-date value="245">245</option>
+                                        <option data-date value="250">250</option>
+                                        <option data-date value="255">255</option>
+                                        <option data-date value="260">260</option>
+                                        <option data-date value="265">265</option>
+                                        <option data-date value="270">275</option>
+                                        <option data-date value="270">280</option>
+                                        <option data-date value="270">285</option>
+                                        <option data-date value="270">290</option>
+                                        <option data-date value="270">295
+                                        </option>
+                                    </select>
+
+
+
+                                        <div data-v-a489fb08="" class="wrap-selected-options"></div>
+                                        <dl data-v-a489fb08="" class="wrap-price">
+                                            <dt data-v-a489fb08="">총 상품 금액</dt>
+                                            <dd data-v-a489fb08="">
+                                                <strong data-v-a489fb08="" class="price">0</strong>원
+                                            </dd>
+                                        </dl>
+
+
+
+                                        <form id="wrap-btn-purchase" method="GET">
+                                            <button type="button" data-v-a489fb08="" id="btn_buy" class="btn-buy">바로 구매</button>
+                                            <button type="button" data-v-a489fb08="" id="btn_cart_ico" class="btn-cart-ico" onclick="addCart()"></button>
+                                            <button type="button" data-v-a489fb08="" id="btn_favor_ico" class="btn-favor-ico" onclick="likeClick()"></button>
+                                </div>
+                                        </form>
+
+                                </div>
+                                <div data-v-a489fb08="" class="dummy"></div>
+                            </div>
                         </div>
-                        <div data-v-a489fb08="" class="dummy"></div>
                     </div>
                 </div>
-            </div>
-        </div>
-
 
         <!-- 탭 페이지 -->
 
@@ -222,9 +138,7 @@
                     <li data-v-0677f871=""><a data-v-0677f871="" href="#product-detail-2">
                         리뷰<span data-v-0677f871="" class="counting">(ex.19)</span>
                     </a></li>
-                    <li data-v-0677f871=""><a data-v-0677f871="" href="#product-detail-3">
-                        1:1 문의하기 <span data-v-0677f871="" class="counting">(ex.37)</span>
-                    </a></li>
+
                 </ul>
             </div>
 
@@ -421,172 +335,9 @@
                     </div>
                 </div>
             </div>
-            <div data-v-0677f871="" id="product-detail-3" class="detail_info-container">
-                <div class="detail_info-heading">
-                    <h2 class="txt-heading">
-                        1:1 문의하기 <span class="count">(37)</span>
-                    </h2>
-                    <div class="wrap-utils">
-                        <!---->
-                        <a href="#" id="btn_write_qna" class="btn-write-qna">문의하기</a>
-                    </div>
-                </div>
-                <!-- 여기에 만든 문의하기 페이지 넣어도 되공-->
-                <div class="detail_qna-container">
-                    <div class="wrap-qna-write" style="display: none;">
-                        <dl class="qna-write">
-                            <dt class="type">질문유형</dt>
-                            <dd class="type">
-                                <select id="ui-id-3" style="display: none;">
-                                    <option value="1">질문유형을 선택하세요.</option>
-                                    <option value="2">상품 문의</option>
-                                    <option value="3">교환/반품</option>
-                                    <option value="4">불량/오배송</option>
-                                    <option value="5">기타</option>
-                                    <option value="6">배송 문의</option>
-                                    <option value="7">하루배송</option>
-                                    <option value="8">취소/변경</option>
-                                </select>
-                                <span tabindex="0" id="ui-id-3-button" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-owns="ui-id-3-menu" aria-haspopup="true"
-                                      class="ui-selectmenu-button Slct_customized-button ui-selectmenu-button-closed ui-corner-all ui-button ui-widget" aria-activedescendant="ui-id-20"
-                                      aria-labelledby="ui-id-20" aria-disabled="false"> <span class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span> <span class="ui-selectmenu-text">질문유형을 선택하세요.</span>
-							</span>
-                                <div id="select-box" style="position: relative; z-index: 1;">
-                                    <div class="ui-selectmenu-menu Slct_customized-menu ui-front">
-                                        <ul aria-hidden="true" aria-labelledby="ui-id-3-button" id="ui-id-3-menu" role="listbox" tabindex="0"
-                                            class="ui-menu ui-corner-bottom ui-widget ui-widget-content" aria-activedescendant="ui-id-20" aria-disabled="false">
-                                            <li class="ui-menu-item">
-                                                <div id="ui-id-20" tabindex="-1" role="option" class="ui-menu-item-wrapper ui-state-active">질문유형을 선택하세요.</div>
-                                            </li>
-                                            <li class="ui-menu-item">
-                                                <div id="ui-id-21" tabindex="-1" role="option" class="ui-menu-item-wrapper">상품 문의</div>
-                                            </li>
-                                            <li class="ui-menu-item">
-                                                <div id="ui-id-22" tabindex="-1" role="option" class="ui-menu-item-wrapper">교환/반품</div>
-                                            </li>
-                                            <li class="ui-menu-item">
-                                                <div id="ui-id-23" tabindex="-1" role="option" class="ui-menu-item-wrapper">불량/오배송</div>
-                                            </li>
-                                            <li class="ui-menu-item">
-                                                <div id="ui-id-24" tabindex="-1" role="option" class="ui-menu-item-wrapper">기타</div>
-                                            </li>
-                                            <li class="ui-menu-item">
-                                                <div id="ui-id-25" tabindex="-1" role="option" class="ui-menu-item-wrapper">배송 문의</div>
-                                            </li>
-                                            <li class="ui-menu-item">
-                                                <div id="ui-id-26" tabindex="-1" role="option" class="ui-menu-item-wrapper">하루배송</div>
-                                            </li>
-                                            <li class="ui-menu-item">
-                                                <div id="ui-id-27" tabindex="-1" role="option" class="ui-menu-item-wrapper">취소/변경</div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </dd>
-                            <dt class="conts">내용</dt>
-                            <dd class="conts">
-                                <textarea rows="3" cols="5" placeholder="내용을 입력해 주세요." class="txtarea-conts"></textarea>
-                            </dd>
-                            <dt class="private">공개여부</dt>
-                            <dd class="private">
-                                <a href="#" class="chk-private">비공개</a>
-                            </dd>
-                        </dl>
-                        <div class="wrap-btn">
-                            <button type="button" id="qna_write_cancel" class="btn-cancle">취소하기</button>
-                            <button type="submit" class="btn-submit">등록하기</button>
-                        </div>
-                    </div>
-                    <div class="wrap-qna-list">
-                        <table class="qna-list">
-                            <colgroup>
-                                <col style="width: 164px;">
-                                <col style="width: 152px;">
-                                <col>
-                                <col style="width: 162px;">
-                                <col style="width: 162px;">
-                            </colgroup>
-                            <thead>
-                            <tr>
-                                <th>분류</th>
-                                <th>처리상태</th>
-                                <th>내용</th>
-                                <th>작성자</th>
-                                <th>작성일</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <!--fragment#1006843f724#head-->
-                            <tr fragment="1006843f724">
-                                <td class="type al-l">취소/변경</td>
-                                <td class="state">
-                                    <span class="ico-state">답변대기</span>
-                                </td>
-                                <td class="contents al-l">
-                                    <div class="wrap">
-                                        <a href="#" class="conts secret">비밀글입니다.</a>
-                                        <!---->
-                                        <div class="wrap-detail">
-                                            <p class="conts secret">비밀글입니다.</p>
-                                            <!---->
-                                            <!---->
-                                            <!---->
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="writer">f_1***</td>
-                                <td class="date">2020.12.09</td>
-                            </tr>
-                            <tr fragment="1006843f724">
-                                <td class="type al-l">배송 문의</td>
-                                <td class="state">
-                                    <span class="ico-state">답변대기</span>
-                                </td>
-                                <td class="contents al-l">
-                                    <div class="wrap">
-                                        <a href="#" class="conts secret">비밀글입니다.</a>
-                                        <!---->
-                                        <div class="wrap-detail">
-                                            <p class="conts secret">비밀글입니다.</p>
-                                            <!---->
-                                            <!---->
-                                            <!---->
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="writer">dks***</td>
-                                <td class="date">2020.12.09</td>
-                            </tr>
-                            <tr fragment="1006843f724">
-                                <td class="type al-l">취소/변경</td>
-                                <td class="state">
-                                    <span class="ico-state">답변대기</span>
-                                </td>
-                                <td class="contents al-l">
-                                    <div class="wrap">
-                                        <a href="#" class="conts secret">비밀글입니다.</a>
-                                        <!---->
-                                        <div class="wrap-detail">
-                                            <p class="conts secret">비밀글입니다.</p>
-                                            <!---->
-                                            <!---->
-                                            <!---->
-
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="writer">dks***</td>
-                                <td class="date">2020.12.09</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-    </div>
-    </div>
+
 </head>
 
 
