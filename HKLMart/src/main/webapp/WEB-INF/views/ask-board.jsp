@@ -114,11 +114,11 @@
 
             var checkCode = /^[A-za-z0-9]{1,6}/;
 
-            if (askType === 0) {
+            if (askType == 0) {
 
                 alert("문의 종류를 선택해여 주세요")
 
-            } else if (askType === 1) {
+            } else if (askType == 1) {
 
                 if ((!checkCode.test(codeProduct))) {
                     alert("제품코드를 잘못입력하였습니다")
@@ -132,7 +132,7 @@
                 }
 
 
-            } else if (askType === 2) {
+            } else if (askType == 2) {
 
                 if ((!checkCode.test(codeProduct))) {
                     alert("제품코드를 잘못입력하였습니다")
@@ -146,22 +146,7 @@
                 }
 
 
-            } else if (askType === 3) {
-
-
-                if ((!checkCode.test(codeProduct))) {
-                    alert("제품코드를 잘못입력하였습니다")
-
-                } else if ((!codeProduct.length === 6)) {
-                    alert("제품코드 자릿수 형식이 다릅니다")
-
-                } else {
-                    alert("등록성공")
-                    subForm.submit();
-                }
-
-
-            } else if (askType === 4) {
+            } else if (askType == 3) {
 
 
                 if ((!checkCode.test(codeProduct))) {
@@ -176,7 +161,22 @@
                 }
 
 
-            } else if (askType === 5) {
+            } else if (askType == 4) {
+
+
+                if ((!checkCode.test(codeProduct))) {
+                    alert("제품코드를 잘못입력하였습니다")
+
+                } else if ((!codeProduct.length === 6)) {
+                    alert("제품코드 자릿수 형식이 다릅니다")
+
+                } else {
+                    alert("등록성공")
+                    subForm.submit();
+                }
+
+
+            } else if (askType == 5) {
 
                 if ((!checkCode.test(codeProduct))) {
                     alert("제품코드를 잘못입력하였습니다")
@@ -190,7 +190,7 @@
                 }
 
 
-            } else if (askType === 6) {
+            } else if (askType == 6) {
 
             } else {
                 alert("Error")

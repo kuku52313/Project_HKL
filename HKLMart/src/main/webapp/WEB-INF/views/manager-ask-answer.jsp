@@ -88,8 +88,9 @@
         <option value="답변 완료" name="boardAskState">- 답변 완료 -</option>
     </select>
     <hr style="border: solid 1px #ffb6b6;">
-    <button type="button" class="insertBtn" onclick="insertCheckfn()">등록</button>
-    <button type="button" class="insertBtn" onclick="DeleteCheckfn()">삭제</button>
+    <input type="button" class="insertBtn" onclick="insertCheckfn()" value="수정"/>
+    <input type="button" class="insertBtn" onclick="DeleteCheckfn()" value="삭제"/>
+    <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-ask-board';" value="홈으로"/>
 </form>
 
 <form id="pageForm" action="manager/manager-ask-board" method="get">

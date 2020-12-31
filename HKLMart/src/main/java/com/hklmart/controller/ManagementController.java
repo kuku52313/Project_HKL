@@ -38,6 +38,14 @@ public class ManagementController {
         return "manager-product";
     }
 
+    @PostMapping("/manager-product-delete")
+    public String deleteManagerProduct(@RequestParam("productCode") String productCode) {
+
+        managementService.deleteManagerProduct(productCode);
+
+        return "redirect:/manager/manager-product";
+    }
+
     @GetMapping("/manager-ask-board")
     public String goManagerAskBoard(Model model, PageCriteriaVO cri) {
 

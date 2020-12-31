@@ -114,4 +114,9 @@
 
     </delete>
 
+    <delete id="deleteManagerProduct" >
+        DELETE FROM product WHERE PRODUCT_CODE = #{productCode}
+
+    </delete>
+
 </mapper>

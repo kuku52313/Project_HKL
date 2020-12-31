@@ -131,6 +131,7 @@
                 <hr style="border: solid 1px #ffb6b6;">
 
                 <input type="button" class="insertBtn" onclick="insertCheckfn()" value="수정"/>
+                <button type="button" class="insertBtn" onclick="DeleteCheckfn()">삭제</button>
                 <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-product';" value="홈으로"/>
             </form>
         </div>
@@ -202,6 +203,16 @@
             alert("등록하였습니다");
             productDataForm.submit();
         }
+    }
+
+    function DeleteCheckfn() {
+
+        var productDataForm = document.productData;
+
+        productDataForm.action = "/manager/manager-product-delete?${_csrf.parameterName}=${_csrf.token}";
+
+        productDataForm.submit();
+
     }
 
     function checkImage(fileName, fileSize) {

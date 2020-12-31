@@ -20,4 +20,6 @@ public interface ManagementDAO {
 
     void deleteAskManager(String boardAskNumber);
 
+    void deleteManagerProduct(String productCode);
+
 }

@@ -44,4 +44,8 @@ public class ManagementService {
     public void deleteAskManager(String boardAskNumber){
         managementDAO.deleteAskManager(boardAskNumber);
     }
+
+    public void deleteManagerProduct(String productCode){
+        managementDAO.deleteManagerProduct(productCode);
+    }
 }
