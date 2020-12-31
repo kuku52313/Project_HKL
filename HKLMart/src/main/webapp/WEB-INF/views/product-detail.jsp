@@ -5,13 +5,13 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 
-<%@include file="includes/header.jsp" %>
+<%--<%@include file="includes/header.jsp" %>--%>
 
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>HKL MART</title>
 
     <link rel="stylesheet" href="/resources/css/product-detail.css">
