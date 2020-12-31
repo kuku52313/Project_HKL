@@ -22,4 +22,6 @@ public interface ManagementDAO {
 
     void deleteManagerProduct(String productCode);
 
+    void deleteReviewManager(String boardReviewNumber);
+
 }

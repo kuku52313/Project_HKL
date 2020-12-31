@@ -48,4 +48,10 @@ public class ManagementService {
     public void deleteManagerProduct(String productCode){
         managementDAO.deleteManagerProduct(productCode);
     }
+
+    public void deleteReviewManager(String boardReviewNumber){
+        managementDAO.deleteReviewManager(boardReviewNumber);
+    }
+
+
 }

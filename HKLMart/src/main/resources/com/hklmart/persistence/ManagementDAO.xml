@@ -119,4 +119,9 @@
 
     </delete>
 
+
+    <delete id="deleteReviewManager" >
+        DELETE FROM BOARD_REVIEW WHERE BOARD_REVIEW_NUMBER = #{boardReviewNumber}
+
+    </delete>
 </mapper>

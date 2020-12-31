@@ -72,6 +72,14 @@ public class ManagementController {
         return "redirect:/manager/manager-ask-board";
     }
 
+    @GetMapping("/manager-review-delete")
+    public String goManagerReviewDelete(@RequestParam("boardReviewNumber") String boardReviewNumber) {
+
+        managementService.deleteReviewManager(boardReviewNumber);
+
+        return "redirect:/manager/manager-review-list";
+    }
+
     @GetMapping("/manager-review-list")
     public String goManagerReviewList(Model model, PageCriteriaVO cri) {
 

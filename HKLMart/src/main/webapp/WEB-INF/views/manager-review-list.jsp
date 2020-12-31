@@ -10,6 +10,7 @@
 <title>HKLMart :: 리뷰 관리</title>
 
 <body>
+<link rel="stylesheet" href="/resources/css/ask-review.css">
 <div class="container-fluid">
     <div class="row">
         <!-- 왼쪽 공백 -->
@@ -45,12 +46,14 @@
                 <table class="ask_table">
                     <tr>
                         <th class="product_info">상품 정보</th>
-                        <th class="product"></th> <!-- 여긴 빈칸-->
+                        <th class="product"><a class="deletebtn" href="manager-review-delete?boardReviewNumber=${list.boardReviewNumber}">삭제</a></th> <!-- 여긴 빈칸-->
                     </tr>
 
                     <tr>
                         <!--  <td><a href="/" id="product" style="color: black"><img src="${list.boardReviewImgpath}${list.boardReviewThumbnail}.png"></a></td> -->
-                        <td><a href="/" id="product" style="color: black"><img src="<%=request.getContextPath() %>${list.boardReviewImgpath}${list.boardReviewThumbnail}.png"></a>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/" id="product" style="color: black"><img
+                                src="<%=request.getContextPath() %>${list.boardReviewImgpath}${list.boardReviewThumbnail}.png"
+                                style="width: 200px;  height: 200px; object-fit: fill;"></a>
                             <!--각 product로 갈 수 있게 해야함--></td>
                         <td class="">
                             <dt>리뷰번호 <span> : ${list.boardReviewNumber}</span></dt>
@@ -79,20 +82,23 @@
             <ul class="pagination justify-content-center" style="margin:20px 0">
 
                 <c:if test="${pageMaker.prev}">
-                    <li class="page-item"><a class="page-link" style="color: black;" href="/manager/manager-review-list?pageNum=${pageMaker.startPage - 1}&amount=10">≪</a>
+                    <li class="page-item"><a class="page-link" style="color: black;"
+                                             href="/manager/manager-review-list?pageNum=${pageMaker.startPage - 1}&amount=10">≪</a>
                     </li>
                 </c:if>
 
 
                 <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
                     <li class="page-item ${pageMaker.cri.pageNum == num ? "active":""}">
-                        <a class="page-link" style="color: black;" href="/manager/manager-review-list?pageNum=${num}&amount=10">${num}</a>
+                        <a class="page-link" style="color: black;"
+                           href="/manager/manager-review-list?pageNum=${num}&amount=10">${num}</a>
                     </li>
                 </c:forEach>
 
                 <c:if test="${pageMaker.next}">
                     <li class="page-item ">
-                        <a class="page-link" style="color: black;" href="/manager/manager-review-list?pageNum=${pageMaker.endPage + 1}&amount=10">≫</a>
+                        <a class="page-link" style="color: black;"
+                           href="/manager/manager-review-list?pageNum=${pageMaker.endPage + 1}&amount=10">≫</a>
                     </li>
                 </c:if>
             </ul>
