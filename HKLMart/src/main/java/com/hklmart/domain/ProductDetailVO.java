@@ -6,14 +6,15 @@ import java.util.Date;
 
 @Data
 public class ProductDetailVO {
-    private String productCode;
     private String productName;
+    private String productCode;
     private String productBrand;
     private String productPrice;
+    private String productType;
     private String productImgPath;
     private String productImg;
+    private String productThumbnail;
     private String productContent;
-
     private int stock240;
     private int stock245;
     private int stock250;

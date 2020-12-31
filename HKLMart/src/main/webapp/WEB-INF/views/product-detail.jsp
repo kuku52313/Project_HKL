@@ -44,7 +44,8 @@
                 <div data-v-a489fb08="" class="wrap-detail_info">
                     <div data-v-a489fb08="" class="detail_basic-info">
                         <div data-v-04adba36="" data-v-a489fb08="" class="Mod_seller-info">
-                            <a data-v-04adba36="" href="#" class="seller-info-pc">공구홀릭</a>${productInfo.productCode}
+                            <a data-v-04adba36="" href="#" class="seller-info-pc">공구홀릭</a>
+                            ${infoShoes.productCode}
                         </div>
                         <!--브랜드 명-->
                         <h1 data-v-a489fb08="" class="detail_title">소피아 뽀글이 슈즈</h1>

@@ -24,6 +24,6 @@ public interface ProductDAO {
 
     ProductVO getProductInfo(String productCode);
 
-    List<ProductDetailVO> getProductDetail(String productCode);
+    ProductDetailVO getProductDetail(String productCode);
 
 }

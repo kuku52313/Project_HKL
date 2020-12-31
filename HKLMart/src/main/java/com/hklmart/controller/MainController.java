@@ -95,11 +95,10 @@ public class MainController {
         return "product-list";
     }
     @GetMapping("/product-detail")
-    public String goProductDetail(Model model, @RequestParam("productCode") String productCode) {
+    public String goProductDetail(@RequestParam("productCode") String productCode,Model model) {
 
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+productService.getProductDetail(productCode));
 
-        model.addAttribute("productInfo", productService.getProductDetail(productCode));
+        model.addAttribute("infoShoes", productService.getProductDetail(productCode));
 
 
         return "product-detail";
