@@ -4,6 +4,7 @@ import com.hklmart.domain.PageCriteriaVO;
 import com.hklmart.domain.PageDTO;
 import com.hklmart.domain.ProductPageCriteriaVO;
 import com.hklmart.service.*;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import java.time.Clock;
 import java.util.HashMap;
 import java.util.Map;
 
+@Log4j
 @Controller
 public class MainController {
 
@@ -95,24 +97,21 @@ public class MainController {
 
         return "product-list";
     }
+
     @GetMapping("/product-detail")
-    public String goProductDetail(@RequestParam("productCode") String productCode,Model model) {
+    public String goProductDetailPage(Model model,ProductPageCriteriaVO cri) {
 
+        log.info("컨트롤러--------------"+cri);
+        model.addAttribute("infoShoes", productService.getProductDetail(cri));
 
-        model.addAttribute("infoShoes", productService.getProductDetail(productCode));
-        System.out.println("11111111111111111111111111111111111111111");
-        PageCriteriaVO cri = new PageCriteriaVO();
-        cri.setPageNum(1);
-        cri.setAmount(5);
-        System.out.println(cri);
-        model.addAttribute("BoardReviewList", productService.getProductDetailReview(cri,productCode));
-        System.out.println("3333333333333333333333333333333333333333");
-        int total = pageService.getReviewProductTotal(cri,productCode);
-        System.out.println("444444444444444444444444444444444444444");
+        model.addAttribute("BoardReviewList", productService.getProductDetailReview(cri));
+
+        int total = pageService.getReviewProductTotal(cri);
+
         model.addAttribute("pageMaker", new PageDTO(cri, total));
-        System.out.println("5555555555555555555555555555555555");
+
         model.addAttribute("reviewTotal",total);
-        System.out.println("6666666666666666666666666666666666666");
+
 
         return "product-detail";
     }

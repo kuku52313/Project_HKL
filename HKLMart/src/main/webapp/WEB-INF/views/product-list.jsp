@@ -8,7 +8,11 @@
 <%@include file="includes/header.jsp" %>
 
 <title>HKL Mart :: 제품 조회</title>
+<style>
+    a { text-decoration:none }
+    a:hover { text-decoration:none; !important; color: black;}
 
+</style>
 <!-- Body -->
 <sec:authorize access="isAnonymous()">
     <input type="hidden" id="memberId" value="none">
@@ -84,6 +88,7 @@
         <div class="w3-row-padding w3-padding-16 w3-center product-card-wrapper">
             <c:forEach items="${productList}" var="list" varStatus="status">
                 <div class="w3-quarter product-card">
+                    <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}">
                     <span>
                         <img src="<%=request.getContextPath()%>${list.productImgpath}${list.productThumbnail}" data-toggle="tooltip" data-placement="top" title="제품 상세 페이지로 이동" style="width:100%"/>
                     </span>
@@ -96,6 +101,7 @@
                         &nbsp;&nbsp;&nbsp;
                         <a onclick="clickLike(this)"><i class="fas fa-heart fa-2x" data-toggle="tooltip" data-placement="top" title="찜하기"></i></a>
                     </div>
+                    </a>
                 </div>
             </c:forEach>
         </div>

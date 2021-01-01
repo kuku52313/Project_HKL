@@ -23,9 +23,10 @@
     <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
           integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" href="/resources/css/ask-review.css">
+</head>
 
 
-    </style>
     <div data-v-7b122ae2="" fragment="546c7337ea" id="container">
         <div data-v-a489fb08="" class="Page_products-detail">
             <div data-v-a489fb08="" class="wrap-products-info">
@@ -139,7 +140,7 @@
                         <li data-v-0677f871="" class="active"><a data-v-0677f871="" href="#product-detail-1">상품정보</a>
                         </li>
                         <li data-v-0677f871=""><a data-v-0677f871="" href="#product-detail-2">
-                            리뷰<span data-v-0677f871="" class="counting">(ex.19)</span>
+                            리뷰<span data-v-0677f871="" class="counting">(${reviewTotal})</span>
                         </a></li>
 
                     </ul>
@@ -155,7 +156,7 @@
                     <div data-v-1c49b806="" data-v-0677f871="" id="product-detail-2" class="detail_info-container">
                         <div data-v-1c49b806="" class="detail_info-heading">
                             <h2 data-v-1c49b806="" class="txt-heading">
-                                리뷰 <span data-v-1c49b806="" class="count">(19)</span>
+                                리뷰 <span data-v-1c49b806="" class="count">(${reviewTotal})</span>
                             </h2>
 
 
@@ -187,17 +188,6 @@
                                 <dt>상품이름 <span> : ${list.productName}</span></dt>
                                 <dt>리뷰 코멘트 <span> : ${list.boardReviewContent}</span></dt>
                             </td>
-                        </tr>
-
-                        <tr>
-                            <td></td> <!-- 빈칸 맞음.-->
-                            <td><span>${review_content}</span></td>
-
-                        </tr>
-
-                        <tr>
-                            <td></td>
-                            <td><span>${review_comment}</span></td>
                         </tr>
 
                     </table>
@@ -234,7 +224,7 @@
                 </form>
                 <hr style="border: solid 1px black;">
             </div>
-            </head>
+
 
 
             <script>

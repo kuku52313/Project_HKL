@@ -159,7 +159,7 @@
                      FROM PRODUCT P,
                           BOARD_REVIEW R
                      WHERE R.BOARD_REVIEW_PRODUCT_CODE = P.PRODUCT_CODE
-                       AND ROWNUM <= #{pageNum} * #{amount} and P.PRODUCT_CODE = #{productCode}
+                       AND ROWNUM <= #{pageNum} * #{amount} AND P.PRODUCT_CODE = #{productCode}
                      )
         WHERE RN > (#{pageNum} - 1) * #{amount}
         ]]>

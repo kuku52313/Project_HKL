@@ -17,6 +17,6 @@ public interface PageingDAO {
 
     public int getMainCategoryUserProductListTotalCount(ProductPageCriteriaVO cri);
 
-    public int getReviewProductTotalCount(PageCriteriaVO cri,String productCode);
+    public int getReviewProductTotalCount(ProductPageCriteriaVO cri);
 
 }

@@ -7,10 +7,6 @@ public class ProductPageCriteriaVO {
     private int pageNum;
     private int amount;
     private int Type;
+    private String productCode;
 
- /*   public ProductPageCriteriaVO(int pageNum, int amount, int Type) {
-        this.pageNum = pageNum;
-        this.amount = amount;
-        this.Type = Type;
-    }*/
 }
