@@ -40,4 +40,48 @@
         FROM member
         WHERE MEMBER_ID = #{userId}
     </select>
+
+    <select id="getUserAskList" resultType="com.hklmart.domain.BoardAskDTO">
+        <![CDATA[
+        SELECT *
+        FROM (
+                     SELECT/*INDEX_DESC(BOARD_ASK BOARD_ASK_PK) */
+                             ROWNUM RN,
+                             BOARD_ASK_NUMBER,
+                             BOARD_ASK_MEMBER_ID,
+                             BOARD_ASK_DATE,
+                             BOARD_ASK_TITLE,
+                             BOARD_ASK_CONTENT,
+                             BOARD_ASK_STATE,
+                             BOARD_ASK_TYPE
+                     FROM BOARD_ASK
+                     WHERE ROWNUM <= #{pageNum} * #{amount} and BOARD_ASK_MEMBER_ID = #{memberId}
+                     )
+        WHERE RN > (#{pageNum} - 1) * #{amount}
+        ]]>
+    </select>
+
+    <select id="getUserReviewList" resultType="com.hklmart.domain.BoardReviewListDTO">
+        <![CDATA[
+        SELECT *
+        FROM (
+                     SELECT/*INDEX_DESC(BOARD_REVIEW BOARD_REVIEW_PK)*/
+                             ROWNUM RN,
+                             R.BOARD_REVIEW_NUMBER,
+                             R.BOARD_REVIEW_MEMBER_ID,
+                             P.PRODUCT_NAME,
+                             R.BOARD_REVIEW_SCORE,
+                             R.BOARD_REVIEW_DATE,
+                             R.BOARD_REVIEW_CONTENT,
+                             R.BOARD_REVIEW_IMG,
+                             R.BOARD_REVIEW_IMGPATH,
+                             R.BOARD_REVIEW_THUMBNAIL
+                     FROM PRODUCT P,
+                          BOARD_REVIEW R
+                     WHERE R.BOARD_REVIEW_PRODUCT_CODE = P.PRODUCT_CODE
+                       AND ROWNUM <= #{pageNum} * #{amount} and R.BOARD_REVIEW_MEMBER_ID = #{memberId}
+                     )
+        WHERE RN > (#{pageNum} - 1) * #{amount}
+        ]]>
+    </select>
 </mapper>

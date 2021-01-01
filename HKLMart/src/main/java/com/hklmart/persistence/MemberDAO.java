@@ -1,9 +1,10 @@
 package com.hklmart.persistence;
 
 
-import com.hklmart.domain.MemberVO;
-import com.hklmart.domain.UserDetailsVO;
+import com.hklmart.domain.*;
 import org.apache.ibatis.annotations.Insert;
+
+import java.util.List;
 
 public interface MemberDAO {
 
@@ -17,5 +18,11 @@ public interface MemberDAO {
     void updatePassword(String memberId, String memberPw);
 
     int idDuplicatiedInspection(String userId);
+
+    List<BoardAskDTO> getUserAskList(ProductPageCriteriaVO cri);
+
+    List<BoardReviewListDTO> getUserReviewList(ProductPageCriteriaVO cri);
+
+
 
 }

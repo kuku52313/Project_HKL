@@ -72,8 +72,8 @@ public class MemberController {
     }
 
     @RequestMapping("/user-review-list")
-    public String goAskReview() {
-        return "user-review-list";
+    public String goAskReviewList() {
+        return "user-ask-review-list";
     }
 
 }

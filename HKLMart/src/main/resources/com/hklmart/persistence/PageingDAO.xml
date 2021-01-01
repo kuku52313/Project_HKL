@@ -55,5 +55,21 @@
         ]]>
     </select>
 
+    <select id="getUserAskListTotalCount" resultType="int">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM BOARD_ASK
+        WHERE BOARD_ASK_MEMBER_ID = #{memberId}
+        ]]>
+    </select>
+
+    <select id="getUserReviewListTotalCount" resultType="int">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM BOARD_REVIEW
+        WHERE BOARD_REVIEW_MEMBER_ID = #{memberId}
+        ]]>
+    </select>
+
 
 </mapper>

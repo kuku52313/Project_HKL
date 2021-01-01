@@ -1,11 +1,12 @@
 package com.hklmart.service;
 
-import com.hklmart.domain.MemberVO;
-import com.hklmart.domain.UserDetailsVO;
+import com.hklmart.domain.*;
 import com.hklmart.persistence.MemberDAO;
 import lombok.extern.log4j.Log4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Log4j
 @Service
@@ -39,4 +40,15 @@ public class MemberService {
     public int idCheckTest(String userId) {
         return memberDAO.idDuplicatiedInspection(userId);
     }
+    public List<BoardAskDTO> getUserAskList(ProductPageCriteriaVO cri) {
+
+        return memberDAO.getUserAskList(cri);
+    }
+    public List<BoardReviewListDTO> getUserReviewList(ProductPageCriteriaVO cri) {
+        return memberDAO.getUserReviewList(cri);
+    }
+
+
+
+
 }

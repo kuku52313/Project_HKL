@@ -25,7 +25,15 @@
           integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="stylesheet" href="/resources/css/ask-review.css">
 </head>
-
+<body>
+<sec:authorize access="isAnonymous()">
+    <input type="hidden" id="memberId" value="none">
+</sec:authorize>
+<sec:authorize access="isAuthenticated()">
+    <sec:authentication property="principal" var="user"/>
+    <input type="hidden" id="memberId" value="${user.memberId}">
+</sec:authorize>
+    <input type="hidden" id="productCode" value="${infoShoes.productCode}">
 
     <div data-v-7b122ae2="" fragment="546c7337ea" id="container">
         <div data-v-a489fb08="" class="Page_products-detail">
@@ -119,9 +127,9 @@
                                         <button type="button" data-v-a489fb08="" id="btn_buy" class="btn-buy">바로 구매
                                         </button>
                                         <button type="button" data-v-a489fb08="" id="btn_cart_ico" class="btn-cart-ico"
-                                                onclick="addCart()"></button>
+                                                onclick="clickBasket(this)"></button>
                                         <button type="button" data-v-a489fb08="" id="btn_favor_ico"
-                                                class="btn-favor-ico" onclick="likeClick()"></button>
+                                                class="btn-favor-ico" onclick="clickLike(this)"></button>
                                 </div>
                                 </form>
 
@@ -224,12 +232,45 @@
                 </form>
                 <hr style="border: solid 1px black;">
             </div>
-
+</body>
 
 
             <script>
-                function addCart() {
-
+                function clickBasket(obj) {
+                    let thisCode = document.getElementById('productCode').value;
+                    let memberId = document.getElementById('memberId').value;
+                    if (memberId === "none") {
+                        alert("로그인이 필요한 서비스입니다");
+                        location.href = "/member/login-page";
+                        return 0;
+                    }
+                    let sendData = {memberId: memberId, productCode: thisCode};
+                    console.log(sendData);
+                    $.ajax({
+                        url: "/basket/check",
+                        type: "GET",
+                        dataType: "json",
+                        contentType: "application/json; charset=UTF-8",
+                        data: sendData,
+                        success: function (data) {
+                            if (data.result === 0) {
+                                alert("해당 상품을 장바구니에 담았습니다")
+                            } else if (data.result === 1) {
+                                alert("이미 장바구니에 있는 상품입니다");
+                            }
+                        },
+                        error: function () {
+                            alert("Error. 관리자에게 문의하십시오.");
+                        },
+                    });
                 }
+
+                function clickLike(obj) {
+                    alert("찜");
+                }
+
+                $(document).ready(function () {
+                    $('[data-toggle="tooltip"]').tooltip();
+                });
             </script>
 <%@include file="includes/footer.jsp" %>

@@ -101,7 +101,7 @@ public class MainController {
     @GetMapping("/product-detail")
     public String goProductDetailPage(Model model,ProductPageCriteriaVO cri) {
 
-        log.info("컨트롤러--------------"+cri);
+
         model.addAttribute("infoShoes", productService.getProductDetail(cri));
 
         model.addAttribute("BoardReviewList", productService.getProductDetailReview(cri));

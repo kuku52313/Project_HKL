@@ -24,7 +24,7 @@
                 <li><a href="#shopping-basket">장바구니</a></li>
                 <li><a class="sidebarMain" href="#header">MY 활동</a></li>
                 <li><a href="/member/my-page-ask-board">문의하기</a></li>
-                <li><a href="#inquire_history">문의내역</a></li>
+                <li><a href="javascript:void(0);" onclick="userAskReviewListFn()">문의내역</a></li>
                 <li><a href="#reviews">구매후기</a></li>
                 <li><a href="#wishlist">찜한상품</a></li>
                 <li><a class="sidebarMain" href="#header">MY 정보</a></li>
@@ -92,7 +92,7 @@
             <br/><br/>
             <div id="inquire_history">
                 <span class="font-set" style="font-size: 25px">문의내역</span>
-                <a href="#" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
+                <a href="javascript:void(0);" onclick="userAskReviewListFn()" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
                 <hr/>
             </div>
 
@@ -159,7 +159,13 @@
                 </form>
             </div>
         </div>
-
+        <form name="userAskReviewList" method="post" action="/testKim/user-ask-review-list">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <input type="hidden" name="pageNum" value="1">
+            <input type="hidden" name="pageNumReview" value="1">
+            <input type="hidden" name="amount" value="5">
+            <input type="hidden" name="memberId" value="${user.username}">
+        </form>
         <!-- 오른쪽 공백 -->
         <div class="col-2"></div>
     </div>
@@ -335,6 +341,10 @@
                 alert("Error. 관리자에게 문의하십시오.");
             },
         });
+    }
+    function userAskReviewListFn() {
+        let userAskReviewListForm = document.userAskReviewList;
+        userAskReviewListForm.submit();
     }
 </script>
 </html>
