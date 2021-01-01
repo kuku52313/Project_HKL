@@ -2,6 +2,7 @@ package com.hklmart.persistence;
 
 import com.hklmart.domain.*;
 
+import java.lang.reflect.Member;
 import java.util.List;
 
 public interface ManagementDAO {
@@ -18,10 +19,14 @@ public interface ManagementDAO {
 
     BoardAskDTO getAskAnswer(String boardAskNumber);
 
+    MemberModifyDTO getManageMember(String memberId);
+
     void deleteAskManager(String boardAskNumber);
 
     void deleteManagerProduct(String productCode);
 
     void deleteReviewManager(String boardReviewNumber);
+
+    void deleteMember(String memberId);
 
 }

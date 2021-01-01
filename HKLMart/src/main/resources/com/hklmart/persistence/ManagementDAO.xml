@@ -108,7 +108,24 @@
         WHERE BOARD_ASK_NUMBER = #{boardAskNumber}
         ]]>
     </select>
-
+    
+    <select id="getManageMember" resultType="com.hklmart.domain.MemberModifyDTO">
+        <![CDATA[
+        SELECT
+                M.MEMBER_ID,
+                M.MEMBER_NAME,
+                M.MEMBER_EMAIL,
+                M.MEMBER_TEL,
+                M.MEMBER_REGDATE,
+                M.MEMBER_ADDRESS,
+                A.AUTHORITIES_MEMBER,
+                A.AUTHORITIES_MANAGER,
+                A.AUTHORITIES_ADMIN
+        FROM MEMBER M, AUTHORITIES A
+        WHERE M.MEMBER_ID = A.AUTHORITIES_MEMBER_ID AND M.MEMBER_ID = #{memberId}
+        ]]>
+    </select>
+    
     <delete id="deleteAskManager" >
         DELETE FROM BOARD_ASK WHERE BOARD_ASK_NUMBER= #{boardAskNumber}
 
@@ -123,5 +140,9 @@
     <delete id="deleteReviewManager" >
         DELETE FROM BOARD_REVIEW WHERE BOARD_REVIEW_NUMBER = #{boardReviewNumber}
 
+    </delete>
+    
+    <delete id="deleteMember">
+        delete from member WHERE member_id = #{memberId}
     </delete>
 </mapper>

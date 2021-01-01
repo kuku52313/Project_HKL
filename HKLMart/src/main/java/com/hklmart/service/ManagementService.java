@@ -37,21 +37,22 @@ public class ManagementService {
         return managementDAO.getModify(productCode);
     }
 
+    public MemberModifyDTO getManageMember(String memberId) {
+        return managementDAO.getManageMember(memberId);
+    }
+
     public BoardAskDTO getAskAnswer(String boardAskNumber) {
         return managementDAO.getAskAnswer(boardAskNumber);
     }
 
-    public void deleteAskManager(String boardAskNumber){
-        managementDAO.deleteAskManager(boardAskNumber);
-    }
+    public void deleteAskManager(String boardAskNumber) { managementDAO.deleteAskManager(boardAskNumber); }
 
     public void deleteManagerProduct(String productCode){
         managementDAO.deleteManagerProduct(productCode);
     }
 
-    public void deleteReviewManager(String boardReviewNumber){
-        managementDAO.deleteReviewManager(boardReviewNumber);
-    }
+    public void deleteReviewManager(String boardReviewNumber) { managementDAO.deleteReviewManager(boardReviewNumber); }
 
+    public void deleteMember(String memberId) { managementDAO.deleteMember(memberId); }
 
 }

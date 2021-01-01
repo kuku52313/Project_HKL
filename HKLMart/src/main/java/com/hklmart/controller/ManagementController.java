@@ -61,15 +61,30 @@ public class ManagementController {
     public String goManagerAskAnawer(@RequestParam("boardAskNumber") String boardAskNumber, Model model) {
         model.addAttribute("answer", managementService.getAskAnswer(boardAskNumber));
 
-
         return "manager-ask-answer";
     }
+
     @PostMapping("/manager-ask-delete")
     public String deleteAskManager(@RequestParam("boardAskNumber") String boardAskNumber) {
 
         managementService.deleteAskManager(boardAskNumber);
 
         return "redirect:/manager/manager-ask-board";
+    }
+
+    @GetMapping("/manager-member-modify")
+    public String goManageMember(@RequestParam("memberId") String memberId, Model model) {
+        model.addAttribute("modify", managementService.getManageMember(memberId));
+
+        return "manager-member-modify";
+    }
+
+    @PostMapping("/manager-member-delete")
+    public String deleteMember(@RequestParam("memberId") String memberId) {
+
+        managementService.deleteMember(memberId);
+
+        return "redirect:/manager-member-list";
     }
 
     @GetMapping("/manager-review-delete")
