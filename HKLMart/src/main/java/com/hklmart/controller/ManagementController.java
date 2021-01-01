@@ -84,7 +84,7 @@ public class ManagementController {
 
         managementService.deleteMember(memberId);
 
-        return "redirect:/manager-member-list";
+        return "redirect:/manager/manager-member-list";
     }
 
     @GetMapping("/manager-review-delete")

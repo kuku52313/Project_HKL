@@ -15,7 +15,7 @@
     }
 
     .formCode {
-        color: #5a6268;
+        background-color: #e1e4ee;
     }
 
 </style>
@@ -47,7 +47,7 @@
         <div class="col-6" style="z-index: 500">
             <!-- form header -->
             <input type="hidden" name="memberId" value="${modify.memberId}"/>
-            <form class="insertform" name="productData" action="/manager/manager-member-modify" method="POST">
+            <form class="insertform" name="modifyForm" action="/manager/manager-member-modify" method="POST">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class="form-header">
                     <h1>회원 관리</h1>
@@ -109,30 +109,7 @@
 
 
 <script>
-    const toggleBtn = document.querySelector('.navbar_toggleBtn');
-    const search = document.querySelector('.navbar_search');
-    const menu = document.querySelector('.navbar_menu');
 
-
-    toggleBtn.addEventListener('click', () => {
-        search.classList.toggle('active');
-        menu.classList.toggle('active');
-    });
-
-    $(document).ready(function () {
-        $('a[href^="#"]').on('click', function (e) {
-            e.preventDefault();
-
-            let target = this.hash;
-            let $target = $(target);
-
-            $('html, body').stop().animate({
-                'scrollTop': $target.offset().top
-            }, 900, 'swing', function () {
-                window.location.hash = target;
-            });
-        });
-    });
 
     function searchFunc() {
         let productSearch = document.getElementById('productSearch').value;
@@ -156,7 +133,7 @@
 
     function DeleteCheckfn() {
 
-        var subForm = document.insertForm;
+        var subForm = document.modifyForm;
 
         subForm.action = "/manager/manager-member-delete";
 
