@@ -1,16 +1,15 @@
 package com.hklmart.controller;
 
+import com.hklmart.domain.PageCriteriaVO;
 import com.hklmart.domain.PageDTO;
-import com.hklmart.domain.ProductDetailVO;
 import com.hklmart.domain.ProductPageCriteriaVO;
-import com.hklmart.service.MemberService;
-import com.hklmart.service.PageService;
-import com.hklmart.service.ProductServiceImpl;
-import com.hklmart.service.SearchService;
+import com.hklmart.service.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Clock;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,12 +20,14 @@ public class MainController {
     private final ProductServiceImpl productService;
     private final PageService pageService;
     private final SearchService searchService;
+    private final ManagementService managementService;
 
-    public MainController(MemberService memberService, ProductServiceImpl productService, PageService pageService, SearchService searchService) {
+    public MainController(MemberService memberService, ProductServiceImpl productService, PageService pageService, SearchService searchService, ManagementService managementService) {
         this.memberService = memberService;
         this.productService = productService;
         this.pageService = pageService;
         this.searchService = searchService;
+        this.managementService = managementService;
     }
 
     @RequestMapping("/")
@@ -99,7 +100,19 @@ public class MainController {
 
 
         model.addAttribute("infoShoes", productService.getProductDetail(productCode));
-
+        System.out.println("11111111111111111111111111111111111111111");
+        PageCriteriaVO cri = new PageCriteriaVO();
+        cri.setPageNum(1);
+        cri.setAmount(5);
+        System.out.println(cri);
+        model.addAttribute("BoardReviewList", productService.getProductDetailReview(cri,productCode));
+        System.out.println("3333333333333333333333333333333333333333");
+        int total = pageService.getReviewProductTotal(cri,productCode);
+        System.out.println("444444444444444444444444444444444444444");
+        model.addAttribute("pageMaker", new PageDTO(cri, total));
+        System.out.println("5555555555555555555555555555555555");
+        model.addAttribute("reviewTotal",total);
+        System.out.println("6666666666666666666666666666666666666");
 
         return "product-detail";
     }

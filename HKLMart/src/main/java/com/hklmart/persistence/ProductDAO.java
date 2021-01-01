@@ -24,6 +24,8 @@ public interface ProductDAO {
 
     ProductVO getProductInfo(String productCode);
 
-    ProductDetailVO getProductDetail(String productCode);
+    ProductDetailDTO getProductDetail(String productCode);
+
+    List<BoardReviewListDTO> getProductDetailReview(PageCriteriaVO cri,String productCode);
 
 }

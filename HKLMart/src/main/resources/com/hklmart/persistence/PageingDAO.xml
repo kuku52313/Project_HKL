@@ -30,6 +30,7 @@
         FROM PRODUCT
         ]]>
     </select>
+
     <select id="getUserProductListTotalCount" resultType="int">
         <![CDATA[
         SELECT COUNT(*)
@@ -45,4 +46,14 @@
         WHERE PRODUCT_TYPE between #{Type} and (${Type}+19)
         ]]>
     </select>
+
+    <select id="getReviewProductTotalCount" resultType="int">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM BOARD_REVIEW
+        WHERE BOARD_REVIEW_PRODUCT_CODE = #{productCode}
+        ]]>
+    </select>
+
+
 </mapper>

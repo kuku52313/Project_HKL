@@ -36,4 +36,9 @@ public class PageService {
     public int getMainCategoryUserProductListTotal(ProductPageCriteriaVO cri) {
         return pageingDAO.getMainCategoryUserProductListTotalCount(cri);
     }
+
+    public int getReviewProductTotal(PageCriteriaVO cri,String productCode) {
+        return pageingDAO.getReviewProductTotalCount(cri,productCode);
+    }
+
 }

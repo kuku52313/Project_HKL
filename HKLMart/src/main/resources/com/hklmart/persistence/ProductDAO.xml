@@ -115,7 +115,7 @@
         ]]>
     </select>
 
-    <select id="getProductDetail" resultType="com.hklmart.domain.ProductDetailVO">
+    <select id="getProductDetail" resultType="com.hklmart.domain.ProductDetailDTO">
         <![CDATA[
         SELECT P.PRODUCT_CODE,
                P.PRODUCT_IMGPATH,
@@ -141,5 +141,27 @@
         ]]>
     </select>
 
-
+    <select id="getProductDetailReview" resultType="com.hklmart.domain.BoardReviewListDTO">
+        <![CDATA[
+        SELECT *
+        FROM (
+                     SELECT/*INDEX_DESC(BOARD_REVIEW BOARD_REVIEW_PK)*/
+                             ROWNUM RN,
+                             R.BOARD_REVIEW_NUMBER,
+                             R.BOARD_REVIEW_MEMBER_ID,
+                             P.PRODUCT_NAME,
+                             R.BOARD_REVIEW_SCORE,
+                             R.BOARD_REVIEW_DATE,
+                             R.BOARD_REVIEW_CONTENT,
+                             R.BOARD_REVIEW_IMG,
+                             R.BOARD_REVIEW_IMGPATH,
+                             R.BOARD_REVIEW_THUMBNAIL
+                     FROM PRODUCT P,
+                          BOARD_REVIEW R
+                     WHERE R.BOARD_REVIEW_PRODUCT_CODE = P.PRODUCT_CODE
+                       AND ROWNUM <= #{pageNum} * #{amount} and P.PRODUCT_CODE = #{productCode}
+                     )
+        WHERE RN > (#{pageNum} - 1) * #{amount}
+        ]]>
+    </select>
 </mapper>

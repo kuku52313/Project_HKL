@@ -38,9 +38,15 @@ public class ProductServiceImpl implements ProductService {
         return productDAO.codeCheck(insertCode);
     }
 
-    public ProductDetailVO getProductDetail(String productCode) {
+    public ProductDetailDTO getProductDetail(String productCode) {
 
         return productDAO.getProductDetail(productCode);
     }
+
+    public List<BoardReviewListDTO> getProductDetailReview(PageCriteriaVO cri,String productCode) {
+        System.out.println("service1111111111111111111111111"+cri);
+        return productDAO.getProductDetailReview(cri,productCode);
+    }
+
 }
 
