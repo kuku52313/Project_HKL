@@ -60,7 +60,7 @@
                 <c:forEach items="${MemberList}" var="list" varStatus="status">
                     <tr>
                         <th><c:out value="${status.count}"/></th>
-                        <th><a href="manager/manager-member-modify?memberId=<c:out value="/manager-member-modify?memberId=${list.memberId}" />" style="color: black">
+                        <th><a href="/manager/manager-member-modify?memberId=<c:out value="${list.memberId}" />" style="color: black">
                             <c:out value="${list.memberId}"/></a></th>
                         <th><c:out value="${list.memberName}"/></th>
                         <th><c:out value="${list.memberTel}"/></th>
