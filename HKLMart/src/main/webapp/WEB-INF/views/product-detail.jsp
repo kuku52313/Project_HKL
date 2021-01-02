@@ -87,7 +87,7 @@
                     <!-- 모바일 버전에서의 구매하기, 찜 버튼 -->
                     <div data-v-a489fb08="" class="Mod_goods-option-payment">
                         <div data-v-a489fb08="" class="wrap-btn-purchase-wish">
-                            <button data-v-a489fb08="" type="button" class="btn-purchase">구매하기</button>
+                            <button data-v-a489fb08="" type="button" class="btn-purchase" onclick="location.href='/order/order-page?productCode=${infoShoes.productCode}'">구매하기</button>
                             <button data-v-a489fb08="" type="button" class="btn-wish">
                                 <span data-v-a489fb08="" class="txt">찜</span>
                             </button>
@@ -124,14 +124,15 @@
 
 
                                 <form id="wrap-btn-purchase" method="GET">
-                                    <button type="button" data-v-a489fb08="" id="btn_buy" class="btn-buy">바로 구매
+                                    <button type="button" data-v-a489fb08="" id="btn_buy" onclick="location.href='/order/order-page?productCode=${infoShoes.productCode}'" class="btn-buy">바로 구매
                                     </button>
                                     <button type="button" data-v-a489fb08="" id="btn_cart_ico" class="btn-cart-ico"
                                             onclick="clickBasket(this)"></button>
                                     <button type="button" data-v-a489fb08="" id="btn_favor_ico"
                                             class="btn-favor-ico" onclick="clickLike(this)"></button>
+                                </form>
                             </div>
-                            </form>
+
 
                         </div>
                         <div data-v-a489fb08="" class="dummy"></div>
@@ -232,6 +233,8 @@
             </form>
             <hr style="border: solid 1px black;">
         </div>
+    </div>
+</div>
 </body>
 
 
@@ -272,5 +275,7 @@
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
+
+
 </script>
 <%@include file="includes/footer.jsp" %>

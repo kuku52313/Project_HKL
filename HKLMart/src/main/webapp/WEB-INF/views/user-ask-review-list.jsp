@@ -184,7 +184,7 @@
 <br><br>
 <hr style="border: solid 1px #ffb6b6;">
 
-<form name="userAskReviewList" method="post" action="/testKim/user-ask-review-list">
+<form name="userAskReviewList" method="post" action="/member/user-ask-review-list">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <input type="hidden" id="pageNumAskId" name="pageNum" value="${AskPageNum}">
     <input type="hidden" id="pageNumReviewId" name="pageNumReview" value="${ReviewPageMaker.productCri.pageNum}">

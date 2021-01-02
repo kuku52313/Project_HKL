@@ -203,7 +203,7 @@
                 </form>
             </div>
         </div>
-        <form name="userAskReviewList" method="post" action="/testKim/user-ask-review-list">
+        <form name="userAskReviewList" method="post" action="/member/user-ask-review-list">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <input type="hidden" name="pageNum" value="1">
             <input type="hidden" name="pageNumReview" value="1">
