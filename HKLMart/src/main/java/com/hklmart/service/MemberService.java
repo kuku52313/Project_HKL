@@ -49,6 +49,7 @@ public class MemberService {
     }
 
 
-
-
+    public void updateMemberAddress(MemberAddressVO memberAddressVO) {
+        memberDAO.updateMemberAddress(memberAddressVO);
+    }
 }

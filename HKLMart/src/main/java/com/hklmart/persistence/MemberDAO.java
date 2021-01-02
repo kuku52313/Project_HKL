@@ -24,5 +24,5 @@ public interface MemberDAO {
     List<BoardReviewListDTO> getUserReviewList(ProductPageCriteriaVO cri);
 
 
-
+    void updateMemberAddress(MemberAddressVO memberAddressVO);
 }

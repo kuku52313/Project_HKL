@@ -1,5 +1,6 @@
 package com.hklmart.controller;
 
+import com.hklmart.domain.MemberAddressVO;
 import com.hklmart.domain.MemberVO;
 import com.hklmart.domain.PageDTO;
 import com.hklmart.domain.ProductPageCriteriaVO;
@@ -97,6 +98,19 @@ public class MemberController {
         model.addAttribute("ReviewPageMaker", new PageDTO(cri, ReviewTotal));
 
         return "user-ask-review-list";
+    }
+    @GetMapping("/updateAddress")
+    @ResponseBody
+    public Map<String, Object> updateMemberAddress(Principal principal, MemberAddressVO memberAddressVO) {
+
+        memberAddressVO.setMemberId(principal.getName());
+
+        memberService.updateMemberAddress(memberAddressVO);
+
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("message", 1);
+        return map;
     }
 
 }

@@ -84,4 +84,14 @@
         WHERE RN > (#{pageNum} - 1) * #{amount}
         ]]>
     </select>
+
+    <update id="updateMemberAddress">
+        UPDATE MEMBER
+        SET
+        MEMBER_ADDRESS = #{memberAddress},
+        MEMBER_ADDRESS_MEMBER = #{memberAddressMember},
+        MEMBER_ADDRESS_POSTCODE = #{memberAddressPostcode}
+
+        WHERE MEMBER_ID = #{memberId}
+    </update>
 </mapper>

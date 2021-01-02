@@ -86,7 +86,8 @@
 
                     <div class="record">
                         <label>회원 주소 </label>&nbsp;&nbsp;
-                        <input type="text" class="formCode" id="addressMember" name="memberAddress" readonly value="${modify.memberAddressPostcode}${modify.memberAddress}${modify.memberAddressMember}"/>
+                        <input type="text" class="formCode" id="addressMember" name="memberAddress" readonly value="(${modify.memberAddressPostcode})
+                        ${modify.memberAddress} ${modify.memberAddressMember}"/>
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
 
