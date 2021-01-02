@@ -1,16 +1,13 @@
 package com.hklmart.controller;
 
-import com.hklmart.domain.PageCriteriaVO;
 import com.hklmart.domain.PageDTO;
 import com.hklmart.domain.ProductPageCriteriaVO;
 import com.hklmart.service.*;
 import lombok.extern.log4j.Log4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.Clock;
 import java.util.HashMap;
 import java.util.Map;
 

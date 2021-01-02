@@ -14,6 +14,16 @@ body > header > div.row > div.col-10 > ul > li > a {
 
 .basket-card > div {
     display: inline-block;
+    transition: 0.5s all;
+}
+
+.basket-card > div > * {
+    text-decoration: none;
+    color: black;
+}
+
+.basket-card > div:hover {
+    transform: translate(0, -20%);
 }
 
 body > header > div.row > div.col-10 > ul > li > div > div > ul > li > a {

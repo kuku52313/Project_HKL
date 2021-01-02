@@ -52,28 +52,32 @@
                 <a href="#" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
                 <hr/>
                 <c:choose>
-                    <c:when test="${fn:length(productList) > 0 && fn:length(productList) < 6}">
+                    <c:when test="${fn:length(basketList) > 0 && fn:length(basketList) < 6}">
                         <div class="row basket-card">
-                            <c:forEach var="list" items="${productList}">
+                            <c:forEach var="list" items="${basketList}">
                                 <div class="card col-2">
+                                    <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}">
                                     <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="장바구니" style="width: 100%"/>
                                     <div class="card-body">
                                         <p class="card-title" style="font-size: 15px; color: #5a6268">${list.productBrand}</p>
                                         <span class="card-subtitle" style="font-size: 13px">${list.productName}</span>
                                     </div>
+                                    </a>
                                 </div>
                             </c:forEach>
                         </div>
                     </c:when>
-                    <c:when test="${fn:length(productList) > 5}">
+                    <c:when test="${fn:length(basketList) > 5}">
                         <div class="row basket-card">
-                            <c:forEach var="list" items="${productList}" begin="0" end="4">
+                            <c:forEach var="list" items="${basketList}" begin="0" end="4">
                                 <div class="card col-2">
+                                    <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}">
                                     <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="장바구니" style="width: 100%"/>
                                     <div class="card-body">
                                         <p class="card-title" style="font-size: 15px; color: #5a6268">${list.productBrand}</p>
                                         <span class="card-subtitle" style="font-size: 12px">${list.productName}</span>
                                     </div>
+                                    </a>
                                 </div>
                             </c:forEach>
                             <div class="col-2" style="margin:auto">
@@ -108,6 +112,46 @@
                 <span class="font-set" style="font-size: 25px">찜한상품</span>
                 <a href="#" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
                 <hr/>
+                <c:choose>
+                    <c:when test="${fn:length(likeList) > 0 && fn:length(likeList) < 6}">
+                        <div class="row basket-card">
+                            <c:forEach var="list" items="${likeList}">
+                                <div class="card col-2">
+                                    <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}">
+                                    <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="찜한상품" style="width: 100%"/>
+                                    <div class="card-body">
+                                        <p class="card-title" style="font-size: 15px; color: #5a6268">${list.productBrand}</p>
+                                        <span class="card-subtitle" style="font-size: 13px">${list.productName}</span>
+                                    </div>
+                                    </a>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </c:when>
+                    <c:when test="${fn:length(likeList) > 5}">
+                        <div class="row basket-card">
+                            <c:forEach var="list" items="${likeList}" begin="0" end="4">
+                                <div class="card col-2">
+                                    <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}">
+                                    <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="찜한상품" style="width: 100%"/>
+                                    <div class="card-body">
+                                        <p class="card-title" style="font-size: 15px; color: #5a6268">${list.productBrand}</p>
+                                        <span class="card-subtitle" style="font-size: 12px">${list.productName}</span>
+                                    </div>
+                                    </a>
+                                </div>
+                            </c:forEach>
+                            <div class="col-2" style="margin:auto">
+                                <i class="fas fa-ellipsis-h fa-2x" style="color:grey"></i>
+                            </div>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div>
+                            <h6 class="font-set" style="padding: 10px; color: gray">찜한 상품이 없습니다</h6>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
             </div>
 
             <br/><br/>

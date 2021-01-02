@@ -21,10 +21,10 @@ public class BasketController {
 
     @GetMapping("/check")
     @ResponseBody
-    public Map<String, Object> checkBasket(@RequestParam("memberId") String memberId, @RequestParam("productCode") String productCode) {
-        int count = basket.checkBasket(memberId, productCode);
+    public Map<String, Object> checkBasket(Principal principal, @RequestParam("productCode") String productCode) {
+        int count = basket.checkBasket(principal.getName(), productCode);
         if (count == 0) {
-            basket.putProductBasket(memberId, productCode);
+            basket.putProductBasket(principal.getName(), productCode);
         }
         Map<String, Object> map = new HashMap<>();
         map.put("result", count);
@@ -32,13 +32,13 @@ public class BasketController {
     }
 
     @PostMapping("/put")
-    public void putProductBasket(@RequestParam("memberId") String memberId, @RequestParam("productCode") String productCode) {
-        basket.putProductBasket(memberId, productCode);
+    public void putProductBasket(Principal principal, @RequestParam("productCode") String productCode) {
+        basket.putProductBasket(principal.getName(), productCode);
     }
 
     @GetMapping("/take")
     public String takeProductBasket(Principal principal, Model model) {
-        model.addAttribute("productList", basket.basketList(principal.getName()));
-        return "my-page";
+        model.addAttribute("basketList", basket.basketList(principal.getName()));
+        return "forward:/like/take";
     }
 }
