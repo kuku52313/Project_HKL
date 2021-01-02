@@ -83,11 +83,11 @@
                     </div>
                     <!---->
                     <!---->
-
+<%--                    location.href='/order/order-page?productCode=${infoShoes.productCode}'--%>
                     <!-- 모바일 버전에서의 구매하기, 찜 버튼 -->
                     <div data-v-a489fb08="" class="Mod_goods-option-payment">
                         <div data-v-a489fb08="" class="wrap-btn-purchase-wish">
-                            <button data-v-a489fb08="" type="button" class="btn-purchase" onclick="location.href='/order/order-page?productCode=${infoShoes.productCode}'">구매하기</button>
+                            <button data-v-a489fb08="" type="button" class="btn-purchase" onclick="goOrderFn()">구매하기</button>
                             <button data-v-a489fb08="" type="button" class="btn-wish">
                                 <span data-v-a489fb08="" class="txt">찜</span>
                             </button>
@@ -124,7 +124,8 @@
 
 
                                 <form id="wrap-btn-purchase" method="GET">
-                                    <button type="button" data-v-a489fb08="" id="btn_buy" onclick="location.href='/order/order-page?productCode=${infoShoes.productCode}'" class="btn-buy">바로 구매
+                                    <button type="button" data-v-a489fb08="" id="btn_buy" onclick="goOrderFn()" <%--onclick="location.href='/order/order-page?productCode=${infoShoes.productCode}'"--%>
+                                            class="btn-buy">바로 구매
                                     </button>
                                     <button type="button" data-v-a489fb08="" id="btn_cart_ico" class="btn-cart-ico"
                                             onclick="clickBasket(this)"></button>
@@ -275,6 +276,12 @@
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
+
+    function goOrderFn(){
+        var productCode=$("#productCode").val();
+        var productSize=$("#ui-id-1").val();
+        location.href='/order/order-page?productCode='+productCode+'&Size='+productSize;
+    }
 
 
 </script>

@@ -4939,7 +4939,7 @@ input[type=radio]:checked + label:before {
 }
 
 .w80px {
-    width: 80px;
+    width: 320px;
 }
 
 .w30per {
@@ -16900,7 +16900,7 @@ input[type=radio]:checked + label:before {
 }
 
 .w80px {
-    width: 80px;
+    width: 320px;
 }
 
 .w30per {
