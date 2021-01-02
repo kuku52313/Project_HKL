@@ -15,7 +15,6 @@ body > header > div.row > div.col-10 > ul > li > a {
 .basket-card > div {
     display: inline-block;
     transition: 0.5s all;
-    border: 2px solid white;
 }
 
 .basket-card > div > * {
@@ -24,7 +23,6 @@ body > header > div.row > div.col-10 > ul > li > a {
 }
 
 .basket-card > div:hover {
-    border: 2px solid crimson;
     transform: translate(0, -20%);
 }
 
