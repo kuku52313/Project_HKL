@@ -56,11 +56,13 @@
                         <div class="row basket-card">
                             <c:forEach var="list" items="${basketList}">
                                 <div class="card col-2">
+                                    <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}">
                                     <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="장바구니" style="width: 100%"/>
                                     <div class="card-body">
                                         <p class="card-title" style="font-size: 15px; color: #5a6268">${list.productBrand}</p>
                                         <span class="card-subtitle" style="font-size: 13px">${list.productName}</span>
                                     </div>
+                                    </a>
                                 </div>
                             </c:forEach>
                         </div>
@@ -69,11 +71,13 @@
                         <div class="row basket-card">
                             <c:forEach var="list" items="${basketList}" begin="0" end="4">
                                 <div class="card col-2">
+                                    <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}">
                                     <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="장바구니" style="width: 100%"/>
                                     <div class="card-body">
                                         <p class="card-title" style="font-size: 15px; color: #5a6268">${list.productBrand}</p>
                                         <span class="card-subtitle" style="font-size: 12px">${list.productName}</span>
                                     </div>
+                                    </a>
                                 </div>
                             </c:forEach>
                             <div class="col-2" style="margin:auto">
@@ -113,11 +117,13 @@
                         <div class="row basket-card">
                             <c:forEach var="list" items="${likeList}">
                                 <div class="card col-2">
+                                    <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}">
                                     <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="찜한상품" style="width: 100%"/>
                                     <div class="card-body">
                                         <p class="card-title" style="font-size: 15px; color: #5a6268">${list.productBrand}</p>
                                         <span class="card-subtitle" style="font-size: 13px">${list.productName}</span>
                                     </div>
+                                    </a>
                                 </div>
                             </c:forEach>
                         </div>
@@ -126,11 +132,13 @@
                         <div class="row basket-card">
                             <c:forEach var="list" items="${likeList}" begin="0" end="4">
                                 <div class="card col-2">
+                                    <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}">
                                     <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="찜한상품" style="width: 100%"/>
                                     <div class="card-body">
                                         <p class="card-title" style="font-size: 15px; color: #5a6268">${list.productBrand}</p>
                                         <span class="card-subtitle" style="font-size: 12px">${list.productName}</span>
                                     </div>
+                                    </a>
                                 </div>
                             </c:forEach>
                             <div class="col-2" style="margin:auto">
