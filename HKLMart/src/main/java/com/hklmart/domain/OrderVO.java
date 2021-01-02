@@ -12,6 +12,8 @@ public class OrderVO {
     private String memberEmail;
     private String memberTel;
     private String memberAddress;
+    private String memberAddressPostcode;
+    private String memberAddressMember;
 
     private String productCode;
     private String productName;

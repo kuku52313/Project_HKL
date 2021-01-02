@@ -106,9 +106,35 @@
                     <dt data-v-06f5e281="">이메일</dt>
                     <dd data-v-06f5e281=""><input data-v-06f5e281="" type="text" name="" id="orderer_email1" value="${memberInfo.memberEmail}" readonly></dd>
                 </dl>
+                <dl data-v-06f5e281="">
+                    <dt data-v-06f5e281="">배송주소</dt>
+                    <dd data-v-06f5e281="">
+                        <input data-v-06f5e281="" type="text" name="" readonly="readonly" class="w49per" id="memberPostcode"> <br data-v-06f5e281="">
+
+                        <div data-v-06f5e281="" id="" style="display: none; border: 1px solid; width: 100% !important; height: auto; margin: 5px 0px; position: relative;" ><img
+                                data-v-06f5e281="" src="//t1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" alt="접기 버튼"
+                                style="cursor: pointer; position: absolute; right: 0px; top: -1px; z-index: 1;"></div>
+
+
+                        <input data-v-06f5e281="" type="text" name="" id="memberAddress" readonly="readonly"
+                               class="w49per order_addr" >
+                        <input data-v-06f5e281="" type="text" name="userAddress" id="memberUserAddress" readonly="readonly"
+                               class="w49per order_addr">
+
+                    </dd>
+                </dl>
+
             </div>
         </div>
-        <input type="hidden" id="orderFnHidden"  value="0" />
+        <form method="post" name="orderForm" id="orderForm">
+        <input type="hidden" id="orderFnHidden"  name="" value="0" />
+        <input type="hidden" value="0" id="orderFormHidden" >
+
+        <input type="hidden" id="productCodeHidden" name="productCode"  value="${prductInfo.productCode}" />
+        <input type="hidden" id="memberIdHidden" name="memberId" value="${memberInfo.memberId}" />
+        <input type="hidden" id="sizeHidden" name="stock_${param.Size}" value="1" />
+        <input type="hidden" id="sizeStockHidden" name="productSize" value="${param.Size}" />
+
         <h2 data-v-06f5e281="">배송지 정보<span data-v-06f5e281="" class="checkout-inpt"><input data-v-06f5e281="" type="checkbox" name="" id="checkBoxId" class="checkbox-style"><label
                 data-v-06f5e281="" for="checkBoxId">주문자 정보와 동일</label></span></h2> <%--여길 체크 하면 위 리스트 정보 고대로 내려오게..--%>
         <div data-v-06f5e281="" class="order_delivery">
@@ -123,33 +149,37 @@
             </dl>
             <dl data-v-06f5e281="">
                 <dt data-v-06f5e281="">배송주소</dt>
-                <dd data-v-06f5e281=""><input data-v-06f5e281="" type="text" name="" readonly="readonly" class="w49per"> <input data-v-06f5e281="" type="button" value="우편번호 찾기"
-                                                                                                                                class="btn_in_orderforn"><br data-v-06f5e281="">
-                    <div data-v-06f5e281="" id="daumPostCodeArea" style="display: none; border: 1px solid; width: 100% !important; height: auto; margin: 5px 0px; position: relative;"><img
+                <dd data-v-06f5e281="">
+                    <input data-v-06f5e281="" type="text" name="" readonly="readonly" class="w49per" id="sample4_postcode"> <input data-v-06f5e281="" type="button" value="주소 찾기"
+                                                                                                                                   class="btn_in_orderforn"onclick="execDaumPostcode()"><br data-v-06f5e281="">
+
+                    <div data-v-06f5e281="" id="daumPostCodeArea" style="display: none; border: 1px solid; width: 100% !important; height: auto; margin: 5px 0px; position: relative;" ><img
                             data-v-06f5e281="" src="//t1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnFoldWrap" alt="접기 버튼"
                             style="cursor: pointer; position: absolute; right: 0px; top: -1px; z-index: 1;"></div>
-                    <input data-v-06f5e281="" type="text" name="" id="address1" readonly="readonly" class="w49per order_addr"> <input data-v-06f5e281="" type="text" name="" id="address2"
-                                                                                                                                      class="w49per order_addr">
+
+
+                    <input data-v-06f5e281="" type="text" name="" id="sample4_roadAddress" readonly="readonly"
+                           class="w49per order_addr" >
+                    <input data-v-06f5e281="" type="text" name="userAddress" id="userAddress" placeholder="상세 주소 입력"
+                           class="w49per order_addr">
+                    <input type="hidden" id="orderAddress" name="orderAddress" value="0">
                     <div data-v-06f5e281="" class="delivery_add_info_text">* 제주도, 도서 산간 지역 등은 배송이 하루 이상 추가 소요될 수 있습니다</div>
                 </dd>
             </dl>
             <dl data-v-06f5e281="">
                 <dt data-v-06f5e281="">배송메모</dt>
                 <dd data-v-06f5e281="">
-                    <select id="ui-id-2" onchange="memoShow(this.value)">
+                    <select id="ui-id-2" name="orderMemo">
                         <option data-v-06f5e281="" value="">배송시 요청사항을 선택해주세요</option>
                         <option data-v-06f5e281="0" value="2">문 앞에 놓아주세요</option>
                         <option data-v-06f5e281="0" value="1">경비(관리)실에 맡겨주세요</option>
                         <option data-v-06f5e281="0" value="6">택배함에 넣어주세요</option>
                         <option data-v-06f5e281="0" value="3">직접 받겠습니다</option>
-                        <option data-v-06f5e281="0" value="5">직접입력</option>
                     </select>
-
-                    <input data-v-06f5e281="" type="text" id="delivery-memo" name="" placeholder="50자 이내로 작성해주세요" maxlength="50" class="w98per delivery-memo" style="display: none;">
                 </dd>
             </dl>
             <dl style="width: 100%">
-                <input type="button" class="btn_in_orderforn" style="" value="결제 하기">
+                <input type="button" class="btn_in_orderforn" style="" value="주소 업데이트" >
             </dl>
         </div>
 
@@ -158,7 +188,7 @@
     <!---->
     <!---->
     <div data-v-2c642cc6="" fragment="9ce731cb19" class="frame">
-        <form class="last-check">
+
             <h2 data-v-2c642cc6="">최종 결제 금액</h2>
             <dl data-v-2c642cc6="" class="order_totalpay">
                 <dt data-v-2c642cc6="">총 상품금액</dt>
@@ -265,11 +295,63 @@
                 $("#orderNameId").attr("readonly",false);
                 $("#InOrderTelId").attr("readonly",false);
             }
-
-
-
         });
     });
+
+    function execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 참고 항목 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                    extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample4_postcode').value = data.zonecode;
+                document.getElementById("sample4_roadAddress").value = roadAddr;
+                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+
+                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                if(roadAddr !== ''){
+                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+                } else {
+                    document.getElementById("sample4_extraAddress").value = '';
+                }
+
+                var guideTextBox = document.getElementById("guide");
+                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                if(data.autoRoadAddress) {
+                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                    guideTextBox.style.display = 'block';
+
+                } else if(data.autoJibunAddress) {
+                    var expJibunAddr = data.autoJibunAddress;
+                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                    guideTextBox.style.display = 'block';
+                } else {
+                    guideTextBox.innerHTML = '';
+                    guideTextBox.style.display = 'none';
+                }
+            }
+        }).open();
+    }
 
 
 </script>

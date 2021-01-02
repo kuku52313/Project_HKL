@@ -118,6 +118,8 @@
                 M.MEMBER_TEL,
                 M.MEMBER_REGDATE,
                 M.MEMBER_ADDRESS,
+                M.MEMBER_ADDRESS_POSTCODE,
+                M.MEMBER_ADDRESS_MEMBER,
                 A.AUTHORITIES_MEMBER,
                 A.AUTHORITIES_MANAGER,
                 A.AUTHORITIES_ADMIN

@@ -13,6 +13,9 @@ public class MemberModifyDTO {
     private String memberTel;
     private String memberRegdate;
     private String memberAddress;
+    private String memberAddressPostcode;
+    private String memberAddressMember;
+
 
     @Setter(AccessLevel.PROTECTED)
     private String authoritiesMember;

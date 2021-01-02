@@ -4,8 +4,8 @@
 <mapper namespace="com.hklmart.persistence.MemberDAO">
     <insert id="registMember">
         <![CDATA[
-        INSERT INTO MEMBER
-        VALUES (#{memberId}, #{memberPw}, #{memberName}, #{memberEmail}, #{memberTel}, SYSDATE, null)
+        insert into MEMBER(MEMBER_ID,MEMBER_PW,MEMBER_NAME,MEMBER_EMAIL,MEMBER_TEL,MEMBER_REGDATE)
+        VALUES (#{memberId}, #{memberPw}, #{memberName}, #{memberEmail}, #{memberTel}, SYSDATE)
         ]]>
     </insert>
 
