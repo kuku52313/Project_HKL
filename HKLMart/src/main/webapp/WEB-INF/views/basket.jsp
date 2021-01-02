@@ -72,8 +72,8 @@
                     <div data-v-44e1d284="" class="order_item">
                         <dl data-v-44e1d284=""><%--<c:out value="${list.}">--%>
                             <dt data-v-44e1d284="">
-                                <input data-v-44e1d284="" type="checkbox" name="" onclick="checkAll" checked>
-                                <label data-v-44e1d284="" name="checkAll"></label>
+                                <input data-v-44e1d284="" type="checkbox" id="checkAll" name="checkAll" checked>
+                                <label data-v-44e1d284="" for="checkAll" ></label>
                             </dt>
                             <dt data-v-44e1d284=""></dt>
                             <dt data-v-44e1d284=""></dt>
@@ -82,12 +82,12 @@
                         </dl>
                         <dl data-v-6dcc2f72="" data-v-44e1d284="">
                             <dd data-v-6dcc2f72="">
-                                <input data-v-6dcc2f72="" type="checkbox" name="" value="" onclick="">
-                                <label data-v-6dcc2f72="" name="checkAItem"></label>
+                                <input data-v-6dcc2f72="" type="checkbox" name="items" id="checkAItem" value="" checked>
+                                <label data-v-6dcc2f72="" for="checkAItem"></label>
                             </dd>
                             <dd data-v-6dcc2f72="">
                                 <a data-v-6dcc2f72="">
-                                <img data-v-6dcc2f72="" src="<%--<c:out value="${list.productImgpath}${list.productImg}--%>"></a>
+                                <img data-v-6dcc2f72="" src="<%--<c:out value="${list.productImgpath}${list.productImg}--%>"/></a>
                             </dd>
                             <dd data-v-6dcc2f72=""><a data-v-6dcc2f72="">
                                 <span data-v-6dcc2f72="" class="itemname"><%--<c:out value="${list.productName}">--%></span></a>
@@ -135,11 +135,9 @@
             </div>
         </div>
 
-        <h2 data-v-06f5e281="">배송지 정보<span data-v-06f5e281="" class="checkout-inpt"><input data-v-06f5e281=""
-                                                                                           type="checkbox" name=""
-                                                                                           id="order_delivery_chk"
-                                                                                           class="checkbox-style"><label
-                data-v-06f5e281="" for="order_delivery_chk">주문자 정보와 동일</label></span>
+        <h2 data-v-06f5e281="">배송지 정보<span data-v-06f5e281="" class="checkout-inpt">
+            <input data-v-06f5e281="" type="checkbox" name="" id="order_delivery_chk" class="checkbox-style">
+            <label data-v-06f5e281="" for="order_delivery_chk">주문자 정보와 동일</label></span>
         </h2> <%--여길 체크 하면 위 리스트 정보 고대로 내려오게..--%>
         <div data-v-06f5e281="" class="order_delivery">
             <dl data-v-06f5e281="">
@@ -226,7 +224,7 @@
 </div>
 </body>
 <script>
-    let getS = document.getElementById("ui-id-1");
+    let getS = document.getElementById("ui-id-2");
     let sVAl = getS.options[getS.selectedIndex].value;
 
     function memoShow(sVal) {
@@ -237,6 +235,40 @@
             $("#delivery-memo").css("display", "none");
         }
     }
+
+    var $checkAll = $('#checkAll');
+    $checkAll.change(function () {
+        var $this = $(this);
+        var checked = $this.prop('checked'); // checked 문자열 참조(true, false)
+        // console.log(checked);
+        $('input[name="items"]').prop('checked', checked);
+
+    });
+
+    var boxes = $('input[name="items"]');
+    boxes.change(function () {
+        // 첫 번째 방법
+        /*
+        var selectAll = true;
+        var count = boxes.length;
+        var i = 0;
+        for (; i < count; i++) {
+          if (!boxes[i].checked) {
+            selectAll = false;
+            break;
+          }
+        }
+        */
+
+        // 두 번째 방법
+        var boxLength = boxes.length;
+        // 체크된 체크박스 갯수를 확인하기 위해 :checked 필터를 사용하여 체크박스만 선택한 후 length 프로퍼티를 확인
+        var checkedLength = $('input[name="items"]:checked').length;
+        var selectAll = (boxLength == checkedLength);
+
+        $checkAll.prop('checked', selectAll);
+
+    });
 </script>
 
 <%@include file="includes/footer.jsp" %>
