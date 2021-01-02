@@ -20,4 +20,11 @@ public class TestLeeController {
 	public String goOrder() {
 		return "/order";
 	}
+
+	@GetMapping("/management-member-list")
+	public String goManageMemberList() { return "manager-member-modify";}
+
+	@GetMapping("/basket")
+	public String goBasket() {
+		return "basket"; }
 }
