@@ -96,7 +96,14 @@
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
                 </div>
-                <input type="button" class="insertBtn" onclick="DeleteCheckfn()" value="회원 탈퇴"/>
+
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <c:set var="Authority" value="${modify.memberAuthority}"/>
+
+                    <c:if test="${Authority != '관리자'}">
+                        <input type="button" class="insertBtn" onclick="DeleteCheckfn()" value="회원 탈퇴"/>
+                    </c:if>
+                </sec:authorize>
                 <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-member-list';" value="뒤로"/>
             </form>
         </div>
