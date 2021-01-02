@@ -68,14 +68,14 @@
                                                                                class="title">일반배송</strong></div>
             <div data-v-2c642cc6="" class="cart-seller-list cart_list_full">
                 <div data-v-44e1d284="" data-v-2c642cc6="">
-                    <%--                    <c:forEach items="${BasketList}" var="list" varStatus="status">--%>
+                    <%--<c:forEach items="${BasketList}" var="list" varStatus="status">--%>
                     <div data-v-44e1d284="" class="order_item">
                         <dl data-v-44e1d284=""><%--<c:out value="${list.}">--%>
                             <dt data-v-44e1d284="">
                                 <input data-v-44e1d284="" type="checkbox" id="checkAll" name="checkAll" checked>
                                 <label data-v-44e1d284="" for="checkAll" ></label>
                             </dt>
-                            <dt data-v-44e1d284=""></dt>
+                            <dt data-v-44e1d284=""><p style="text-align: left; margin-bottom: 0px;">전체선택</p></dt>
                             <dt data-v-44e1d284=""></dt>
                             <dt data-v-44e1d284=""><%--<c:out value="${list.productPrice}">--%></dt>
                             <dt data-v-44e1d284=""></dt>

@@ -4828,10 +4828,6 @@ input[type=radio]:checked + label:before {
     text-align: center;
 }
 
-.order_item dl dt:first-child {
-    text-align: left;
-}
-
 .order_item dt img {
     width: 100%;
     max-width: 140px;
@@ -8414,7 +8410,7 @@ div.messageBox p {
 }
 
 .order_item dl dt:first-child {
-    padding: 19px 10px;
+    padding: 10px 10px;
 }
 
 .order_item dl dt:nth-child(3), .order_item dl dt:nth-child(4) {
@@ -20377,10 +20373,6 @@ div.messageBox p {
     margin-bottom: 7px;
 }
 
-.order_item dl dt:first-child {
-    padding: 19px 10px;
-}
-
 .order_item dl dt:nth-child(3), .order_item dl dt:nth-child(4) {
     font-weight: 400;
     font-size: 1.2em;
@@ -20441,9 +20433,6 @@ div.messageBox p {
         border-bottom: none;
     }
 
-    .order_item dl dt:first-child {
-        padding: 10px;
-    }
 
     .order_item dd:first-child img {
         width: 100%;
