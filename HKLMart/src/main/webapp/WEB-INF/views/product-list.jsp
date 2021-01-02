@@ -9,17 +9,23 @@
 
 <title>HKL Mart :: 제품 조회</title>
 <style>
-    a { text-decoration:none }
-    a:hover { text-decoration:none; !important; color: black;}
+    a {
+        text-decoration: none
+    }
+
+    a:hover {
+        text-decoration: none;
+    !important;
+        color: black;
+    }
 
 </style>
 <!-- Body -->
 <sec:authorize access="isAnonymous()">
-    <input type="hidden" id="memberId" value="none">
+    <input type="hidden" id="stateLogin" value="0">
 </sec:authorize>
 <sec:authorize access="isAuthenticated()">
-    <sec:authentication property="principal" var="user"/>
-    <input type="hidden" id="memberId" value="${user.memberId}">
+    <input type="hidden" id="stateLogin" value="1">
 </sec:authorize>
 
 <div class="container-fluid">
@@ -92,15 +98,15 @@
                     <span>
                         <img src="<%=request.getContextPath()%>${list.productImgpath}${list.productThumbnail}" data-toggle="tooltip" data-placement="top" title="제품 상세 페이지로 이동" style="width:100%"/>
                     </span>
-                    <span class="font-m">${list.productBrand}</span><br/>
-                    <p class="font-s">${list.productName}</p>
-                    <span class="font-b"><fmt:formatNumber value="${list.productPrice}" pattern="#,###"/>&nbsp;</span>원
-                    <br/><br/>
-                    <div class="basket">
-                        <a class="${list.productCode}" onclick="clickBasket(this)"><i class="fas fa-shopping-basket fa-2x" data-toggle="tooltip" data-placement="top" title="장바구니에 추가하기"></i></a>
-                        &nbsp;&nbsp;&nbsp;
-                        <a onclick="clickLike(this)"><i class="fas fa-heart fa-2x" data-toggle="tooltip" data-placement="top" title="찜하기"></i></a>
-                    </div>
+                        <span class="font-m">${list.productBrand}</span><br/>
+                        <p class="font-s">${list.productName}</p>
+                        <span class="font-b"><fmt:formatNumber value="${list.productPrice}" pattern="#,###"/>&nbsp;</span>원
+                        <br/><br/>
+                        <div class="basket">
+                            <a class="${list.productCode}" onclick="clickBasket(this)"><i class="fas fa-shopping-basket fa-2x" data-toggle="tooltip" data-placement="top" title="장바구니에 추가하기"></i></a>
+                            &nbsp;&nbsp;&nbsp;
+                            <a class="${list.productCode}" onclick="clickLike(this)"><i class="fas fa-heart fa-2x" data-toggle="tooltip" data-placement="top" title="찜하기"></i></a>
+                        </div>
                     </a>
                 </div>
             </c:forEach>
@@ -144,13 +150,13 @@
 <script>
     function clickBasket(obj) {
         let thisCode = $(obj).attr('class');
-        let memberId = document.getElementById('memberId').value;
-        if (memberId === "none") {
+        let stateLogin = document.getElementById('stateLogin').value;
+        if (stateLogin === "0") {
             alert("로그인이 필요한 서비스입니다");
             location.href = "/member/login-page";
             return 0;
         }
-        let sendData = {memberId: memberId, productCode: thisCode};
+        let sendData = {productCode: thisCode};
         console.log(sendData);
         $.ajax({
             url: "/basket/check",
@@ -172,7 +178,32 @@
     }
 
     function clickLike(obj) {
-        alert("찜");
+        let thisCode = $(obj).attr('class');
+        let stateLogin = document.getElementById('stateLogin').value;
+        if (stateLogin === "0") {
+            alert("로그인이 필요한 서비스입니다");
+            location.href = "/member/login-page";
+            return 0;
+        }
+        let sendData = {productCode: thisCode};
+        console.log(sendData);
+        $.ajax({
+            url: "/like/check",
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=UTF-8",
+            data: sendData,
+            success: function (data) {
+                if (data.result === 0) {
+                    alert("해당 상품을 찜했습니다")
+                } else if (data.result === 1) {
+                    alert("이미 찜한 상품입니다");
+                }
+            },
+            error: function () {
+                alert("Error. 관리자에게 문의하십시오.");
+            },
+        });
     }
 
     $(document).ready(function () {
