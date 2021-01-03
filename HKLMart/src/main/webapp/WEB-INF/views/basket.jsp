@@ -308,7 +308,7 @@
     function popup() {
         let top = window.screen.height;
         let left = window.screen.width;
-        let win = window.open("/terms", "서비스 이용 약관", 'scrollbars=no,width=10,height=10,status=no,resizable=no' + ',top=' + ((top / 2) - 400) + ',left=' + ((left / 2) - 250));
+        let win = window.open("/terms", "서비스 이용 약관", 'scrollbars=no,width=10,height=10,status=no,resizable=no' + ',top=' + ((top / 2)-400) + ',left=' + ((left / 2) - 200));
         win.opener.self;
     }
 
