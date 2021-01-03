@@ -261,9 +261,9 @@
                 $("#orderNameId").val(null);
                 $("#InOrderTelId").val(null);
                 $("#InOrderTelId").val(null);
-                $("#sample4_postcode").val(memberPostcode);
-                $("#sample4_roadAddress").val(memberAddress);
-                $("#userAddress").val(memberUserAddress);
+                $("#sample4_postcode").val(null);
+                $("#sample4_roadAddress").val(null);
+                $("#userAddress").val(null);
                 $("#orderNameId").attr("readonly", false);
                 $("#InOrderTelId").attr("readonly", false);
                 $("#userAddress").attr("readonly", false);
