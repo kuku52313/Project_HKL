@@ -65,7 +65,7 @@
                     <li><a href="/member/loginPage">로그인</a></li>
                     <li><a href="/member/loginPage">회원가입</a></li>
                     <li><a href="#">고객센터</a></li>
-                    <li><a href="#">장바구니</a></li>
+                    <li><a href="/basket/basketPage">장바구니</a></li>
                 </ul>
             </div>
         </sec:authorize>
@@ -91,7 +91,7 @@
 
                     </li>
                     <li><a href="#">고객센터</a></li>
-                    <li><a href="/member/my-page">장바구니</a></li>
+                    <li><a href="/basket/basketPage">장바구니</a></li>
                 </ul>
             </div>
         </sec:authorize>

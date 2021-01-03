@@ -58,6 +58,11 @@ public class MainController {
         return map;
     }
 
+    @GetMapping("/terms")
+    public String termsPopup(){
+        return "conditions";
+    }
+
    /* @GetMapping("/product-list")
     public String goManagerProduct() {
         return "product-list";

@@ -22,8 +22,10 @@
         <s:intercept-url pattern="/member/login-page" access="isAnonymous()"/>
         <s:intercept-url pattern="/member/signup" access="isAnonymous()"/>
 
-        <!-- member url은 회원만 접근 가능 -->
+        <!-- 회원만 접근 가능 -->
         <s:intercept-url pattern="/member/*" access="hasRole('ROLE_MEMBER')"/>
+        <s:intercept-url pattern="/basket/*" access="hasRole('ROLE_MEMBER')"/>
+        <s:intercept-url pattern="/like/*" access="hasRole('ROLE_MEMBER')"/>
 
         <!-- 관리자 권한 -->
         <s:intercept-url pattern="/manager/*" access="hasRole('ROLE_ADMIN')"/>

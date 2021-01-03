@@ -41,4 +41,9 @@ public class BasketController {
         model.addAttribute("basketList", basket.basketList(principal.getName()));
         return "forward:/like/take";
     }
+
+    @GetMapping("/basketPage")
+    public String getBasketPage() {
+        return "basket";
+    }
 }

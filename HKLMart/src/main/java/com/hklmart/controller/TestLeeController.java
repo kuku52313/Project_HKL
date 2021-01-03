@@ -24,7 +24,4 @@ public class TestLeeController {
 	@GetMapping("/management-member-list")
 	public String goManageMemberList() { return "manager-member-modify";}
 
-	@GetMapping("/basket")
-	public String goBasket() {
-		return "basket"; }
 }
