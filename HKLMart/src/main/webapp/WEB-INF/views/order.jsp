@@ -290,9 +290,9 @@
 
                 $("#InOrderTelId").val(null);
 
-                $("#sample4_postcode").val(memberPostcode);
-                $("#sample4_roadAddress").val(memberAddress);
-                $("#userAddress").val(memberUserAddress);
+                $("#sample4_postcode").val(null);
+                $("#sample4_roadAddress").val(null);
+                $("#userAddress").val(null);
 
                 $("#orderNameId").attr("readonly",false);
                 $("#InOrderTelId").attr("readonly",false);
@@ -318,7 +318,7 @@
 
         let sendData = {memberAddressPostcode: memberAddressPostcodeId, memberAddress:memberAddressId, memberAddressMember:memberAddressMemberId};
 
-        if((memberAddressPostcodeId == null && memberAddressId == null && memberAddressMemberId == null)){
+        if((memberAddressPostcodeId == '' && memberAddressId == '' && memberAddressMemberId == '')){
             alert("주소를 입력하여 주세요")
         }else {
             $.ajax({
