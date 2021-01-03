@@ -20,12 +20,18 @@
     <link rel="stylesheet" href="/resources/css/product-list.css">
     <link rel="stylesheet" href="/resources/w3css/w3.css">
     <link rel="stylesheet" href="/resources/css/add-product.css">
+    <link rel="stylesheet" href="/resources/css/product-detail-all.css">
+    <link rel="stylesheet" href="/resources/css/checkout.css">
+    <link rel="stylesheet" href="/resources/css/checkout-order-product.css">
+    <link rel="stylesheet" href="/resources/css/checkout-order-adress.css">
+    <link rel="stylesheet" href="/resources/css/checkout-order-payment.css">
     <script src="/resources/jquery/3.5.1/jquery.min.js"></script>
     <script src="/resources/bootstrap/4.5.3/js/bootstrap.min.js"></script>
     <script src="/resources/jquery-ui/jquery-1.12.4.js"></script>
     <script src="/resources/jquery-ui/jquery-ui.js"></script>
     <script src="/resources/popper/popper.min.js"></script>
     <script src="/resources/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/resources/js/mapjsapi/postcode.v2.js"></script>
 </head>
 
 <body>

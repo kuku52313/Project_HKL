@@ -7,30 +7,7 @@
 
 <%@include file="includes/header.jsp" %>
 
-
-<!DOCTYPE html>
-<html lang="ko">
-
-<head>
-    <meta charset="utf-8">
-    <title>HKL 장바구니 페이지입니다.</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=3">
-
-    <link rel="stylesheet" href="/resources/css/product-detail-all.css">
-    <link rel="stylesheet" href="/resources/css/checkout.css">
-    <link rel="stylesheet" href="/resources/css/checkout-order-product.css">
-    <link rel="stylesheet" href="/resources/css/checkout-order-adress.css">
-    <link rel="stylesheet" href="/resources/css/checkout-order-payment.css">
-    <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
-    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <%--    <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>--%>
-    <%--    <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>--%>
-    <%--    <script type="text/javascript"></script>--%>
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-59629214-19"></script>
-    <noscript><img height=1 width=1 style=display:none
-                   src="https://www.facebook.com/tr?id=1161187400597904&ev=Page_view&noscript=1"></noscript>
-    <script type="text/javascript" charset="utf-8"></script>
-</head>
+<title>HKL :: 장바구니</title>
 
 <style>
     #ui-id-2 {
@@ -44,7 +21,6 @@
     }
 </style>
 
-<body>
 <div id="container">
     <div class="pagetitle">
         <h1>장바구니</h1>
@@ -118,7 +94,7 @@
                     <dd>
                         <input type="text" name="memberAddressPostcode" readonly="readonly" class="w49per" id="memberPostcode" value="${memberInfo.memberAddressPostcode}"> <br>
                         <input type="text" name="memberAddress" id="memberAddress" readonly="readonly" value="${memberInfo.memberAddress}"
-                               class="w49per order_addr" >
+                               class="w49per order_addr">
                         <input type="text" name="memberAddressMember" id="memberUserAddress" readonly="readonly" value="${memberInfo.memberAddressMember}"
                                class="w49per order_addr">
 
@@ -176,7 +152,7 @@
                     </dd>
                 </dl>
                 <dl style="width: 100%">
-                    <input type="button" class="btn_in_orderforn" style="" onclick="updateAddressFn()" value="이 주소로 업데이트" >
+                    <input type="button" class="btn_in_orderforn" style="" onclick="updateAddressFn()" value="이 주소로 업데이트">
                 </dl>
             </div>
         </form>
@@ -308,7 +284,7 @@
     function popup() {
         let top = window.screen.height;
         let left = window.screen.width;
-        let win = window.open("/terms", "서비스 이용 약관", 'scrollbars=no,width=10,height=10,status=no,resizable=no' + ',top=' + ((top / 2)-400) + ',left=' + ((left / 2) - 200));
+        let win = window.open("/terms", "서비스 이용 약관", 'scrollbars=no,width=10,height=10,status=no,resizable=no' + ',top=' + ((top / 2) - 400) + ',left=' + ((left / 2) - 200));
         win.opener.self;
     }
 
@@ -320,7 +296,7 @@
 
         let sendData = {memberAddressPostcode: memberAddressPostcodeId, memberAddress: memberAddressId, memberAddressMember: memberAddressMemberId};
 
-        if ((memberAddressPostcodeId == null && memberAddressId == null && memberAddressMemberId == null)) {
+        if ((memberAddressPostcodeId == '' && memberAddressId == '' && memberAddressMemberId == '')) {
             alert("주소를 입력하여 주세요")
         } else {
             $.ajax({
