@@ -36,6 +36,7 @@
                 <li><a href="/manager/manager-review-list">리뷰 관리 페이지</a></li>
                 <li><a href="/manager/manager-member-list">회원 조회 페이지</a></li>
                 <li><a href="/product/product-regist">제품 등록 페이지</a></li>
+                <br>
                 <li><a class="sidebarMain" href="/member/my-page">MEMBER</a></li>
                 <li><a href="/member/my-page">내 정보</a></li>
                 <hr/>
@@ -86,8 +87,8 @@
 
                     <div class="record">
                         <label>회원 주소 </label>&nbsp;&nbsp;
-                        <input type="text" class="formCode" id="addressMember" name="memberAddress" readonly value="(${modify.memberAddressPostcode})
-                        ${modify.memberAddress} ${modify.memberAddressMember}"/>
+                        <input type="text" class="formCode" id="addressMember" name="memberAddress" readonly
+                               value="(${modify.memberAddressPostcode})&nbsp;&nbsp;${modify.memberAddress}&nbsp;&nbsp;${modify.memberAddressMember}"/>
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
 

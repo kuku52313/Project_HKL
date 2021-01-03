@@ -24,6 +24,7 @@
                 <li><a href="/manager/manager-review-list">리뷰 관리 페이지</a></li>
                 <li><a href="/manager/manager-member-list">회원 조회 페이지</a></li>
                 <li><a href="/product/product-regist">제품 등록 페이지</a></li>
+                <br>
                 <li><a class="sidebarMain" href="/member/my-page">MEMBER</a></li>
                 <li><a href="/member/my-page">내 정보</a></li>
                 <hr/>
@@ -81,8 +82,8 @@
                     <hr style="border: solid 1px #ffb6b6;">
                     <div class="record">
                         <label>제품 코드</label>&nbsp;&nbsp;
-                        <input type="text" class="formCode" id="codeProduct" name="productCode" minlength="6" maxlength="6" placeholder="예시 코드 ex) AA0010" onkeyup="codeCheck()"/>
-                        <input type="button" id="codeCheckBtn" class="codeCheckBtn" value="등록불가"/>
+                        <input type="text" class="formCode" id="codeProduct" name="productCode" minlength="6" maxlength="6" placeholder="예시 코드 ex) AA0010" onkeyup="codeCheck()" style="width: 50%"/>
+                        <input type="button" id="codeCheckBtn" class="codeCheckBtn" value="등록불가" style="border-radius: 5px"/>
 
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">

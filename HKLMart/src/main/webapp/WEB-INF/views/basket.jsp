@@ -92,11 +92,13 @@
                 <dl>
                     <dt>배송주소</dt>
                     <dd>
-                        <input type="text" name="memberAddressPostcode" readonly="readonly" class="w49per" id="memberPostcode" value="${memberInfo.memberAddressPostcode}"> <br>
+                        <input type="text" name="memberAddressPostcode" readonly="readonly" class="w49per" id="memberPostcode" value="${memberInfo.memberAddressPostcode}" style="width: 50%;
+                        background-color: #E1E1E1">
+                        <br>
                         <input type="text" name="memberAddress" id="memberAddress" readonly="readonly" value="${memberInfo.memberAddress}"
-                               class="w49per order_addr">
+                               class="w49per order_addr" style="background-color: #E1E1E1">
                         <input type="text" name="memberAddressMember" id="memberUserAddress" readonly="readonly" value="${memberInfo.memberAddressMember}"
-                               class="w49per order_addr">
+                               class="w49per order_addr" style="background-color: #E1E1E1">
 
                     </dd>
                 </dl>

@@ -29,6 +29,7 @@
                 <li><a class="sidebarMain" href="#header">MY 정보</a></li>
                 <li><a href="/member/my-page#privacy">개인정보확인/수정</a></li>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <br>
                     <li><a class="sidebarMain" href="#header">MANAGER</a></li>
                     <li><a href="/manager/manager-page">관리</a></li>
                     <hr/>

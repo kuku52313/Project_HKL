@@ -26,6 +26,7 @@
                 <li><a href="/manager/manager-review-list">리뷰 관리 페이지</a></li>
                 <li><a href="/manager/manager-member-list">회원 조회 페이지</a></li>
                 <li><a href="/product/product-regist">제품 등록 페이지</a></li>
+                <br>
                 <li><a class="sidebarMain" href="/member/my-page">MEMBER</a></li>
                 <li><a href="/member/my-page">내 정보</a></li>
                 <hr/>
