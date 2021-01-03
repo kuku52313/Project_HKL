@@ -162,7 +162,7 @@
                 <table class="table-hover info-table">
                     <tr>
                         <td class="font-set">ID</td>
-                        <td class="font-set"><input type="text" class="input-check" id="userId" value="${user.username}" readonly style="width: 80%"/></td>
+                        <td class="font-set"><input type="text" class="input-check" id="userId" value="${user.username}" readonly/></td>
                     </tr>
                     <tr>
                         <td class="font-set">성명</td>
