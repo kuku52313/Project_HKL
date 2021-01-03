@@ -113,6 +113,17 @@
                     <dt>이메일</dt>
                     <dd><input type="text" name="" id="orderer_email1" value="${user.memberEmail}" readonly></dd>
                 </dl>
+                <dl>
+                    <dt>배송주소</dt>
+                    <dd>
+                        <input type="text" name="memberAddressPostcode" readonly="readonly" class="w49per" id="memberPostcode" value="${memberInfo.memberAddressPostcode}"> <br>
+                        <input type="text" name="memberAddress" id="memberAddress" readonly="readonly" value="${memberInfo.memberAddress}"
+                               class="w49per order_addr" >
+                        <input type="text" name="memberAddressMember" id="memberUserAddress" readonly="readonly" value="${memberInfo.memberAddressMember}"
+                               class="w49per order_addr">
+
+                    </dd>
+                </dl>
             </div>
         </div>
         <form method="post" name="orderForm" id="orderForm">
@@ -163,6 +174,9 @@
                             <option>직접 받겠습니다</option>
                         </select>
                     </dd>
+                </dl>
+                <dl style="width: 100%">
+                    <input type="button" class="btn_in_orderforn" style="" onclick="updateAddressFn()" value="이 주소로 업데이트" >
                 </dl>
             </div>
         </form>
@@ -296,6 +310,40 @@
         let left = window.screen.width;
         let win = window.open("/terms", "서비스 이용 약관", 'scrollbars=no,width=10,height=10,status=no,resizable=no' + ',top=' + ((top / 2) - 400) + ',left=' + ((left / 2) - 250));
         win.opener.self;
+    }
+
+    function updateAddressFn() {
+
+        var memberAddressPostcodeId = $("#sample4_postcode").val();
+        var memberAddressId = $("#sample4_roadAddress").val();
+        var memberAddressMemberId = $("#userAddress").val();
+
+        let sendData = {memberAddressPostcode: memberAddressPostcodeId, memberAddress: memberAddressId, memberAddressMember: memberAddressMemberId};
+
+        if ((memberAddressPostcodeId == null && memberAddressId == null && memberAddressMemberId == null)) {
+            alert("주소를 입력하여 주세요")
+        } else {
+            $.ajax({
+                url: "/member/updateAddress",
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=UTF-8",
+                data: sendData,
+                success: function (data) {
+                    if (data.message == 1) {
+                        alert("주소가 변경되었습니다")
+                    } else {
+                        alert("오류입니다")
+                    }
+
+                },
+                error: function () {
+                    alert("Error. 관리자에게 문의하십시오.");
+                },
+            });
+
+
+        }
     }
 
 </script>
