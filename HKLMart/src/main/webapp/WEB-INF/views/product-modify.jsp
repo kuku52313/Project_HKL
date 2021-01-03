@@ -33,7 +33,7 @@
         </div>
 
         <!-- 작업중 -->
-        <div class="col-6" style="font-family: Godo; text-align: center; font-weight: bold; z-index: 500">
+        <div class="col-6" style="font-family: Godo; text-align: center; font-weight: bold;">
             <br/><br/>
             <!-- form header -->
             <form class="insertform" name="productData" action="/product/product-modify-up?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data">

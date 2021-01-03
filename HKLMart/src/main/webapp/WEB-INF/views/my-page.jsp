@@ -58,11 +58,11 @@
                             <c:forEach var="list" items="${basketList}">
                                 <div class="card col-2">
                                     <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}">
-                                    <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="장바구니" style="width: 100%"/>
-                                    <div class="card-body">
-                                        <p class="card-title" style="font-size: 15px; color: #5a6268">${list.productBrand}</p>
-                                        <span class="card-subtitle" style="font-size: 13px">${list.productName}</span>
-                                    </div>
+                                        <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="장바구니" style="width: 100%"/>
+                                        <div class="card-body">
+                                            <p class="card-title" style="font-size: 15px; color: #5a6268">${list.productBrand}</p>
+                                            <span class="card-subtitle" style="font-size: 13px">${list.productName}</span>
+                                        </div>
                                     </a>
                                 </div>
                             </c:forEach>
@@ -73,11 +73,11 @@
                             <c:forEach var="list" items="${basketList}" begin="0" end="4">
                                 <div class="card col-2">
                                     <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}">
-                                    <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="장바구니" style="width: 100%"/>
-                                    <div class="card-body">
-                                        <p class="card-title" style="font-size: 15px; color: #5a6268">${list.productBrand}</p>
-                                        <span class="card-subtitle" style="font-size: 12px">${list.productName}</span>
-                                    </div>
+                                        <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="장바구니" style="width: 100%"/>
+                                        <div class="card-body">
+                                            <p class="card-title" style="font-size: 15px; color: #5a6268">${list.productBrand}</p>
+                                            <span class="card-subtitle" style="font-size: 12px">${list.productName}</span>
+                                        </div>
                                     </a>
                                 </div>
                             </c:forEach>
@@ -119,11 +119,11 @@
                             <c:forEach var="list" items="${likeList}">
                                 <div class="card col-2">
                                     <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}">
-                                    <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="찜한상품" style="width: 100%"/>
-                                    <div class="card-body">
-                                        <p class="card-title" style="font-size: 15px; color: #5a6268">${list.productBrand}</p>
-                                        <span class="card-subtitle" style="font-size: 13px">${list.productName}</span>
-                                    </div>
+                                        <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="찜한상품" style="width: 100%"/>
+                                        <div class="card-body">
+                                            <p class="card-title" style="font-size: 15px; color: #5a6268">${list.productBrand}</p>
+                                            <span class="card-subtitle" style="font-size: 13px">${list.productName}</span>
+                                        </div>
                                     </a>
                                 </div>
                             </c:forEach>
@@ -134,11 +134,11 @@
                             <c:forEach var="list" items="${likeList}" begin="0" end="4">
                                 <div class="card col-2">
                                     <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}">
-                                    <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="찜한상품" style="width: 100%"/>
-                                    <div class="card-body">
-                                        <p class="card-title" style="font-size: 15px; color: #5a6268">${list.productBrand}</p>
-                                        <span class="card-subtitle" style="font-size: 12px">${list.productName}</span>
-                                    </div>
+                                        <img class="card-img-top" src="${list.productImgPath}${list.productThumbnail}" alt="찜한상품" style="width: 100%"/>
+                                        <div class="card-body">
+                                            <p class="card-title" style="font-size: 15px; color: #5a6268">${list.productBrand}</p>
+                                            <span class="card-subtitle" style="font-size: 12px">${list.productName}</span>
+                                        </div>
                                     </a>
                                 </div>
                             </c:forEach>
@@ -189,14 +189,21 @@
                     <table class="table-hover info-table">
                         <tr>
                             <td class="font-set">비밀번호</td>
-                            <td class="font-set"><input type="password" class="input-field" onkeyup="checkPwfn()" id="userPw" name="memberPw" placeholder="알파벳 대,소문자,특수문자,숫자 포함"
-                                                        required/></td>
-                            <td><input type="button" id="pwCheckBtn" class="pwCheckBtn"/></td>
+                            <td class="font-set">
+                                <input type="password" class="input-field" onkeyup="checkPwfn()" id="userPw" name="memberPw" placeholder="알파벳 대,소문자,특수문자,숫자 포함" required/>
+                            </td>
+                            <td>
+                                <input type="button" id="pwCheckBtn" class="pwCheckBtn"/>
+                            </td>
                         </tr>
                         <tr>
                             <td class="font-set">비밀번호확인</td>
-                            <td class="font-set"><input type="password" class="input-field" onkeyup="checkPwfn(), enterKeyUp()" id="userPwCk" placeholder="비밀번호 재입력" required/></td>
-                            <td><input type="button" id="pwckCheckBtn" class="pwckCheckBtn"/></td>
+                            <td class="font-set">
+                                <input type="password" class="input-field" onkeyup="checkPwfn(), enterKeyUp()" id="userPwCk" placeholder="비밀번호 재입력" required/>
+                            </td>
+                            <td>
+                                <input type="button" id="pwckCheckBtn" class="pwckCheckBtn"/>
+                            </td>
                         </tr>
                     </table>
                     <br/>
@@ -387,6 +394,7 @@
             },
         });
     }
+
     function userAskReviewListFn() {
         let userAskReviewListForm = document.userAskReviewList;
         userAskReviewListForm.submit();
