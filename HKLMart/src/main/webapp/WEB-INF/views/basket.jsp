@@ -8,13 +8,7 @@
 <%@include file="includes/header.jsp" %>
 
 <title>HKL :: 장바구니</title>
-<head>
-    <link rel="stylesheet" href="/resources/css/product-detail-all.css">
-    <link rel="stylesheet" href="/resources/css/checkout.css">
-    <link rel="stylesheet" href="/resources/css/checkout-order-product.css">
-    <link rel="stylesheet" href="/resources/css/checkout-order-adress.css">
-    <link rel="stylesheet" href="/resources/css/checkout-order-payment.css">
-</head>
+
 <style>
     #ui-id-2 {
         width: 80%;
@@ -133,7 +127,7 @@
                 <dl>
                     <dt>배송주소</dt>
                     <dd>
-                        <input type="text" name="orderAddressPostcode" readonly="readonly" class="w49per" id="sample4_postcode">
+                        <input type="text" name="orderAddressPostcode" readonly="readonly" class="w49per" id="sample4_postcode" style="width: 50%">
                         <input type="button" value="주소 찾기" class="btn_in_orderforn" onclick="execDaumPostcode()"><br>
                         <div id="daumPostCodeArea" style="display: none; border: 1px solid; width: 100% !important; height: auto; margin: 5px 0px; position: relative;">
                             <img src="//t1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnFoldWrap" alt="접기 버튼"
