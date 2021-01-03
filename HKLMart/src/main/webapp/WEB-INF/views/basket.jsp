@@ -23,23 +23,13 @@
     <link rel="stylesheet" href="/resources/css/checkout-order-payment.css">
     <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
-    <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
-    <script type="text/javascript"></script>
+    <%--    <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>--%>
+    <%--    <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>--%>
+    <%--    <script type="text/javascript"></script>--%>
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-59629214-19"></script>
     <noscript><img height=1 width=1 style=display:none
                    src="https://www.facebook.com/tr?id=1161187400597904&ev=Page_view&noscript=1"></noscript>
     <script type="text/javascript" charset="utf-8"></script>
-
-
-    <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
-    <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
-    <script type="text/javascript"></script>
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-59629214-19"></script>
-    <noscript><img height=1 width=1 style=display:none
-                   src="https://www.facebook.com/tr?id=1161187400597904&ev=Page_view&noscript=1"></noscript>
-    <script type="text/javascript" charset="utf-8"></script>
-
 </head>
 
 <style>
@@ -55,7 +45,7 @@
 </style>
 
 <body>
-<div data-v-7b122ae2="" fragment="5c8f7b94a1" id="container">
+<div id="container">
     <div class="pagetitle">
         <h1>장바구니</h1>
     </div>
@@ -69,34 +59,32 @@
                 <div>
                     <%--<c:forEach items="${BasketList}" var="list" varStatus="status">--%>
                     <div class="order_item">
+                        <br>
                         <dl><%--<c:out value="${list.}">--%>
                             <dt>
                                 <input type="checkbox" id="checkAll" name="checkAll" checked>
                                 <label for="checkAll"></label>
                             </dt>
                             <dt><p style="text-align: left; margin-bottom: 0px;">전체선택</p></dt>
-                            <dt></dt>
-                            <dt><%--<c:out value="${list.productPrice}">--%></dt>
-                            <dt></dt>
                         </dl>
-                        <dl data-v-6dcc2f72="">
-                            <dd data-v-6dcc2f72="">
-                                <input data-v-6dcc2f72="" type="checkbox" name="items" id="checkAItem" value="" checked>
-                                <label data-v-6dcc2f72="" for="checkAItem"></label>
+                        <dl>
+                            <dd>
+                                <input type="checkbox" name="items" id="checkAItem" value="" checked>
+                                <label for="checkAItem"></label>
                             </dd>
-                            <dd data-v-6dcc2f72="">
-                                <a data-v-6dcc2f72="">
-                                    <img data-v-6dcc2f72="" src="<%--<c:out value="${list.productImgpath}${list.productImg}--%>"/></a>
+                            <dd>
+                                <a><img src="<%--<c:out value="${list.productImgpath}${list.productImg}--%>"/></a>
                             </dd>
-                            <dd data-v-6dcc2f72=""><a data-v-6dcc2f72="">
-                                <span data-v-6dcc2f72="" class="itemname"><%--<c:out value="${list.productName}">--%></span></a>
-                                <span data-v-6dcc2f72=""><%--<c:out value="${고른옵션(사이즈)}">--%></span>
-                                <span data-v-6dcc2f72=""><%--<c:out value="${고른옵션(상품갯수)}">--%></span></dd>
-                            <dd data-v-6dcc2f72="">
+                            <dd><a data-v-6dcc2f72="">
+                                <span class="itemname"><%--<c:out value="${list.productName}">--%></span></a>
+                                <span><%--<c:out value="${고른옵션(사이즈)}">--%></span>
+                                <span><%--<c:out value="${고른옵션(상품갯수)}">--%></span></dd>
+                            <dd>
                             </dd>
-                            <dd data-v-6dcc2f72=""><%--<c:out value="${list.productPriceAll}">--%></dd>
+                            <dd><%--<c:out value="${list.productPriceAll}">--%></dd>
                         </dl>
                     </div>
+                    <hr>
                     <input type="hidden" value="0">
                 </div>
             </div>
@@ -136,7 +124,7 @@
             <input type="hidden" id="sizeStockHidden" name="productSize" value="${param.Size}"/>
 
             <h2>배송지 정보<span class="checkout-inpt">
-                <input type="checkbox" name="" id="checkBoxId" class="checkbox-style"><label for="checkBoxId">주문자 정보와 동일</label></span></h2>
+                <input type="checkbox" name="" id="checkBoxId" class="checkbox-style"><label for="checkBoxId">&nbsp;주문자 정보와 동일</label></span></h2>
             <div class="order_delivery">
                 <dl>
                     <dt>수령인</dt>
@@ -222,7 +210,7 @@
             <div class="order_paymethod">
                 <h4 class="text-left"><input type="checkbox" id="agree_1">
                     <label for="agree_1">
-                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;
                         HKL MART 약관 동의
                         <span>(필수)</span>
                     </label>
@@ -233,7 +221,9 @@
     </div>
 </div>
 
-</body>
+<br><br>
+<hr style="border: solid 1px #ffb6b6;">
+
 <script>
     let getS = document.getElementById("ui-id-2");
     let sVAl = getS.options[getS.selectedIndex].value;

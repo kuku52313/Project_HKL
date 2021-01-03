@@ -215,8 +215,8 @@
     </div>
 </div>
 
-<br/><br/>
-<hr/>
+<br><br>
+<hr style="border: solid 1px #ffb6b6;">
 
 <!-- Footer -->
 <footer id="footer" class="container-fluid footer-wrap">
@@ -272,7 +272,7 @@
         <div class="col-3"></div>
     </div>
 
-    <hr/>
+    <hr style="border: solid 1px #ffb6b6;">
 
     <!-- Footer bottom -->
     <div class="row footer-bottom">

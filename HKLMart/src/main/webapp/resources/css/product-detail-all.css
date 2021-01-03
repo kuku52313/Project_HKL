@@ -17004,7 +17004,7 @@ input[type=radio]:checked + label:before {
 @media screen and (min-width: 769px) {
     .wrap-normal-shipping-title {
         padding: 26px 5px;
-        border-top: 1px solid #000;
+        border-top: 1px solid white;
         border-bottom: 1px solid #e1e1e1;
     }
 }

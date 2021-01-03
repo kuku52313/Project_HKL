@@ -66,7 +66,7 @@
 
     </div>
 
-    <hr>
+    <hr style="border: solid 1px #ffb6b6;">
 
     <!-- Footer bottom -->
     <div class="row footer-bottom">
