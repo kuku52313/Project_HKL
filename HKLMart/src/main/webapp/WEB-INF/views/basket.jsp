@@ -8,7 +8,13 @@
 <%@include file="includes/header.jsp" %>
 
 <title>HKL :: 장바구니</title>
-
+<head>
+    <link rel="stylesheet" href="/resources/css/product-detail-all.css">
+    <link rel="stylesheet" href="/resources/css/checkout.css">
+    <link rel="stylesheet" href="/resources/css/checkout-order-product.css">
+    <link rel="stylesheet" href="/resources/css/checkout-order-adress.css">
+    <link rel="stylesheet" href="/resources/css/checkout-order-payment.css">
+</head>
 <style>
     #ui-id-2 {
         width: 80%;
