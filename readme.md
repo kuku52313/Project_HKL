@@ -16,7 +16,7 @@
 
 + *SQL 시스템 관리자 계정으로 로그인*
 
-+ *excuteSQL.sql 실행* (최초 초기화 시 25~27행 Error 발생 의도된 사항임)
++ *excuteSQL.sql 실행 <span style="color:red">(최초 초기화 시 25~27행 Error 발생 의도된 사항임)</span>*
 
 + *HKLMart Pull*  
 
