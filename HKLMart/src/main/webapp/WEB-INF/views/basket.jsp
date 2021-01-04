@@ -32,39 +32,36 @@
             </div>
             <div class="cart-seller-list cart_list_full">
                 <div>
-                    <c:forEach items="${orderBasketList}" var="list" varStatus="status">
                     <div class="order_item">
-                        <br>
-                        <dl><%--<c:out value="${list.}">--%>
+                        <dl data-v-6dcc2f72=""><%--<c:out value="${list.}">--%>
                             <dt>
                                 <input type="checkbox" id="checkAll" name="checkAll" checked>
                                 <label for="checkAll"></label>
                             </dt>
                             <dt><p style="text-align: left; margin-bottom: 0px;">전체선택</p></dt>
+                            <dt></dt>
+                            <dt>주문금액</dt>
                         </dl>
-                        <dl>
-                            <dd>
+                        <c:forEach items="${orderBasketList}" var="list" varStatus="status">
+                        <dl class="order_item" data-v-6dcc2f72="">
+                            <dd data-v-6dcc2f72="">
                                 <input type="checkbox" name="items" id="checkAItem" value="" checked>
                                 <label for="checkAItem"></label>
                             </dd>
-                            <dd>
-                                <a>
-                                    <img src="<c:out value="${list.productImgpath}${list.productImg}">"/>
+                            <dd data-v-6dcc2f72="">
+                                <a data-v-6dcc2f72="">
+                                    <img data-v-6dcc2f72="" src="<c:out value="${list.productImgpath}${list.productThumbnail}"/>"/>
                                 </a>
                             </dd>
-                            <dd><a>
-                                <span><c:out value="${list.productName}"/></span></a>
-                                <span><%--<c:out value="${고른옵션(사이즈)}">--%></span>
-                                <span><%--<c:out value="${고른옵션(상품갯수)}">--%></span></dd>
-                            <dd>
-                            </dd>
-                            <dd><%--<c:out value="${productPriceAll}">--%></dd>
+                            <dd data-v-6dcc2f72=""><a>
+                                <span data-v-6dcc2f72="" class="itemname"><c:out value="${list.productName}"/></span></a>
+                                <span data-v-6dcc2f72="">고른옵션(사이즈)<%--<c:out value="${고른옵션(사이즈)}">--%></span>
+                                <span data-v-6dcc2f72="">고른옵션(상품갯수)<%--<c:out value="${고른옵션(상품갯수)}">--%></span></dd>
+                            <dd data-v-6dcc2f72=""><%--<c:out value="${productPriceAll}">--%>원</dd>
                         </dl>
+                        </c:forEach>
                     </div>
-                        </c:out>
-                    </c:forEach>
 
-                    <hr>
                     <input type="hidden" value="0">
                 </div>
             </div>
