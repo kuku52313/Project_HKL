@@ -42,11 +42,14 @@
                             <dt></dt>
                             <dt>주문금액</dt>
                         </dl>
+
                         <c:forEach items="${orderBasketList}" var="list" varStatus="status">
+                            <%! int gl_var = 0; %>
+                            <% gl_var++; %>
                         <dl class="order_item" data-v-6dcc2f72="">
                             <dd data-v-6dcc2f72="">
-                                <input type="checkbox" name="items" id="checkAItem" value="" checked>
-                                <label for="checkAItem"></label>
+                                <input type="checkbox" name="items" id="checkAItem<%=gl_var%>" value="">
+                                <label for="checkAItem<c:out value="<%=gl_var%>"/>"></label>
                             </dd>
                             <dd data-v-6dcc2f72="">
                                 <a data-v-6dcc2f72="">
