@@ -15,4 +15,18 @@
         ]]>
     </select>
 
+    <select id="checkStock" resultType="integer">
+        <![CDATA[
+        select ${stockSize} from stock where Stock_product_Code = #{productCode}
+        ]]>
+    </select>
+
+    <insert id="doPay">
+        <![CDATA[
+        insert into product_order(order_number, order_member_id, order_date, ORDER_State, ORDER_name, ORDER_memo,
+                                  ORDER_tel, ORDER_Payment, ORDER_Address_postcode, ORDER_Address, ORDER_Address_member)
+        VALUES (SEQ_ORDER_NUMBER.nextval,#{orderMemberId}, sysdate, '주문 완료되었습니다', #{orderName},#{orderMemo},#{orderTel},#{orderPayment},
+                #{orderAddressPostcode},#{orderAddress},#{orderAddressMember})
+        ]]>
+    </insert>
 </mapper>

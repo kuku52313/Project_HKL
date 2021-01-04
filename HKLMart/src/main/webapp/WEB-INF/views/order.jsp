@@ -62,74 +62,78 @@
                 <div >
                     <div  class="order_item">
                         <dl >
-                            <dt >${prductInfo.productBrand}</dt>
+                            <dt >${productInfo.productBrand}</dt>
                             <dt ></dt>
                             <dt ></dt>
                             <dt >주문금액</dt>
                         </dl>
                         <dl data-v-6dcc2f72="" >
-                            <dd data-v-6dcc2f72=""><a data-v-6dcc2f72=""><img data-v-6dcc2f72="" src="${prductInfo.productImgPath}${prductInfo.productThumbnail}"></a></dd>
-                            <dd data-v-6dcc2f72=""><a data-v-6dcc2f72=""><span data-v-6dcc2f72="" class="itemname">${prductInfo.productName}</span></a> <span data-v-6dcc2f72="">Size
+                            <dd data-v-6dcc2f72=""><a data-v-6dcc2f72=""><img data-v-6dcc2f72="" src="${productInfo.productImgPath}${productInfo.productThumbnail}"></a></dd>
+                            <dd data-v-6dcc2f72=""><a data-v-6dcc2f72=""><span data-v-6dcc2f72="" class="itemname">${productInfo.productName}</span></a> <span data-v-6dcc2f72="">Size
                                 ${param.Size}</span> <span
                                     data-v-6dcc2f72="">1개</span></dd>
                             <dd data-v-6dcc2f72="">
                                 <!---->
                             </dd>
                             <dd data-v-6dcc2f72=""><fmt:formatNumber
-                                    value="${prductInfo.productPrice}" pattern="#,###"/> 원</dd>
+                                    value="${productInfo.productPrice}" pattern="#,###"/> 원</dd>
                         </dl>
                     </div>
                     <input  type="hidden" value="0">
                 </div>
             </div>
         </div>
-        <div class="price_total">총 주문금액 <span><fmt:formatNumber
-                value="${prductInfo.productPrice}" pattern="#,###"/> 원</span></div>
+        <div class="price_total">총 주문금액 <span><fmt:formatNumber value="${productInfo.productPrice}" pattern="#,###"/> 원</span></div>
 
-        <fmt:formatNumber var="TelFmt" value="${memberInfo.memberTel}" pattern="###,##,####" minIntegerDigits="11"/>
+        <fmt:formatNumber var="TelFmt" value="${user.memberTel}" pattern="###,##,####" minIntegerDigits="11"/>
         <div>
             <h2 class="orderer-info-title">주문자 정보</h2>
             <div class="order_delivery">
                 <dl>
                     <dt>이름</dt>
-                    <dd><input type="text" name="" id="orderer_name" placeholder="이름" maxlength="15" class="w100per" value="${memberInfo.memberName}" readonly></dd>
+                    <dd>
+                        <input type="text" name="" id="orderer_name" placeholder="이름" maxlength="15" class="w100per" value="${user.memberName}" readonly>
+                    </dd>
                 </dl>
                 <dl>
                     <dt>휴대폰</dt>
-                    <dd><input type="tel" name="" id="shipping_telephone" maxlength="11" class="w80px"
-                                                  readonly value="<c:out value="${fn:replace(TelFmt, ',', '-')}" />">
-                        <input type="hidden" id="memberTelId" value="${memberInfo.memberTel}">
-                        <!---->
+                    <dd>
+                        <input type="tel" name="" id="shipping_telephone" maxlength="11" class="w80px" readonly value="<c:out value="${fn:replace(TelFmt, ',', '-')}" />" style="text-align: left">
+                        <input type="hidden" id="memberTelId" value="${user.memberTel}">
                     </dd>
                 </dl>
                 <dl>
                     <dt>이메일</dt>
-                    <dd><input type="text" name="" id="orderer_email1" value="${memberInfo.memberEmail}" readonly></dd>
+                    <dd><input type="text" name="" id="orderer_email1" value="${user.memberEmail}" readonly></dd>
                 </dl>
                 <dl>
                     <dt>배송주소</dt>
                     <dd>
-                        <input type="text" name="memberAddressPostcode" readonly="readonly" class="w49per" id="memberPostcode" value="${memberInfo.memberAddressPostcode}"> <br>
+                        <input type="text" name="memberAddressPostcode" readonly="readonly" class="w49per" id="memberPostcode" value="${memberInfo.memberAddressPostcode}" style="width: 50%;
+                        background-color: #E1E1E1">
+                        <br>
                         <input type="text" name="memberAddress" id="memberAddress" readonly="readonly" value="${memberInfo.memberAddress}"
-                               class="w49per order_addr" >
+                               class="w49per order_addr" style="background-color: #E1E1E1">
                         <input type="text" name="memberAddressMember" id="memberUserAddress" readonly="readonly" value="${memberInfo.memberAddressMember}"
-                               class="w49per order_addr">
+                               class="w49per order_addr" style="background-color: #E1E1E1">
 
                     </dd>
                 </dl>
             </div>
         </div>
-        <form method="post" name="orderForm" id="orderForm">
-            <input type="hidden" id="orderFnHidden"  name="" value="0" />
-            <input type="hidden" value="0" id="orderFormHidden" >
+        <form method="post" name="orderForm" id="orderForm" action="/order/pay">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <input type="hidden" id="orderFnHidden" name="" value="0"/>
+            <input type="hidden" value="0" id="orderFormHidden">
+            <input type="hidden" id="productCodeHidden" name="orderProductCode" value="${productInfo.productCode}"/>
+            <input type="hidden" id="memberIdHidden" name="orderMemberId" value="${memberInfo.memberId}"/>
+            <input type="hidden" name="orderPayment" value="${productInfo.productPrice}">
+            <input type="hidden" id="sizeHidden" name="stock_${param.Size}" value="stock_${param.Size}"/>
+            <input type="hidden" id="sizeStockHidden" name="productSize" value="${param.Size}"/>
 
-            <input type="hidden" id="productCodeHidden" name="productCode"  value="${prductInfo.productCode}" />
-            <input type="hidden" id="memberIdHidden" name="memberId" value="${memberInfo.memberId}" />
-            <input type="hidden" id="sizeHidden" name="stock_${param.Size}" value="1" />
-            <input type="hidden" id="sizeStockHidden" name="productSize" value="${param.Size}" />
 
-            <h2>배송지 정보<span class="checkout-inpt"><input type="checkbox" name="" id="checkBoxId" class="checkbox-style"><label
-                    for="checkBoxId">주문자 정보와 동일</label></span></h2> <%--여길 체크 하면 위 리스트 정보 고대로 내려오게..--%>
+            <h2>배송지 정보<span class="checkout-inpt">
+                <input type="checkbox" name="" id="checkBoxId" class="checkbox-style"><label for="checkBoxId">&nbsp;주문자 정보와 동일</label></span></h2>
             <div class="order_delivery">
                 <dl>
                     <dt>수령인</dt>
@@ -137,25 +141,22 @@
                 </dl>
                 <dl>
                     <dt>휴대폰</dt>
-                    <dd><input type="tel" name="orderTel" id="InOrderTelId" placeholder="특수문자를 제외하고 입력하여주세요 ex) 01012345678" maxlength="11" class="w80px"></dd>
-                    <input type="hidden" id="orderTelId" name="orderTel" value="${memberInfo.memberTel}">
+                    <dd>
+                        <input type="tel" id="InOrderTelId" placeholder="특수문자 제외" maxlength="11" class="w80px" style="text-align: left">
+                        <input type="hidden" id="orderTelId" name="orderTel" value="${user.memberTel}">
+                    </dd>
                 </dl>
                 <dl>
                     <dt>배송주소</dt>
                     <dd>
-                        <input type="text" name="orderAddressPostcode" readonly="readonly" class="w49per" id="sample4_postcode"> <input type="button" value="주소 찾기"
-                                                                                                                                       class="btn_in_orderforn"onclick="execDaumPostcode()"><br>
-
-                        <div id="daumPostCodeArea" style="display: none; border: 1px solid; width: 100% !important; height: auto; margin: 5px 0px; position: relative;" ><img
-                                src="//t1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnFoldWrap" alt="접기 버튼"
-                                style="cursor: pointer; position: absolute; right: 0px; top: -1px; z-index: 1;"></div>
-
-
-                        <input type="text" name="orderAddress" id="sample4_roadAddress" readonly="readonly"
-                               class="w49per order_addr" >
-                        <input type="text" name="orderAddressMember" id="userAddress" placeholder="상세 주소 입력"
-                               class="w49per order_addr">
-                        <input type="hidden" name="orderAddress" id="orderAddress"  value="0">
+                        <input type="text" name="orderAddressPostcode" readonly="readonly" class="w49per" id="sample4_postcode" style="width: 50%">
+                        <input type="button" value="주소 찾기" class="btn_in_orderforn" onclick="execDaumPostcode()"><br>
+                        <div id="daumPostCodeArea" style="display: none; border: 1px solid; width: 100% !important; height: auto; margin: 5px 0px; position: relative;">
+                            <img src="//t1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnFoldWrap" alt="접기 버튼"
+                                 style="cursor: pointer; position: absolute; right: 0px; top: -1px; z-index: 1;">
+                        </div>
+                        <input type="text" name="orderAddress" id="sample4_roadAddress" readonly="readonly" class="w49per order_addr">
+                        <input type="text" name="orderAddressMember" id="userAddress" placeholder="상세 주소 입력" class="w49per order_addr">
                         <div class="delivery_add_info_text">* 제주도, 도서 산간 지역 등은 배송이 하루 이상 추가 소요될 수 있습니다</div>
                     </dd>
                 </dl>
@@ -163,18 +164,20 @@
                     <dt>배송메모</dt>
                     <dd>
                         <select id="ui-id-2" name="orderMemo">
-                            <option value="">배송시 요청사항을 선택해주세요</option>
-                            <option value="2">문 앞에 놓아주세요</option>
-                            <option value="1">경비(관리)실에 맡겨주세요</option>
-                            <option value="6">택배함에 넣어주세요</option>
-                            <option value="3">직접 받겠습니다</option>
+                            <option>배송시 요청사항을 선택해주세요</option>
+                            <option>문 앞에 놓아주세요</option>
+                            <option>경비(관리)실에 맡겨주세요</option>
+                            <option>택배함에 넣어주세요</option>
+                            <option>직접 받겠습니다</option>
                         </select>
                     </dd>
                 </dl>
                 <dl style="width: 100%">
-                    <input type="button" class="btn_in_orderforn" style="" onclick="updateAddressFn()" value="이 주소로 업데이트" >
+                    <input type="button" class="btn_in_orderforn" style="" onclick="updateAddressFn()" value="이 주소로 업데이트">
                 </dl>
             </div>
+
+        </form>
 
             <!---->
     </div>
@@ -186,7 +189,7 @@
         <dl class="order_totalpay">
             <dt>총 상품금액</dt>
             <dd><fmt:formatNumber
-                    value="${prductInfo.productPrice}" pattern="#,###"/> 원</dd>
+                    value="${productInfo.productPrice}" pattern="#,###"/> 원</dd>
             <dt>총 배송비</dt>
             <dd>0 원</dd>
             <!---->
@@ -195,7 +198,7 @@
             <!---->
             <dt class="large">결제 예상 금액</dt>
             <dd class="red large"><fmt:formatNumber
-                    value="${prductInfo.productPrice}" pattern="#,###"/> 원</dd>
+                    value="${productInfo.productPrice}" pattern="#,###"/> 원</dd>
         </dl>
         <!---->
         <div>
@@ -243,8 +246,9 @@
                 </div>
             </div>
         </div>
-        </form>
+        <input type="button" class="btn_in_orderforn" style="float: right; width: 80px; height: 60px; font-size: 17px" onclick="doPayFn()" value="결제">
     </div>
+
 </div>
 </div>
 </div>
@@ -342,12 +346,47 @@
 
 
         }
+    }
+    function doPayFn(){
+        let productSizeId = $("#sizeStockHidden").val();
+        let stock = $("#sizeHidden").val();
+        let productCodeId = $("#productCodeHidden").val();
 
+        let sendData = {stockSize:stock ,productCode:productCodeId };
+
+        let subForm = document.orderForm;
+
+
+        if(productSizeId==''){
+            alert("사이즈 선택이 안되었습니다")
+        }else{
+
+
+            $.ajax({
+                url: "/order/check-stock",
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=UTF-8",
+                data: sendData,
+                success: function (data) {
+                    if(data.cnt > 0){
+
+                        subForm.submit();
+
+                    }else{
+                        alert("품절되었습니다")
+                    }
+
+                },
+                error: function () {
+                    alert("Error. 관리자에게 문의하십시오.");
+                },
+            });
+        }
 
 
 
     }
-
 
 </script>
 

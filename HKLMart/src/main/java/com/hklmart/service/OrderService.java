@@ -1,5 +1,7 @@
 package com.hklmart.service;
 
+import com.hklmart.domain.CheckStockVO;
+import com.hklmart.domain.OrderPayVO;
 import com.hklmart.domain.OrderVO;
 import com.hklmart.persistence.OrderDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +24,14 @@ public class OrderService {
 
     public OrderVO getOrderProdutService(String productCode) {
         return orderDAO.getOrderProductService(productCode);
+    }
+
+    public int checkStock(CheckStockVO checkStockVO) {
+
+        return orderDAO.checkStock(checkStockVO);
+    }
+
+    public void doPay(OrderPayVO orderPayVO) {
+        orderDAO.doPay(orderPayVO);
     }
 }
