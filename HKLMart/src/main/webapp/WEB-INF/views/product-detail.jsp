@@ -232,7 +232,7 @@
 
     function goOrderFn() {
         var productCode = $("#productCode").val();
-        var productSize = $("#ui-id-1").val();
+        var productSize = $("#size-select-box").val();
         location.href = '/order/order-page?productCode=' + productCode + '&Size=' + productSize;
     }
 

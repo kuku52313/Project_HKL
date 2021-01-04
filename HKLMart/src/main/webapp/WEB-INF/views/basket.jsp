@@ -65,8 +65,7 @@
                 </div>
             </div>
         </div>
-        <div class="price_total">총 주문금액 <span
-        ><%--<c:out value="${list.productPriceAll}">--%></span></div>
+        <div class="price_total">총 주문금액 <span><%--<c:out value="${list.productPriceAll}">--%></span></div>
 
         <fmt:formatNumber var="TelFmt" value="${user.memberTel}" pattern="###,##,####" minIntegerDigits="11"/>
         <div>

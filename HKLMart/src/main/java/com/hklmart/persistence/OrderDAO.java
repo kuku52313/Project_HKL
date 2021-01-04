@@ -11,4 +11,8 @@ public interface OrderDAO {
     OrderVO getOrderMemberService(String memberId);
 
     OrderVO getOrderProductService(String productCode);
+
+    int checkStock(CheckStockVO checkStockVO);
+
+    void doPay(OrderPayVO orderPayVO);
 }
