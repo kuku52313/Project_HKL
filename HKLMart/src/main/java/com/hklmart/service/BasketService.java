@@ -1,9 +1,12 @@
 package com.hklmart.service;
 
+import com.hklmart.domain.BasketVO;
+import com.hklmart.domain.OrderVO;
 import com.hklmart.domain.ProductVO;
 import com.hklmart.persistence.BasketDAO;
 import com.hklmart.persistence.ProductDAO;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,4 +42,11 @@ public class BasketService {
         }
         return productList;
     }
+
+    public List<BasketVO> orderBasket(String basketMemberId) {
+        List<BasketVO> orderBasketList= basket.orderBasket(basketMemberId);
+
+        return orderBasketList;
+    }
+
 }

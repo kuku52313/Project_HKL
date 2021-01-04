@@ -16,7 +16,6 @@
         color: #1e1e1e;
         font-size: 16px;
         line-height: 50px;
-        font-family: "Spoqa Han Sans", Sans-serif;
         vertical-align: middle;
     }
 </style>
@@ -33,7 +32,7 @@
             </div>
             <div class="cart-seller-list cart_list_full">
                 <div>
-                    <%--<c:forEach items="${BasketList}" var="list" varStatus="status">--%>
+                    <c:forEach items="${orderBasketList}" var="list" varStatus="status">
                     <div class="order_item">
                         <br>
                         <dl><%--<c:out value="${list.}">--%>
@@ -49,17 +48,22 @@
                                 <label for="checkAItem"></label>
                             </dd>
                             <dd>
-                                <a><img src="<%--<c:out value="${list.productImgpath}${list.productImg}--%>"/></a>
+                                <a>
+                                    <img src="<c:out value="${list.productImgpath}${list.productImg}">"/>
+                                </a>
                             </dd>
-                            <dd><a data-v-6dcc2f72="">
-                                <span class="itemname"><%--<c:out value="${list.productName}">--%></span></a>
+                            <dd><a>
+                                <span><c:out value="${list.productName}"/></span></a>
                                 <span><%--<c:out value="${고른옵션(사이즈)}">--%></span>
                                 <span><%--<c:out value="${고른옵션(상품갯수)}">--%></span></dd>
                             <dd>
                             </dd>
-                            <dd><%--<c:out value="${list.productPriceAll}">--%></dd>
+                            <dd><%--<c:out value="${productPriceAll}">--%></dd>
                         </dl>
                     </div>
+                        </c:out>
+                    </c:forEach>
+
                     <hr>
                     <input type="hidden" value="0">
                 </div>
@@ -68,26 +72,26 @@
         <div class="price_total">총 주문금액 <span
         ><%--<c:out value="${list.productPriceAll}">--%></span></div>
 
-        <fmt:formatNumber var="TelFmt" value="${user.memberTel}" pattern="###,##,####" minIntegerDigits="11"/>
+        <fmt:formatNumber var="TelFmt" value="${memberInfo.memberTel}" pattern="###,##,####" minIntegerDigits="11"/>
         <div>
             <h2 class="orderer-info-title">주문자 정보</h2>
             <div class="order_delivery">
                 <dl>
                     <dt>이름</dt>
                     <dd>
-                        <input type="text" name="" id="orderer_name" placeholder="이름" maxlength="15" class="w100per" value="${user.memberName}" readonly>
+                        <input type="text" name="" id="orderer_name" placeholder="이름" maxlength="15" class="w100per" value="${memberInfo.memberName}" readonly>
                     </dd>
                 </dl>
                 <dl>
                     <dt>휴대폰</dt>
                     <dd>
                         <input type="tel" name="" id="shipping_telephone" maxlength="11" class="w80px" readonly value="<c:out value="${fn:replace(TelFmt, ',', '-')}" />" style="text-align: left">
-                        <input type="hidden" id="memberTelId" value="${user.memberTel}">
+                        <input type="hidden" id="memberTelId" value="${memberInfo.memberTel}">
                     </dd>
                 </dl>
                 <dl>
                     <dt>이메일</dt>
-                    <dd><input type="text" name="" id="orderer_email1" value="${user.memberEmail}" readonly></dd>
+                    <dd><input type="text" name="" id="orderer_email1" value="${memberInfo.memberEmail}" readonly></dd>
                 </dl>
                 <dl>
                     <dt>배송주소</dt>
@@ -107,7 +111,7 @@
         <form method="post" name="orderForm" id="orderForm">
             <input type="hidden" id="orderFnHidden" name="" value="0"/>
             <input type="hidden" value="0" id="orderFormHidden">
-            <input type="hidden" id="productCodeHidden" name="productCode" value="${prductInfo.productCode}"/>
+<%--            <input type="hidden" id="productCodeHidden" name="productCode" value="${prductInfo.productCode}"/>--%>
             <input type="hidden" id="memberIdHidden" name="memberId" value="${memberInfo.memberId}"/>
             <input type="hidden" id="sizeHidden" name="stock_${param.Size}" value="1"/>
             <input type="hidden" id="sizeStockHidden" name="productSize" value="${param.Size}"/>

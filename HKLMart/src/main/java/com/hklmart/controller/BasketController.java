@@ -1,6 +1,7 @@
 package com.hklmart.controller;
 
 import com.hklmart.service.BasketService;
+import com.hklmart.service.OrderService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +16,11 @@ public class BasketController {
 
     private final BasketService basket;
 
-    public BasketController(BasketService basket) {
+    private final OrderService orderService;
+
+    public BasketController(BasketService basket, OrderService orderService) {
         this.basket = basket;
+        this.orderService = orderService;
     }
 
     @GetMapping("/check")
@@ -42,8 +46,17 @@ public class BasketController {
         return "forward:/like/take";
     }
 
-    @GetMapping("/basketPage")
+/*    @GetMapping("/basketPage")
     public String getBasketPage() {
         return "basket";
+    }*/
+
+    @GetMapping("/basketPage")
+    public String orderBasket(Principal principal, Model model) {
+
+        String basketMemberId = principal.getName();
+        model.addAttribute("orderBasketList", basket.orderBasket(basketMemberId));
+        model.addAttribute("memberInfo",orderService.getOrderMemberService(basketMemberId));
+        return "/basket";
     }
 }

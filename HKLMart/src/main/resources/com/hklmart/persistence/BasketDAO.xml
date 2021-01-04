@@ -26,4 +26,20 @@
           AND BASKET_PRODUCT_CODE = #{param2}
         ]]>
     </select>
+
+    <select id="orderBasket" parameterType="String" resultType="com.hklmart.domain.BasketVO">
+        <![CDATA[
+        select
+                b.BASKET_MEMBER_ID,
+                p.PRODUCT_CODE,
+                p.PRODUCT_NAME,
+                p.PRODUCT_BRAND,
+                p.PRODUCT_PRICE,
+                p.PRODUCT_IMGPATH,
+                p.PRODUCT_IMG,
+                p.PRODUCT_THUMBNAIL
+        from PRODUCT p, BASKET b
+        where b.BASKET_MEMBER_ID = #{basketMemberId} and p.PRODUCT_CODE = b.BASKET_PRODUCT_CODE
+        ]]>
+    </select>
 </mapper>

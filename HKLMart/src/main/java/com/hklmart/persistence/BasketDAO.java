@@ -1,5 +1,7 @@
 package com.hklmart.persistence;
 
+import com.hklmart.domain.BasketVO;
+
 import java.util.List;
 
 public interface BasketDAO {
@@ -9,5 +11,7 @@ public interface BasketDAO {
     List<String> takeProductBasket(String basketMemberId);
 
     int checkBasket(String memberId, String productCode);
+
+    List<BasketVO> orderBasket(String basketMemberId);
 
 }
