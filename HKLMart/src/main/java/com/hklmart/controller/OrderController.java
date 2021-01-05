@@ -41,12 +41,7 @@ public class OrderController {
 
         orderService.doPay(orderPayVO);
 
-        String orderProductCode = orderPayVO.getOrderProductCode();
-        String stockSizeColumn = orderPayVO.getStockSizeColumn();
-
-        orderService.doOrderProductList(orderProductCode,stockSizeColumn);
-
-
+        orderService.payProductList(orderPayVO);
 
         return "redirect:/member/my-page";
     }

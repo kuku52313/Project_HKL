@@ -16,5 +16,5 @@ public interface OrderDAO {
 
     void doPay(OrderPayVO orderPayVO);
 
-    void doOrderProductList(String orderProductCode,String getStockSizeColumn);
+    void payProductList(OrderPayVO orderPayVO);
 }

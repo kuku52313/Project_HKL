@@ -35,9 +35,8 @@ public class OrderService {
         orderDAO.doPay(orderPayVO);
     }
 
-    public void doOrderProductList(String orderProductCode,String getStockSizeColumn) {
-        System.out.println("------ 성공");
-        System.out.println(orderProductCode +"  /   "+getStockSizeColumn);
-        orderDAO.doOrderProductList(orderProductCode,getStockSizeColumn);
+
+    public void payProductList(OrderPayVO orderPayVO) {
+        orderDAO.payProductList(orderPayVO);
     }
 }
