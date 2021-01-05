@@ -22,12 +22,14 @@
 
 <sec:authorize access="isAnonymous()">
     <input type="hidden" id="memberId" value="none">
+    <input type="hidden" id="stateLogin" value="0">
 </sec:authorize>
 <sec:authorize access="isAuthenticated()">
     <sec:authentication property="principal" var="user"/>
+    <input type="hidden" id="stateLogin" value="1">
     <input type="hidden" id="memberId" value="${user.memberId}">
 </sec:authorize>
-<input type="hidden" id="productCode" value="${infoShoes.productCode}">
+<input type="hidden" id="productCodeId" value="${infoShoes.productCode}">
 
 <div data-v-7b122ae2="" fragment="546c7337ea" id="container">
     <div data-v-a489fb08="" class="Page_products-detail">
@@ -51,12 +53,7 @@
                             <span data-v-a489fb08="" class="number">
                                 <fmt:formatNumber value="${infoShoes.productPrice}" pattern="#,###"/></span>원</em>
                         <div data-v-a489fb08="" class="detail_purchaser-reaction">
-                            <div data-v-a489fb08="" class="review-info">
-                                <div data-v-a489fb08="" class="ico-score">
-                                    <div data-v-a489fb08="" class="score" style="width: 100%;">5점</div>
-                                </div>
-                            </div>
-                            <span data-v-a489fb08="" class="total-sales">155개 구매중</span>
+                            <span data-v-a489fb08="" class="total-sales">${reviewTotal} 리뷰</span>
                         </div>
                     </div>
                     <div data-v-a489fb08="" class="detail_delivery-info">
@@ -66,8 +63,8 @@
                     <div data-v-a489fb08="" class="Mod_goods-option-payment">
                         <div data-v-a489fb08="" class="wrap-btn-purchase-wish">
                             <button data-v-a489fb08="" type="button" class="btn-purchase" onclick="goOrderFn()">구매하기</button>
-                            <button data-v-a489fb08="" type="button" class="btn-wish">
-                                <span data-v-a489fb08="" class="txt">찜</span>
+                            <button data-v-a489fb08="" type="button" class="btn-wish" >
+                                <span data-v-a489fb08="" class="txt" onclick="clickLike()">찜</span>
                             </button>
                         </div>
                         <div data-v-a489fb08="" class="wrap-goods-options">
@@ -222,7 +219,32 @@
     }
 
     function clickLike(obj) {
-        alert("찜");
+        let thisCode = $("#productCodeId").val();
+        let stateLogin = document.getElementById('stateLogin').value;
+        if (stateLogin === "0") {
+            alert("로그인이 필요한 서비스입니다");
+            location.href = "/member/login-page";
+            return 0;
+        }
+        let sendData = {productCode: thisCode};
+        console.log(sendData);
+        $.ajax({
+            url: "/like/check",
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=UTF-8",
+            data: sendData,
+            success: function (data) {
+                if (data.result === 0) {
+                    alert("해당 상품을 찜했습니다")
+                } else if (data.result === 1) {
+                    alert("이미 찜한 상품입니다");
+                }
+            },
+            error: function () {
+                alert("Error. 관리자에게 문의하십시오.");
+            },
+        });
     }
 
     $(document).ready(function () {
@@ -230,7 +252,7 @@
     });
 
     function goOrderFn() {
-        var productCode = $("#productCode").val();
+        var productCode = $("#productCodeId").val();
         var productStock = $("#size-select-box").val();
         var productSize = $("#size-select-box option:selected").attr("name");
 

@@ -123,4 +123,14 @@ public class ManagementController {
         model.addAttribute("pageMaker", new PageDTO(cri, total));
         return "manager-member-list";
     }
+    @GetMapping("/manager-order-list")
+    public String goOrderList(Model model, PageCriteriaVO cri) {
+
+        model.addAttribute("orderList",managementService.getOrderList(cri));
+
+        int total = pageService.getOrderListTotal(cri);
+
+        model.addAttribute("pageMaker", new PageDTO(cri, total));
+        return "manager-order-list";
+    }
 }

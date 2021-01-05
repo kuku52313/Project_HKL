@@ -59,7 +59,7 @@
         <![CDATA[
         SELECT *
         FROM (
-                     SELECT/*INDEX_DESC(PRODUCT PRODUCT_PK) */
+                     SELECT/*+ INDEX_DESC(P PRODUCT_PK) */
                              ROWNUM RN
                           , P.PRODUCT_CODE
                           , P.PRODUCT_NAME
@@ -81,7 +81,7 @@
         <![CDATA[
         SELECT *
         FROM (
-                     SELECT/*INDEX_DESC(PRODUCT PRODUCT_PK) */
+                     SELECT/*+ INDEX_DESC(P PRODUCT_PK) */
                              ROWNUM RN
                           , P.PRODUCT_CODE
                           , P.PRODUCT_NAME
@@ -145,7 +145,7 @@
         <![CDATA[
         SELECT *
         FROM (
-                     SELECT/*INDEX_DESC(BOARD_REVIEW BOARD_REVIEW_PK)*/
+                     SELECT/*+ INDEX_DESC(R BOARD_REVIEW_PK) */
                              ROWNUM RN,
                              R.BOARD_REVIEW_NUMBER,
                              R.BOARD_REVIEW_MEMBER_ID,

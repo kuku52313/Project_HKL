@@ -29,4 +29,5 @@ public interface ManagementDAO {
 
     void deleteMember(String memberId);
 
+    List<OrderViewVO> getOrderList(PageCriteriaVO cri);
 }

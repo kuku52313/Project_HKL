@@ -6,7 +6,7 @@
         <![CDATA[
         SELECT *
         FROM (
-                     SELECT/*INDEX_DESC(PRODUCT PRODUCT_PK) */
+                     SELECT/*+ INDEX_DESC(P PRODUCT_PK) */
                              ROWNUM RN
                           , P.PRODUCT_CODE
                           , P.PRODUCT_NAME
@@ -29,7 +29,7 @@
         <![CDATA[
         SELECT *
         FROM (
-                     SELECT/*INDEX_DESC(BOARD_ASK BOARD_ASK_PK) */
+                     SELECT/*+ INDEX_DESC(BOARD_ASK BOARD_ASK_PK) */
                              ROWNUM RN,
                              BOARD_ASK_NUMBER,
                              BOARD_ASK_MEMBER_ID,
@@ -49,7 +49,7 @@
         <![CDATA[
         SELECT *
         FROM (
-                     SELECT/*INDEX_DESC(BOARD_REVIEW BOARD_REVIEW_PK)*/
+                     SELECT/*+ INDEX_DESC(R BOARD_REVIEW_PK)*/
                              ROWNUM RN,
                              R.BOARD_REVIEW_NUMBER,
                              R.BOARD_REVIEW_MEMBER_ID,
@@ -73,7 +73,7 @@
         <![CDATA[
         SELECT *
         FROM (
-                     SELECT/*INDEX_ASC(MEMBER MEMBER_PK)*/
+                     SELECT/*+ INDEX_ASC(M MEMBER_PK) */
                              ROWNUM RN,
                              M.MEMBER_ID,
                              M.MEMBER_NAME,
@@ -147,4 +147,23 @@
     <delete id="deleteMember">
         delete from member WHERE member_id = #{memberId}
     </delete>
+
+    <select id="getOrderList" resultType="com.hklmart.domain.OrderViewVO">
+        <![CDATA[
+        SELECT *
+        FROM (
+                     SELECT/*+ INDEX_DESC(PRODUCT_ORDER PRODUCT_ORDER_PK) */
+                             ROWNUM RN,
+                             order_number,
+                             order_member_id,
+                             order_date,
+                             order_tel,
+                             order_payment,
+                             order_state
+                     FROM PRODUCT_ORDER
+                     WHERE ROWNUM <= #{pageNum} * #{amount}
+                     )
+        WHERE RN > (#{pageNum} - 1) * #{amount}
+        ]]>
+    </select>
 </mapper>

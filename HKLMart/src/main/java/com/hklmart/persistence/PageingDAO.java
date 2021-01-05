@@ -23,4 +23,5 @@ public interface PageingDAO {
 
     public int getUserReviewListTotalCount(ProductPageCriteriaVO cri);
 
+    int getOrderListTotal(PageCriteriaVO cri);
 }

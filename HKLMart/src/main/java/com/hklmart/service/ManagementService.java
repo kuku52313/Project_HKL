@@ -55,4 +55,7 @@ public class ManagementService {
 
     public void deleteMember(String memberId) { managementDAO.deleteMember(memberId); }
 
+    public List<OrderViewVO> getOrderList(PageCriteriaVO cri) {
+        return managementDAO.getOrderList(cri);
+    }
 }

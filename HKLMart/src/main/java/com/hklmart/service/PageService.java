@@ -49,4 +49,7 @@ public class PageService {
         return pageingDAO.getUserReviewListTotalCount(cri);
     }
 
+    public int getOrderListTotal(PageCriteriaVO cri) {
+        return pageingDAO.getOrderListTotal(cri);
+    }
 }

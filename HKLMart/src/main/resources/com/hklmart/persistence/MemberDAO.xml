@@ -19,7 +19,7 @@
     <select id="getMemberInfo" parameterType="java.lang.String" resultType="com.hklmart.domain.UserDetailsVO">
         <![CDATA[
         SELECT *
-        FROM (SELECT /*+ INDEX_ASC(MEMBER MEMBER_PK_MEMBER_ID) */
+        FROM (SELECT
                       M.MEMBER_ID,
                       M.MEMBER_PW,
                       M.MEMBER_NAME,
@@ -45,7 +45,7 @@
         <![CDATA[
         SELECT *
         FROM (
-                     SELECT/*INDEX_DESC(BOARD_ASK BOARD_ASK_PK) */
+                     SELECT/*+ INDEX_DESC(BOARD_ASK BOARD_ASK_PK) */
                              ROWNUM RN,
                              BOARD_ASK_NUMBER,
                              BOARD_ASK_MEMBER_ID,
@@ -65,7 +65,7 @@
         <![CDATA[
         SELECT *
         FROM (
-                     SELECT/*INDEX_DESC(BOARD_REVIEW BOARD_REVIEW_PK)*/
+                     SELECT/*+ INDEX_DESC(R BOARD_REVIEW_PK) */
                              ROWNUM RN,
                              R.BOARD_REVIEW_NUMBER,
                              R.BOARD_REVIEW_MEMBER_ID,
