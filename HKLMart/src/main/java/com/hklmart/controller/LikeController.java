@@ -40,5 +40,11 @@ public class LikeController {
         model.addAttribute("likeList", like.likeList(principal.getName()));
         return "my-page";
     }
+
+    @GetMapping("/get")
+    public String getProductLike(Principal principal, Model model) {
+        model.addAttribute("likeList", like.likeList(principal.getName()));
+        return "like-page";
+    }
 }
 
