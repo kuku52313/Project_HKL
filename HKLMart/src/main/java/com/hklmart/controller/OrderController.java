@@ -35,13 +35,16 @@ public class OrderController {
 
     @PostMapping("/pay")
     public String doPay(Principal principal,OrderPayVO orderPayVO) {
+
         orderPayVO.setOrderMemberId(principal.getName());
 
         log.info(orderPayVO);
 
         orderService.doPay(orderPayVO);
 
+
         orderService.payProductList(orderPayVO);
+        orderService.stockUpdate(orderPayVO);
 
         return "redirect:/member/my-page";
     }

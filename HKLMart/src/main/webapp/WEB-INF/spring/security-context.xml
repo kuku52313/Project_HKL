@@ -26,6 +26,7 @@
         <s:intercept-url pattern="/member/*" access="hasRole('ROLE_MEMBER')"/>
         <s:intercept-url pattern="/basket/*" access="hasRole('ROLE_MEMBER')"/>
         <s:intercept-url pattern="/like/*" access="hasRole('ROLE_MEMBER')"/>
+        <s:intercept-url pattern="/order/*" access="hasRole('ROLE_MEMBER')"/>
 
         <!-- 관리자 권한 -->
         <s:intercept-url pattern="/manager/*" access="hasRole('ROLE_ADMIN')"/>

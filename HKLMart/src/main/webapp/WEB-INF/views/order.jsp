@@ -128,7 +128,7 @@
             <input type="hidden" id="productCodeHidden" name="orderProductCode" value="${productInfo.productCode}"/>
             <input type="hidden" id="memberIdHidden" name="orderMemberId" value="${memberInfo.memberId}"/>
             <input type="hidden" name="orderPayment" value="${productInfo.productPrice}">
-            <input type="hidden" id="sizeHidden" value="stock_${param.Size}"/>
+            <input type="hidden" name="stockSize" id="sizeHidden" value="stock_${param.Size}"/>
             <input type="hidden" name="stockSizeColumn" value="order_list_stock_${param.Size}"/>
             <input type="hidden" id="sizeStockHidden" name="productSize" value="${param.Size}"/>
 
@@ -335,6 +335,12 @@
                 success: function (data) {
                     if(data.message == 1){
                         alert("주소가 변경되었습니다")
+
+                        $("#memberPostcode").val(memberAddressPostcodeId);
+                        $("#memberAddress").val(memberAddressId);
+                        $("#memberUserAddress").val(memberAddressMemberId);
+
+
                     }else{
                         alert("오류입니다")
                     }
@@ -385,9 +391,6 @@
                 },
             });
         }
-
-
-
     }
 
 </script>

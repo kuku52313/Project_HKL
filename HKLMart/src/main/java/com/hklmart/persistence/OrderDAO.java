@@ -17,4 +17,6 @@ public interface OrderDAO {
     void doPay(OrderPayVO orderPayVO);
 
     void payProductList(OrderPayVO orderPayVO);
+
+    void stockUpdate(OrderPayVO orderPayVO);
 }

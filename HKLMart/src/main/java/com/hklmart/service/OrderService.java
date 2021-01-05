@@ -6,8 +6,9 @@ import com.hklmart.domain.OrderVO;
 import com.hklmart.persistence.OrderDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-@Repository
+@Service
 public class OrderService {
 
     private final OrderDAO orderDAO;
@@ -38,5 +39,9 @@ public class OrderService {
 
     public void payProductList(OrderPayVO orderPayVO) {
         orderDAO.payProductList(orderPayVO);
+    }
+
+    public void stockUpdate(OrderPayVO orderPayVO) {
+        orderDAO.stockUpdate(orderPayVO);
     }
 }

@@ -31,14 +31,20 @@
     </insert>
 
     <insert id="payProductList">
-        <selectKey keyProperty="order_list_order_number" order="BEFORE" resultType="long">
+        <selectKey keyProperty="orderListOrderNumber" order="BEFORE" resultType="int">
             select SEQ_ORDER_NUMBER.currval from dual
         </selectKey>
 
         <![CDATA[
         insert into product_order_list(order_list_order_number,order_list_product,${stockSizeColumn})
-            values (#{order_list_order_number},#{orderProductCode},'1')
+            values (#{orderListOrderNumber},#{orderProductCode},'1')
         ]]>
     </insert>
+
+    <update id="stockUpdate">
+        UPDATE stock SET
+                ${stockSize} = ${stockSize} -1
+        where stock_product_code = #{orderProductCode}
+    </update>
 
 </mapper>

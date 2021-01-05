@@ -55,7 +55,6 @@
                                 <div data-v-a489fb08="" class="ico-score">
                                     <div data-v-a489fb08="" class="score" style="width: 100%;">5점</div>
                                 </div>
-                                <a data-v-a489fb08="" href="#" class="total-reviews">19개 리뷰 보기</a>
                             </div>
                             <span data-v-a489fb08="" class="total-sales">155개 구매중</span>
                         </div>
@@ -74,19 +73,19 @@
                         <div data-v-a489fb08="" class="wrap-goods-options">
                             <div data-v-a489fb08="" class="detail_options padding-top-20">
                                 <select id="size-select-box">
-                                    <option value data-title="true" class="ui-selectmenu-text"> [size]를 선택하세요.
-                                    <option data-date value="240">240 (${infoShoes.stock240} EA)</option>
-                                    <option data-date value="245">245 (${infoShoes.stock245} EA)</option>
-                                    <option data-date value="250">250 (${infoShoes.stock250} EA)</option>
-                                    <option data-date value="255">255 (${infoShoes.stock255} EA)</option>
-                                    <option data-date value="260">260 (${infoShoes.stock260} EA)</option>
-                                    <option data-date value="265">265 (${infoShoes.stock265} EA)</option>
-                                    <option data-date value="270">275 (${infoShoes.stock270} EA)</option>
-                                    <option data-date value="270">280 (${infoShoes.stock275} EA)</option>
-                                    <option data-date value="270">285 (${infoShoes.stock280} EA)</option>
-                                    <option data-date value="270">290 (${infoShoes.stock290} EA)</option>
-                                    <option data-date value="270">295 (${infoShoes.stock295} EA)</option>
-                                    </option>
+                                    <option data-title="true" name="noSize" value="-1" class="ui-selectmenu-text"> [size]를 선택하세요.</option>
+                                    <option data-date name="240" value="${infoShoes.stock240}">240 (재고 : ${infoShoes.stock240} EA)</option>
+                                    <option data-date name="245" value="${infoShoes.stock245}">245 (재고 : ${infoShoes.stock245} EA)</option>
+                                    <option data-date name="250" value="${infoShoes.stock250}">250 (재고 : ${infoShoes.stock250} EA)</option>
+                                    <option data-date name="255" value="${infoShoes.stock255}">255 (재고 : ${infoShoes.stock255} EA)</option>
+                                    <option data-date name="260" value="${infoShoes.stock260}">260 (재고 : ${infoShoes.stock260} EA)</option>
+                                    <option data-date name="265" value="${infoShoes.stock265}">265 (재고 : ${infoShoes.stock265} EA)</option>
+                                    <option data-date name="270" value="${infoShoes.stock270}">265 (재고 : ${infoShoes.stock270} EA)</option>
+                                    <option data-date name="275" value="${infoShoes.stock275}">275 (재고 : ${infoShoes.stock275} EA)</option>
+                                    <option data-date name="280" value="${infoShoes.stock280}">280 (재고 : ${infoShoes.stock280} EA)</option>
+                                    <option data-date name="285" value="${infoShoes.stock285}">285 (재고 : ${infoShoes.stock285} EA)</option>
+                                    <option data-date name="290" value="${infoShoes.stock290}">290 (재고 : ${infoShoes.stock290} EA)</option>
+                                    <option data-date name="295" value="${infoShoes.stock295}">295 (재고 : ${infoShoes.stock295} EA)</option>
                                 </select>
                                 <div data-v-a489fb08="" class="wrap-selected-options"></div>
                                 <dl data-v-a489fb08="" class="wrap-price">
@@ -232,9 +231,24 @@
 
     function goOrderFn() {
         var productCode = $("#productCode").val();
-        var productSize = $("#size-select-box").val();
-        location.href = '/order/order-page?productCode=' + productCode + '&Size=' + productSize;
+        var productStock = $("#size-select-box").val();
+        var productSize = $("#size-select-box option:selected").attr("name");
+
+
+        if(productSize == 'noSize'){
+            alert("사이즈를 선택하여주세요")
+            return;
+        }if(productStock == 0){
+            alert("재고가 부족합니다")
+            return;
+        }else{
+            location.href = '/order/order-page?productCode=' + productCode + '&Size=' + productSize;
+       }
+
     }
+
+    onchange="fn_setAsscatnNm(this);"
+
 
 
 </script>
