@@ -15,4 +15,6 @@ public interface OrderDAO {
     int checkStock(CheckStockVO checkStockVO);
 
     void doPay(OrderPayVO orderPayVO);
+
+    void doOrderProductList(String orderProductCode,String getStockSizeColumn);
 }

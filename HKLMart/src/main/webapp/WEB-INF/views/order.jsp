@@ -128,7 +128,8 @@
             <input type="hidden" id="productCodeHidden" name="orderProductCode" value="${productInfo.productCode}"/>
             <input type="hidden" id="memberIdHidden" name="orderMemberId" value="${memberInfo.memberId}"/>
             <input type="hidden" name="orderPayment" value="${productInfo.productPrice}">
-            <input type="hidden" id="sizeHidden" name="stock_${param.Size}" value="stock_${param.Size}"/>
+            <input type="hidden" id="sizeHidden" value="stock_${param.Size}"/>
+            <input type="hidden" name="stockSizeColumn" value="order_list_stock_${param.Size}"/>
             <input type="hidden" id="sizeStockHidden" name="productSize" value="${param.Size}"/>
 
 
@@ -372,6 +373,7 @@
                     if(data.cnt > 0){
 
                         subForm.submit();
+
 
                     }else{
                         alert("품절되었습니다")

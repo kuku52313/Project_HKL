@@ -29,4 +29,14 @@
                 #{orderAddressPostcode},#{orderAddress},#{orderAddressMember})
         ]]>
     </insert>
+
+    <insert id="doOrderProductList">
+        <selectKey keyProperty="order_list_order_number" order="BEFORE" resultType="long">
+            select SEQ_ORDER_NUMBER.CURRVAL from dual
+        </selectKey>
+
+        insert into product_order_list(order_list_order_number, order_list_product, order_list_stock_240)
+        VALUES (#{order_list_order_number},#{orderProductCode},1)
+
+    </insert>
 </mapper>
