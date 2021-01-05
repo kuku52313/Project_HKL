@@ -111,7 +111,7 @@
             <br/><br/>
             <div id="wishlist">
                 <span class="font-set" style="font-size: 25px">찜한상품</span>
-                <a href="#" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
+                <a href="/like/get" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
                 <hr/>
                 <c:choose>
                     <c:when test="${fn:length(likeList) > 0 && fn:length(likeList) < 6}">
