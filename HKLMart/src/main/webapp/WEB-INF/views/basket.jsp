@@ -9,17 +9,6 @@
 
 <title>HKL :: 장바구니</title>
 
-<style>
-    #ui-id-2 {
-        width: 80%;
-        height: 45px;
-        color: #1e1e1e;
-        font-size: 16px;
-        line-height: 50px;
-        vertical-align: middle;
-    }
-</style>
-
 <div id="container">
     <div class="pagetitle">
         <h1>장바구니</h1>
@@ -40,11 +29,12 @@
                             </dt>
                             <dt><p style="text-align: left; margin-bottom: 0px;">전체선택</p></dt>
                             <dt></dt>
-                            <dt>주문금액</dt>
+                            <dt style="font-weight: bold">주문금액</dt>
                         </dl>
 
                         <c:forEach items="${orderBasketList}" var="list" varStatus="status" begin="0" end="${fn:length(orderBasketList)-1}">
                             <input type="hidden" id="productPrice${status.index}" value="${list.productPrice}"/>
+                            <input type="hidden" id="productCode${status.index}" value="${list.productCode}"/>
                             <dl class="order_item">
                                 <dd>
                                     <input type="checkbox" name="items" id="checkAItem${status.index}">
@@ -75,7 +65,7 @@
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
                                                         <select class="form-control" id="size-select-box${status.index}">
-                                                            <option name="사이즈를 선택하세요"> [Size]를 선택하세요.</option>
+                                                            <option name="사이즈를 선택하세요"> [SIZE]를 선택하세요.</option>
                                                             <option name="240" value="${shoesStockList.get(list.productCode).stock240}">240 (재고 : ${shoesStockList.get(list.productCode).stock240} EA)</option>
                                                             <option name="245" value="${shoesStockList.get(list.productCode).stock245}">245 (재고 : ${shoesStockList.get(list.productCode).stock245} EA)</option>
                                                             <option name="250" value="${shoesStockList.get(list.productCode).stock250}">250 (재고 : ${shoesStockList.get(list.productCode).stock250} EA)</option>
@@ -104,6 +94,7 @@
                                     </span>
                                 </dd>
                                 <dd><span id="show-product-price${status.index}" style="display: inline; color: black; font-weight: bold"></span> 원</dd>
+                                <dd><i class="fas fa-trash fa-2x recycle-bin" onclick="removeBasket(document.getElementById('productCode${status.index}').value)"></i></dd>
                             </dl>
                         </c:forEach>
                     </div>
@@ -388,6 +379,12 @@
 
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function removeBasket(productCode) {
+        location.href = "/basket/remove?productCode=" + productCode;
+        alert("해당 상품을 장바구니에서 제외 하였습니다")
+        location.href = "/basket/basket-page";
     }
 
 </script>

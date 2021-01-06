@@ -60,4 +60,8 @@ public class BasketService {
         }
         return stockList;
     }
+
+    public void remove(String memberId, String productCode) {
+        basket.remove(memberId, productCode);
+    }
 }

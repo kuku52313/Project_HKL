@@ -7,6 +7,20 @@
     font-family: "Godo";
 }
 
+.recycle-bin:hover {
+    color: red;
+    cursor: pointer;
+}
+
+#ui-id-2 {
+    width: 80%;
+    height: 45px;
+    color: #1e1e1e;
+    font-size: 16px;
+    line-height: 50px;
+    vertical-align: middle;
+}
+
 body > header > div.row > div.col-10 > ul > li > a {
     font-size: 20px;
     font-family: "Godo";

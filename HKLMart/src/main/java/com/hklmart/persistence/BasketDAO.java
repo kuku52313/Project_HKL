@@ -14,4 +14,6 @@ public interface BasketDAO {
 
     List<BasketVO> orderBasket(String basketMemberId);
 
+    void remove(String memberId, String productCode);
+
 }

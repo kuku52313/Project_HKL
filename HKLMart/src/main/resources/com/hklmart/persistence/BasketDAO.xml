@@ -42,4 +42,10 @@
         where b.BASKET_MEMBER_ID = #{basketMemberId} and p.PRODUCT_CODE = b.BASKET_PRODUCT_CODE
         ]]>
     </select>
+
+    <delete id="remove" parameterType="String">
+        <![CDATA[
+        DELETE FROM BASKET WHERE BASKET_MEMBER_ID = #{param1} AND BASKET_PRODUCT_CODE = #{param2}
+        ]]>
+    </delete>
 </mapper>

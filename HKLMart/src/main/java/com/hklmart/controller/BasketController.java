@@ -45,7 +45,12 @@ public class BasketController {
         return "forward:/like/take";
     }
 
-    @GetMapping("/basketPage")
+    @GetMapping("/remove")
+    public void removeBasket(Principal principal, @RequestParam("productCode") String productCode) {
+        basket.remove(principal.getName(), productCode);
+    }
+
+    @GetMapping("/basket-page")
     public String orderBasket(Principal principal, Model model) {
         String basketMemberId = principal.getName();
         model.addAttribute("orderBasketList", basket.orderBasket(basketMemberId));

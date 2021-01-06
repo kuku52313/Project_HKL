@@ -50,7 +50,7 @@
             <br/><br/>
             <div id="shopping-basket">
                 <span class="font-set" style="font-size: 25px">장바구니</span>
-                <a href="/basket/basketPage" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
+                <a href="/basket/basket-page" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
                 <hr/>
                 <c:choose>
                     <c:when test="${fn:length(basketList) > 0 && fn:length(basketList) < 6}">
@@ -82,7 +82,7 @@
                                 </div>
                             </c:forEach>
                             <div class="col-2" style="margin:auto">
-                                <a href="/basket/basketPage"><i class="fas fa-ellipsis-h fa-2x" style="color:grey"></i></a>
+                                <a href="/basket/basket-page"><i class="fas fa-ellipsis-h fa-2x" style="color:grey"></i></a>
                             </div>
                         </div>
                     </c:when>
