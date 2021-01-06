@@ -24,7 +24,7 @@
                     <div class="order_item">
                         <dl><%--<c:out value="${list.}">--%>
                             <dt>
-                                <input type="checkbox" id="checkAll" name="checkAll">
+                                <input type="checkbox" id="checkAll" name="checkAll" value="0" checked onclick="checkSum(chkForm)">
                                 <label for="checkAll"></label>
                             </dt>
                             <dt><p style="text-align: left; margin-bottom: 0px;">전체선택</p></dt>
@@ -32,26 +32,27 @@
                             <dt style="font-weight: bold">주문금액</dt>
                         </dl>
 
-                        <c:forEach items="${orderBasketList}" var="list" varStatus="status" begin="0" end="${fn:length(orderBasketList)-1}">
-                            <input type="hidden" id="productPrice${status.index}" value="${list.productPrice}"/>
-                            <input type="hidden" id="productCode${status.index}" value="${list.productCode}"/>
-                            <dl class="order_item">
-                                <dd>
-                                    <input type="checkbox" name="items" id="checkAItem${status.index}">
-                                    <label for="checkAItem<c:out value="${status.index}"/>"></label>
-                                </dd>
-                                <dd>
-                                    <a>
-                                        <img src="<c:out value="${list.productImgpath}${list.productThumbnail}"/>"/>
-                                    </a>
-                                </dd>
-                                <dd><a>
-                                    <span class="itemname" style="color: black; font-weight: bold"><c:out value="${list.productName}"/></span></a>
-                                    <span style="color: black; font-size: 1.5vh">
+                        <form name="chkForm">
+                            <c:forEach items="${orderBasketList}" var="list" varStatus="status" begin="0" end="${fn:length(orderBasketList)-1}">
+                                <input type="hidden" id="productPrice${status.index}" value="${list.productPrice}"/>
+                                <input type="hidden" id="productCode${status.index}" value="${list.productCode}"/>
+                                <dl class="order_item">
+                                    <dd>
+                                        <input type="checkbox" name="items" id="checkAItem${status.index}" value="0" onclick="checkSum(chkForm)" checked>
+                                        <label for="checkAItem<c:out value="${status.index}"/>"></label>
+                                    </dd>
+                                    <dd>
+                                        <a>
+                                            <img src="<c:out value="${list.productImgpath}${list.productThumbnail}"/>"/>
+                                        </a>
+                                    </dd>
+                                    <dd><a>
+                                        <span class="itemname" style="color: black; font-weight: bold"><c:out value="${list.productName}"/></span></a>
+                                        <span style="color: black; font-size: 1.5vh">
                                         SIZE <input id="show-select-size${status.index}" class="form-control" type="text" value="" readonly placeholder="사이즈를 선택하세요" style="width: 30%; background-color: white; display: inline"/>
                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#item-modal${status.index}">사이즈 선택</button>
 
-                                        <!-- The Modal -->
+                                            <!-- The Modal -->
                                         <div class="modal fade" id="item-modal${status.index}">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -90,20 +91,22 @@
                                             </div>
                                         </div>
                                         <br>
-                                        수량 <input id="product-number${status.index}" class="form-control" type="number" min="0" max="0" step="1" placeholder="상품개수" onclick="selectNumber(${status.index})" style="width: 30%; display: inline"/>
+                                        수량 <input id="product-number${status.index}" class="form-control" type="number" min="0" max="0" step="1" placeholder="상품개수" onclick="selectNumber(${status.index}), checkSum(chkForm)"
+                                                  style="width: 30%; display: inline"/>
                                     </span>
-                                </dd>
-                                <dd><span id="show-product-price${status.index}" style="display: inline; color: black; font-weight: bold"></span> 원</dd>
-                                <dd><i class="fas fa-trash fa-2x recycle-bin" onclick="removeBasket(document.getElementById('productCode${status.index}').value)"></i></dd>
-                            </dl>
-                        </c:forEach>
+                                    </dd>
+                                    <dd><span id="show-product-price${status.index}" style="display: inline; color: black; font-weight: bold"></span> 원</dd>
+                                    <dd><i class="fas fa-trash fa-2x recycle-bin" onclick="removeBasket(document.getElementById('productCode${status.index}').value)"></i></dd>
+                                </dl>
+                            </c:forEach>
+                        </form>
                     </div>
 
                     <input type="hidden" value="0">
                 </div>
             </div>
         </div>
-        <div class="price_total">총 주문금액 <span></span></div>
+        <div class="price_total">총 주문금액 <span id="total-price"></span> 원</div>
 
         <fmt:formatNumber var="TelFmt" value="${memberInfo.memberTel}" pattern="###,##,####" minIntegerDigits="11"/>
         <div>
@@ -200,11 +203,12 @@
         <h2>최종 결제 금액</h2>
         <dl class="order_totalpay">
             <dt>총 상품금액</dt>
-            <dd><fmt:formatNumber value="${prductInfo.productPrice}" pattern="#,###"/> 원</dd>
+            <dd><span id="result-total-price"></span> 원</dd>
             <dt>총 배송비</dt>
             <dd>2,000 원</dd>
             <dt class="large">결제 예상 금액</dt>
-            <dd class="red large"><fmt:formatNumber value="${prductInfo.productPrice}" pattern="#,###"/> 원
+            <dd class="red large">
+                <span id="payment-total-price"></span> 원
             </dd>
         </dl>
         <div>
@@ -242,7 +246,7 @@
                         HKL MART 약관 동의
                         <span>(필수)</span>
                     </label>
-                    <a onclick="popup()" class="agree_more">더보기 &gt;</a>
+                    <a onclick="popup()" class="agree_more" style="cursor: pointer">더보기 &gt;</a>
                 </h4>
             </div>
         </div>
@@ -373,8 +377,10 @@
         let productPrice = 'productPrice' + index;
         let showProductPrice = 'show-product-price' + index;
         let productNumber = 'product-number' + index;
+        let checkBoxValue = 'checkAItem' + index;
         let result = document.getElementById(productPrice).value * document.getElementById(productNumber).value;
         document.getElementById(showProductPrice).innerText = numberWithCommas(result);
+        document.getElementById(checkBoxValue).value = result;
     }
 
     function numberWithCommas(x) {
@@ -385,6 +391,20 @@
         location.href = "/basket/remove?productCode=" + productCode;
         alert("해당 상품을 장바구니에서 제외 하였습니다")
         location.href = "/basket/basket-page";
+    }
+
+    function checkSum(form) {
+        let sum = 0;
+        let count = form.items.length;
+        for (var i = 0; i < count; i++) {
+            if (form.items[i].checked == true) {
+                sum += parseInt(form.items[i].value);
+            }
+        }
+        document.getElementById('checkAll').value = sum;
+        document.getElementById('total-price').innerText = numberWithCommas(sum);
+        document.getElementById('result-total-price').innerText = numberWithCommas(sum);
+        document.getElementById('payment-total-price').innerText = numberWithCommas(sum + 2000);
     }
 
 </script>
