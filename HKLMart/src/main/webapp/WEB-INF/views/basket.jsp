@@ -21,7 +21,6 @@
                     <strong class="title">일반배송</strong>
                 </div>
                 <div class="cart-seller-list cart_list_full">
-
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <div>
                         <div class="order_item">
@@ -38,6 +37,7 @@
                             <c:forEach items="${orderBasketList}" var="list" varStatus="status" begin="0" end="${fn:length(orderBasketList)-1}">
                                 <input type="hidden" id="productPrice${status.index}" name="orderList[${status.index}].productPrice" value="${list.productPrice}"/>
                                 <input type="hidden" id="productCode${status.index}" name="orderList[${status.index}].productCode" value="${list.productCode}"/>
+                                <input type="hidden" id="paymentIndex" value="${fn:length(orderBasketList)}"/>
                                 <dl class="order_item">
                                     <dd>
                                         <input type="checkbox" name="items" id="checkAItem${status.index}" value="0" onclick="checkSum(chkForm)">
@@ -415,15 +415,49 @@
     function doPayment() {
         let form = chkForm;
         let textContent = document.getElementById('total-price').textContent.replace(',', '');
-        console.log(form);
-        console.log(textContent);
+        let indexLength = document.getElementById('paymentIndex').value;
+        let checkBox;
+        let price;
+        let productCode;
+        let productNumber;
+        let productSize;
+
+        for (var i = 0; i < indexLength; i++) {
+            checkBox = 'checkAItem' + i;
+            price = 'productPrice' + i;
+            productCode = 'productCode' + i;
+            productNumber = 'product-number' + i;
+            productSize = 'show-select-size' + i;
+
+            if (document.getElementById(checkBox).checked == false) {
+                document.getElementById(price).disabled = true;
+                document.getElementById(productCode).disabled = true;
+                document.getElementById(productNumber).disabled = true;
+                document.getElementById(productSize).disabled = true;
+            }
+        }
+
+        for (var i = 0; i < indexLength; i++) {
+            checkBox = 'checkAItem' + i;
+            price = 'show-product-price' + i;
+
+            if (document.getElementById(checkBox).checked == true && (document.getElementById(price).textContent == '' || document.getElementById(price).textContent == '0')) {
+                alert("주문정보가 잘못됐습니다");
+                return 0;
+            }
+        }
 
         if (document.getElementById('total-price').textContent == '' || document.getElementById('total-price').textContent == 0) {
             alert("주문정보가 잘못됐습니다");
         } else if (!($.isNumeric(textContent))) {
             alert("주문정보가 잘못됐습니다");
+        } else if ($('input:radio[name=paymethod]:checked').length == 0) {
+            alert("결제수단을 선택하여 주십시오");
+        } else if (document.getElementById('agree_1').checked == false) {
+            alert("약관에 동의하여 주십시오");
         } else {
             form.submit();
+            alert("상품을 구매해주셔서 감사드립니다")
         }
     }
 
