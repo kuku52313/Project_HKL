@@ -70,14 +70,18 @@ public class OrderController {
     @PostMapping("/basket-payment")
     public String basketPayment(BasketOrderPayListVO orderPayListVO) {
         for (BasketOrderVO temp : orderPayListVO.getOrderList()) {
-            orderPayListVO.setOrderPayment(temp.getProductPrice());
-            orderPayListVO.setStockSize("STOCK_" + temp.getProductSize());
-            orderPayListVO.setStockSizeColumn("ORDER_LIST_STOCK_" + temp.getProductSize());
-            orderPayListVO.setOrderProductCode(temp.getProductCode());
-            orderService.doPay(orderPayListVO);
-            orderService.payProductList(orderPayListVO);
-            orderService.stockUpdate(orderPayListVO);
-            bakset.remove(orderPayListVO.getOrderMemberId(), orderPayListVO.getOrderProductCode());
+            if (temp.getProductPrice() == 0 || temp.getProductSize() == 0 || temp.getProductCode() == null || temp.getProductCode().isEmpty()) {
+                continue;
+            } else {
+                orderPayListVO.setOrderPayment(temp.getProductPrice());
+                orderPayListVO.setStockSize("STOCK_" + temp.getProductSize());
+                orderPayListVO.setStockSizeColumn("ORDER_LIST_STOCK_" + temp.getProductSize());
+                orderPayListVO.setOrderProductCode(temp.getProductCode());
+                orderService.doPay(orderPayListVO);
+                orderService.payProductList(orderPayListVO);
+                orderService.stockUpdate(orderPayListVO);
+                bakset.remove(orderPayListVO.getOrderMemberId(), orderPayListVO.getOrderProductCode());
+            }
         }
         return "redirect:/member/my-page";
     }
