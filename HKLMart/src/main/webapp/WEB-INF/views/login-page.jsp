@@ -29,7 +29,7 @@
     <div class="form-wrap">
         <!-- toggle -->
         <div class="button-wrap">
-            <div id="btn"></div>
+            <div id="btn" style="width: 50%"></div>
             <button type="button" class="togglebtn" onclick="login()">로그인</button>
 
             <button type="button" class="togglebtn" onclick="register()">회원가입</button>
@@ -92,7 +92,7 @@
     function register() {
         x.style.left = "-400px";
         y.style.left = "50px";
-        z.style.left = "110px";
+        z.style.left = "115px";
     }
 
     function idCheck() {
