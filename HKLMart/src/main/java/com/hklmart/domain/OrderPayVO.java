@@ -18,27 +18,21 @@ public class OrderPayVO {
     "ORDER_ADDRESS_MEMBER" VARCHAR2(150 BYTE),
 	"ORDER_ADDRESS_POSTCODE" VARCHAR2(10 BYTE)*/
 
-   private String orderMemberId;
-   private String orderProductCode;
-   private String orderDate;
-   private String orderAddress;
-   private String orderAddressMember;
-   private String orderAddressPostcode;
-   private String orderTel;
-   private String orderMemo;
-   private int orderPayment;
-   private String orderState;
-   private String orderName;
+    private String orderMemberId;
+    private String orderProductCode;
+    private String orderDate;
+    private String orderAddress;
+    private String orderAddressMember;
+    private String orderAddressPostcode;
+    private String orderTel;
+    private String orderMemo;
+    private int orderPayment;
+    private String orderState;
+    private String orderName;
 
-   private int orderListOrderNumber;
+    private int orderListOrderNumber;
 
-   private String stockSizeColumn;
-   private String stockSize;
-
-
-
-
-
-
+    private String stockSizeColumn;
+    private String stockSize;
 
 }

@@ -14,13 +14,15 @@
         <h1>장바구니</h1>
     </div>
     <div class="frame">
-        <h2>주문상품 정보</h2>
-        <div class="normal-seller-wrapper">
-            <div class="wrap-normal-shipping-title">
-                <strong class="title">일반배송</strong>
-            </div>
-            <div class="cart-seller-list cart_list_full">
-                <form name="chkForm">
+        <form name="chkForm" method="POST" action="/order/basket-payment">
+            <h2>주문상품 정보</h2>
+            <div class="normal-seller-wrapper">
+                <div class="wrap-normal-shipping-title">
+                    <strong class="title">일반배송</strong>
+                </div>
+                <div class="cart-seller-list cart_list_full">
+
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <div>
                         <div class="order_item">
                             <dl class="basket-header">
@@ -34,8 +36,8 @@
                             </dl>
 
                             <c:forEach items="${orderBasketList}" var="list" varStatus="status" begin="0" end="${fn:length(orderBasketList)-1}">
-                                <input type="hidden" id="productPrice${status.index}" value="${list.productPrice}"/>
-                                <input type="hidden" id="productCode${status.index}" value="${list.productCode}"/>
+                                <input type="hidden" id="productPrice${status.index}" name="orderList[${status.index}].productPrice" value="${list.productPrice}"/>
+                                <input type="hidden" id="productCode${status.index}" name="orderList[${status.index}].productCode" value="${list.productCode}"/>
                                 <dl class="order_item">
                                     <dd>
                                         <input type="checkbox" name="items" id="checkAItem${status.index}" value="0" onclick="checkSum(chkForm)">
@@ -51,7 +53,8 @@
                                             <span class="itemname" style="color: black; font-weight: bold"><c:out value="${list.productName}"/></span>
                                         </a>
                                         <span style="color: black; font-size: 1.5vh">
-                                        SIZE <input id="show-select-size${status.index}" class="form-control" type="text" value="" readonly placeholder="사이즈를 선택하세요" style="width: 30%; background-color: white; display: inline"/>
+                                        SIZE <input id="show-select-size${status.index}" name="orderList[${status.index}].productSize" class="form-control" type="text" value="" readonly placeholder="사이즈를 선택하세요"
+                                                    style="width: 30%; background-color: white; display: inline"/>
                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#item-modal${status.index}">사이즈 선택</button>
 
                                             <!-- The Modal -->
@@ -93,7 +96,8 @@
                                             </div>
                                         </div>
                                         <br>
-                                        수량 <input id="product-number${status.index}" class="form-control" type="number" min="0" max="0" step="1" placeholder="상품개수" onclick="selectNumber(${status.index}), checkSum(chkForm)"
+                                        수량 <input id="product-number${status.index}" name="orderList[${status.index}].productNumber" class="form-control" type="number" min="0" max="0" step="1" placeholder="상품개수"
+                                                  onclick="selectNumber(${status.index}), checkSum(chkForm)"
                                                   style="width: 30%; display: inline"/>
                                     </span>
                                     </dd>
@@ -102,56 +106,49 @@
                                 </dl>
                             </c:forEach>
                         </div>
-
                         <input type="hidden" value="0">
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
-        <div class="price_total">총 주문금액 <span id="total-price"></span> 원</div>
+            <div class="price_total">총 주문금액 <span id="total-price"></span> 원</div>
 
-        <fmt:formatNumber var="TelFmt" value="${memberInfo.memberTel}" pattern="###,##,####" minIntegerDigits="11"/>
-        <div>
-            <h2 class="orderer-info-title">주문자 정보</h2>
-            <div class="order_delivery">
-                <dl>
-                    <dt>이름</dt>
-                    <dd>
-                        <input type="text" name="" id="orderer_name" placeholder="이름" maxlength="15" class="w100per" value="${memberInfo.memberName}" readonly>
-                    </dd>
-                </dl>
-                <dl>
-                    <dt>휴대폰</dt>
-                    <dd>
-                        <input type="tel" name="" id="shipping_telephone" maxlength="11" class="w80px" readonly value="<c:out value="${fn:replace(TelFmt, ',', '-')}" />" style="text-align: left">
-                        <input type="hidden" id="memberTelId" value="${memberInfo.memberTel}">
-                    </dd>
-                </dl>
-                <dl>
-                    <dt>이메일</dt>
-                    <dd><input type="text" name="" id="orderer_email1" value="${memberInfo.memberEmail}" readonly></dd>
-                </dl>
-                <dl>
-                    <dt>배송주소</dt>
-                    <dd>
-                        <input type="text" name="memberAddressPostcode" readonly="readonly" class="w49per" id="memberPostcode" value="${memberInfo.memberAddressPostcode}" style="width: 50%;
+            <fmt:formatNumber var="TelFmt" value="${memberInfo.memberTel}" pattern="###,##,####" minIntegerDigits="11"/>
+            <div>
+                <h2 class="orderer-info-title">주문자 정보</h2>
+                <div class="order_delivery">
+                    <dl>
+                        <dt>이름</dt>
+                        <dd>
+                            <input type="text" name="" id="orderer_name" placeholder="이름" maxlength="15" class="w100per" value="${memberInfo.memberName}" readonly>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>휴대폰</dt>
+                        <dd>
+                            <input type="tel" name="" id="shipping_telephone" maxlength="11" class="w80px" readonly value="<c:out value="${fn:replace(TelFmt, ',', '-')}" />" style="text-align: left">
+                            <input type="hidden" id="memberTelId" value="${memberInfo.memberTel}">
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>이메일</dt>
+                        <dd><input type="text" name="" id="orderer_email1" value="${memberInfo.memberEmail}" readonly></dd>
+                    </dl>
+                    <dl>
+                        <dt>배송주소</dt>
+                        <dd>
+                            <input type="text" name="memberAddressPostcode" readonly="readonly" class="w49per" id="memberPostcode" value="${memberInfo.memberAddressPostcode}" style="width: 50%;
                         background-color: #E1E1E1">
-                        <br>
-                        <input type="text" name="memberAddress" id="memberAddress" readonly="readonly" value="${memberInfo.memberAddress}"
-                               class="w49per order_addr" style="background-color: #E1E1E1">
-                        <input type="text" name="memberAddressMember" id="memberUserAddress" readonly="readonly" value="${memberInfo.memberAddressMember}"
-                               class="w49per order_addr" style="background-color: #E1E1E1">
+                            <br>
+                            <input type="text" name="memberAddress" id="memberAddress" readonly="readonly" value="${memberInfo.memberAddress}"
+                                   class="w49per order_addr" style="background-color: #E1E1E1">
+                            <input type="text" name="memberAddressMember" id="memberUserAddress" readonly="readonly" value="${memberInfo.memberAddressMember}"
+                                   class="w49per order_addr" style="background-color: #E1E1E1">
 
-                    </dd>
-                </dl>
+                        </dd>
+                    </dl>
+                </div>
             </div>
-        </div>
-        <form method="post" name="orderForm" id="orderForm">
-            <input type="hidden" id="orderFnHidden" name="" value="0"/>
-            <input type="hidden" value="0" id="orderFormHidden">
-            <input type="hidden" id="memberIdHidden" name="memberId" value="${memberInfo.memberId}"/>
-            <input type="hidden" id="sizeHidden" name="stock_${param.Size}" value="1"/>
-            <input type="hidden" id="sizeStockHidden" name="productSize" value="${param.Size}"/>
+            <input type="hidden" name="orderMemberId" value="${user.username}"/>
 
             <h2>배송지 정보<span class="checkout-inpt">
                 <input type="checkbox" name="" id="checkBoxId" class="checkbox-style"><label for="checkBoxId">&nbsp;주문자 정보와 동일</label></span></h2>
@@ -164,7 +161,6 @@
                     <dt>휴대폰</dt>
                     <dd>
                         <input type="tel" name="orderTel" id="InOrderTelId" placeholder="특수문자 제외" maxlength="11" class="w80px" style="text-align: left">
-                        <input type="hidden" id="orderTelId" name="orderTel" value="${user.memberTel}">
                     </dd>
                 </dl>
                 <dl>
@@ -178,7 +174,6 @@
                         </div>
                         <input type="text" name="orderAddress" id="sample4_roadAddress" readonly="readonly" class="w49per order_addr">
                         <input type="text" name="orderAddressMember" id="userAddress" placeholder="상세 주소 입력" class="w49per order_addr">
-                        <input type="hidden" name="orderAddress" id="orderAddress" value="0">
                         <div class="delivery_add_info_text">* 제주도, 도서 산간 지역 등은 배송이 하루 이상 추가 소요될 수 있습니다</div>
                     </dd>
                 </dl>
@@ -252,6 +247,7 @@
                 </h4>
             </div>
         </div>
+        <input type="button" class="btn_in_orderforn" style="float: right; width: 80px; height: 60px; font-size: 17px" onclick="doPayment()" value="결제">
     </div>
 </div>
 
@@ -414,6 +410,21 @@
         document.getElementById('total-price').innerText = numberWithCommas(sum);
         document.getElementById('result-total-price').innerText = numberWithCommas(sum);
         document.getElementById('payment-total-price').innerText = numberWithCommas(sum + 2000);
+    }
+
+    function doPayment() {
+        let form = chkForm;
+        let textContent = document.getElementById('total-price').textContent.replace(',', '');
+        console.log(form);
+        console.log(textContent);
+
+        if (document.getElementById('total-price').textContent == '' || document.getElementById('total-price').textContent == 0) {
+            alert("주문정보가 잘못됐습니다");
+        } else if (!($.isNumeric(textContent))) {
+            alert("주문정보가 잘못됐습니다");
+        } else {
+            form.submit();
+        }
     }
 
 </script>
