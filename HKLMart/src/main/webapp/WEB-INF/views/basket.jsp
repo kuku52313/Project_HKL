@@ -42,12 +42,14 @@
                                         <label for="checkAItem<c:out value="${status.index}"/>"></label>
                                     </dd>
                                     <dd>
-                                        <a>
+                                        <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}">
                                             <img src="<c:out value="${list.productImgpath}${list.productThumbnail}"/>"/>
                                         </a>
                                     </dd>
-                                    <dd><a>
-                                        <span class="itemname" style="color: black; font-weight: bold"><c:out value="${list.productName}"/></span></a>
+                                    <dd>
+                                        <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}">
+                                            <span class="itemname" style="color: black; font-weight: bold"><c:out value="${list.productName}"/></span>
+                                        </a>
                                         <span style="color: black; font-size: 1.5vh">
                                         SIZE <input id="show-select-size${status.index}" class="form-control" type="text" value="" readonly placeholder="사이즈를 선택하세요" style="width: 30%; background-color: white; display: inline"/>
                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#item-modal${status.index}">사이즈 선택</button>
