@@ -23,13 +23,13 @@
                 <form name="chkForm">
                     <div>
                         <div class="order_item">
-                            <dl>
-                                <dt>
-                                    <input type="checkbox" id="checkAll" name="checkAll" value="0" checked onclick="checkSum(chkForm)">
-                                    <label for="checkAll"></label>
+                            <dl class="basket-header">
+                                <dt style="text-align: center">
+                                    선택
+                                    <input type="hidden" id="checkAll" name="checkAll" value="0">
                                 </dt>
-                                <dt><p style="text-align: left; margin-bottom: 0px;">전체선택</p></dt>
                                 <dt></dt>
+                                <dt style="text-align: center; font-weight: bold">상품</dt>
                                 <dt style="font-weight: bold">주문금액</dt>
                             </dl>
 
@@ -38,7 +38,7 @@
                                 <input type="hidden" id="productCode${status.index}" value="${list.productCode}"/>
                                 <dl class="order_item">
                                     <dd>
-                                        <input type="checkbox" name="items" id="checkAItem${status.index}" value="0" onclick="checkSum(chkForm)" checked>
+                                        <input type="checkbox" name="items" id="checkAItem${status.index}" value="0" onclick="checkSum(chkForm)">
                                         <label for="checkAItem<c:out value="${status.index}"/>"></label>
                                     </dd>
                                     <dd>
