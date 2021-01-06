@@ -99,19 +99,25 @@
                         <table >
                             <c:forEach items="${productList}" var="list">
                                 <c:if test="${i%j == 0 }">
-                                    <tr>
                                 </c:if>
-                                <td>제품 코드 : ${list.orderListProduct}</td>
-                                <td>제품명 : ${list.productName}</td>
-                                <td>구매 갯수 : ${list.stockEA}</td>
+                                <div style="float: right; border: solid 1px #ffb6b6;">
+                                <dl style="padding: 5px 0px 5px 0px">
+                                    <dt></dt>
+                                    <dt></dt>
+                                    <dt></dt>
+                                </dl>
+                                <dl>
+                                <dd>제품 코드 : ${list.orderListProduct}</dd>
+                                <dd>제품명 : ${list.productName}</dd>
+                                <dd>구매 갯수 : ${list.stockEA}</dd>
+                                </dl>
+                                </div>
                                 <c:if test="${i%j == j-1 }">
-                                    </tr>
                                 </c:if>
                                 <c:set var="i" value="${i+1 }" />
                             </c:forEach>
                         </table>
                     </div>
-                    <hr style="border: solid 1px #ffb6b6;">
 
                     <div class="record">
                         <label>결제 금액 </label>&nbsp;&nbsp;
