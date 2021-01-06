@@ -20,9 +20,10 @@
                 <strong class="title">일반배송</strong>
             </div>
             <div class="cart-seller-list cart_list_full">
+                <form name="chkForm">
                 <div>
-                    <div class="order_item">
-                        <dl><%--<c:out value="${list.}">--%>
+                    <div class="order_item" >
+                        <dl>
                             <dt>
                                 <input type="checkbox" id="checkAll" name="checkAll" value="0" checked onclick="checkSum(chkForm)">
                                 <label for="checkAll"></label>
@@ -32,27 +33,26 @@
                             <dt style="font-weight: bold">주문금액</dt>
                         </dl>
 
-                        <form name="chkForm">
-                            <c:forEach items="${orderBasketList}" var="list" varStatus="status" begin="0" end="${fn:length(orderBasketList)-1}">
-                                <input type="hidden" id="productPrice${status.index}" value="${list.productPrice}"/>
-                                <input type="hidden" id="productCode${status.index}" value="${list.productCode}"/>
-                                <dl class="order_item">
-                                    <dd>
-                                        <input type="checkbox" name="items" id="checkAItem${status.index}" value="0" onclick="checkSum(chkForm)" checked>
-                                        <label for="checkAItem<c:out value="${status.index}"/>"></label>
-                                    </dd>
-                                    <dd>
-                                        <a>
-                                            <img src="<c:out value="${list.productImgpath}${list.productThumbnail}"/>"/>
-                                        </a>
-                                    </dd>
-                                    <dd><a>
-                                        <span class="itemname" style="color: black; font-weight: bold"><c:out value="${list.productName}"/></span></a>
-                                        <span style="color: black; font-size: 1.5vh">
+                        <c:forEach items="${orderBasketList}" var="list" varStatus="status" begin="0" end="${fn:length(orderBasketList)-1}">
+                            <input type="hidden" id="productPrice${status.index}" value="${list.productPrice}"/>
+                            <input type="hidden" id="productCode${status.index}" value="${list.productCode}"/>
+                            <dl class="order_item">
+                                <dd>
+                                    <input type="checkbox" name="items" id="checkAItem${status.index}" value="0" onclick="checkSum(chkForm)" checked>
+                                    <label for="checkAItem<c:out value="${status.index}"/>"></label>
+                                </dd>
+                                <dd>
+                                    <a>
+                                        <img src="<c:out value="${list.productImgpath}${list.productThumbnail}"/>"/>
+                                    </a>
+                                </dd>
+                                <dd><a>
+                                    <span class="itemname" style="color: black; font-weight: bold"><c:out value="${list.productName}"/></span></a>
+                                    <span style="color: black; font-size: 1.5vh">
                                         SIZE <input id="show-select-size${status.index}" class="form-control" type="text" value="" readonly placeholder="사이즈를 선택하세요" style="width: 30%; background-color: white; display: inline"/>
                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#item-modal${status.index}">사이즈 선택</button>
 
-                                            <!-- The Modal -->
+                                        <!-- The Modal -->
                                         <div class="modal fade" id="item-modal${status.index}">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -94,16 +94,16 @@
                                         수량 <input id="product-number${status.index}" class="form-control" type="number" min="0" max="0" step="1" placeholder="상품개수" onclick="selectNumber(${status.index}), checkSum(chkForm)"
                                                   style="width: 30%; display: inline"/>
                                     </span>
-                                    </dd>
-                                    <dd><span id="show-product-price${status.index}" style="display: inline; color: black; font-weight: bold"></span> 원</dd>
-                                    <dd><i class="fas fa-trash fa-2x recycle-bin" onclick="removeBasket(document.getElementById('productCode${status.index}').value)"></i></dd>
-                                </dl>
-                            </c:forEach>
-                        </form>
+                                </dd>
+                                <dd><span id="show-product-price${status.index}" style="display: inline; color: black; font-weight: bold"></span> 원</dd>
+                                <dd><i class="fas fa-trash fa-2x recycle-bin" onclick="removeBasket(document.getElementById('productCode${status.index}').value)"></i></dd>
+                            </dl>
+                        </c:forEach>
                     </div>
 
                     <input type="hidden" value="0">
                 </div>
+                </form>
             </div>
         </div>
         <div class="price_total">총 주문금액 <span id="total-price"></span> 원</div>
@@ -274,6 +274,7 @@
         var checked = $this.prop('checked');
         $('input[name="items"]').prop('checked', checked);
     });
+
     var boxes = $('input[name="items"]');
     boxes.change(function () {
         var boxLength = boxes.length;
@@ -281,6 +282,7 @@
         var selectAll = (boxLength == checkedLength);
         $checkAll.prop('checked', selectAll);
     });
+
     $(document).ready(function () {
         $("#checkBoxId").change(function () {
             var orderFnHidden = $("#orderFnHidden").val();
