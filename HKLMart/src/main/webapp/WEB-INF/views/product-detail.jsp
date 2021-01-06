@@ -63,7 +63,7 @@
                     <div data-v-a489fb08="" class="Mod_goods-option-payment">
                         <div data-v-a489fb08="" class="wrap-btn-purchase-wish">
                             <button data-v-a489fb08="" type="button" class="btn-purchase" onclick="goOrderFn()">구매하기</button>
-                            <button data-v-a489fb08="" type="button" class="btn-wish" >
+                            <button data-v-a489fb08="" type="button" class="btn-wish">
                                 <span data-v-a489fb08="" class="txt" onclick="clickLike()">찜</span>
                             </button>
                         </div>
@@ -190,7 +190,7 @@
 
 <script>
     function clickBasket(obj) {
-        let thisCode = document.getElementById('productCode').value;
+        let thisCode = document.getElementById('productCodeId').value;
         let memberId = document.getElementById('memberId').value;
         if (memberId === "none") {
             alert("로그인이 필요한 서비스입니다");
@@ -257,20 +257,20 @@
         var productSize = $("#size-select-box option:selected").attr("name");
 
 
-        if(productSize == 'noSize'){
+        if (productSize == 'noSize') {
             alert("사이즈를 선택하여주세요")
             return;
-        }if(productStock == 0){
+        }
+        if (productStock == 0) {
             alert("재고가 부족합니다")
-            return;
-        }else{
+
+        } else {
             location.href = '/order/order-page?productCode=' + productCode + '&Size=' + productSize;
-       }
+        }
 
     }
 
-    onchange="fn_setAsscatnNm(this);"
-
+    onchange = "fn_setAsscatnNm(this);"
 
 
 </script>
