@@ -32,4 +32,6 @@ public interface ManagementDAO {
     List<OrderViewVO> getOrderList(PageCriteriaVO cri);
 
     OrderViewVO getOrderModify(String orderNumber);
+
+    List<orderProductListDTO> getOrderProduct(String orderNumber);
 }

@@ -176,4 +176,13 @@
         ]]>
 
     </select>
+    <select id="getOrderProduct" resultType="com.hklmart.domain.orderProductListDTO">
+
+        <![CDATA[
+        select *
+        from product_order_list,product
+        where order_list_order_number = #{param} and product_code = order_list_product
+        ]]>
+
+    </select>
 </mapper>

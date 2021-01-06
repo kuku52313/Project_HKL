@@ -61,4 +61,8 @@ public class ManagementService {
     public OrderViewVO getOrderModify(String orderNumber) {
         return managementDAO.getOrderModify(orderNumber);
     }
+
+    public List<orderProductListDTO> getOrderProduct(String orderNumber) {
+        return managementDAO.getOrderProduct(orderNumber);
+    }
 }

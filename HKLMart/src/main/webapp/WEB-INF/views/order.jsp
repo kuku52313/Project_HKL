@@ -207,16 +207,11 @@
             <div class="order_paymethod_wrap">
                 <div class="order_paymethod">
                     <input type="radio" name="paymethod" value="PAY_NAVER" id="pay2">
-                    <label for="pay2">
-                        <img src="">&nbsp;&nbsp;
-                        <em class="sub-txt">(네이버페이 1% 적립)</em></label>
+                    <label for="pay2"><img src="">&nbsp;&nbsp;<em class="sub-txt">(네이버페이 1% 적립)</em></label>
                     <input type="radio" name="paymethod" value="PAY_KAKAO" id="pay1">
-                    <label for="pay1">
-                        <img src="">
-                        <span>카카오페이</span></label>
+                    <label for="pay1"><img src=""><span>카카오페이</span></label>
                     <input type="radio" name="paymethod" value="PAY_TOSS" id="pay7">
-                    <label for="pay7">토스
-                        <img src="" class="toss"></label>
+                    <label for="pay7">토스<img src="" class="toss"></label>
                     <input type="radio" name="paymethod" value="PAY_CARD" id="pay3">
                     <label for="pay3">신용 / 체크카드</label>
                     <input type="radio" name="paymethod" value="PAY_BANK" id="pay5">
@@ -226,8 +221,6 @@
                     <input type="radio" name="paymethod" value="PAY_PHONE" id="pay4">
                     <label for="pay4">휴대폰 결제</label>
                 </div>
-                <!---->
-                <!---->
                 <div class="escrow-info-box" style="display: none;">
                     <p>무통장입금(에스크로) 결제를 통한 여러 상품 구매 시, </p>
                     <p>특정 상품의 부분취소가 불가합니다.</p>
@@ -237,14 +230,15 @@
         </div>
         <div>
             <h2>정보수집동의</h2>
-            <!--fragment#55b3af2225#head-->
             <div class="order_paymethod">
-                <h4  class="left"><input  type="checkbox" id="agree_1"><label  for="agree_1">HKL MART 약관 동의 <span
-                        >(필수)</span></label><a  href="/access-term?type=popup" target="_blank" class="agree_more">더보기 &gt;</a></h4>
-                <div   class="term">
-                            <pre >서비스 이용약관
-                            </pre>
-                </div>
+                <h4 class="text-left"><input type="checkbox" id="agree_1">
+                    <label for="agree_1">
+                        &nbsp;&nbsp;
+                        HKL MART 약관 동의
+                        <span>(필수)</span>
+                    </label>
+                    <a onclick="popup()" class="agree_more" style="cursor: pointer">더보기 &gt;</a>
+                </h4>
             </div>
         </div>
         <input type="button" class="btn_in_orderforn" style="float: right; width: 80px; height: 60px; font-size: 17px" onclick="doPayFn()" value="결제">
@@ -363,8 +357,11 @@
 
         let subForm = document.orderForm;
 
-
-        if(productSizeId==''){
+        if ($('input:radio[name=paymethod]:checked').length == 0) {
+            alert("결제수단을 선택하여 주십시오");
+        } else if (document.getElementById('agree_1').checked == false) {
+            alert("약관에 동의하여 주십시오");
+        } else if(productSizeId==''){
             alert("사이즈 선택이 안되었습니다")
         }else{
 

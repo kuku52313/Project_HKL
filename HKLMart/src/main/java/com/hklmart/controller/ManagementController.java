@@ -137,7 +137,10 @@ public class ManagementController {
     public String getOrderModify(@RequestParam("orderNumber") String orderNumber, Model model){
 
         model.addAttribute("modify",managementService.getOrderModify(orderNumber));
+        model.addAttribute("productList",managementService.getOrderProduct(orderNumber));
 
-        return "mamager-order-modify";
+        log.info(managementService.getOrderProduct(orderNumber));
+
+        return "manager-order-modify";
     }
 }

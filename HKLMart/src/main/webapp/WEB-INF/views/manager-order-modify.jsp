@@ -93,7 +93,23 @@
 
                     <div class="record">
                         <label>구매 목록 </label>&nbsp;&nbsp;
-                        <input type="text" class="formCode" id="" name="memberAuthority" readonly value="${modify.memberAuthority}"/>
+                        <br>
+                        <c:set var="i" value="0" />
+                        <c:set var="j" value="3" />
+                        <table >
+                            <c:forEach items="${productList}" var="list">
+                                <c:if test="${i%j == 0 }">
+                                    <tr>
+                                </c:if>
+                                <td>제품 코드 : ${list.orderListProduct}</td>
+                                <td>제품명 : ${list.productName}</td>
+                                <td>구매 갯수 : ${list.stockEA}</td>
+                                <c:if test="${i%j == j-1 }">
+                                    </tr>
+                                </c:if>
+                                <c:set var="i" value="${i+1 }" />
+                            </c:forEach>
+                        </table>
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
 
