@@ -74,8 +74,8 @@
 
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
-                                                        <select id="size-select-box${status.index}">
-                                                            <option> [size]를 선택하세요.</option>
+                                                        <select class="form-control" id="size-select-box${status.index}">
+                                                            <option name="사이즈를 선택하세요"> [Size]를 선택하세요.</option>
                                                             <option name="240" value="${shoesStockList.get(list.productCode).stock240}">240 (재고 : ${shoesStockList.get(list.productCode).stock240} EA)</option>
                                                             <option name="245" value="${shoesStockList.get(list.productCode).stock245}">245 (재고 : ${shoesStockList.get(list.productCode).stock245} EA)</option>
                                                             <option name="250" value="${shoesStockList.get(list.productCode).stock250}">250 (재고 : ${shoesStockList.get(list.productCode).stock250} EA)</option>
