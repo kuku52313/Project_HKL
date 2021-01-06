@@ -16,9 +16,15 @@ public interface OrderDAO {
 
     void doPay(OrderPayVO orderPayVO);
 
+    void doPay(BasketOrderPayListVO basketOrderPayListVO);
+
     void payProductList(OrderPayVO orderPayVO);
+
+    void payProductList(BasketOrderPayListVO basketOrderPayListVO);
 
     void stockUpdate(OrderPayVO orderPayVO);
 
     OrderViewVO getOrderModify(String orderNumber);
+
+    void stockUpdate(BasketOrderPayListVO basketOrderPayListVO);
 }

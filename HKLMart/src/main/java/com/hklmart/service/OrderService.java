@@ -1,5 +1,6 @@
 package com.hklmart.service;
 
+import com.hklmart.domain.BasketOrderPayListVO;
 import com.hklmart.domain.CheckStockVO;
 import com.hklmart.domain.OrderPayVO;
 import com.hklmart.domain.OrderVO;
@@ -37,9 +38,17 @@ public class OrderService {
         orderDAO.doPay(orderPayVO);
     }
 
+    public void doPay(BasketOrderPayListVO basketOrderPayListVO) {
+        orderDAO.doPay(basketOrderPayListVO);
+    }
+
 
     public void payProductList(OrderPayVO orderPayVO) {
         orderDAO.payProductList(orderPayVO);
+    }
+
+    public void payProductList(BasketOrderPayListVO basketOrderPayListVO) {
+        orderDAO.payProductList(basketOrderPayListVO);
     }
 
     public void stockUpdate(OrderPayVO orderPayVO) {
@@ -48,5 +57,9 @@ public class OrderService {
 
     public OrderViewVO getOrderModify(String orderNumber) {
         return orderDAO.getOrderModify(orderNumber);
+    }
+
+    public void stockUpdate(BasketOrderPayListVO basketOrderPayListVO) {
+        orderDAO.stockUpdate(basketOrderPayListVO);
     }
 }
