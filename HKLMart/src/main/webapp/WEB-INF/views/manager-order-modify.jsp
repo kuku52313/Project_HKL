@@ -102,11 +102,15 @@
                         <input type="text" class="formCode" id="orderPaymentId" name="orderPayment" readonly value="${modify.orderPayment}"/>
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
+                    <select class="formText" id="orderStateId" name="orderState">
+                    <option value="출고 준비">- 출고 준비 -</option>
+                        <option value="출고 완료">- 출고 완료 -</option>
+                        <option value="배송중">- 배송중 -</option>
+                        <option value="배송 완료">- 배송 완료 -</option>
+                        <option value="반품 처리중">- 반품 처리중 -</option>
+                        <option value="반품 완료">- 반품 완료 -</option>
+                    </select>
 
-                    <div class="record">
-                        <label>주문 상태 </label>&nbsp;&nbsp;
-                        <input type="text" class="formCode" id="orderStateId" name="orderState" readonly value="${modify.orderState}"/>
-                    </div>
                     <hr style="border: solid 1px #ffb6b6;">
 
 

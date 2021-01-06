@@ -350,6 +350,9 @@
                 success: function (data) {
                     if (data.message == 1) {
                         alert("주소가 변경되었습니다")
+                        $("#memberPostcode").val(memberAddressPostcodeId);
+                        $("#memberAddress").val(memberAddressId);
+                        $("#memberUserAddress").val(memberAddressMemberId);
                     } else {
                         alert("오류입니다")
                     }
