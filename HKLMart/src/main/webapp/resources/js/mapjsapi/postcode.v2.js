@@ -432,7 +432,7 @@
                 };
                 a.userQuery && (c.userQuery = a.userQuery, c.cq = a.cq), a.region_name && (c.region_name = a.region_name, c.cq = a.cq, c.intsh = a.intsh), a.theme && "" !== a.theme.themeStr && (c.theme = a.theme.themeStr, c.bit = a.theme.bit, c.sit = a.theme.sit, c.sgit = a.theme.sgit, c.sbit = a.theme.sbit, c.pit = a.theme.pit, c.mit = a.theme.mit, c.lcit = a.theme.lcit), a.allAddr ? c.zn = "N" : c.zn = "Y";
                 var d = q + "&" + f.getStringByOptions(c, "=", "&"), e = "&" + f.getStringByOptions({fullpath: r}, "=", "&"), g = "&" + f.getStringByOptions({fullpath: r + s}, "=", "&"),
-                    i = '<iframe frameborder="0" title="�고렪踰덊샇寃��됲봽�덉엫" id="' + j.setId("viewerFrame", a.viewerNo) + '" src="' + h.getValidationUrl(d, e, g) + '" style="' + f.getStringByOptions(b, ":", ";") + '"></iframe>';
+                    i = '<iframe frameborder="0" title="우편번호검색프레임" id="' + j.setId("viewerFrame", a.viewerNo) + '" src="' + h.getValidationUrl(d, e, g) + '" style="' + f.getStringByOptions(b, ":", ";") + '"></iframe>';
                 return i
             }
 
@@ -486,7 +486,7 @@
             }
 
             function k(a, c) {
-                if (null === q) return alert("POPUP URL�� �뗮똿�� 二쇱꽭��.");
+                if (null === q) return alert("POPUP URL을 셋팅해 주세요.");
                 var d = b(a), g = e();
                 return d.id = j.setId("layer", a.viewerNo), g.src = "about:blank", d.appendChild(g), h.append(c, d), f.userAgent.os.android && f.isAndroidWebview(f.userAgent.ua_string) ? setTimeout(function () {
                     l(g, d, a, c)
@@ -510,7 +510,7 @@
             }
 
             function m(a) {
-                if (null === q) return alert("POPUP URL�� �뗮똿�� 二쇱꽭��.");
+                if (null === q) return alert("POPUP URL을 셋팅해 주세요.");
                 var b = {
                     toolbar: "no",
                     scrollbars: "no",
@@ -524,7 +524,7 @@
                     width: a.isFlexibleWidth ? g.DEFAULT_WIDTH : a.width,
                     height: a.isFlexibleHeight ? g.DEFAULT_HEIGHT : a.height
                 }, d = a.popupName || "_blank", e = c.open("", d, f.getStringByOptions(b, "=", ","));
-                if (null == e) return alert("�앹뾽�� �� �� �놁뒿�덈떎.\n釉뚮씪�곗��� �앹뾽 李⑤떒 湲곕뒫�� �쒖꽦�� �섏뼱 �덈뒗吏� �뺤씤�댁＜�몄슂.");
+                if (null == e) return alert("팝업을 열 수 없습니다.\n브라우저의 팝업 차단 기능이 활성화 되어 있는지 확인해주세요.");
                 j.setId("popup", a.viewerNo), h.setPopupMap(j.getId("popup", a.viewerNo), e);
                 try {
                     e.focus()
@@ -547,7 +547,7 @@
                 try {
                     var e = d.document.head || d.document.getElementsByTagName("head")[0];
                     if (e) {
-                        var f = "Daum �고렪踰덊샇 �쒕퉬��", i = null, k = null, l = d.document.getElementsByTagName("title")[0];
+                        var f = "Daum 우편번호 서비스", i = null, k = null, l = d.document.getElementsByTagName("title")[0];
                         l ? (e.removeChild(l), i = d.document.createElement("title"), i.innerHTML = f, e.appendChild(i)) : (i = d.document.createElement("title"), i.innerHTML = f, k = d.document.createElement("meta"), k.name = "viewport", k.content = "user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,width=device-width", e.appendChild(i), e.appendChild(k))
                     }
                 } catch (m) {
@@ -906,11 +906,11 @@
         }
 
         var k = c.daum.postcode;
-        if (!k) return void alert("[�고렪踰덊샇 �쒕퉬��] API 濡쒕뵫 �ㅻ쪟媛� 諛쒖깮�섏��듬땲��. �뺤씤 諛붾엻�덈떎. 吏��띿쟻�� �ㅻ쪟 諛쒖깮�� ( https://github.com/daumPostcode/QnA/issues ) �댁뒋 �깅줉 遺��곷뱶由쎈땲��.");
+        if (!k) return void alert("[우편번호 서비스] API 로딩 오류가 발생하였습니다. 확인 바랍니다. 지속적인 오류 발생시 ( https://github.com/daumPostcode/QnA/issues ) 이슈 등록 부탁드립니다.");
         var l = function (a) {
                 var b = a._validParam_;
                 return function () {
-                    b || console && "function" == typeof console.error && console.error("[�고렪踰덊샇 �쒕퉬��] API 濡쒕뵫�� �덉슜�섏� �딆� �뚮씪誘명꽣媛� 媛먯��섏뿀�듬땲��. �쒕퉬�� �댁슜�� �쒖빟�� �앷만 �� �덉쑝��, 愿�由ъ옄遺꾧퍡�쒕뒗 �뺤씤 遺��곷뱶由쎈땲��.\n�먯꽭�� �ы빆�� 媛��대뱶�섏씠吏�( http://postcode.map.daum.net/guide )�� 湲곕낯 �ъ슜踰뺤쓣 李멸퀬�댁＜�몄슂.")
+                    b || console && "function" == typeof console.error && console.error("[우편번호 서비스] API 로딩시 허용되지 않은 파라미터가 감지되었습니다. 서비스 이용에 제약이 생길 수 있으니, 관리자분께서는 확인 부탁드립니다.\n자세한 사항은 가이드페이지( http://postcode.map.daum.net/guide )의 기본 사용법을 참고해주세요.")
                 }
             }(k), m = b, n = a.CONT, o = a.MODEL, p = a.viewUtils, q = a.frame, r = a.themePreprocessor,
             s = "http:" === n.PROTOCOL ? "http://postcode.map.daum.net/search" : "https://spi.maps.daum.net/postcode/search", t = encodeURIComponent(n.PROTOCOL + "//" + e.host),

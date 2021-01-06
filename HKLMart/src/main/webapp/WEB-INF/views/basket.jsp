@@ -1,7 +1,7 @@
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 
@@ -33,9 +33,9 @@
             <div class="cart-seller-list cart_list_full">
                 <div>
                     <div class="order_item">
-                        <dl data-v-6dcc2f72=""><%--<c:out value="${list.}">--%>
+                        <dl><%--<c:out value="${list.}">--%>
                             <dt>
-                                <input type="checkbox" id="checkAll" name="checkAll" checked>
+                                <input type="checkbox" id="checkAll" name="checkAll">
                                 <label for="checkAll"></label>
                             </dt>
                             <dt><p style="text-align: left; margin-bottom: 0px;">전체선택</p></dt>
@@ -43,25 +43,68 @@
                             <dt>주문금액</dt>
                         </dl>
 
-                        <c:forEach items="${orderBasketList}" var="list" varStatus="status">
-                            <%! int gl_var = 0; %>
-                            <% gl_var++; %>
-                        <dl class="order_item" data-v-6dcc2f72="">
-                            <dd data-v-6dcc2f72="">
-                                <input type="checkbox" name="items" id="checkAItem<%=gl_var%>" value="">
-                                <label for="checkAItem<c:out value="<%=gl_var%>"/>"></label>
-                            </dd>
-                            <dd data-v-6dcc2f72="">
-                                <a data-v-6dcc2f72="">
-                                    <img data-v-6dcc2f72="" src="<c:out value="${list.productImgpath}${list.productThumbnail}"/>"/>
-                                </a>
-                            </dd>
-                            <dd data-v-6dcc2f72=""><a>
-                                <span data-v-6dcc2f72="" class="itemname"><c:out value="${list.productName}"/></span></a>
-                                <span data-v-6dcc2f72="">고른옵션(사이즈)<%--<c:out value="${고른옵션(사이즈)}">--%></span>
-                                <span data-v-6dcc2f72="">고른옵션(상품갯수)<%--<c:out value="${고른옵션(상품갯수)}">--%></span></dd>
-                            <dd data-v-6dcc2f72=""><%--<c:out value="${productPriceAll}">--%>원</dd>
-                        </dl>
+                        <c:forEach items="${orderBasketList}" var="list" varStatus="status" begin="0" end="${fn:length(orderBasketList)-1}">
+                            <input type="hidden" id="productPrice${status.index}" value="${list.productPrice}"/>
+                            <dl class="order_item">
+                                <dd>
+                                    <input type="checkbox" name="items" id="checkAItem${status.index}">
+                                    <label for="checkAItem<c:out value="${status.index}"/>"></label>
+                                </dd>
+                                <dd>
+                                    <a>
+                                        <img src="<c:out value="${list.productImgpath}${list.productThumbnail}"/>"/>
+                                    </a>
+                                </dd>
+                                <dd><a>
+                                    <span class="itemname" style="color: black; font-weight: bold"><c:out value="${list.productName}"/></span></a>
+                                    <span style="color: black; font-size: 1.5vh">
+                                        SIZE <input id="show-select-size${status.index}" class="form-control" type="text" value="" readonly placeholder="사이즈를 선택하세요" style="width: 30%; background-color: white; display: inline"/>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#item-modal${status.index}">사이즈 선택</button>
+
+                                        <!-- The Modal -->
+                                        <div class="modal fade" id="item-modal${status.index}">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">사이즈 선택</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <select id="size-select-box${status.index}">
+                                                            <option> [size]를 선택하세요.</option>
+                                                            <option name="240" value="${shoesStockList.get(list.productCode).stock240}">240 (재고 : ${shoesStockList.get(list.productCode).stock240} EA)</option>
+                                                            <option name="245" value="${shoesStockList.get(list.productCode).stock245}">245 (재고 : ${shoesStockList.get(list.productCode).stock245} EA)</option>
+                                                            <option name="250" value="${shoesStockList.get(list.productCode).stock250}">250 (재고 : ${shoesStockList.get(list.productCode).stock250} EA)</option>
+                                                            <option name="255" value="${shoesStockList.get(list.productCode).stock255}">255 (재고 : ${shoesStockList.get(list.productCode).stock255} EA)</option>
+                                                            <option name="260" value="${shoesStockList.get(list.productCode).stock260}">260 (재고 : ${shoesStockList.get(list.productCode).stock260} EA)</option>
+                                                            <option name="265" value="${shoesStockList.get(list.productCode).stock265}">265 (재고 : ${shoesStockList.get(list.productCode).stock265} EA)</option>
+                                                            <option name="270" value="${shoesStockList.get(list.productCode).stock270}">265 (재고 : ${shoesStockList.get(list.productCode).stock270} EA)</option>
+                                                            <option name="275" value="${shoesStockList.get(list.productCode).stock275}">275 (재고 : ${shoesStockList.get(list.productCode).stock275} EA)</option>
+                                                            <option name="280" value="${shoesStockList.get(list.productCode).stock280}">280 (재고 : ${shoesStockList.get(list.productCode).stock280} EA)</option>
+                                                            <option name="285" value="${shoesStockList.get(list.productCode).stock285}">285 (재고 : ${shoesStockList.get(list.productCode).stock285} EA)</option>
+                                                            <option name="290" value="${shoesStockList.get(list.productCode).stock290}">290 (재고 : ${shoesStockList.get(list.productCode).stock290} EA)</option>
+                                                            <option name="295" value="${shoesStockList.get(list.productCode).stock295}">295 (재고 : ${shoesStockList.get(list.productCode).stock295} EA)</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="selectSize($('#size-select-box${status.index} option:selected'), ${status.index})">확인</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        수량 <input id="product-number${status.index}" class="form-control" type="number" min="0" max="0" step="1" placeholder="상품개수" onclick="selectNumber(${status.index})" style="width: 30%; display: inline"/>
+                                    </span>
+                                </dd>
+                                <dd><span id="show-product-price${status.index}" style="display: inline; color: black; font-weight: bold"></span> 원</dd>
+                            </dl>
                         </c:forEach>
                     </div>
 
@@ -69,7 +112,7 @@
                 </div>
             </div>
         </div>
-        <div class="price_total">총 주문금액 <span><%--<c:out value="${list.productPriceAll}">--%></span></div>
+        <div class="price_total">총 주문금액 <span></span></div>
 
         <fmt:formatNumber var="TelFmt" value="${memberInfo.memberTel}" pattern="###,##,####" minIntegerDigits="11"/>
         <div>
@@ -110,7 +153,6 @@
         <form method="post" name="orderForm" id="orderForm">
             <input type="hidden" id="orderFnHidden" name="" value="0"/>
             <input type="hidden" value="0" id="orderFormHidden">
-<%--            <input type="hidden" id="productCodeHidden" name="productCode" value="${prductInfo.productCode}"/>--%>
             <input type="hidden" id="memberIdHidden" name="memberId" value="${memberInfo.memberId}"/>
             <input type="hidden" id="sizeHidden" name="stock_${param.Size}" value="1"/>
             <input type="hidden" id="sizeStockHidden" name="productSize" value="${param.Size}"/>
@@ -325,6 +367,27 @@
 
 
         }
+    }
+
+    function selectSize(obj, index) {
+        let selectBox = 'show-select-size' + index;
+        let selectNumber = 'product-number' + index;
+        let productName = obj.attr('name');
+        let productNumber = obj.val();
+        document.getElementById(selectBox).value = productName;
+        document.getElementById(selectNumber).max = productNumber;
+    }
+
+    function selectNumber(index) {
+        let productPrice = 'productPrice' + index;
+        let showProductPrice = 'show-product-price' + index;
+        let productNumber = 'product-number' + index;
+        let result = document.getElementById(productPrice).value * document.getElementById(productNumber).value;
+        document.getElementById(showProductPrice).innerText = numberWithCommas(result);
+    }
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
 </script>
