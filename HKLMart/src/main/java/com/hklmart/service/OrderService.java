@@ -3,6 +3,7 @@ package com.hklmart.service;
 import com.hklmart.domain.CheckStockVO;
 import com.hklmart.domain.OrderPayVO;
 import com.hklmart.domain.OrderVO;
+import com.hklmart.domain.OrderViewVO;
 import com.hklmart.persistence.OrderDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -43,5 +44,9 @@ public class OrderService {
 
     public void stockUpdate(OrderPayVO orderPayVO) {
         orderDAO.stockUpdate(orderPayVO);
+    }
+
+    public OrderViewVO getOrderModify(String orderNumber) {
+        return orderDAO.getOrderModify(orderNumber);
     }
 }

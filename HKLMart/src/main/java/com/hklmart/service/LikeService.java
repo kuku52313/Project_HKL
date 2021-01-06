@@ -38,4 +38,8 @@ public class LikeService {
         }
         return productList;
     }
+
+    public void deleteLike(String MemberId, String productCode) {
+        like.deleteLike(MemberId,productCode);
+    }
 }

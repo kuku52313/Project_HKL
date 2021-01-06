@@ -10,4 +10,5 @@ public interface LikeDAO {
 
     int checkLike(String memberId, String productCode);
 
+    void deleteLike(String memberId, String productCode);
 }

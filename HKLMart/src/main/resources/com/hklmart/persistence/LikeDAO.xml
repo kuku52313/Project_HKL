@@ -26,4 +26,11 @@
           AND LIKE_PRODUCT_CODE = #{param2}
         ]]>
     </select>
+    <delete id="deleteLike">
+        <![CDATA[
+        DELETE PRODUCT_LIKE WHERE LIKE_MEMBER_ID = #{param1} AND LIKE_PRODUCT_CODE = #{param2}
+        ]]>
+
+
+    </delete>
 </mapper>

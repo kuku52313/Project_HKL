@@ -19,4 +19,6 @@ public interface OrderDAO {
     void payProductList(OrderPayVO orderPayVO);
 
     void stockUpdate(OrderPayVO orderPayVO);
+
+    OrderViewVO getOrderModify(String orderNumber);
 }

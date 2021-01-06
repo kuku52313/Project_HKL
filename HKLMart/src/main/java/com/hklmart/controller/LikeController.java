@@ -29,6 +29,10 @@ public class LikeController {
         map.put("result", count);
         return map;
     }
+    @GetMapping("/delete")
+    public void deleteLike(Principal principal, @RequestParam("productCode") String productCode) {
+        like.deleteLike(principal.getName(),productCode);
+    }
 
     @PostMapping("/put")
     public void putProductLike(Principal principal, @RequestParam("productCode") String productCode) {

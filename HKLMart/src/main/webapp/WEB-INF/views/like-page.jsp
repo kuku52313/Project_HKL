@@ -46,7 +46,7 @@
                         <div class="basket">
                             <a class="${list.productCode}" onclick="clickBasket(this)"><i class="fas fa-shopping-basket fa-2x" data-toggle="tooltip" data-placement="top" title="장바구니에 추가하기"></i></a>
                             &nbsp;&nbsp;&nbsp;
-                            <a class="${list.productCode}" onclick="clickLike(this)"><i class="fas fa-trash fa-2x" data-toggle="tooltip" data-placement="top" title="삭제하기"></i></a>
+                            <a class="${list.productCode}" onclick="clickDelete(this)"><i class="fas fa-trash fa-2x" data-toggle="tooltip" data-placement="top" title="삭제하기"></i></a>
                         </div>
                     </a>
                 </div>
@@ -121,6 +121,13 @@
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
+
+    function clickDelete(obj) {
+        let thisCode = $(obj).attr('class');
+        location.href = "/like/delete?productCode="+thisCode;
+        alert("찜목록에서 삭제하였습니다")
+        location.href = "/like/get"
+    }
 </script>
 
 <%@include file="includes/footer.jsp" %>

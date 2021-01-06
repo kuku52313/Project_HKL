@@ -2,6 +2,7 @@ package com.hklmart.controller;
 
 import com.hklmart.domain.CheckStockVO;
 import com.hklmart.domain.OrderPayVO;
+import com.hklmart.domain.OrderViewVO;
 import com.hklmart.service.OrderService;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
@@ -60,6 +61,13 @@ public class OrderController {
         checkStockCnt.put("cnt",orderService.checkStock(checkStockVO));
 
         return checkStockCnt;
+    }
+    @GetMapping("/manager-order-modify")
+    public String getOrderModify(@RequestParam("orderNumber") String orderNumber, Model model){
+
+        model.addAttribute("modify",orderService.getOrderModify(orderNumber));
+
+        return "mamager-order-modify";
     }
 
 }
