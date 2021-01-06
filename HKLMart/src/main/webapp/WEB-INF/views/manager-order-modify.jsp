@@ -56,38 +56,38 @@
                 <div>
                     <div class="record">
                         <label>주문 번호</label>&nbsp;&nbsp;
-                        <input type="text" class="formCode" id="idMember" name="memberId" readonly value="${modify.memberId}"/>
+                        <input type="text" class="formCode" id="orderNumber" name="orderNumber" readonly value="${modify.orderNumber}"/>
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
 
                     <div class="record">
                         <label>회원 ID </label>&nbsp;&nbsp;
-                        <input type="text" class="formCode" id="nameMember" name="memberName" readonly value="${modify.memberName}"/>
+                        <input type="text" class="formCode" id="orderMemberId" name="orderMemberId" readonly value="${modify.orderMemberId}"/>
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
 
                     <div class="record">
                         <label>이름 </label>&nbsp;&nbsp;
-                        <input type="text" class="formCode" id="emailMember" name="memberEmail" readonly value="${modify.memberEmail}"/>
+                        <input type="text" class="formCode" id="orderName" name="orderName" readonly value="${modify.orderName}"/>
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
 
                     <div class="record">
                         <label>전화번호 </label>&nbsp;&nbsp;
-                        <input type="text" class="formCode" id="telMember" name="memberTel" readonly value="${modify.memberTel}"/>
+                        <input type="text" class="formCode" id="orderTel" name="orderTel" readonly value="${modify.orderTel}"/>
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
 
                     <div class="record">
                         <label>배송지 주소</label>&nbsp;&nbsp;
                         <input type="text" class="formCode" id="addressMember" name="memberAddress" readonly
-                               value="(${modify.memberAddressPostcode})&nbsp;&nbsp;${modify.memberAddress}&nbsp;&nbsp;${modify.memberAddressMember}"/>
+                               value="(${modify.orderAddressPostcode})&nbsp;&nbsp;${modify.orderAddress}&nbsp;&nbsp;${modify.orderAddressMember}"/>
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
 
                     <div class="record">
                         <label>배송 메모 </label>&nbsp;&nbsp;
-                        <input type="text" class="formCode" id="authorityMember" name="memberAuthority" readonly value="${modify.memberAuthority}"/>
+                        <input type="text" class="formCode" id="orderMemoId" name="orderMemo" readonly value="${modify.orderMemo}"/>
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
 
@@ -98,28 +98,22 @@
                     <hr style="border: solid 1px #ffb6b6;">
 
                     <div class="record">
-                        <label>총 결제 금액 </label>&nbsp;&nbsp;
-                        <input type="text" class="formCode" id="" name="memberAuthority" readonly value="${modify.memberAuthority}"/>
+                        <label>결제 금액 </label>&nbsp;&nbsp;
+                        <input type="text" class="formCode" id="orderPaymentId" name="orderPayment" readonly value="${modify.orderPayment}"/>
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
 
                     <div class="record">
                         <label>주문 상태 </label>&nbsp;&nbsp;
-                        <input type="text" class="formCode" id="" name="memberAuthority" readonly value="${modify.memberAuthority}"/>
+                        <input type="text" class="formCode" id="orderStateId" name="orderState" readonly value="${modify.orderState}"/>
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
 
 
                 </div>
 
-                <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <c:set var="Authority" value="${modify.memberAuthority}"/>
-
-                    <c:if test="${Authority != '관리자'}">
-                        <input type="button" class="insertBtn" onclick="DeleteCheckfn()" value="회원 탈퇴"/>
-                    </c:if>
-                </sec:authorize>
-                <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-member-list';" value="뒤로"/>
+                <input type="button" class="insertBtn" onclick="ModifyCheckfn()" value="수정 완료"/>
+                <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-order-list';" value="뒤로"/>
             </form>
         </div>
         <div class="col-3"></div>
@@ -153,11 +147,9 @@
         });
     }
 
-    function DeleteCheckfn() {
+    function ModifyCheckfn() {
 
         var subForm = document.modifyForm;
-
-        subForm.action = "/manager/manager-member-delete";
 
         subForm.submit();
 

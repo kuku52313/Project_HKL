@@ -52,14 +52,6 @@
         WHERE STOCK_PRODUCT_CODE = #{orderProductCode}
     </update>
 
-    <select id="getOrderModify" resultType="com.hklmart.domain.OrderViewVO">
 
-        <![CDATA[
-        select *
-        from product_order
-        where order_number = #{param}
-        ]]>
-
-    </select>
 
 </mapper>

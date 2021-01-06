@@ -133,4 +133,11 @@ public class ManagementController {
         model.addAttribute("pageMaker", new PageDTO(cri, total));
         return "manager-order-list";
     }
+    @GetMapping("/manager-order-modify")
+    public String getOrderModify(@RequestParam("orderNumber") String orderNumber, Model model){
+
+        model.addAttribute("modify",managementService.getOrderModify(orderNumber));
+
+        return "mamager-order-modify";
+    }
 }

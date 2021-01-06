@@ -55,10 +55,6 @@ public class OrderService {
         orderDAO.stockUpdate(orderPayVO);
     }
 
-    public OrderViewVO getOrderModify(String orderNumber) {
-        return orderDAO.getOrderModify(orderNumber);
-    }
-
     public void stockUpdate(BasketOrderPayListVO basketOrderPayListVO) {
         orderDAO.stockUpdate(basketOrderPayListVO);
     }

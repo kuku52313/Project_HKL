@@ -58,4 +58,7 @@ public class ManagementService {
     public List<OrderViewVO> getOrderList(PageCriteriaVO cri) {
         return managementDAO.getOrderList(cri);
     }
+    public OrderViewVO getOrderModify(String orderNumber) {
+        return managementDAO.getOrderModify(orderNumber);
+    }
 }

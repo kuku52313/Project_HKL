@@ -66,13 +66,6 @@ public class OrderController {
 
         return checkStockCnt;
     }
-    @GetMapping("/manager-order-modify")
-    public String getOrderModify(@RequestParam("orderNumber") String orderNumber, Model model){
-
-        model.addAttribute("modify",orderService.getOrderModify(orderNumber));
-
-        return "mamager-order-modify";
-    }
 
     @PostMapping("/basket-payment")
     public String basketPayment(BasketOrderPayListVO orderPayListVO) {

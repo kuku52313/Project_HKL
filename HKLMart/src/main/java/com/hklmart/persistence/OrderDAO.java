@@ -24,7 +24,5 @@ public interface OrderDAO {
 
     void stockUpdate(OrderPayVO orderPayVO);
 
-    OrderViewVO getOrderModify(String orderNumber);
-
     void stockUpdate(BasketOrderPayListVO basketOrderPayListVO);
 }
