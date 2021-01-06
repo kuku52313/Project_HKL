@@ -9,13 +9,42 @@
 
 <style>
     label {
-        display:inline-block;
-        width:100px;
-        line-height:50px;
+        display: inline-block;
+        width: 100px;
+        line-height: 50px;
     }
 
     .formCode {
         background-color: #e1e4ee;
+    }
+
+    .flex-container {
+        　width: 100%;
+        　display: flex;
+    }
+
+    .flex-items {
+        　height: 40px;
+        　width: 100px;
+        　background-color: #999;
+        　border: 1px solid #FFF;
+        flex-direction: row;
+        border: solid 1px #ffb6b6;
+        display: inline-block;
+    }
+
+    dl {
+        display: block;
+        padding: 5px;
+        width: 150px;
+        height: 95px;
+    }
+
+    dl dd {
+        font-size: 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
 </style>
@@ -56,25 +85,29 @@
                 <div>
                     <div class="record">
                         <label>주문 번호</label>&nbsp;&nbsp;
-                        <input type="text" class="formCode" id="orderNumber" name="orderNumber" readonly value="${modify.orderNumber}"/>
+                        <input type="text" class="formCode" id="orderNumber" name="orderNumber" readonly
+                               value="${modify.orderNumber}"/>
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
 
                     <div class="record">
                         <label>회원 ID </label>&nbsp;&nbsp;
-                        <input type="text" class="formCode" id="orderMemberId" name="orderMemberId" readonly value="${modify.orderMemberId}"/>
+                        <input type="text" class="formCode" id="orderMemberId" name="orderMemberId" readonly
+                               value="${modify.orderMemberId}"/>
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
 
                     <div class="record">
                         <label>이름 </label>&nbsp;&nbsp;
-                        <input type="text" class="formCode" id="orderName" name="orderName" readonly value="${modify.orderName}"/>
+                        <input type="text" class="formCode" id="orderName" name="orderName" readonly
+                               value="${modify.orderName}"/>
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
 
                     <div class="record">
                         <label>전화번호 </label>&nbsp;&nbsp;
-                        <input type="text" class="formCode" id="orderTel" name="orderTel" readonly value="${modify.orderTel}"/>
+                        <input type="text" class="formCode" id="orderTel" name="orderTel" readonly
+                               value="${modify.orderTel}"/>
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
 
@@ -87,45 +120,33 @@
 
                     <div class="record">
                         <label>배송 메모 </label>&nbsp;&nbsp;
-                        <input type="text" class="formCode" id="orderMemoId" name="orderMemo" readonly value="${modify.orderMemo}"/>
+                        <input type="text" class="formCode" id="orderMemoId" name="orderMemo" readonly
+                               value="${modify.orderMemo}"/>
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
 
-                    <div class="record">
+                    <div class="record flex-container">
                         <label>구매 목록 </label>&nbsp;&nbsp;
                         <br>
-                        <c:set var="i" value="0" />
-                        <c:set var="j" value="3" />
-                        <table >
-                            <c:forEach items="${productList}" var="list">
-                                <c:if test="${i%j == 0 }">
-                                </c:if>
-                                <div style="float: right; border: solid 1px #ffb6b6;">
-                                <dl style="padding: 5px 0px 5px 0px">
-                                    <dt></dt>
-                                    <dt></dt>
-                                    <dt></dt>
-                                </dl>
+                        <c:forEach items="${productList}" var="list">
+                            <div class="flex-items">
                                 <dl>
-                                <dd>제품 코드 : ${list.orderListProduct}</dd>
-                                <dd>제품명 : ${list.productName}</dd>
-                                <dd>구매 갯수 : ${list.stockEA}</dd>
+                                    <dd>제품 코드 : ${list.orderListProduct}</dd>
+                                    <dd>제품명 : ${list.productName}</dd>
+                                    <dd>구매 갯수 : ${list.stockEA}</dd>
                                 </dl>
-                                </div>
-                                <c:if test="${i%j == j-1 }">
-                                </c:if>
-                                <c:set var="i" value="${i+1 }" />
-                            </c:forEach>
-                        </table>
+                            </div>
+                        </c:forEach>
                     </div>
 
                     <div class="record">
                         <label>결제 금액 </label>&nbsp;&nbsp;
-                        <input type="text" class="formCode" id="orderPaymentId" name="orderPayment" readonly value="${modify.orderPayment}"/>
+                        <input type="text" class="formCode" id="orderPaymentId" name="orderPayment" readonly
+                               value="${modify.orderPayment}"/>
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
                     <select class="formText" id="orderStateId" name="orderState">
-                    <option value="출고 준비">- 출고 준비 -</option>
+                        <option value="출고 준비">- 출고 준비 -</option>
                         <option value="출고 완료">- 출고 완료 -</option>
                         <option value="배송중">- 배송중 -</option>
                         <option value="배송 완료">- 배송 완료 -</option>
@@ -139,7 +160,8 @@
                 </div>
 
                 <input type="button" class="insertBtn" onclick="ModifyCheckfn()" value="수정 완료"/>
-                <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-order-list';" value="뒤로"/>
+                <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-order-list';"
+                       value="뒤로"/>
             </form>
         </div>
         <div class="col-3"></div>
