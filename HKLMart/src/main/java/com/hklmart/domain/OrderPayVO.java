@@ -18,6 +18,7 @@ public class OrderPayVO {
     "ORDER_ADDRESS_MEMBER" VARCHAR2(150 BYTE),
 	"ORDER_ADDRESS_POSTCODE" VARCHAR2(10 BYTE)*/
 
+    private int orderNumber;
     private String orderMemberId;
     private String orderProductCode;
     private String orderDate;
@@ -34,5 +35,8 @@ public class OrderPayVO {
 
     private String stockSizeColumn;
     private String stockSize;
+
+
+
 
 }

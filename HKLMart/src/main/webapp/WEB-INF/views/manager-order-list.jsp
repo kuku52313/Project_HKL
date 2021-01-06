@@ -37,7 +37,7 @@
         <div class="col-6">
             <br>
             <div class="form-header">
-                <h1>회원 리스트</h1>
+                <h1>주문 리스트</h1>
             </div>
             <br>
 

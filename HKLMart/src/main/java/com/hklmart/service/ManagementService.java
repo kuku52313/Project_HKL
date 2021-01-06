@@ -65,4 +65,8 @@ public class ManagementService {
     public List<orderProductListDTO> getOrderProduct(String orderNumber) {
         return managementDAO.getOrderProduct(orderNumber);
     }
+
+    public void modifyOrder(OrderPayVO orderPayVO) {
+        managementDAO.modifyOrder(orderPayVO);
+    }
 }

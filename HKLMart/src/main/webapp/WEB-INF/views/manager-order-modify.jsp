@@ -76,7 +76,7 @@
 
         <div class="col-6" style="z-index: 500">
             <!-- form header -->
-            <form class="insertform" name="modifyForm" action="/manager/manager-order-modify" method="POST">
+            <form class="insertform" name="modifyForm" action="/manager/manager-order-modify-up" method="POST">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class="form-header">
                     <h1>주문 관리</h1>

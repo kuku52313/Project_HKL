@@ -1,5 +1,6 @@
 package com.hklmart.controller;
 
+import com.hklmart.domain.OrderPayVO;
 import com.hklmart.domain.PageCriteriaVO;
 import com.hklmart.domain.PageDTO;
 import com.hklmart.service.ManagementService;
@@ -142,5 +143,12 @@ public class ManagementController {
         log.info(managementService.getOrderProduct(orderNumber));
 
         return "manager-order-modify";
+    }
+    @PostMapping("/manager-order-modify-up")
+    public String modifyOrder(OrderPayVO orderPayVO){
+
+        managementService.modifyOrder(orderPayVO);
+
+        return "redirect:/manager/manager-order-list";
     }
 }

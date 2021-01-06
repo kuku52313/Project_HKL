@@ -34,4 +34,6 @@ public interface ManagementDAO {
     OrderViewVO getOrderModify(String orderNumber);
 
     List<orderProductListDTO> getOrderProduct(String orderNumber);
+
+    void modifyOrder(OrderPayVO orderPayVO);
 }

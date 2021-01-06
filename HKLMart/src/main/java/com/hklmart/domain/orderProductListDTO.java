@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.Setter;
 import oracle.sql.NUMBER;
 
+import java.util.Date;
+
 @Data
 public class orderProductListDTO {
 
@@ -27,6 +29,16 @@ public class orderProductListDTO {
     private String stockSize;
     private String productName;
     private int stockEA;
+
+    private String productCode;
+    private String productBrand;
+    private String productPrice;
+    private String productType;
+    private String productImgPath;
+    private String productImg;
+    private String productThumbnail;
+    private String productContent;
+    private Date productRegdate;
 
     @Setter(AccessLevel.PROTECTED)
     private int orderListStock240;

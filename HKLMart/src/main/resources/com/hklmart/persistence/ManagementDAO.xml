@@ -145,7 +145,7 @@
     </delete>
     
     <delete id="deleteMember">
-        delete from member WHERE member_id = #{memberId}
+        DELETE FROM member WHERE member_id = #{memberId}
     </delete>
 
     <select id="getOrderList" resultType="com.hklmart.domain.OrderViewVO">
@@ -154,12 +154,12 @@
         FROM (
                      SELECT/*+ INDEX_DESC(PRODUCT_ORDER PRODUCT_ORDER_PK) */
                              ROWNUM RN,
-                             order_number,
-                             order_member_id,
-                             order_date,
-                             order_tel,
-                             order_payment,
-                             order_state
+                             ORDER_NUMBER,
+                             ORDER_MEMBER_ID,
+                             ORDER_DATE,
+                             ORDER_TEL,
+                             ORDER_PAYMENT,
+                             ORDER_STATE
                      FROM PRODUCT_ORDER
                      WHERE ROWNUM <= #{pageNum} * #{amount}
                      )
@@ -170,19 +170,25 @@
     <select id="getOrderModify" resultType="com.hklmart.domain.OrderViewVO">
 
         <![CDATA[
-        select *
-        from product_order
-        where order_number = #{param}
+        SELECT *
+        FROM PRODUCT_ORDER
+        WHERE ORDER_NUMBER = #{param}
         ]]>
 
     </select>
     <select id="getOrderProduct" resultType="com.hklmart.domain.orderProductListDTO">
 
         <![CDATA[
-        select *
-        from product_order_list,product
-        where order_list_order_number = #{param} and product_code = order_list_product
+        SELECT *
+        FROM PRODUCT_ORDER_LIST,PRODUCT
+        WHERE ORDER_LIST_ORDER_NUMBER = #{param} AND PRODUCT_CODE = ORDER_LIST_PRODUCT
         ]]>
 
     </select>
+
+    <update id="modifyOrder">
+        UPDATE PRODUCT_ORDER SET ORDER_STATE = #{orderState}
+        WHERE ORDER_NUMBER = #{orderNumber}
+
+    </update>
 </mapper>
