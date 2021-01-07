@@ -32,7 +32,7 @@
         &nbsp;&nbsp;
         <label>제품 코드 </label>&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="text" class="formText" id="codeProduct" name="boardReviewProductCode"
-               minlength="6" maxlength="6" placeholder="제품코드 테스트끝나면 리드온리로 바꾸기" value="${productCode}">
+               minlength="6" maxlength="6" placeholder="제품코드 테스트끝나면 리드온리로 바꾸기" value="${param.productCode}" readonly>
     </div>
     <hr style="border: solid 1px #ffb6b6;">
 
@@ -40,7 +40,7 @@
         &nbsp;&nbsp;
         <label>제품명</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="text" class="formText" id="nameProduct" name="boardReviewProductName"
-               minlength="6" maxlength="6" placeholder="제품이름 테스트끝나면 리드온리로 바꾸기" value="${productName}">
+               minlength="6" maxlength="6" placeholder="제품이름 테스트끝나면 리드온리로 바꾸기" value="${param.productName}">
     </div>
 
 
@@ -67,7 +67,7 @@
     <div>
         <textarea id="content" name="boardReviewContent" cols="90" rows="10" style="border-color:#ffb6b6 ;"></textarea>
         <div class="form-group left">
-            <label for="contentFile" class="fileTitle"></label>
+            <%--@declare id="contentfile"--%><label for="contentFile" class="fileTitle"></label>
             <input type="file" id="choose-file" name="uploadImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;"/>
             <div id="select_img" style="width: 100%; text-align: center">
                 <img src=""/>

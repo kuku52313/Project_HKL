@@ -92,7 +92,8 @@
                             <dd data-v-6dcc2f72="">
                                     ${list.orderState}
                             </dd>
-                            <dd data-v-6dcc2f72="" style="text-align: center"><a href="#"><i class="far fa-edit"></i></a>
+                            <dd data-v-6dcc2f72="" style="text-align: center"><a href="/board/review-insert?productCode=${list.productCode}&productName=${list.productName}">
+                                <i class="far fa-edit"></i></a>
                             </dd>
                     </div>
                 </c:forEach>
