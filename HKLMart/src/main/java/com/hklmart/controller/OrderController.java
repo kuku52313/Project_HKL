@@ -5,7 +5,6 @@ import com.hklmart.domain.BasketOrderVO;
 import com.hklmart.domain.CheckStockVO;
 import com.hklmart.domain.OrderPayVO;
 import com.hklmart.service.BasketService;
-import com.hklmart.domain.OrderViewVO;
 import com.hklmart.service.OrderService;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
@@ -33,13 +32,13 @@ public class OrderController {
     public String goOrderPage(Principal principal, @RequestParam("productCode") String productCode, Model model) {
 
         String memberId = principal.getName();
-        model.addAttribute("memberInfo",orderService.getOrderMemberService(memberId));
-        model.addAttribute("productInfo",orderService.getOrderProdutService(productCode));
+        model.addAttribute("memberInfo", orderService.getOrderMemberService(memberId));
+        model.addAttribute("productInfo", orderService.getOrderProdutService(productCode));
         return "order";
     }
 
     @PostMapping("/pay")
-    public String doPay(Principal principal,OrderPayVO orderPayVO) {
+    public String doPay(Principal principal, OrderPayVO orderPayVO) {
 
         orderPayVO.setOrderMemberId(principal.getName());
 
@@ -69,6 +68,16 @@ public class OrderController {
 
     @PostMapping("/basket-payment")
     public String basketPayment(BasketOrderPayListVO orderPayListVO) {
+        int size = orderPayListVO.getOrderList().size();
+        int sum = 0;
+
+        for (int i = 0; i < size; i++) {
+            sum += orderPayListVO.getOrderList().get(i).getProductPrice();
+        }
+
+        orderPayListVO.setOrderPayment(sum);
+        orderService.doPay(orderPayListVO);
+        
         for (BasketOrderVO temp : orderPayListVO.getOrderList()) {
             if (temp.getProductPrice() == 0 || temp.getProductSize() == 0 || temp.getProductCode() == null || temp.getProductCode().isEmpty()) {
                 continue;
@@ -77,7 +86,7 @@ public class OrderController {
                 orderPayListVO.setStockSize("STOCK_" + temp.getProductSize());
                 orderPayListVO.setStockSizeColumn("ORDER_LIST_STOCK_" + temp.getProductSize());
                 orderPayListVO.setOrderProductCode(temp.getProductCode());
-                orderService.doPay(orderPayListVO);
+
                 orderService.payProductList(orderPayListVO);
                 orderService.stockUpdate(orderPayListVO);
                 bakset.remove(orderPayListVO.getOrderMemberId(), orderPayListVO.getOrderProductCode());
