@@ -46,7 +46,7 @@ public class OrderController {
 
         orderService.doPay(orderPayVO);
 
-
+        orderPayVO.setOrderListNumber(1);
         orderService.payProductList(orderPayVO);
         orderService.stockUpdate(orderPayVO);
 
@@ -70,14 +70,18 @@ public class OrderController {
     public String basketPayment(BasketOrderPayListVO orderPayListVO) {
         int size = orderPayListVO.getOrderList().size();
         int sum = 0;
+        int mul = 0;
+        int num = 0;
 
         for (int i = 0; i < size; i++) {
-            sum += orderPayListVO.getOrderList().get(i).getProductPrice();
+            mul = orderPayListVO.getOrderList().get(i).getProductPrice();
+            num = orderPayListVO.getOrderList().get(i).getProductNumber();
+            sum += mul * num;
         }
 
         orderPayListVO.setOrderPayment(sum);
         orderService.doPay(orderPayListVO);
-        
+
         for (BasketOrderVO temp : orderPayListVO.getOrderList()) {
             if (temp.getProductPrice() == 0 || temp.getProductSize() == 0 || temp.getProductCode() == null || temp.getProductCode().isEmpty()) {
                 continue;
@@ -86,7 +90,7 @@ public class OrderController {
                 orderPayListVO.setStockSize("STOCK_" + temp.getProductSize());
                 orderPayListVO.setStockSizeColumn("ORDER_LIST_STOCK_" + temp.getProductSize());
                 orderPayListVO.setOrderProductCode(temp.getProductCode());
-
+                orderPayListVO.setOrderListNumber(temp.getProductNumber());
                 orderService.payProductList(orderPayListVO);
                 orderService.stockUpdate(orderPayListVO);
                 bakset.remove(orderPayListVO.getOrderMemberId(), orderPayListVO.getOrderProductCode());

@@ -42,16 +42,13 @@
 
         <![CDATA[
         INSERT INTO PRODUCT_ORDER_LIST(ORDER_LIST_ORDER_NUMBER,ORDER_LIST_PRODUCT,${stockSizeColumn})
-            VALUES (#{orderListOrderNumber},#{orderProductCode},'1')
+            VALUES (#{orderListOrderNumber},#{orderProductCode},#{orderListNumber})
         ]]>
     </insert>
 
     <update id="stockUpdate">
         UPDATE STOCK
-        SET ${stockSize} = ${stockSize} - 1
+        SET ${stockSize} = ${stockSize} - ${orderListNumber}
         WHERE STOCK_PRODUCT_CODE = #{orderProductCode}
     </update>
-
-
-
 </mapper>

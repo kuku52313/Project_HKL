@@ -30,9 +30,8 @@ public class OrderPayVO {
     private int orderPayment;
     private String orderState;
     private String orderName;
-
     private int orderListOrderNumber;
-
+    private int orderListNumber;
     private String stockSizeColumn;
     private String stockSize;
 

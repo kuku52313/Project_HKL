@@ -403,10 +403,17 @@
 
     function checkSum(form) {
         let sum = 0;
+        let firstItem = form.items;
         let count = form.items.length;
-        for (var i = 0; i < count; i++) {
-            if (form.items[i].checked == true) {
-                sum += parseInt(form.items[i].value);
+        if (count == undefined) {
+            sum += parseInt(form.items.value);
+            console.log(sum);
+        } else {
+            for (var i = 0; i < count; i++) {
+                if (form.items[i].checked == true) {
+                    sum += parseInt(form.items[i].value);
+                    console.log("더하기");
+                }
             }
         }
         document.getElementById('checkAll').value = sum;

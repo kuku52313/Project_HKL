@@ -18,6 +18,7 @@ public class BasketOrderPayListVO {
     private String orderAddressPostcode;
     private String stockSizeColumn;
     private String stockSize;
+    private int orderListNumber;
     private int orderListOrderNumber;
     private int orderPayment;
 }
