@@ -4836,7 +4836,6 @@ input[type=radio]:checked + label:before {
 .order_item dl dt {
     padding-bottom: 10px;
     font-size: 1.3em;
-    font-weight: bold;
     text-align: center;
 }
 
@@ -4857,7 +4856,6 @@ input[type=radio]:checked + label:before {
 .order_item dl dd:nth-child(4) {
     width: 15%;
     text-align: center;
-    font-weight: 600;
 }
 
 .order_item dd:first-child img {
@@ -20400,7 +20398,7 @@ div.messageBox p {
 }
 
 .order_item dl dd:nth-child(3) {
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: 500;
 }
 

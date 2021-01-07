@@ -9,6 +9,16 @@
 
 <title>HKLMart :: 주문 내역</title>
 
+<style>
+    .itemname {
+        width: 100px;
+    }
+
+    .order_item dl dt {
+        font-weight: 400;
+    }
+
+</style>
 <body>
 <link rel="stylesheet" href="/resources/css/ask-review.css">
 <div class="container-fluid">
@@ -20,17 +30,22 @@
         <div class="col-2">
             <ul class="sidebar" id="sidebar">
                 <hr/>
-                <li><a class="sidebarMain" href="/manager/manager-page">MANAGER</a></li>
-                <li><a href="/manager/manager-product">제품 관리 페이지</a></li>
-                <li><a href="#orderListPage">주문 전체 내역</a></li>
-                <li><a href="/manager/manager-ask-board">회원 문의 내역</a></li>
-                <li><a href="/manager/manager-review-list">리뷰 관리 페이지</a></li>
-                <li><a href="/manager/manager-member-list">회원 조회 페이지</a></li>
-                <li><a href="/product/product-regist">제품 등록 페이지</a></li>
-                <br>
-                <li><a class="sidebarMain" href="/member/my-page">MEMBER</a></li>
-                <li><a href="/member/my-page">내 정보</a></li>
-                <hr/>
+                <li><a class="sidebarMain" href="#header">MY 쇼핑</a></li>
+                <li><a href="/member/user-order-list?pageNum=1&amount=10">주문내역</a></li>
+                <li><a href="#shopping-basket">장바구니</a></li>
+                <li><a class="sidebarMain" href="#header">MY 활동</a></li>
+                <li><a href="/member/my-page-ask-board">문의하기</a></li>
+                <li><a href="javascript:void(0);" onclick="userAskReviewListFn()">문의내역</a></li>
+                <li><a href="#reviews">구매후기</a></li>
+                <li><a href="#wishlist">찜한상품</a></li>
+                <li><a class="sidebarMain" href="#header">MY 정보</a></li>
+                <li><a href="#privacy">개인정보확인/수정</a></li>
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <br>
+                    <li><a class="sidebarMain" href="#header">MANAGER</a></li>
+                    <li><a href="/manager/manager-page">관리</a></li>
+                    <hr/>
+                </sec:authorize>
             </ul>
         </div>
 
@@ -44,36 +59,38 @@
             <br>
             <div class="frame">
                 <h2>주문상품 정보</h2>
-            <c:forEach items="${orderProductList}" var="list" varStatus="status">
+                <c:forEach items="${orderProductList}" var="list" varStatus="status">
 
 
-                <div  class="order_item">
-                    <dl >
-                        <dt >브랜드 : ${list.productBrand}</dt>
-                        <dt >주문 번호</dt>
-                        <dt >주문 날짜</dt>
-                        <dt >주문금액</dt>
-                        <dt> 주문 상태</dt>
-                    </dl>
-                    <dl data-v-6dcc2f72="" >
-                        <dd data-v-6dcc2f72=""><a data-v-6dcc2f72=""><img data-v-6dcc2f72="" src="${list.productImgPath}${list.productThumbnail}"></a></dd>
-                        <dd data-v-6dcc2f72=""><a data-v-6dcc2f72=""><span data-v-6dcc2f72="" class="itemname">${list.productName}</span></a> <span data-v-6dcc2f72="">Size
-                                ${list.stockSize}</span> <span
-                                data-v-6dcc2f72="">${list.stockEA} 개</span></dd>
-                        <dd data-v-6dcc2f72="">
-                                ${list.orderNumber}
-                        </dd>
-                        <dd data-v-6dcc2f72="">
-                            ${list.orderDate}
-                        </dd>
-                        <dd data-v-6dcc2f72=""><fmt:formatNumber
-                                value="${list.productPrice}" pattern="#,###"/> 원</dd>
-                        <dd data-v-6dcc2f72="">
-                                ${list.orderState}
-                        </dd>
-                    </dl>
-                </div>
-            </c:forEach>
+                    <div class="order_item">
+                        <dl>
+                            <dt>${list.productBrand}</dt>
+                            <dt>주문 번호: ${list.orderNumber}</dt>
+                            <dt>주문 날짜</dt>
+                            <dt>주문금액</dt>
+                            <dt> 주문 상태</dt>
+                        </dl>
+                        <dl data-v-6dcc2f72="">
+                            <dd data-v-6dcc2f72=""><a data-v-6dcc2f72=""><img data-v-6dcc2f72=""
+                                                                              src="${list.productImgPath}${list.productThumbnail}"></a>
+                            </dd>
+                            <dd data-v-6dcc2f72=""><a data-v-6dcc2f72=""><span data-v-6dcc2f72=""
+                                                                               class="itemname">${list.productName}</span></a>
+                                <span data-v-6dcc2f72="">Size
+                                        ${list.stockSize}</span> <span
+                                        data-v-6dcc2f72="">${list.stockEA} 개</span></dd>
+                            <dd data-v-6dcc2f72="" style="text-align: center;">
+                                    ${list.orderDate}
+                            </dd>
+                            <dd data-v-6dcc2f72=""><fmt:formatNumber
+                                    value="${list.productPrice}" pattern="#,###"/> 원
+                            </dd>
+                            <dd data-v-6dcc2f72="">
+                                    ${list.orderState}
+                            </dd>
+                        </dl>
+                    </div>
+                </c:forEach>
             </div>
 
 
