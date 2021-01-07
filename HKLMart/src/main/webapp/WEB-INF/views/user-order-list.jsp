@@ -61,6 +61,9 @@
                                 ${list.stockSize}</span> <span
                                 data-v-6dcc2f72="">${list.stockEA} 개</span></dd>
                         <dd data-v-6dcc2f72="">
+                                ${list.orderNumber}
+                        </dd>
+                        <dd data-v-6dcc2f72="">
                             ${list.orderDate}
                         </dd>
                         <dd data-v-6dcc2f72=""><fmt:formatNumber
