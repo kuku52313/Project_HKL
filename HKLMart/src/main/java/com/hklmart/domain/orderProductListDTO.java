@@ -5,7 +5,8 @@ import lombok.Data;
 import lombok.Setter;
 import oracle.sql.NUMBER;
 
-import java.util.Date;
+import java.sql.Date;
+
 
 @Data
 public class orderProductListDTO {
@@ -29,6 +30,16 @@ public class orderProductListDTO {
     private String stockSize;
     private String productName;
     private int stockEA;
+
+    private String orderNumber;
+    private String orderState;
+    private String orderPayment;
+    private String orderAddress;
+    private String orderAddressPostcode;
+    private String orderAddressMember;
+    private Date orderDate;
+
+
 
     private String productCode;
     private String productBrand;

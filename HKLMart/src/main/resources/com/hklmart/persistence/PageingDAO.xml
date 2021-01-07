@@ -78,4 +78,12 @@
         ]]>
     </select>
 
+    <select id="getUserOrderListTotal" resultType="int">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM PRODUCT_ORDER
+        WHERE ORDER_MEMBER_ID = #{memberId}
+        ]]>
+    </select>
+
 </mapper>

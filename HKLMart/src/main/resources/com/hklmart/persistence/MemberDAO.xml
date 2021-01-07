@@ -94,4 +94,24 @@
 
         WHERE MEMBER_ID = #{memberId}
     </update>
+
+    <select id="getUserOrderList" resultType="com.hklmart.domain.orderProductListDTO">
+        <![CDATA[
+        SELECT *
+        FROM (
+                     SELECT/*+ INDEX_DESC(PO PRODUCT_ORDER_PK) */
+                             ROWNUM RN,
+                             OL.*,
+                             PO.*,
+                             P.*
+                     FROM PRODUCT P,
+                          PRODUCT_ORDER PO,
+                          PRODUCT_ORDER_LIST OL
+                     WHERE PO.ORDER_NUMBER = OL.ORDER_LIST_ORDER_NUMBER AND
+                             OL.ORDER_LIST_PRODUCT = P.PRODUCT_CODE
+                       AND ROWNUM <= #{pageNum} * #{amount} AND PO.ORDER_MEMBER_ID = #{memberId}
+                     )
+        WHERE RN > (#{pageNum} - 1) * #{amount}
+        ]]>
+    </select>
 </mapper>

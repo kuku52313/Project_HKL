@@ -20,7 +20,7 @@
             <ul class="sidebar" id="sidebar">
                 <hr/>
                 <li><a class="sidebarMain" href="#header">MY 쇼핑</a></li>
-                <li><a href="#order-history">주문내역</a></li>
+                <li><a href="/member/user-order-list?pageNum=1&amount=10">주문내역</a></li>
                 <li><a href="#shopping-basket">장바구니</a></li>
                 <li><a class="sidebarMain" href="#header">MY 활동</a></li>
                 <li><a href="/member/my-page-ask-board">문의하기</a></li>

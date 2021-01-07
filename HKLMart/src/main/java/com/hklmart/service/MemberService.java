@@ -52,4 +52,9 @@ public class MemberService {
     public void updateMemberAddress(MemberAddressVO memberAddressVO) {
         memberDAO.updateMemberAddress(memberAddressVO);
     }
+
+    public List<orderProductListDTO> getUserOrderList(ProductPageCriteriaVO cri) {
+
+        return memberDAO.getUserOrderList(cri);
+    }
 }

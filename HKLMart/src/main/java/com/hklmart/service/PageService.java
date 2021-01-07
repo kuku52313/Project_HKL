@@ -52,4 +52,8 @@ public class PageService {
     public int getOrderListTotal(PageCriteriaVO cri) {
         return pageingDAO.getOrderListTotal(cri);
     }
+
+    public int getUserOrderListTotal(ProductPageCriteriaVO cri) {
+        return pageingDAO.getUserOrderListTotal(cri);
+    }
 }

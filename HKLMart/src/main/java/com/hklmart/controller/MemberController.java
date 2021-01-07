@@ -1,9 +1,6 @@
 package com.hklmart.controller;
 
-import com.hklmart.domain.MemberAddressVO;
-import com.hklmart.domain.MemberVO;
-import com.hklmart.domain.PageDTO;
-import com.hklmart.domain.ProductPageCriteriaVO;
+import com.hklmart.domain.*;
 import com.hklmart.service.MemberService;
 import com.hklmart.service.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -112,5 +109,20 @@ public class MemberController {
         map.put("message", 1);
         return map;
     }
+    @GetMapping("/user-order-list")
+    public String getUserOrderList(Principal principal ,ProductPageCriteriaVO cri, Model model){
+
+        cri.setMemberId(principal.getName());
+
+        model.addAttribute("orderProductList",memberService.getUserOrderList(cri));
+
+        int total = pageService.getUserOrderListTotal(cri);
+
+        model.addAttribute("pageMaker", new PageDTO(cri, total));
+
+
+        return"/user-order-list";
+    }
+
 
 }

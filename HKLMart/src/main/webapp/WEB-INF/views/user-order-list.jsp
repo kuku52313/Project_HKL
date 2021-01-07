@@ -42,49 +42,43 @@
                 <h1>주문 내역</h1>
             </div>
             <br>
+            <div class="frame">
+                <h2>주문상품 정보</h2>
+            <c:forEach items="${orderProductList}" var="list" varStatus="status">
 
-            <c:forEach items="${BoardReviewList}" var="list" varStatus="status">
-                <table class="ask_table">
-                    <tr>
-                        <th class="product_info">상품 정보</th>
-                        <th class="product"><a class="deletebtn" href="manager-review-delete?boardReviewNumber=${list.boardReviewNumber}">삭제</a></th> <!-- 여긴 빈칸-->
-                    </tr>
 
-                    <tr>
-                        <!--  <td><a href="/" id="product" style="color: black"><img src="${list.boardReviewImgpath}${list.boardReviewThumbnail}.png"></a></td> -->
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/" id="product" style="color: black"><img
-                                src="<%=request.getContextPath() %>${list.boardReviewImgpath}${list.boardReviewThumbnail}.png"
-                                style="width: 200px;  height: 200px; object-fit: fill;"></a>
-                            <!--각 product로 갈 수 있게 해야함--></td>
-                        <td class="">
-                            <dt>리뷰번호 <span> : ${list.boardReviewNumber}</span></dt>
-                            <dt><span class="st_on" style="width:85.4%">리뷰 별점 : ${list.boardReviewScore} </span></dt>
-                            <dt>작성자 <span> : ${list.boardReviewMemberId}</span></dt>
-                            <dt>상품이름 <span> : ${list.productName}</span></dt>
-                            <dt>리뷰 코멘트 <span> : ${list.boardReviewContent}</span></dt>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td></td> <!-- 빈칸 맞음.-->
-                        <td><span>${review_content}</span></td>
-
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td><span>${review_comment}</span></td>
-                    </tr>
-
-                </table>
-                <br>
+                <div  class="order_item">
+                    <dl >
+                        <dt >브랜드 : ${list.productBrand}</dt>
+                        <dt >주문 번호</dt>
+                        <dt >주문 날짜</dt>
+                        <dt >주문금액</dt>
+                        <dt> 주문 상태</dt>
+                    </dl>
+                    <dl data-v-6dcc2f72="" >
+                        <dd data-v-6dcc2f72=""><a data-v-6dcc2f72=""><img data-v-6dcc2f72="" src="${list.productImgPath}${list.productThumbnail}"></a></dd>
+                        <dd data-v-6dcc2f72=""><a data-v-6dcc2f72=""><span data-v-6dcc2f72="" class="itemname">${list.productName}</span></a> <span data-v-6dcc2f72="">Size
+                                ${list.stockSize}</span> <span
+                                data-v-6dcc2f72="">${list.stockEA} 개</span></dd>
+                        <dd data-v-6dcc2f72="">
+                            ${list.orderDate}
+                        </dd>
+                        <dd data-v-6dcc2f72=""><fmt:formatNumber
+                                value="${list.productPrice}" pattern="#,###"/> 원</dd>
+                        <dd data-v-6dcc2f72="">
+                                ${list.orderState}
+                        </dd>
+                    </dl>
+                </div>
             </c:forEach>
+            </div>
+
 
             <ul class="pagination justify-content-center" style="margin:20px 0">
 
                 <c:if test="${pageMaker.prev}">
                     <li class="page-item"><a class="page-link" style="color: black;"
-                                             href="/manager/manager-review-list?pageNum=${pageMaker.startPage - 1}&amount=10">≪</a>
+                                             href="/manager/manager-order-list?pageNum=${pageMaker.startPage - 1}&amount=10">≪</a>
                     </li>
                 </c:if>
 
@@ -92,22 +86,18 @@
                 <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
                     <li class="page-item ${pageMaker.cri.pageNum == num ? "active":""}">
                         <a class="page-link" style="color: black;"
-                           href="/manager/manager-review-list?pageNum=${num}&amount=10">${num}</a>
+                           href="/manager/manager-order-list?pageNum=${num}&amount=10">${num}</a>
                     </li>
                 </c:forEach>
 
                 <c:if test="${pageMaker.next}">
                     <li class="page-item ">
                         <a class="page-link" style="color: black;"
-                           href="/manager/manager-review-list?pageNum=${pageMaker.endPage + 1}&amount=10">≫</a>
+                           href="/manager/manager-order-list?pageNum=${pageMaker.endPage + 1}&amount=10">≫</a>
                     </li>
                 </c:if>
             </ul>
 
-            <form id="pageForm" action="/manager/manager-review-list" method="get">
-                <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}"/>
-                <input type="hidden" name="amount" value="${pageMaker.cri.amount}"/>
-            </form>
             <hr style="border: solid 1px #ffb6b6;">
         </div>
     </div>
