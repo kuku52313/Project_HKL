@@ -65,7 +65,7 @@
                     <div class="order_item">
                         <dl>
                             <dt>${list.productBrand}</dt>
-                            <dt>주문 번호: ${list.orderNumber}</dt>
+                            <a href="/member/user-order-detail?orderNumber=${list.orderNumber}"><dt>주문 번호: ${list.orderNumber}</dt></a>
                             <dt>주문 날짜</dt>
                             <dt>주문금액</dt>
                             <dt> 주문 상태</dt>
@@ -98,22 +98,22 @@
 
                 <c:if test="${pageMaker.prev}">
                     <li class="page-item"><a class="page-link" style="color: black;"
-                                             href="/manager/manager-order-list?pageNum=${pageMaker.startPage - 1}&amount=10">≪</a>
+                                             href="/member/user-order-list?pageNum=${pageMaker.startPage - 1}&amount=10">≪</a>
                     </li>
                 </c:if>
 
 
                 <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-                    <li class="page-item ${pageMaker.cri.pageNum == num ? "active":""}">
+                    <li class="page-item ${pageMaker.productCri.pageNum == num ? "active":""}">
                         <a class="page-link" style="color: black;"
-                           href="/manager/manager-order-list?pageNum=${num}&amount=10">${num}</a>
+                           href="/member/user-order-list?pageNum=${num}&amount=10">${num}</a>
                     </li>
                 </c:forEach>
 
                 <c:if test="${pageMaker.next}">
                     <li class="page-item ">
                         <a class="page-link" style="color: black;"
-                           href="/manager/manager-order-list?pageNum=${pageMaker.endPage + 1}&amount=10">≫</a>
+                           href="/member/user-order-list?pageNum=${pageMaker.endPage + 1}&amount=10">≫</a>
                     </li>
                 </c:if>
             </ul>

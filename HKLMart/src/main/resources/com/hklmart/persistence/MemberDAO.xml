@@ -114,4 +114,23 @@
         WHERE RN > (#{pageNum} - 1) * #{amount}
         ]]>
     </select>
+
+    <select id="getOrderDetail" resultType="com.hklmart.domain.OrderViewVO">
+
+        <![CDATA[
+        SELECT *
+        FROM PRODUCT_ORDER
+        WHERE ORDER_NUMBER = #{param}
+        ]]>
+
+    </select>
+    <select id="getOrderDetailProduct" resultType="com.hklmart.domain.orderProductListDTO">
+
+        <![CDATA[
+        SELECT *
+        FROM PRODUCT_ORDER_LIST,PRODUCT
+        WHERE ORDER_LIST_ORDER_NUMBER = #{param} AND PRODUCT_CODE = ORDER_LIST_PRODUCT
+        ]]>
+
+    </select>
 </mapper>

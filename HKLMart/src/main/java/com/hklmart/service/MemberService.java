@@ -57,4 +57,13 @@ public class MemberService {
 
         return memberDAO.getUserOrderList(cri);
     }
+
+    public OrderViewVO getOrderDetail(String orderNumber) {
+        return memberDAO.getOrderDetail(orderNumber);
+    }
+
+    public List<orderProductListDTO> getOrderDetailProduct(String orderNumber) {
+
+        return memberDAO.getOrderDetailProduct(orderNumber);
+    }
 }

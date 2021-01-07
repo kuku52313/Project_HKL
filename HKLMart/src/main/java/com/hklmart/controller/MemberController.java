@@ -123,6 +123,15 @@ public class MemberController {
 
         return"/user-order-list";
     }
+    @GetMapping("/user-order-detail")
+    public String getOrderDetail(@RequestParam("orderNumber") String orderNumber, Model model,Principal principal){
 
+
+        model.addAttribute("orderList",memberService.getOrderDetail(orderNumber));
+        model.addAttribute("productList",memberService.getOrderDetailProduct(orderNumber));
+
+
+        return "user-order-detail";
+    }
 
 }

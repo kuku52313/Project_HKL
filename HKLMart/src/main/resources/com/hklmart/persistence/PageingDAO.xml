@@ -81,8 +81,8 @@
     <select id="getUserOrderListTotal" resultType="int">
         <![CDATA[
         SELECT COUNT(*)
-        FROM PRODUCT_ORDER
-        WHERE ORDER_MEMBER_ID = #{memberId}
+        FROM PRODUCT_ORDER po,product_order_list ol
+        WHERE po.ORDER_MEMBER_ID = #{memberId} and po.order_number = ol.order_list_order_number
         ]]>
     </select>
 
