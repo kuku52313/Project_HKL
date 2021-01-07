@@ -18,6 +18,9 @@
         font-weight: 400;
     }
 
+    .orderDate {
+        width: 50px;
+    }
 </style>
 <body>
 <link rel="stylesheet" href="/resources/css/ask-review.css">
@@ -65,10 +68,11 @@
                     <div class="order_item">
                         <dl>
                             <dt>${list.productBrand}</dt>
-                            <a href="/member/user-order-detail?orderNumber=${list.orderNumber}"><dt>주문 번호: ${list.orderNumber}</dt></a>
-                            <dt>주문 날짜</dt>
+                            <dt><a href="/member/user-order-detail?orderNumber=${list.orderNumber}">주문 번호: ${list.orderNumber}</a></dt>
+                            <dt class="orderDate">주문 날짜</dt>
                             <dt>주문금액</dt>
                             <dt> 주문 상태</dt>
+                            <dt>리뷰 작성</dt>
                         </dl>
                         <dl data-v-6dcc2f72="">
                             <dd data-v-6dcc2f72=""><a data-v-6dcc2f72=""><img data-v-6dcc2f72=""
@@ -88,7 +92,8 @@
                             <dd data-v-6dcc2f72="">
                                     ${list.orderState}
                             </dd>
-                        </dl>
+                            <dd data-v-6dcc2f72="" style="text-align: center"><a href="#"><i class="far fa-edit"></i></a>
+                            </dd>
                     </div>
                 </c:forEach>
             </div>
