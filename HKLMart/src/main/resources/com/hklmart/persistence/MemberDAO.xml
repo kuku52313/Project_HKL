@@ -75,7 +75,8 @@
                              R.BOARD_REVIEW_CONTENT,
                              R.BOARD_REVIEW_IMG,
                              R.BOARD_REVIEW_IMGPATH,
-                             R.BOARD_REVIEW_THUMBNAIL
+                             R.BOARD_REVIEW_THUMBNAIL,
+                             R.BOARD_REVIEW_PRODUCT_CODE
                      FROM PRODUCT P,
                           BOARD_REVIEW R
                      WHERE R.BOARD_REVIEW_PRODUCT_CODE = P.PRODUCT_CODE
