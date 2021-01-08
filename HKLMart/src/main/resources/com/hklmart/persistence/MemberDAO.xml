@@ -133,4 +133,9 @@
         ]]>
 
     </select>
+
+    <delete id="deleteReviewUser" >
+        DELETE FROM BOARD_REVIEW WHERE BOARD_REVIEW_NUMBER = #{boardReviewNumber}
+
+    </delete>
 </mapper>

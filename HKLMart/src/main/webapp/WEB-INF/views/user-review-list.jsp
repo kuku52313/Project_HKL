@@ -32,8 +32,8 @@
                 <li><a href="/basket/basket-page">장바구니</a></li>
                 <li><a class="sidebarMain" href="#header">MY 활동</a></li>
                 <li><a href="/member/my-page-ask-board">문의하기</a></li>
-                <li><a href="/member/user-ask-review-list?pageNum=1&amount=5">문의내역</a></li>
-                <li><a href="#reviews">구매후기</a></li>
+                <li><a href="/member/user-ask-list?pageNum=1&pageNumReview=1&amount=10">문의내역</a></li>
+                <li><a href="/member/user-review-list?pageNum=1&pageNumReview=1&amount=10">구매후기</a></li>
                 <li><a href="/like/get">찜한상품</a></li>
                 <li><a class="sidebarMain" href="#header">MY 정보</a></li>
                 <li><a href="#privacy">개인정보확인/수정</a></li>
@@ -59,12 +59,13 @@
                 <table class="ask_table">
                     <tr>
                         <th class="product_info">상품 정보</th>
-                        <th class="product"><a class="deletebtn" href="manager-review-delete?boardReviewNumber=${listR.boardReviewNumber}">삭제</a></th> <!-- 여긴 빈칸-->
+                        <th class="product"><a class="deletebtn" href="user-review-delete?boardReviewNumber=${listR.boardReviewNumber}">삭제</a></th> <!-- 여긴 빈칸-->
                     </tr>
 
                     <tr>
                         <!--  <td><a href="/" id="product" style="color: black"><img src="${listR.boardReviewImgpath}${listR.boardReviewThumbnail}.png"></a></td> -->
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/" id="product" style="color: black">
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product-detail?pageNum=1&amount=5&productCode=${listR.boardReviewProductCode}" id="product"
+                                                                                                             style="color: black">
                             <img src="<%=request.getContextPath() %>${listR.boardReviewImgpath}${listR.boardReviewThumbnail}"
                                  style="width: 200px;  height: 200px; object-fit: fill;"></a>
                             <!--각 product로 갈 수 있게 해야함--></td>
@@ -94,28 +95,21 @@
             <!-- 리뷰 내역 페이징 버튼-->
             <ul class="pagination justify-content-center" style="margin:20px 0">
 
-                <c:if test="${ReviewPageMaker.prev}">
-                    <li class="page-item">
-                        <a class="page-link-review" style="color: black;"
-                           href="javascript:;" value="${ReviewPageMaker.startPage - 1}"
-                        >≪</a>
+                <c:if test="${PageMaker.prev}">
+                    <li class="page-item"><a class="page-link" style="color: black;" href="/member/user-review-list?pageNum=${PageMaker.startPage - 1}&amount=10">≪</a>
                     </li>
                 </c:if>
 
 
-
-                <c:forEach var="num" begin="${ReviewPageMaker.startPage}" end="${ReviewPageMaker.endPage}">
-                    <li class="page-item ${ReviewPageMaker.productCri.pageNum == num ? "active":""}">
-                        <a class="page-link-review" style="color: black;"
-                           href="javascript:;" value="${num}">${num}</a>
+                <c:forEach var="num" begin="${PageMaker.startPage}" end="${PageMaker.endPage}">
+                    <li class="page-item ${PageMaker.productCri.pageNum == num ? "active":""}">
+                        <a class="page-link" style="color: black;" href="/member/user-review-list?pageNum=${num}&amount=10">${num}</a>
                     </li>
                 </c:forEach>
 
-
-                <c:if test="${ReviewPageMaker.next}">
-                    <li class="page-item ">
-                        <a class="page-link-review" style="color: black;"
-                           href="javascript:;" value="${ReviewPageMaker.endPage + 1}">≫</a>
+                <c:if test="${PageMaker.next}">
+                    <li class="page-item">
+                        <a class="page-link" style="color: black;" href="/member/user-review-list?pageNum=${PageMaker.endPage + 1}&amount=10">≫</a>
                     </li>
                 </c:if>
             </ul>

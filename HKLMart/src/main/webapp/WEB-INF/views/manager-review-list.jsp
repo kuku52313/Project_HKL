@@ -52,8 +52,8 @@
 
                     <tr>
                         <!--  <td><a href="/" id="product" style="color: black"><img src="${list.boardReviewImgpath}${list.boardReviewThumbnail}.png"></a></td> -->
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/" id="product" style="color: black"><img
-                                src="<%=request.getContextPath() %>${list.boardReviewImgpath}${list.boardReviewThumbnail}.png"
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/product-detail?pageNum=1&amount=5&productCode=${list.boardReviewProductCode}" id="product" style="color: black"><img
+                                src="<%=request.getContextPath() %>${list.boardReviewImgpath}${list.boardReviewThumbnail}"
                                 style="width: 200px;  height: 200px; object-fit: fill;"></a>
                             <!--각 product로 갈 수 있게 해야함--></td>
                         <td class="">

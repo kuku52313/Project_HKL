@@ -79,21 +79,11 @@ public class MemberController {
 
         cri.setMemberId(principal.getName());
 
-        model.addAttribute("AskBoardList", memberService.getUserAskList(cri));
-
-        int askTotal = pageService.getUserAskListTotal(cri);
-
-        model.addAttribute("AskPageMaker", new PageDTO(cri, askTotal));
-        int pageNum = cri.getPageNum();
-        model.addAttribute("AskPageNum", pageNum);
-
-        cri.setPageNum(cri.getPageNumReview());
-
         model.addAttribute("BoardReviewList", memberService.getUserReviewList(cri));
 
         int ReviewTotal = pageService.getUserReviewListTotal(cri);
 
-        model.addAttribute("ReviewPageMaker", new PageDTO(cri, ReviewTotal));
+        model.addAttribute("PageMaker", new PageDTO(cri, ReviewTotal));
 
         return "user-review-list";
     }
@@ -106,18 +96,8 @@ public class MemberController {
         model.addAttribute("AskBoardList", memberService.getUserAskList(cri));
 
         int askTotal = pageService.getUserAskListTotal(cri);
-
-        model.addAttribute("AskPageMaker", new PageDTO(cri, askTotal));
-        int pageNum = cri.getPageNum();
-        model.addAttribute("AskPageNum", pageNum);
-
-        cri.setPageNum(cri.getPageNumReview());
-
-        model.addAttribute("BoardReviewList", memberService.getUserReviewList(cri));
-
-        int ReviewTotal = pageService.getUserReviewListTotal(cri);
-
-        model.addAttribute("ReviewPageMaker", new PageDTO(cri, ReviewTotal));
+        System.out.println(new PageDTO(cri, askTotal));
+        model.addAttribute("PageMaker", new PageDTO(cri, askTotal));
 
         return "user-ask-list";
     }
@@ -145,7 +125,7 @@ public class MemberController {
 
         model.addAttribute("pageMaker", new PageDTO(cri, total));
 
-
+        System.out.println(new PageDTO(cri, total));
         return"/user-order-list";
     }
     @GetMapping("/user-order-detail")
@@ -157,6 +137,13 @@ public class MemberController {
 
 
         return "user-order-detail";
+    }
+    @GetMapping("/user-review-delete")
+    public String goManagerReviewDelete(@RequestParam("boardReviewNumber") String boardReviewNumber) {
+
+        memberService.deleteReviewUser(boardReviewNumber);
+
+        return "redirect:/member/user-review-list?pageNum=1&amount=10";
     }
 
 }

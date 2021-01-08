@@ -66,4 +66,8 @@ public class MemberService {
 
         return memberDAO.getOrderDetailProduct(orderNumber);
     }
+
+    public void deleteReviewUser(String boardReviewNumber) {
+        memberDAO.deleteReviewUser(boardReviewNumber);
+    }
 }

@@ -24,8 +24,8 @@
                 <li><a href="/basket/basket-page">장바구니</a></li>
                 <li><a class="sidebarMain" href="#header">MY 활동</a></li>
                 <li><a href="/member/my-page-ask-board">문의하기</a></li>
-                <li><a href="/member/user-ask-review-list?pageNum=1&pageNumReview=1&amount=5">문의내역</a></li>
-                <li><a href="/member/user-ask-review-list?pageNum=1&pageNumReview=1&amount=5">구매후기</a></li>
+                <li><a href="/member/user-ask-list?pageNum=1&pageNumReview=1&amount=10">문의내역</a></li>
+                <li><a href="/member/user-review-list?pageNum=1&pageNumReview=1&amount=10">구매후기</a></li>
                 <li><a href="/like/get">찜한상품</a></li>
                 <li><a class="sidebarMain" href="#header">MY 정보</a></li>
                 <li><a href="#privacy">개인정보확인/수정</a></li>

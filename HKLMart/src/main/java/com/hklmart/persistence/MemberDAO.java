@@ -31,4 +31,6 @@ public interface MemberDAO {
     OrderViewVO getOrderDetail(String orderNumber);
 
     List<orderProductListDTO> getOrderDetailProduct(String orderNumber);
+
+    void deleteReviewUser(String boardReviewNumber);
 }

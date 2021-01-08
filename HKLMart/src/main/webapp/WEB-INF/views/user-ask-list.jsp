@@ -32,8 +32,8 @@
                 <li><a href="/basket/basket-page">장바구니</a></li>
                 <li><a class="sidebarMain" href="#header">MY 활동</a></li>
                 <li><a href="/member/my-page-ask-board">문의하기</a></li>
-                <li><a href="/member/user-ask-list?pageNum=1&amount=5">문의내역</a></li>
-                <li><a href="/member/user-review-list?pageNum=1&amount=5">구매후기</a></li>
+                <li><a href="/member/user-ask-list?pageNum=1&amount=10">문의내역</a></li>
+                <li><a href="/member/user-review-list?pageNum=1&amount=10">구매후기</a></li>
                 <li><a href="/like/get">찜한상품</a></li>
                 <li><a class="sidebarMain" href="#header">MY 정보</a></li>
                 <li><a href="#privacy">개인정보확인/수정</a></li>
@@ -86,24 +86,21 @@
             <!-- 문의 내역 페이징 버튼-->
             <ul class="pagination justify-content-center" style="margin:20px 0">
 
-                <c:if test="${AskPageMaker.prev}">
-                    <li class="page-item"><a class="page-link" style="color: black;" class="page-link" style="color: black;"
-                                             href="/member/user-ask-review-list?pageNum=${AskPageMaker.startPage - 1}&amount=5">≪</a>
+                <c:if test="${PageMaker.prev}">
+                    <li class="page-item"><a class="page-link" style="color: black;" href="/member/user-ask-list?pageNum=${PageMaker.startPage - 1}&amount=10">≪</a>
                     </li>
                 </c:if>
 
 
-                <c:forEach var="num" begin="${AskPageMaker.startPage}" end="${AskPageMaker.endPage}">
-                    <li class="page-item ${AskPageNum == num ? "active":""}">
-                        <a class="page-link" style="color: black;"
-                           href="/member/user-ask-review-list?pageNum=${num}&amount=5">${num}</a>
+                <c:forEach var="num" begin="${PageMaker.startPage}" end="${PageMaker.endPage}">
+                    <li class="page-item ${PageMaker.productCri.pageNum == num ? "active":""}">
+                        <a class="page-link" style="color: black;" href="/member/user-ask-list?pageNum=${num}&amount=10">${num}</a>
                     </li>
                 </c:forEach>
 
-                <c:if test="${AskPageMaker.next}">
+                <c:if test="${PageMaker.next}">
                     <li class="page-item">
-                        <a class="page-link" style="color: black;"
-                           href="/member/user-ask-review-list?pageNum=${AskPageMaker.endPage + 1}&amount=5">≫</a>
+                        <a class="page-link" style="color: black;" href="/member/user-ask-list?pageNum=${PageMaker.endPage + 1}&amount=10">≫</a>
                     </li>
                 </c:if>
             </ul>
