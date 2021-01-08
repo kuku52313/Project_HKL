@@ -21,12 +21,12 @@
                 <hr/>
                 <li><a class="sidebarMain" href="#header">MY 쇼핑</a></li>
                 <li><a href="/member/user-order-list?pageNum=1&amount=10">주문내역</a></li>
-                <li><a href="#shopping-basket">장바구니</a></li>
+                <li><a href="/basket/basket-page">장바구니</a></li>
                 <li><a class="sidebarMain" href="#header">MY 활동</a></li>
                 <li><a href="/member/my-page-ask-board">문의하기</a></li>
                 <li><a href="javascript:void(0);" onclick="userAskReviewListFn()">문의내역</a></li>
                 <li><a href="#reviews">구매후기</a></li>
-                <li><a href="#wishlist">찜한상품</a></li>
+                <li><a href="/like/get">찜한상품</a></li>
                 <li><a class="sidebarMain" href="#header">MY 정보</a></li>
                 <li><a href="#privacy">개인정보확인/수정</a></li>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -143,7 +143,7 @@
                                 </div>
                             </c:forEach>
                             <div class="col-2" style="margin:auto">
-                                <i class="fas fa-ellipsis-h fa-2x" style="color:grey"></i>
+                                <a href="/like/get"><i class="fas fa-ellipsis-h fa-2x" style="color:grey"></i></a>
                             </div>
                         </div>
                     </c:when>

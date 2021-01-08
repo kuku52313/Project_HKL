@@ -31,7 +31,7 @@
                 <hr/>
                 <li><a class="sidebarMain" href="/manager/manager-page">MANAGER</a></li>
                 <li><a href="/manager/manager-product">제품 관리 페이지</a></li>
-                <li><a href="#orderListPage">주문 전체 내역</a></li>
+                <li><a href="/manager/manager-order-list">주문 전체 내역</a></li>
                 <li><a href="/manager/manager-ask-board">회원 문의 내역</a></li>
                 <li><a href="/manager/manager-review-list">리뷰 관리 페이지</a></li>
                 <li><a href="/manager/manager-member-list">회원 조회 페이지</a></li>

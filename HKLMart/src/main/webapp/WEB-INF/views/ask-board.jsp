@@ -19,15 +19,15 @@
             <ul class="sidebar" id="sidebar">
                 <hr/>
                 <li><a class="sidebarMain" href="#header">MY 쇼핑</a></li>
-                <li><a href="/member/my-page#order-history">주문내역</a></li>
-                <li><a href="/member/my-page#shopping-basket">장바구니</a></li>
+                <li><a href="/member/user-order-list?pageNum=1&amount=10">주문내역</a></li>
+                <li><a href="/basket/basket-page">장바구니</a></li>
                 <li><a class="sidebarMain" href="#header">MY 활동</a></li>
                 <li><a href="/member/my-page-ask-board">문의하기</a></li>
-                <li><a href="/member/my-page#inquire_history">문의내역</a></li>
-                <li><a href="/member/my-page#reviews">구매후기</a></li>
-                <li><a href="/member/my-page#wishlist">찜한상품</a></li>
+                <li><a href="javascript:void(0);" onclick="userAskReviewListFn()">문의내역</a></li>
+                <li><a href="#reviews">구매후기</a></li>
+                <li><a href="/like/get">찜한상품</a></li>
                 <li><a class="sidebarMain" href="#header">MY 정보</a></li>
-                <li><a href="/member/my-page#privacy">개인정보확인/수정</a></li>
+                <li><a href="#privacy">개인정보확인/수정</a></li>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
                     <br>
                     <li><a class="sidebarMain" href="#header">MANAGER</a></li>

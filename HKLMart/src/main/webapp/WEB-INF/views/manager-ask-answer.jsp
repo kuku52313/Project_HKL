@@ -22,7 +22,6 @@
 <body>
 
 
-
 <form class="insertform" name="insertForm" action="/board/ask-answer-up" method="post">
     <input type="hidden" name="pageNum" value="${param.pageNum}"/>
     <input type="hidden" name="amount" value="${param.amount}"/>
@@ -123,7 +122,7 @@
 
         subForm.submit();
 
-        }
+    }
 
 </script>
 </body>
