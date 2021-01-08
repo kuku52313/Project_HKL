@@ -64,9 +64,9 @@
 
                     <tr>
                         <!--  <td><a href="/" id="product" style="color: black"><img src="${listR.boardReviewImgpath}${listR.boardReviewThumbnail}.png"></a></td> -->
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/" id="product" style="color: black"><img
-                                src="<%=request.getContextPath() %>${listR.boardReviewImgpath}${listR.boardReviewThumbnail}.png"
-                                style="width: 200px;  height: 200px; object-fit: fill;"></a>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/" id="product" style="color: black">
+                            <img src="<%=request.getContextPath() %>${listR.boardReviewImgpath}${listR.boardReviewThumbnail}"
+                                 style="width: 200px;  height: 200px; object-fit: fill;"></a>
                             <!--각 product로 갈 수 있게 해야함--></td>
                         <td class="">
                             <dt>리뷰번호 <span> : ${listR.boardReviewNumber}</span></dt>
@@ -97,8 +97,8 @@
                 <c:if test="${ReviewPageMaker.prev}">
                     <li class="page-item">
                         <a class="page-link-review" style="color: black;"
-                                             href="javascript:;" value="${ReviewPageMaker.startPage - 1}"
-                                             >≪</a>
+                           href="javascript:;" value="${ReviewPageMaker.startPage - 1}"
+                        >≪</a>
                     </li>
                 </c:if>
 
@@ -198,7 +198,7 @@
     // console.log(userAskReviewListForm.pageNum.valueOf());
     // $("#pageNumId").val(2)
 
-    $(document).on("click",".page-link",function(){
+    $(document).on("click", ".page-link", function () {
         let userAskReviewListForm = document.userAskReviewList;
 
         $("#pageNumAskId").val($(this).attr('value'));
@@ -207,7 +207,7 @@
         userAskReviewListForm.submit();
     });
 
-    $(document).on("click",".page-link-review",function(){
+    $(document).on("click", ".page-link-review", function () {
         let userAskReviewListForm = document.userAskReviewList;
 
         $("#pageNumReviewId").val($(this).attr('value'));

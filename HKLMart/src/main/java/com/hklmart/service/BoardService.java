@@ -40,7 +40,8 @@ public class BoardService {
         if (!image.exists()) {
             path.mkdirs();
             boardReviewDTO.getUploadImg().transferTo(image);
-            Thumbnails.of(image).size(300, 300).outputFormat("png").toFile(thumbnail);
+            Thumbnails.of(image).size(300, 300).toFile(thumbnail);
+            //outputFormat("png")
         }
 
         BoardReviewVO boardReviewVO = new BoardReviewVO();
