@@ -28,7 +28,7 @@
                 <li><a href="/member/user-review-list?pageNum=1&pageNumReview=1&amount=10">구매후기</a></li>
                 <li><a href="/like/get?pageNum=1&amount=12">찜한상품</a></li>
                 <li><a class="sidebarMain" href="#header">MY 정보</a></li>
-                <li><a href="/member/my-page#privacy">개인정보확인/수정</a></li>
+                <li><a href="#privacy">개인정보확인/수정</a></li>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
                     <br>
                     <li><a class="sidebarMain" href="#header">MANAGER</a></li>
