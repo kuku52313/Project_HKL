@@ -7,7 +7,7 @@
 
 <%@include file="includes/header.jsp" %>
 
-<title>HKL Mart :: 제품 조회</title>
+<title>HKL Mart :: 찜 목록</title>
 <style>
     a {
         text-decoration: none

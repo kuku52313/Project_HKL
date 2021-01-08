@@ -38,7 +38,7 @@
         <div class="col-6">
             <br>
             <div class="form-header">
-                <h1>제품 조회 리스트</h1>
+                <h1>제품 조회 내역</h1>
             </div>
             <br>
 

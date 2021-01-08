@@ -39,7 +39,7 @@
         <div class="col-6">
             <br>
             <div class="form-header">
-                <h1>리뷰 리스트</h1>
+                <h1>구매 후기 내역</h1>
             </div>
             <br>
 

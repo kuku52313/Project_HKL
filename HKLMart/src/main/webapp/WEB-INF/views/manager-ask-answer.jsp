@@ -13,7 +13,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>HKLMart :: 1:1문의</title>
+    <title>HKLMart :: 1:1 문의</title>
     <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
 
 
@@ -29,7 +29,7 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <!-- form header -->
     <div class="form-header">
-        <h1> 1:1문의 답변 </h1>
+        <h1> 1:1 문의 답변 </h1>
     </div>
     <br>
     <!-- form body -->

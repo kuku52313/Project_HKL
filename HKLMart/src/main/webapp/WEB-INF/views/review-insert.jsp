@@ -9,7 +9,7 @@
 <%@include file="includes/header.jsp" %>
 
 <head>
-    <title>HKLMart :: Review 작성</title>
+    <title>HKLMart :: 구매 후기 작성</title>
     <link rel="stylesheet" href="/resources/css/add-product.css">
     <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
 
@@ -23,7 +23,7 @@
 
     <!-- form header -->
     <div class="form-header">
-        <h1> 리뷰 작성 </h1>
+        <h1> 구매 후기 작성 </h1>
     </div>
     <br>
     <!-- form body -->
@@ -47,7 +47,7 @@
     <hr style="border: solid 1px #ffb6b6;">
     <div class="row">
         &nbsp;&nbsp;
-        <label>리뷰 별점 </label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <label>별점 </label>&nbsp;&nbsp;&nbsp;&nbsp;
         <select class="formText" id="reviewScore" name="boardReviewScore">
             <option value="0" name="none">- 별점을 선택해주세요 -</option>
             <option value="5" name="none">- ★★★★★ 완전 만족스러워요 -</option>
@@ -61,7 +61,7 @@
     <hr style="border: solid 1px #ffb6b6;">
     <div class="row">
         &nbsp;&nbsp;
-        <label>리뷰 내용</label>
+        <label>구매 후기</label>
 
     </div>
     <div>
