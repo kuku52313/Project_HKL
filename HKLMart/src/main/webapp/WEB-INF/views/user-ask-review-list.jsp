@@ -119,7 +119,7 @@
             </ul>
             <br>
             <div class="form-header">
-                <h1>문의 리스트</h1>
+                <h1>문의 내역</h1>
             </div>
             <br>
 
