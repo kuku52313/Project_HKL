@@ -111,7 +111,7 @@
             <br/><br/>
             <div id="wishlist">
                 <span class="font-set" style="font-size: 25px">찜한상품</span>
-                <a href="/like/get" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
+                <a href="/like/get?pageNum=1&amount=12" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
                 <hr/>
                 <c:choose>
                     <c:when test="${fn:length(likeList) > 0 && fn:length(likeList) < 6}">
@@ -143,7 +143,7 @@
                                 </div>
                             </c:forEach>
                             <div class="col-2" style="margin:auto">
-                                <a href="/like/get"><i class="fas fa-ellipsis-h fa-2x" style="color:grey"></i></a>
+                                <a href="/like/get?pageNum=1&amount=12"><i class="fas fa-ellipsis-h fa-2x" style="color:grey"></i></a>
                             </div>
                         </div>
                     </c:when>

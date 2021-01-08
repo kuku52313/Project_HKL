@@ -64,9 +64,9 @@
 
                     <tr>
                         <!--  <td><a href="/" id="product" style="color: black"><img src="${listR.boardReviewImgpath}${listR.boardReviewThumbnail}.png"></a></td> -->
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/" id="product" style="color: black"><img
-                                src="<%=request.getContextPath() %>${listR.boardReviewImgpath}${listR.boardReviewThumbnail}"
-                                style="width: 200px;  height: 200px; object-fit: fill;"></a>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/" id="product" style="color: black">
+                            <img src="<%=request.getContextPath() %>${listR.boardReviewImgpath}${listR.boardReviewThumbnail}"
+                                 style="width: 200px;  height: 200px; object-fit: fill;"></a>
                             <!--각 product로 갈 수 있게 해야함--></td>
                         <td class="">
                             <dt>리뷰번호 <span> : ${listR.boardReviewNumber}</span></dt>
@@ -97,8 +97,8 @@
                 <c:if test="${ReviewPageMaker.prev}">
                     <li class="page-item">
                         <a class="page-link-review" style="color: black;"
-                                             href="/member/user-ask-review-list?pageNum=${AskPageMaker.productCri.pageNum}&pageNumReview=${ReviewPageMaker.startPage - 1}&amount=5"
-                                             >≪</a>
+                           href="javascript:;" value="${ReviewPageMaker.startPage - 1}"
+                        >≪</a>
                     </li>
                 </c:if>
 
@@ -107,7 +107,7 @@
                 <c:forEach var="num" begin="${ReviewPageMaker.startPage}" end="${ReviewPageMaker.endPage}">
                     <li class="page-item ${ReviewPageMaker.productCri.pageNum == num ? "active":""}">
                         <a class="page-link-review" style="color: black;"
-                           href="/member/user-ask-review-list?pageNum=${AskPageMaker.productCri.pageNum}&pageNumReview=${num}&amount=5">${num}</a>
+                           href="javascript:;" value="${num}">${num}</a>
                     </li>
                 </c:forEach>
 
@@ -115,7 +115,7 @@
                 <c:if test="${ReviewPageMaker.next}">
                     <li class="page-item ">
                         <a class="page-link-review" style="color: black;"
-                           href="/member/user-ask-review-list?pageNum=${AskPageMaker.productCri.pageNum}&pageNumReview=${ReviewPageMaker.endPage + 1}&amount=5">≫</a>
+                           href="javascript:;" value="${ReviewPageMaker.endPage + 1}">≫</a>
                     </li>
                 </c:if>
             </ul>
