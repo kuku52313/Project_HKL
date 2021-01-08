@@ -1,5 +1,6 @@
 package com.hklmart.service;
 
+import com.hklmart.domain.PageCriteriaVO;
 import com.hklmart.domain.ProductVO;
 import com.hklmart.persistence.LikeDAO;
 import com.hklmart.persistence.ProductDAO;
@@ -41,5 +42,10 @@ public class LikeService {
 
     public void deleteLike(String MemberId, String productCode) {
         like.deleteLike(MemberId,productCode);
+    }
+
+    public List<ProductVO> getUserLike(PageCriteriaVO cri, String memberId) {
+
+        return like.getUserLike(cri, memberId);
     }
 }

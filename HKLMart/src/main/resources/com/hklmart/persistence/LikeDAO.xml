@@ -30,7 +30,23 @@
         <![CDATA[
         DELETE PRODUCT_LIKE WHERE LIKE_MEMBER_ID = #{param1} AND LIKE_PRODUCT_CODE = #{param2}
         ]]>
-
-
     </delete>
+
+    <select id="getUserLike" resultType="com.hklmart.domain.ProductVO">
+        <![CDATA[
+        SELECT
+                *
+        FROM (
+                     SELECT
+                             ROWNUM rn,
+                             PL.LIKE_MEMBER_ID,
+                             P.*
+                     FROM PRODUCT P, PRODUCT_LIKE PL
+                     WHERE P.PRODUCT_CODE = PL.LIKE_PRODUCT_CODE AND PL.LIKE_MEMBER_ID = #{param2} AND ROWNUM <= #{param1.pageNum} * #{param1.amount}
+                     )
+        WHERE rn > (#{param1.pageNum} -1) * #{param1.amount}
+        ]]>
+    </select>
+
+
 </mapper>
