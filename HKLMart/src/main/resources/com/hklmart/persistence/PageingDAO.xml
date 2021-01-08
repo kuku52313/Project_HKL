@@ -86,4 +86,10 @@
         ]]>
     </select>
 
+    <select id="getLikeListTotal" resultType="int">
+        <![CDATA[
+        SELECT count(*) from product_like where like_member_id = #{param2}
+        ]]>
+    </select>
+
 </mapper>

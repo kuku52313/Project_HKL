@@ -1,6 +1,9 @@
 package com.hklmart.controller;
 
+import com.hklmart.domain.PageCriteriaVO;
+import com.hklmart.domain.PageDTO;
 import com.hklmart.service.LikeService;
+import com.hklmart.service.PageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +16,11 @@ import java.util.Map;
 @RequestMapping("/like")
 public class LikeController {
     private final LikeService like;
+    private final PageService pageService;
 
-    public LikeController(LikeService like) {
+    public LikeController(LikeService like, PageService pageService) {
         this.like = like;
+        this.pageService = pageService;
     }
 
     @GetMapping("/check")
@@ -46,9 +51,13 @@ public class LikeController {
     }
 
     @GetMapping("/get")
-    public String getProductLike(Principal principal, Model model) {
-        model.addAttribute("likeList", like.likeList(principal.getName()));
+    public String getUserLike(PageCriteriaVO cri, Principal principal, Model model) {
+
+        model.addAttribute("likeList", like.getUserLike(cri, principal.getName()));
+
+        int total = pageService.getLikeListTotal(cri, principal.getName());
+
+        model.addAttribute("pageMaker", new PageDTO(cri, total));
         return "like-page";
     }
 }
-

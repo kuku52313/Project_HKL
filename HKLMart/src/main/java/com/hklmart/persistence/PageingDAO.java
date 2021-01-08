@@ -26,4 +26,6 @@ public interface PageingDAO {
     int getOrderListTotal(PageCriteriaVO cri);
 
     int getUserOrderListTotal(ProductPageCriteriaVO cri);
+
+    int getLikeListTotal(PageCriteriaVO cri, String memberId);
 }

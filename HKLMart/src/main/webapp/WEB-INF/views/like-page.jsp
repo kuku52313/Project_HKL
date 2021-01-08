@@ -56,27 +56,24 @@
     </div>
 </div>
 <ul class="pagination justify-content-center" style="margin:20px 0">
-    <c:set var="CategoryPath" value="${param.Category}"/>
+
 
     <c:if test="${pageMaker.prev}">
         <li class="page-item">
-            <a class="page-link" style="color: black;" href="/product-list${param.Category}?pageNum=${pageMaker.startPage - 1}&amount=10<c:if test="${CategoryPath eq '-MainCategory'}" >&Category=-MainCategory
-    </c:if>">Previous</a>
+            <a class="page-link" style="color: black;" href="/like/get?pageNum=${pageMaker.startPage - 1}&amount=12">Previous</a>
         </li>
     </c:if>
 
     <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-        <li class="page-item ${pageMaker.productCri.pageNum == num ? "active":""}">
+        <li class="page-item ${pageMaker.cri.pageNum == num ? "active":""}">
             <a class="page-link " style="color: black;"
-               href="/product-list${param.Category}?pageNum=${num}&amount=12&Type=${param.Type}<c:if test="${CategoryPath eq '-MainCategory'}" >&Category=-MainCategory
-    </c:if>">${num}</a>
+               href="/like/get?pageNum=${num}&amount=12">${num}</a>
         </li>
     </c:forEach>
 
     <c:if test="${pageMaker.next}">
         <li class="page-item">
-            <a class="page-link" style="color: black;" href="/product-list${param.Category}?pageNum=${pageMaker.endPage + 1}&amount=12<c:if test="${CategoryPath eq '-MainCategory'}" >&Category=-MainCategory
-    </c:if>">Next</a>
+            <a class="page-link" style="color: black;" href="/like/get?pageNum=${pageMaker.endPage + 1}&amount=12">Next</a>
         </li>
     </c:if>
 </ul>
@@ -126,7 +123,7 @@
         let thisCode = $(obj).attr('class');
         location.href = "/like/delete?productCode="+thisCode;
         alert("찜목록에서 삭제하였습니다")
-        location.href = "/like/get"
+        location.href = "/like/get?pageNum=1&amount=12"
     }
 </script>
 
