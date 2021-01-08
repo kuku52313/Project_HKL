@@ -26,7 +26,7 @@
                 <li><a href="/member/my-page-ask-board">문의하기</a></li>
                 <li><a href="/member/user-ask-list?pageNum=1&pageNumReview=1&amount=10">문의내역</a></li>
                 <li><a href="/member/user-review-list?pageNum=1&pageNumReview=1&amount=10">구매후기</a></li>
-                <li><a href="/like/get">찜한상품</a></li>
+                <li><a href="/like/get?pageNum=1&amount=12">찜한상품</a></li>
                 <li><a class="sidebarMain" href="#header">MY 정보</a></li>
                 <li><a href="#privacy">개인정보확인/수정</a></li>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -97,14 +97,14 @@
             <br/><br/>
             <div id="inquire_history">
                 <span class="font-set" style="font-size: 25px">문의내역</span>
-                <a href="/member/user-ask-review-list?pageNum=1&pageNumReview=1&amount=5" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
+                <a href="/member/user-ask-list?pageNum=1&pageNumReview=1&amount=10" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
                 <hr/>
             </div>
 
             <br/><br/>
             <div id="reviews">
                 <span class="font-set" style="font-size: 25px">구매후기</span>
-                <a href="#" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
+                <a href="/member/user-review-list?pageNum=1&pageNumReview=1&amount=10" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
                 <hr/>
             </div>
 
