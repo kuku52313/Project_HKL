@@ -103,15 +103,15 @@
 
             <ul class="pagination justify-content-center" style="margin:20px 0">
 
-                <c:if test="${PageMaker.prev}">
+                <c:if test="${pageMaker.prev}">
                     <li class="page-item"><a class="page-link" style="color: black;"
-                                             href="/member/user-order-list?pageNum=${PageMaker.startPage - 1}&amount=10">≪</a>
+                                             href="/member/user-order-list?pageNum=${pageMaker.startPage - 1}&amount=10">≪</a>
                     </li>
                 </c:if>
 
 
-                <c:forEach var="num" begin="${PageMaker.startPage}" end="${PageMaker.endPage}">
-                    <li class="page-item ${PageMaker.cri.pageNum == num ? "active":""}">
+                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+                    <li class="page-item ${pageMaker.cri.pageNum == num ? "active":""}">
                         <a class="page-link" style="color: black;"
                            href="/member/user-order-list?pageNum=${num}&amount=10">${num}</a>
                     </li>
@@ -120,7 +120,7 @@
                 <c:if test="${pageMaker.next}">
                     <li class="page-item ">
                         <a class="page-link" style="color: black;"
-                           href="/member/user-order-list?pageNum=${PageMaker.endPage + 1}&amount=10">≫</a>
+                           href="/member/user-order-list?pageNum=${pageMaker.endPage + 1}&amount=10">≫</a>
                     </li>
                 </c:if>
             </ul>
