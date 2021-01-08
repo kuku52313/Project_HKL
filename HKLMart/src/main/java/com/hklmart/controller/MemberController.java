@@ -96,7 +96,7 @@ public class MemberController {
         model.addAttribute("AskBoardList", memberService.getUserAskList(cri));
 
         int askTotal = pageService.getUserAskListTotal(cri);
-        System.out.println(new PageDTO(cri, askTotal));
+
         model.addAttribute("PageMaker", new PageDTO(cri, askTotal));
 
         return "user-ask-list";
@@ -125,7 +125,7 @@ public class MemberController {
 
         model.addAttribute("pageMaker", new PageDTO(cri, total));
 
-        System.out.println(new PageDTO(cri, total));
+
         return"/user-order-list";
     }
     @GetMapping("/user-order-detail")

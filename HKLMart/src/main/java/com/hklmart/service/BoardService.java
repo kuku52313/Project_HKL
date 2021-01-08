@@ -31,20 +31,36 @@ public class BoardService {
 
     public void insertBoardReviewService(HttpServletRequest request, BoardReviewDTO boardReviewDTO) throws IllegalStateException, IOException {
 
-        String fileName = UUID.randomUUID().toString() + "_" + boardReviewDTO.getUploadImg().getOriginalFilename();
-        File path = new File(getFolderPath(request.getSession().getServletContext().getRealPath("/resources/reviewImg")));
-        File contextPath = new File(getFolderPath(request.getSession().getServletContext().getContextPath() + "/resources/reviewImg"));
-        File image = new File(path + "\\" + fileName);
-        File thumbnail = new File(path + "\\S_" + fileName);
+        BoardReviewVO boardReviewVO = new BoardReviewVO();
 
-        if (!image.exists()) {
-            path.mkdirs();
-            boardReviewDTO.getUploadImg().transferTo(image);
-            Thumbnails.of(image).size(300, 300).toFile(thumbnail);
-            //outputFormat("png")
+        if(!(boardReviewDTO.getUploadImg().isEmpty())) {
+
+            String fileName = UUID.randomUUID().toString() + "_" + boardReviewDTO.getUploadImg().getOriginalFilename();
+            File path = new File(getFolderPath(request.getSession().getServletContext().getRealPath("/resources/reviewImg")));
+            File contextPath = new File(getFolderPath(request.getSession().getServletContext().getContextPath() + "/resources/reviewImg"));
+            File image = new File(path + "\\" + fileName);
+            File thumbnail = new File(path + "\\S_" + fileName);
+
+            boardReviewVO.setBoardReviewImg(image.toString().replace(path.toString(), ""));
+            boardReviewVO.setBoardReviewImgpath(contextPath.toString());
+            boardReviewVO.setBoardReviewThumbnail(thumbnail.toString().replace(path.toString(), ""));
+
+            if (!image.exists()) {
+                path.mkdirs();
+                boardReviewDTO.getUploadImg().transferTo(image);
+                Thumbnails.of(image).size(300, 300).toFile(thumbnail);
+                //outputFormat("png")
+            }
+
+        }else{
+
+            boardReviewVO.setBoardReviewImg("/noimage-300x267.png");
+            boardReviewVO.setBoardReviewImgpath("/resources/reviewImg");
+            boardReviewVO.setBoardReviewThumbnail("/noimage-300x267.png");
         }
 
-        BoardReviewVO boardReviewVO = new BoardReviewVO();
+
+
 
         boardReviewVO.setBoardReviewNumber(boardReviewDTO.getBoardReviewNumber());
         boardReviewVO.setBoardReviewMemberId(boardReviewDTO.getBoardReviewMemberId());
@@ -52,9 +68,7 @@ public class BoardService {
         boardReviewVO.setBoardReviewScore(boardReviewDTO.getBoardReviewScore());
         boardReviewVO.setBoardReviewContent(boardReviewDTO.getBoardReviewContent());
         boardReviewVO.setBoardReviewDate(boardReviewDTO.getBoardReviewDate());
-        boardReviewVO.setBoardReviewImg(image.toString().replace(path.toString(), ""));
-        boardReviewVO.setBoardReviewImgpath(contextPath.toString());
-        boardReviewVO.setBoardReviewThumbnail(thumbnail.toString().replace(path.toString(), ""));
+
 
         boardDAO.insertBoardReview(boardReviewVO);
 

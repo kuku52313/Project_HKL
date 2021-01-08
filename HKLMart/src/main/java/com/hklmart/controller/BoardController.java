@@ -39,6 +39,7 @@ public class BoardController {
 
     @PostMapping("/review-insert")
     public String insertBoardReview(HttpServletRequest request, BoardReviewDTO boardReviewDTO) throws IllegalStateException, IOException {
+
         boardService.insertBoardReviewService(request, boardReviewDTO);
         return "redirect:/member/my-page";
     }
