@@ -32,7 +32,7 @@
                 <li><a href="/basket/basket-page">장바구니</a></li>
                 <li><a class="sidebarMain" href="#header">MY 활동</a></li>
                 <li><a href="/member/my-page-ask-board">문의하기</a></li>
-                <li><a href="javascript:void(0);" onclick="userAskReviewListFn()">문의내역</a></li>
+                <li><a href="/member/user-ask-review-list?pageNum=1&amount=5">문의내역</a></li>
                 <li><a href="#reviews">구매후기</a></li>
                 <li><a href="/like/get">찜한상품</a></li>
                 <li><a class="sidebarMain" href="#header">MY 정보</a></li>
@@ -65,7 +65,7 @@
                     <tr>
                         <!--  <td><a href="/" id="product" style="color: black"><img src="${listR.boardReviewImgpath}${listR.boardReviewThumbnail}.png"></a></td> -->
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/" id="product" style="color: black"><img
-                                src="<%=request.getContextPath() %>${listR.boardReviewImgpath}${listR.boardReviewThumbnail}.png"
+                                src="<%=request.getContextPath() %>${listR.boardReviewImgpath}${listR.boardReviewThumbnail}"
                                 style="width: 200px;  height: 200px; object-fit: fill;"></a>
                             <!--각 product로 갈 수 있게 해야함--></td>
                         <td class="">
@@ -97,83 +97,29 @@
                 <c:if test="${ReviewPageMaker.prev}">
                     <li class="page-item">
                         <a class="page-link-review" style="color: black;"
-                                             href="javascript:;" value="${ReviewPageMaker.startPage - 1}"
+                                             href="/member/user-ask-review-list?pageNum=${AskPageMaker.productCri.pageNum}&pageNumReview=${ReviewPageMaker.startPage - 1}&amount=5"
                                              >≪</a>
                     </li>
                 </c:if>
 
 
+
                 <c:forEach var="num" begin="${ReviewPageMaker.startPage}" end="${ReviewPageMaker.endPage}">
                     <li class="page-item ${ReviewPageMaker.productCri.pageNum == num ? "active":""}">
                         <a class="page-link-review" style="color: black;"
-                           href="javascript:;" value="${num}">${num}</a>
+                           href="/member/user-ask-review-list?pageNum=${AskPageMaker.productCri.pageNum}&pageNumReview=${num}&amount=5">${num}</a>
                     </li>
                 </c:forEach>
+
 
                 <c:if test="${ReviewPageMaker.next}">
                     <li class="page-item ">
                         <a class="page-link-review" style="color: black;"
-                           href="javascript:;" value="${ReviewPageMaker.endPage + 1}">≫</a>
+                           href="/member/user-ask-review-list?pageNum=${AskPageMaker.productCri.pageNum}&pageNumReview=${ReviewPageMaker.endPage + 1}&amount=5">≫</a>
                     </li>
                 </c:if>
             </ul>
-            <br>
-            <div class="form-header">
-                <h1>문의 내역</h1>
-            </div>
-            <br>
 
-            <table class="table table-bordered table-striped"
-                   style="background-color: #ffffff;">
-
-                <thead>
-                <tr>
-                    <th>문의 번호</th>
-                    <th>종류</th>
-                    <th>제목</th>
-                    <th>접수 날짜</th>
-                    <th>접수 상태</th>
-                </tr>
-                </thead>
-
-                <c:forEach items="${AskBoardList}" var="list" varStatus="status">
-                    <tr>
-                        <th>
-                            <a href="/manager/manager-ask-answer?boardAskNumber=<c:out value="${list.boardAskNumber}"/>&pageNum=<c:out value="${pageMaker.productCri.pageNum}"/>&amount=<c:out value="${pageMaker.cri.amount}"/>"
-                               style="color: black">
-                                <c:out value="${list.boardAskNumber}"/></a></th>
-                        <th><c:out value="${list.boardAskType}"/></th>
-                        <th><c:out value="${list.boardAskTitle}"/></th>
-                        <th><c:out value="${list.boardAskDate}"/></th>
-                        <th><c:out value="${list.boardAskState}"/></th>
-                    </tr>
-                </c:forEach>
-
-            </table>
-            <!-- 문의 내역 페이징 버튼-->
-            <ul class="pagination justify-content-center" style="margin:20px 0">
-
-                <c:if test="${AskPageMaker.prev}">
-                    <li class="page-item"><a class="page-link" style="color: black;" class="page-link" style="color: black;"
-                                             href="javascript:;" value="${AskPageMaker.startPage - 1}">≪</a>
-                    </li>
-                </c:if>
-
-
-                <c:forEach var="num" begin="${AskPageMaker.startPage}" end="${AskPageMaker.endPage}">
-                    <li class="page-item ${AskPageNum == num ? "active":""}">
-                        <a class="page-link" style="color: black;"
-                           href="javascript:;" value="${num}">${num}</a>
-                    </li>
-                </c:forEach>
-
-                <c:if test="${AskPageMaker.next}">
-                    <li class="page-item">
-                        <a class="page-link" style="color: black;"
-                           href="javascript:;" value="${AskPageMaker.endPage + 1}">≫</a>
-                    </li>
-                </c:if>
-            </ul>
 
             <hr style="border: solid 1px #ffb6b6;">
         </div>
@@ -185,43 +131,11 @@
 <br><br>
 <hr style="border: solid 1px #ffb6b6;">
 
-<form name="userAskReviewList" method="post" action="/member/user-ask-review-list">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <input type="hidden" id="pageNumAskId" name="pageNum" value="${AskPageNum}">
-    <input type="hidden" id="pageNumReviewId" name="pageNumReview" value="${ReviewPageMaker.productCri.pageNum}">
-    <input type="hidden" name="amount" value="5">
-    <input type="hidden" name="memberId" value="${user.username}">
-</form>
 
 </body>
 <script>
-    // console.log(userAskReviewListForm.pageNum.valueOf());
-    // $("#pageNumId").val(2)
 
-    $(document).on("click",".page-link",function(){
-        let userAskReviewListForm = document.userAskReviewList;
 
-        $("#pageNumAskId").val($(this).attr('value'));
-        console.log(userAskReviewListForm.pageNum.valueOf());
-        alert($("#pageNumAskId").val());
-        userAskReviewListForm.submit();
-    });
-
-    $(document).on("click",".page-link-review",function(){
-        let userAskReviewListForm = document.userAskReviewList;
-
-        $("#pageNumReviewId").val($(this).attr('value'));
-        console.log(userAskReviewListForm.pageNumReview.valueOf());
-        alert($("#pageNumReviewId").val());
-        userAskReviewListForm.submit();
-    });
-
-    // function userAskReviewListFn() {
-    //     let userAskReviewListForm = document.userAskReviewList;
-    //
-    //
-    //     userAskReviewListForm.submit();
-    // }
 </script>
 
 <%@include file="includes/footer.jsp" %>

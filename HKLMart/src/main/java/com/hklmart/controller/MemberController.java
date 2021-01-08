@@ -3,7 +3,6 @@ package com.hklmart.controller;
 import com.hklmart.domain.*;
 import com.hklmart.service.MemberService;
 import com.hklmart.service.PageService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -75,8 +74,10 @@ public class MemberController {
         return "ask-board";
     }
 
-    @PostMapping("/user-ask-review-list")
-    public String goUserAskReviewList(ProductPageCriteriaVO cri, Model model){
+    @GetMapping("/user-review-list")
+    public String goUserAskReviewList(ProductPageCriteriaVO cri, Model model,Principal principal){
+
+        cri.setMemberId(principal.getName());
 
         model.addAttribute("AskBoardList", memberService.getUserAskList(cri));
 
@@ -94,7 +95,31 @@ public class MemberController {
 
         model.addAttribute("ReviewPageMaker", new PageDTO(cri, ReviewTotal));
 
-        return "user-ask-review-list";
+        return "user-review-list";
+    }
+
+    @GetMapping("/user-ask-list")
+    public String goUserAskList(ProductPageCriteriaVO cri, Model model,Principal principal){
+
+        cri.setMemberId(principal.getName());
+
+        model.addAttribute("AskBoardList", memberService.getUserAskList(cri));
+
+        int askTotal = pageService.getUserAskListTotal(cri);
+
+        model.addAttribute("AskPageMaker", new PageDTO(cri, askTotal));
+        int pageNum = cri.getPageNum();
+        model.addAttribute("AskPageNum", pageNum);
+
+        cri.setPageNum(cri.getPageNumReview());
+
+        model.addAttribute("BoardReviewList", memberService.getUserReviewList(cri));
+
+        int ReviewTotal = pageService.getUserReviewListTotal(cri);
+
+        model.addAttribute("ReviewPageMaker", new PageDTO(cri, ReviewTotal));
+
+        return "user-ask-list";
     }
     @GetMapping("/updateAddress")
     @ResponseBody
