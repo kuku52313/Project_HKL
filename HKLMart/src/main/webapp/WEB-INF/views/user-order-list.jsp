@@ -111,7 +111,7 @@
 
 
                 <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-                    <li class="page-item ${pageMaker.cri.pageNum == num ? "active":""}">
+                    <li class="page-item ${pageMaker.productCri.pageNum == num ? "active":""}">
                         <a class="page-link" style="color: black;"
                            href="/member/user-order-list?pageNum=${num}&amount=10">${num}</a>
                     </li>
