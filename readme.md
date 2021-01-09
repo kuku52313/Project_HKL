@@ -4,7 +4,7 @@
 </p>
 
 ## *Tech*</center>
-> *JAVA 11 / Oracle 12c / Spring 5.0 / Spring Security / Mybatis / Lombok etc..*
+> *JAVA 11 / Oracle 12c / Servlet 4.0 / Spring 5.0 / Maven 3.6.3 / Spring Security / Mybatis / Lombok / jackson / slf4j / Log4j / JUnit / Mockito / HikariCP / commons-fileupload etc..*
 
 ---
 
