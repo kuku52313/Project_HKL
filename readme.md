@@ -3,7 +3,7 @@
   <h1 align="center"><b><i>Project_HKLMart</i><b></h1>
 </p>
 
-## *Tech*</center>
+## *Dependency*</center>
 > *JAVA 11 / Oracle 12c / Servlet 4.0 / Spring 5.0 / Maven 3.6.3 / Spring Security / Mybatis / Lombok / jackson / slf4j / Log4j / JUnit / Mockito / HikariCP / commons-fileupload etc..*
 
 ---
