@@ -22,3 +22,5 @@
 
 + *Context Path 설정 후 WAS Run*
 
++ *관리자 테스트계정 ID : tester/ PW : qwe123Q! 대소문자 구별에 유의하여주시길 바랍니다*
+
