@@ -106,34 +106,34 @@
 <br><br>
 <hr style="border: solid 1px #ffb6b6;">
 <script>
-    function searchFunc() {
-        let productSearch = document.getElementById('productSearch').value;
-        $.ajax({
-            url        : "/ajax/search",
-            type       : "GET",
-            dataType   : "json",
-            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-            data       : {searchStr: productSearch},
-            success    : function (data) {
-                let dataList = data.searchList;
-                $("#productSearch").autocomplete({
-                    source: dataList
-                });
-            },
-            error      : function () {
-                alert("Error. 관리자에게 문의하십시오.");
-            },
-        });
-    }
+	function searchFunc() {
+		let productSearch = document.getElementById('productSearch').value;
+		$.ajax({
+			url        : "/ajax/search",
+			type       : "GET",
+			dataType   : "json",
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			data       : {searchStr: productSearch},
+			success    : function (data) {
+				let dataList = data.searchList;
+				$("#productSearch").autocomplete({
+					source: dataList
+				});
+			},
+			error      : function () {
+				alert("Error. 관리자에게 문의하십시오.");
+			},
+		});
+	}
 
-    function DeleteCheckfn() {
+	function DeleteCheckfn() {
 
-        var subForm = document.modifyForm;
+		var subForm = document.modifyForm;
 
-        subForm.action = "/manager/manager-member-delete";
+		subForm.action = "/manager/manager-member-delete";
 
-        subForm.submit();
+		subForm.submit();
 
-    }
+	}
 </script>
 <%@include file="includes/footer.jsp" %>

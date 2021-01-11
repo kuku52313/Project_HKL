@@ -252,220 +252,217 @@
     </div> </c:otherwise> </c:choose> <br><br>
 <hr style="border: solid 1px #ffb6b6;">
 <script>
-    let getS = document.getElementById("ui-id-2");
-    let sVAl = getS.options[getS.selectedIndex].value;
+	let getS = document.getElementById("ui-id-2");
+	let sVAl = getS.options[getS.selectedIndex].value;
 
-    function memoShow(sVal) {
-        if (sVAl == "5") {
-            $("#delivery-memo").css("display", "visible");
-        } else {
-            $("#delivery-memo").css("display", "none");
-        }
-    }
+	function memoShow(sVal) {
+		if (sVAl == "5") {
+			$("#delivery-memo").css("display", "visible");
+		} else {
+			$("#delivery-memo").css("display", "none");
+		}
+	}
 
-    var $checkAll = $('#checkAll');
-    $checkAll.change(function () {
-        var $this = $(this);
-        var checked = $this.prop('checked');
-        $('input[name="items"]').prop('checked', checked);
-    });
+	var $checkAll = $('#checkAll');
+	$checkAll.change(function () {
+		var $this = $(this);
+		var checked = $this.prop('checked');
+		$('input[name="items"]').prop('checked', checked);
+	});
 
-    var boxes = $('input[name="items"]');
-    boxes.change(function () {
-        var boxLength = boxes.length;
-        var checkedLength = $('input[name="items"]:checked').length;
-        var selectAll = (boxLength == checkedLength);
-        $checkAll.prop('checked', selectAll);
-    });
+	var boxes = $('input[name="items"]');
+	boxes.change(function () {
+		var boxLength = boxes.length;
+		var checkedLength = $('input[name="items"]:checked').length;
+		var selectAll = (boxLength == checkedLength);
+		$checkAll.prop('checked', selectAll);
+	});
 
-    $(document).ready(function () {
-        $("#checkBoxId").change(function () {
-            var orderFnHidden = $("#orderFnHidden").val();
-            var orderer_name = $("#orderer_name").val();
-            var memberTelId = $("#memberTelId").val();
-            var memberPostcode = $("#memberPostcode").val();
-            var memberAddress = $("#memberAddress").val();
-            var memberUserAddress = $("#memberUserAddress").val();
-            if ($("#checkBoxId").is(":checked")) {
-                $("#orderNameId").val(orderer_name);
-                $("#InOrderTelId").val(memberTelId);
-                $("#InOrderTelId").val(memberTelId);
-                $("#sample4_postcode").val(memberPostcode);
-                $("#sample4_roadAddress").val(memberAddress);
-                $("#userAddress").val(memberUserAddress);
-                $("#orderNameId").attr("readonly", true);
-                $("#InOrderTelId").attr("readonly", true);
-                $("#userAddress").attr("readonly", true);
-            } else {
-                $("#orderNameId").val(null);
-                $("#InOrderTelId").val(null);
-                $("#InOrderTelId").val(null);
-                $("#sample4_postcode").val(null);
-                $("#sample4_roadAddress").val(null);
-                $("#userAddress").val(null);
-                $("#orderNameId").attr("readonly", false);
-                $("#InOrderTelId").attr("readonly", false);
-                $("#userAddress").attr("readonly", false);
-            }
-        });
-    });
+	$(document).ready(function () {
+		$("#checkBoxId").change(function () {
+			var orderFnHidden = $("#orderFnHidden").val();
+			var orderer_name = $("#orderer_name").val();
+			var memberTelId = $("#memberTelId").val();
+			var memberPostcode = $("#memberPostcode").val();
+			var memberAddress = $("#memberAddress").val();
+			var memberUserAddress = $("#memberUserAddress").val();
+			if ($("#checkBoxId").is(":checked")) {
+				$("#orderNameId").val(orderer_name);
+				$("#InOrderTelId").val(memberTelId);
+				$("#InOrderTelId").val(memberTelId);
+				$("#sample4_postcode").val(memberPostcode);
+				$("#sample4_roadAddress").val(memberAddress);
+				$("#userAddress").val(memberUserAddress);
+				$("#orderNameId").attr("readonly", true);
+				$("#InOrderTelId").attr("readonly", true);
+				$("#userAddress").attr("readonly", true);
+			} else {
+				$("#orderNameId").val(null);
+				$("#InOrderTelId").val(null);
+				$("#InOrderTelId").val(null);
+				$("#sample4_postcode").val(null);
+				$("#sample4_roadAddress").val(null);
+				$("#userAddress").val(null);
+				$("#orderNameId").attr("readonly", false);
+				$("#InOrderTelId").attr("readonly", false);
+				$("#userAddress").attr("readonly", false);
+			}
+		});
+	});
 
-    function execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function (data) {
-                var roadAddr = data.roadAddress;
-                document.getElementById('sample4_postcode').value = data.zonecode;
-                document.getElementById("sample4_roadAddress").value = roadAddr;
-            }
-        }).open();
-    }
+	function execDaumPostcode() {
+		new daum.Postcode({
+			oncomplete: function (data) {
+				var roadAddr = data.roadAddress;
+				document.getElementById('sample4_postcode').value = data.zonecode;
+				document.getElementById("sample4_roadAddress").value = roadAddr;
+			}
+		}).open();
+	}
 
-    function popup() {
-        let top = window.screen.height;
-        let left = window.screen.width;
-        let win = window.open("/terms", "서비스 이용 약관", 'scrollbars=no,width=10,height=10,status=no,resizable=no' + ',top=' + ((top / 2) - 400) + ',left=' + ((left / 2) - 200));
-        win.opener.self;
-    }
+	function popup() {
+		let top = window.screen.height;
+		let left = window.screen.width;
+		let win = window.open("/terms", "서비스 이용 약관", 'scrollbars=no,width=10,height=10,status=no,resizable=no' + ',top=' + ((top / 2) - 400) + ',left=' + ((left / 2) - 200));
+		win.opener.self;
+	}
 
-    function updateAddressFn() {
+	function updateAddressFn() {
 
-        var memberAddressPostcodeId = $("#sample4_postcode").val();
-        var memberAddressId = $("#sample4_roadAddress").val();
-        var memberAddressMemberId = $("#userAddress").val();
+		var memberAddressPostcodeId = $("#sample4_postcode").val();
+		var memberAddressId = $("#sample4_roadAddress").val();
+		var memberAddressMemberId = $("#userAddress").val();
 
-        let sendData = {memberAddressPostcode: memberAddressPostcodeId, memberAddress: memberAddressId, memberAddressMember: memberAddressMemberId};
+		let sendData = {memberAddressPostcode: memberAddressPostcodeId, memberAddress: memberAddressId, memberAddressMember: memberAddressMemberId};
 
-        if ((memberAddressPostcodeId == '' && memberAddressId == '' && memberAddressMemberId == '')) {
-            alert("주소를 입력하여 주세요")
-        } else {
-            $.ajax({
-                url        : "/member/updateAddress",
-                type       : "GET",
-                dataType   : "json",
-                contentType: "application/json; charset=UTF-8",
-                data       : sendData,
-                success    : function (data) {
-                    if (data.message == 1) {
-                        alert("주소가 변경되었습니다")
-                        $("#memberPostcode").val(memberAddressPostcodeId);
-                        $("#memberAddress").val(memberAddressId);
-                        $("#memberUserAddress").val(memberAddressMemberId);
-                    } else {
-                        alert("오류입니다")
-                    }
+		if ((memberAddressPostcodeId == '' && memberAddressId == '' && memberAddressMemberId == '')) {
+			alert("주소를 입력하여 주세요")
+		} else {
+			$.ajax({
+				url        : "/member/updateAddress",
+				type       : "GET",
+				dataType   : "json",
+				contentType: "application/json; charset=UTF-8",
+				data       : sendData,
+				success    : function (data) {
+					if (data.message == 1) {
+						alert("주소가 변경되었습니다")
+						$("#memberPostcode").val(memberAddressPostcodeId);
+						$("#memberAddress").val(memberAddressId);
+						$("#memberUserAddress").val(memberAddressMemberId);
+					} else {
+						alert("오류입니다")
+					}
 
-                },
-                error      : function () {
-                    alert("Error. 관리자에게 문의하십시오.");
-                },
-            });
+				},
+				error      : function () {
+					alert("Error. 관리자에게 문의하십시오.");
+				},
+			});
 
+		}
+	}
 
-        }
-    }
+	function selectSize(obj, index) {
+		let selectBox = 'show-select-size' + index;
+		let selectNumber = 'product-number' + index;
+		let productName = obj.attr('name');
+		let productNumber = obj.val();
+		document.getElementById(selectBox).value = productName;
+		document.getElementById(selectNumber).max = productNumber;
+	}
 
-    function selectSize(obj, index) {
-        let selectBox = 'show-select-size' + index;
-        let selectNumber = 'product-number' + index;
-        let productName = obj.attr('name');
-        let productNumber = obj.val();
-        document.getElementById(selectBox).value = productName;
-        document.getElementById(selectNumber).max = productNumber;
-    }
+	function selectNumber(index) {
+		let productPrice = 'productPrice' + index;
+		let showProductPrice = 'show-product-price' + index;
+		let productNumber = 'product-number' + index;
+		let checkBoxValue = 'checkAItem' + index;
+		let result = document.getElementById(productPrice).value * document.getElementById(productNumber).value;
+		document.getElementById(showProductPrice).innerText = numberWithCommas(result);
+		document.getElementById(checkBoxValue).value = result;
+		if (document.getElementById(productNumber).value == 0) {
+			document.getElementById(checkBoxValue).checked = false;
+		} else if (document.getElementById(productNumber).value > 0) {
+			document.getElementById(checkBoxValue).checked = true;
+		}
+	}
 
-    function selectNumber(index) {
-        let productPrice = 'productPrice' + index;
-        let showProductPrice = 'show-product-price' + index;
-        let productNumber = 'product-number' + index;
-        let checkBoxValue = 'checkAItem' + index;
-        let result = document.getElementById(productPrice).value * document.getElementById(productNumber).value;
-        document.getElementById(showProductPrice).innerText = numberWithCommas(result);
-        document.getElementById(checkBoxValue).value = result;
-        if (document.getElementById(productNumber).value == 0) {
-            document.getElementById(checkBoxValue).checked = false;
-        } else if (document.getElementById(productNumber).value > 0) {
-            document.getElementById(checkBoxValue).checked = true;
-        }
-    }
+	function numberWithCommas(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
 
-    function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
+	function removeBasket(productCode) {
+		location.href = "/basket/remove?productCode=" + productCode;
+		alert("해당 상품을 장바구니에서 제외 하였습니다")
+		location.href = "/basket/basket-page";
+	}
 
-    function removeBasket(productCode) {
-        location.href = "/basket/remove?productCode=" + productCode;
-        alert("해당 상품을 장바구니에서 제외 하였습니다")
-        location.href = "/basket/basket-page";
-    }
+	function checkSum(form) {
+		let sum = 0;
+		let firstItem = form.items;
+		let count = form.items.length;
+		if (count == undefined) {
+			sum += parseInt(form.items.value);
+		} else {
+			for (var i = 0; i < count; i++) {
+				if (form.items[i].checked == true) {
+					sum += parseInt(form.items[i].value);
+				}
+			}
+		}
+		document.getElementById('checkAll').value = sum;
+		document.getElementById('total-price').innerText = numberWithCommas(sum);
+		document.getElementById('result-total-price').innerText = numberWithCommas(sum);
+		document.getElementById('payment-total-price').innerText = numberWithCommas(sum + 2000);
+	}
 
-    function checkSum(form) {
-        let sum = 0;
-        let firstItem = form.items;
-        let count = form.items.length;
-        if (count == undefined) {
-            sum += parseInt(form.items.value);
-            console.log(sum);
-        } else {
-            for (var i = 0; i < count; i++) {
-                if (form.items[i].checked == true) {
-                    sum += parseInt(form.items[i].value);
-                    console.log("더하기");
-                }
-            }
-        }
-        document.getElementById('checkAll').value = sum;
-        document.getElementById('total-price').innerText = numberWithCommas(sum);
-        document.getElementById('result-total-price').innerText = numberWithCommas(sum);
-        document.getElementById('payment-total-price').innerText = numberWithCommas(sum + 2000);
-    }
+	function doPayment() {
+		let form = chkForm;
+		let textContent = document.getElementById('total-price').textContent.replace(',', '');
+		let indexLength = document.getElementById('paymentIndex').value;
+		let checkBox;
+		let price;
+		let productCode;
+		let productNumber;
+		let productSize;
 
-    function doPayment() {
-        let form = chkForm;
-        let textContent = document.getElementById('total-price').textContent.replace(',', '');
-        let indexLength = document.getElementById('paymentIndex').value;
-        let checkBox;
-        let price;
-        let productCode;
-        let productNumber;
-        let productSize;
+		for (var i = 0; i < indexLength; i++) {
+			checkBox = 'checkAItem' + i;
+			price = 'productPrice' + i;
+			productCode = 'productCode' + i;
+			productNumber = 'product-number' + i;
+			productSize = 'show-select-size' + i;
 
-        for (var i = 0; i < indexLength; i++) {
-            checkBox = 'checkAItem' + i;
-            price = 'productPrice' + i;
-            productCode = 'productCode' + i;
-            productNumber = 'product-number' + i;
-            productSize = 'show-select-size' + i;
+			if (document.getElementById(checkBox).checked == false) {
+				document.getElementById(price).disabled = true;
+				document.getElementById(productCode).disabled = true;
+				document.getElementById(productNumber).disabled = true;
+				document.getElementById(productSize).disabled = true;
+			}
+		}
 
-            if (document.getElementById(checkBox).checked == false) {
-                document.getElementById(price).disabled = true;
-                document.getElementById(productCode).disabled = true;
-                document.getElementById(productNumber).disabled = true;
-                document.getElementById(productSize).disabled = true;
-            }
-        }
+		for (var i = 0; i < indexLength; i++) {
+			checkBox = 'checkAItem' + i;
+			price = 'show-product-price' + i;
 
-        for (var i = 0; i < indexLength; i++) {
-            checkBox = 'checkAItem' + i;
-            price = 'show-product-price' + i;
+			if (document.getElementById(checkBox).checked == true && (document.getElementById(price).textContent == '' || document.getElementById(price).textContent == '0')) {
+				alert("주문정보가 잘못됐습니다");
+				return 0;
+			}
+		}
 
-            if (document.getElementById(checkBox).checked == true && (document.getElementById(price).textContent == '' || document.getElementById(price).textContent == '0')) {
-                alert("주문정보가 잘못됐습니다");
-                return 0;
-            }
-        }
-
-        if (document.getElementById('total-price').textContent == '' || document.getElementById('total-price').textContent == 0) {
-            alert("주문정보가 잘못됐습니다");
-        } else if (!($.isNumeric(textContent))) {
-            alert("주문정보가 잘못됐습니다");
-        } else if ($('input:radio[name=paymethod]:checked').length == 0) {
-            alert("결제수단을 선택하여 주십시오");
-        } else if (document.getElementById('agree_1').checked == false) {
-            alert("약관에 동의하여 주십시오");
-        } else {
-            form.submit();
-            alert("상품을 구매해주셔서 감사드립니다")
-        }
-    }
+		if (document.getElementById('total-price').textContent == '' || document.getElementById('total-price').textContent == 0) {
+			alert("주문정보가 잘못됐습니다");
+		} else if (!($.isNumeric(textContent))) {
+			alert("주문정보가 잘못됐습니다");
+		} else if ($('input:radio[name=paymethod]:checked').length == 0) {
+			alert("결제수단을 선택하여 주십시오");
+		} else if (document.getElementById('agree_1').checked == false) {
+			alert("약관에 동의하여 주십시오");
+		} else {
+			form.submit();
+			alert("상품을 구매해주셔서 감사드립니다")
+		}
+	}
 </script>
 <%@include file="includes/footer.jsp" %>

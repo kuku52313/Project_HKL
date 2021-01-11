@@ -66,56 +66,55 @@
     </div>
 </footer>
 <script>
-    const toggleBtn = document.querySelector('.navbar_toggleBtn');
-    const search = document.querySelector('.navbar_search');
-    const menu = document.querySelector('.navbar_menu');
+	const toggleBtn = document.querySelector('.navbar_toggleBtn');
+	const search = document.querySelector('.navbar_search');
+	const menu = document.querySelector('.navbar_menu');
 
+	toggleBtn.addEventListener('click', () => {
+		search.classList.toggle('active');
+		menu.classList.toggle('active');
+	});
 
-    toggleBtn.addEventListener('click', () => {
-        search.classList.toggle('active');
-        menu.classList.toggle('active');
-    });
+	$(document).ready(function () {
+		$('a[href^="#"]').on('click', function (e) {
+			e.preventDefault();
 
-    $(document).ready(function () {
-        $('a[href^="#"]').on('click', function (e) {
-            e.preventDefault();
+			var target = this.hash;
+			var $target = $(target);
 
-            var target = this.hash;
-            var $target = $(target);
+			$('html, body').stop().animate({
+				'scrollTop': $target.offset().top
+			}, 900, 'swing', function () {
+				window.location.hash = target;
+			});
+		});
+	});
 
-            $('html, body').stop().animate({
-                'scrollTop': $target.offset().top
-            }, 900, 'swing', function () {
-                window.location.hash = target;
-            });
-        });
-    });
+	function searchFunc() {
+		let productSearch = document.getElementById('productSearch').value;
+		if (productSearch !== "") {
+			$.ajax({
+				url        : "/ajax/search",
+				type       : "GET",
+				dataType   : "json",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				data       : {"searchStr": productSearch},
+				success    : function (data) {
+					var list = data.searchList;
+					$("#productSearch").autocomplete({
+						source: list
+					})
+				},
+				error      : function () {
+					alert("Error. 관리자에게 문의하십시오.");
+				},
+			});
+		}
+	}
 
-    function searchFunc() {
-        let productSearch = document.getElementById('productSearch').value;
-        if (productSearch !== "") {
-            $.ajax({
-                url        : "/ajax/search",
-                type       : "GET",
-                dataType   : "json",
-                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                data       : {"searchStr": productSearch},
-                success    : function (data) {
-                    var list = data.searchList;
-                    $("#productSearch").autocomplete({
-                        source: list
-                    })
-                },
-                error      : function () {
-                    alert("Error. 관리자에게 문의하십시오.");
-                },
-            });
-        }
-    }
-
-    function doSearch() {
-        let searchKeyword = document.getElementById('productSearch').value;
-        location.href = "/search?keyword=" + searchKeyword;
-    }
+	function doSearch() {
+		let searchKeyword = document.getElementById('productSearch').value;
+		location.href = "/search?keyword=" + searchKeyword;
+	}
 </script>
 </html>

@@ -237,142 +237,137 @@
 </div></div></div></div>
 </body>
 <script>
-    $(document).ready(function () {
-        $("#checkBoxId").change(function () {
+	$(document).ready(function () {
+		$("#checkBoxId").change(function () {
 
-            var orderFnHidden = $("#orderFnHidden").val();
+			var orderFnHidden = $("#orderFnHidden").val();
 
-            var orderer_name = $("#orderer_name").val();
-            var memberTelId = $("#memberTelId").val();
-            var memberPostcode = $("#memberPostcode").val();
-            var memberAddress = $("#memberAddress").val();
-            var memberUserAddress = $("#memberUserAddress").val();
+			var orderer_name = $("#orderer_name").val();
+			var memberTelId = $("#memberTelId").val();
+			var memberPostcode = $("#memberPostcode").val();
+			var memberAddress = $("#memberAddress").val();
+			var memberUserAddress = $("#memberUserAddress").val();
 
+			if ($("#checkBoxId").is(":checked")) {
 
-            if ($("#checkBoxId").is(":checked")) {
+				$("#orderNameId").val(orderer_name);
 
-                $("#orderNameId").val(orderer_name);
+				$("#InOrderTelId").val(memberTelId);
 
-                $("#InOrderTelId").val(memberTelId);
+				$("#InOrderTelId").val(memberTelId);
 
-                $("#InOrderTelId").val(memberTelId);
+				$("#sample4_postcode").val(memberPostcode);
+				$("#sample4_roadAddress").val(memberAddress);
+				$("#userAddress").val(memberUserAddress);
 
-                $("#sample4_postcode").val(memberPostcode);
-                $("#sample4_roadAddress").val(memberAddress);
-                $("#userAddress").val(memberUserAddress);
+				$("#orderNameId").attr("readonly", true);
+				$("#InOrderTelId").attr("readonly", true);
+				$("#userAddress").attr("readonly", true);
+			} else {
 
-                $("#orderNameId").attr("readonly", true);
-                $("#InOrderTelId").attr("readonly", true);
-                $("#userAddress").attr("readonly", true);
-            } else {
+				$("#orderNameId").val(null);
 
-                $("#orderNameId").val(null);
+				$("#InOrderTelId").val(null);
 
-                $("#InOrderTelId").val(null);
+				$("#InOrderTelId").val(null);
 
-                $("#InOrderTelId").val(null);
+				$("#sample4_postcode").val(null);
+				$("#sample4_roadAddress").val(null);
+				$("#userAddress").val(null);
 
-                $("#sample4_postcode").val(null);
-                $("#sample4_roadAddress").val(null);
-                $("#userAddress").val(null);
+				$("#orderNameId").attr("readonly", false);
+				$("#InOrderTelId").attr("readonly", false);
+				$("#userAddress").attr("readonly", false);
+			}
+		});
+	});
 
-                $("#orderNameId").attr("readonly", false);
-                $("#InOrderTelId").attr("readonly", false);
-                $("#userAddress").attr("readonly", false);
-            }
-        });
-    });
+	function execDaumPostcode() {
+		new daum.Postcode({
+			oncomplete: function (data) {
+				var roadAddr = data.roadAddress;
+				document.getElementById('sample4_postcode').value = data.zonecode;
+				document.getElementById("sample4_roadAddress").value = roadAddr;
+			}
+		}).open();
+	}
 
-    function execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function (data) {
-                var roadAddr = data.roadAddress;
-                document.getElementById('sample4_postcode').value = data.zonecode;
-                document.getElementById("sample4_roadAddress").value = roadAddr;
-            }
-        }).open();
-    }
+	function updateAddressFn() {
 
-    function updateAddressFn() {
+		var memberAddressPostcodeId = $("#sample4_postcode").val();
+		var memberAddressId = $("#sample4_roadAddress").val();
+		var memberAddressMemberId = $("#userAddress").val();
 
-        var memberAddressPostcodeId = $("#sample4_postcode").val();
-        var memberAddressId = $("#sample4_roadAddress").val();
-        var memberAddressMemberId = $("#userAddress").val();
+		let sendData = {memberAddressPostcode: memberAddressPostcodeId, memberAddress: memberAddressId, memberAddressMember: memberAddressMemberId};
 
-        let sendData = {memberAddressPostcode: memberAddressPostcodeId, memberAddress: memberAddressId, memberAddressMember: memberAddressMemberId};
+		if ((memberAddressPostcodeId == '' && memberAddressId == '' && memberAddressMemberId == '')) {
+			alert("주소를 입력하여 주세요")
+		} else {
+			$.ajax({
+				url        : "/member/updateAddress",
+				type       : "GET",
+				dataType   : "json",
+				contentType: "application/json; charset=UTF-8",
+				data       : sendData,
+				success    : function (data) {
+					if (data.message == 1) {
+						alert("주소가 변경되었습니다")
 
-        if ((memberAddressPostcodeId == '' && memberAddressId == '' && memberAddressMemberId == '')) {
-            alert("주소를 입력하여 주세요")
-        } else {
-            $.ajax({
-                url        : "/member/updateAddress",
-                type       : "GET",
-                dataType   : "json",
-                contentType: "application/json; charset=UTF-8",
-                data       : sendData,
-                success    : function (data) {
-                    if (data.message == 1) {
-                        alert("주소가 변경되었습니다")
+						$("#memberPostcode").val(memberAddressPostcodeId);
+						$("#memberAddress").val(memberAddressId);
+						$("#memberUserAddress").val(memberAddressMemberId);
 
-                        $("#memberPostcode").val(memberAddressPostcodeId);
-                        $("#memberAddress").val(memberAddressId);
-                        $("#memberUserAddress").val(memberAddressMemberId);
+					} else {
+						alert("오류입니다")
+					}
 
+				},
+				error      : function () {
+					alert("Error. 관리자에게 문의하십시오.");
+				},
+			});
 
-                    } else {
-                        alert("오류입니다")
-                    }
+		}
+	}
 
-                },
-                error      : function () {
-                    alert("Error. 관리자에게 문의하십시오.");
-                },
-            });
+	function doPayFn() {
+		let productSizeId = $("#sizeStockHidden").val();
+		let stock = $("#sizeHidden").val();
+		let productCodeId = $("#productCodeHidden").val();
 
+		let sendData = {stockSize: stock, productCode: productCodeId};
 
-        }
-    }
+		let subForm = document.orderForm;
 
-    function doPayFn() {
-        let productSizeId = $("#sizeStockHidden").val();
-        let stock = $("#sizeHidden").val();
-        let productCodeId = $("#productCodeHidden").val();
+		if ($('input:radio[name=paymethod]:checked').length == 0) {
+			alert("결제수단을 선택하여 주십시오");
+		} else if (document.getElementById('agree_1').checked == false) {
+			alert("약관에 동의하여 주십시오");
+		} else if (productSizeId == '') {
+			alert("사이즈 선택이 안되었습니다")
+		} else {
 
-        let sendData = {stockSize: stock, productCode: productCodeId};
+			$.ajax({
+				url        : "/order/check-stock",
+				type       : "GET",
+				dataType   : "json",
+				contentType: "application/json; charset=UTF-8",
+				data       : sendData,
+				success    : function (data) {
+					if (data.cnt > 0) {
 
-        let subForm = document.orderForm;
+						subForm.submit();
 
-        if ($('input:radio[name=paymethod]:checked').length == 0) {
-            alert("결제수단을 선택하여 주십시오");
-        } else if (document.getElementById('agree_1').checked == false) {
-            alert("약관에 동의하여 주십시오");
-        } else if (productSizeId == '') {
-            alert("사이즈 선택이 안되었습니다")
-        } else {
+					} else {
+						alert("품절되었습니다")
+					}
 
-
-            $.ajax({
-                url        : "/order/check-stock",
-                type       : "GET",
-                dataType   : "json",
-                contentType: "application/json; charset=UTF-8",
-                data       : sendData,
-                success    : function (data) {
-                    if (data.cnt > 0) {
-
-                        subForm.submit();
-
-
-                    } else {
-                        alert("품절되었습니다")
-                    }
-
-                },
-                error      : function () {
-                    alert("Error. 관리자에게 문의하십시오.");
-                },
-            });
-        }
-    }
+				},
+				error      : function () {
+					alert("Error. 관리자에게 문의하십시오.");
+				},
+			});
+		}
+	}
 </script>
 <%@include file="includes/footer.jsp" %>

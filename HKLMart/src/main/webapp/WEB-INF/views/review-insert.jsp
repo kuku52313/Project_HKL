@@ -63,77 +63,71 @@
 <br> <br>
 <hr style="border: solid 1px #ffb6b6;">
 <script>
-    function insertCheckfn() {
-        //서프밋 전 확인
+	function insertCheckfn() {
+		var subForm = document.insertForm;
+		var reviewScore = $("#reviewScore").val();
 
-        console.log($("#codeProduct").val());
+		if (reviewScore == 1) {
+			alert("등록완료")
+			subForm.submit();
 
-        var subForm = document.insertForm;
-        var reviewScore = $("#reviewScore").val();
+		} else if (reviewScore == 2) {
+			alert("등록완료")
+			subForm.submit();
 
-        if (reviewScore == 1) {
-            alert("등록완료")
-            subForm.submit();
+		} else if (reviewScore == 3) {
+			alert("등록완료")
+			subForm.submit();
 
-        } else if (reviewScore == 2) {
-            alert("등록완료")
-            subForm.submit();
+		} else if (reviewScore == 4) {
+			alert("등록완료")
+			subForm.submit();
 
-        } else if (reviewScore == 3) {
-            alert("등록완료")
-            subForm.submit();
+		} else if (reviewScore == 5) {
+			alert("등록완료")
+			subForm.submit();
 
-        } else if (reviewScore == 4) {
-            alert("등록완료")
-            subForm.submit();
+		} else {
+			alert("별점을 입력하여주세요")
+		}
 
-        } else if (reviewScore == 5) {
-            alert("등록완료")
-            subForm.submit();
+	}
 
-        } else {
-            alert("별점을 입력하여주세요")
-        }
+	function checkImage(fileName, fileSize) {
+		var imageExtension = /([^\s]+(?=\.(jpg|jpeg|png|bmp|JPG|JPEG|PNG|BMP))\.\2)/
+		if (!imageExtension.test(fileName)) {
+			alert("이미지만 등록 가능합니다");
+			document.getElementById("choose-file").value = "";
+			return false;
+		}
+		if (fileSize >= 3145728) {
+			alert("이미지 크기가 너무 큽니다");
+			document.getElementById("choose-file").value = "";
+			return false;
+		}
+		return true;
+	}
 
+	$("#choose-file").change(function () {
+		var file = document.getElementById("choose-file");
+		var filePath = file.value;
+		var filePathSplit = filePath.split('\\');
+		var filePathLength = filePathSplit.length;
+		var fileName = filePathSplit[filePathLength - 1];
+		var fileSize = file.files[0].size;
 
-    }
-
-
-    function checkImage(fileName, fileSize) {
-        var imageExtension = /([^\s]+(?=\.(jpg|jpeg|png|bmp|JPG|JPEG|PNG|BMP))\.\2)/
-        if (!imageExtension.test(fileName)) {
-            alert("이미지만 등록 가능합니다");
-            document.getElementById("choose-file").value = "";
-            return false;
-        }
-        if (fileSize >= 3145728) {
-            alert("이미지 크기가 너무 큽니다");
-            document.getElementById("choose-file").value = "";
-            return false;
-        }
-        return true;
-    }
-
-    $("#choose-file").change(function () {
-        var file = document.getElementById("choose-file");
-        var filePath = file.value;
-        var filePathSplit = filePath.split('\\');
-        var filePathLength = filePathSplit.length;
-        var fileName = filePathSplit[filePathLength - 1];
-        var fileSize = file.files[0].size;
-
-        if (checkImage(fileName, fileSize)) {
-            if (this.files && this.files[0]) {
-                var reader = new FileReader;
-                reader.onload = function (data) {
-                    $("#select_img img").attr("src", data.target.result).width(300).height(300);
-                }
-                reader.readAsDataURL(this.files[0]);
-            }
-        } else {
-            document.getElementById("choose-file").value = "";
-        }
-    });
+		if (checkImage(fileName, fileSize)) {
+			if (this.files && this.files[0]) {
+				var reader = new FileReader;
+				reader.onload = function (data) {
+					$("#select_img img").attr("src", data.target.result).width(300).height(300);
+				}
+				reader.readAsDataURL(this.files[0]);
+			}
+		} else {
+			document.getElementById("choose-file").value = "";
+		}
+	});
 </script>
 </body>
 <%@include file="includes/footer.jsp" %>

@@ -98,7 +98,8 @@
                                 </a>
                             </dd>
                             <dd data-v-6dcc2f72="">
-                                <a data-v-6dcc2f72=""><span data-v-6dcc2f72="" class="itemname">${list.productName}</span>
+                                <a data-v-6dcc2f72="">
+                                    <span data-v-6dcc2f72="" class="itemname">${list.productName}</span>
                                 </a>
                                 <span data-v-6dcc2f72="">Size ${list.stockSize}</span>
                                 <span data-v-6dcc2f72="">${list.stockEA} 개</span>

@@ -71,27 +71,26 @@
 <br> <br>
 <hr style="border: solid 1px #ffb6b6;">
 <script>
-    //  document.getElementById('idCheckBtn').value = "사용불가";
+	//  document.getElementById('idCheckBtn').value = "사용불가";
 
+	function insertCheckfn() {
+		//서프밋 전 확인
 
-    function insertCheckfn() {
-        //서프밋 전 확인
+		var subForm = document.insertForm;
+		alert("등록성공")
+		subForm.submit();
 
-        var subForm = document.insertForm;
-        alert("등록성공")
-        subForm.submit();
+	}
 
-    }
+	function DeleteCheckfn() {
 
-    function DeleteCheckfn() {
+		var subForm = document.insertForm;
 
-        var subForm = document.insertForm;
+		subForm.action = "/manager/manager-ask-delete";
 
-        subForm.action = "/manager/manager-ask-delete";
+		subForm.submit();
 
-        subForm.submit();
-
-    }
+	}
 </script>
 </body>
 <%@include file="includes/footer.jsp" %>

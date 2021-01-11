@@ -151,199 +151,197 @@
 <br><br>
 <hr style="border: solid 1px #ffb6b6;">
 <script>
-    const toggleBtn = document.querySelector('.navbar_toggleBtn');
-    const search = document.querySelector('.navbar_search');
-    const menu = document.querySelector('.navbar_menu');
+	const toggleBtn = document.querySelector('.navbar_toggleBtn');
+	const search = document.querySelector('.navbar_search');
+	const menu = document.querySelector('.navbar_menu');
 
+	toggleBtn.addEventListener('click', () => {
+		search.classList.toggle('active');
+		menu.classList.toggle('active');
+	});
 
-    toggleBtn.addEventListener('click', () => {
-        search.classList.toggle('active');
-        menu.classList.toggle('active');
-    });
+	$(document).ready(function () {
+		$('a[href^="#"]').on('click', function (e) {
+			e.preventDefault();
 
-    $(document).ready(function () {
-        $('a[href^="#"]').on('click', function (e) {
-            e.preventDefault();
+			let target = this.hash;
+			let $target = $(target);
 
-            let target = this.hash;
-            let $target = $(target);
+			$('html, body').stop().animate({
+				'scrollTop': $target.offset().top
+			}, 900, 'swing', function () {
+				window.location.hash = target;
+			});
+		});
+	});
 
-            $('html, body').stop().animate({
-                'scrollTop': $target.offset().top
-            }, 900, 'swing', function () {
-                window.location.hash = target;
-            });
-        });
-    });
+	function insertCheckfn() {
 
-    function insertCheckfn() {
+		let productDataForm = document.productData;
 
-        let productDataForm = document.productData;
+		let productName = $("#nameProduct").val();
+		let productBrand = $("#brandProduct").val();
+		let codeProduct = $("#codeProduct").val();
+		let priceProduct = $("#priceProduct").val();
+		let kindProduct = $("#kindProduct").val();
+		let image = $("#choose-file").val();
+		let productContent = $("#content-file").val();
 
-        let productName = $("#nameProduct").val();
-        let productBrand = $("#brandProduct").val();
-        let codeProduct = $("#codeProduct").val();
-        let priceProduct = $("#priceProduct").val();
-        let kindProduct = $("#kindProduct").val();
-        let image = $("#choose-file").val();
-        let productContent = $("#content-file").val();
+		let checkCode = /^[A-za-z0-9]{1,6}/;
+		let checkprice = /^[0-9]+$/;
 
-        let checkCode = /^[A-za-z0-9]{1,6}/;
-        let checkprice = /^[0-9]+$/;
+		if ($("#codeCheckHidden").val() === 0) {
+			alert("제품코드를 확인하여 주십시오");
+		} else if (productName === '' || productName === null || productName === undefined || productName === 0) {
+			alert("제품명을 입력하세요");
+		} else if (productBrand === '' || productBrand === null || productBrand === undefined || productBrand === 0) {
+			alert("브랜드명을 입력하세요");
+		} else if (!checkCode.test(codeProduct)) {
+			alert("제품코드를 잘못입력하였습니다");
+		} else if (!(codeProduct.length === 6)) {
+			alert("제품코드 자릿수 형식이 다릅니다");
+		} else if (!checkprice.test(priceProduct)) {
+			alert("가격 형식에 문제가 있습니다. 숫자만 입력하여 주십시오");
+		} else if (kindProduct === 1) {
+			alert("제품종류를 잘못선택하였습니다");
+		} else {
+			alert("등록하였습니다");
+			productDataForm.submit();
+		}
+	}
 
-        if ($("#codeCheckHidden").val() === 0) {
-            alert("제품코드를 확인하여 주십시오");
-        } else if (productName === '' || productName === null || productName === undefined || productName === 0) {
-            alert("제품명을 입력하세요");
-        } else if (productBrand === '' || productBrand === null || productBrand === undefined || productBrand === 0) {
-            alert("브랜드명을 입력하세요");
-        } else if (!checkCode.test(codeProduct)) {
-            alert("제품코드를 잘못입력하였습니다");
-        } else if (!(codeProduct.length === 6)) {
-            alert("제품코드 자릿수 형식이 다릅니다");
-        } else if (!checkprice.test(priceProduct)) {
-            alert("가격 형식에 문제가 있습니다. 숫자만 입력하여 주십시오");
-        } else if (kindProduct === 1) {
-            alert("제품종류를 잘못선택하였습니다");
-        } else {
-            alert("등록하였습니다");
-            productDataForm.submit();
-        }
-    }
+	function DeleteCheckfn() {
 
-    function DeleteCheckfn() {
+		var productDataForm = document.productData;
 
-        var productDataForm = document.productData;
+		productDataForm.action = "/manager/manager-product-delete?${_csrf.parameterName}=${_csrf.token}";
 
-        productDataForm.action = "/manager/manager-product-delete?${_csrf.parameterName}=${_csrf.token}";
+		productDataForm.submit();
 
-        productDataForm.submit();
+	}
 
-    }
+	function checkImage(fileName, fileSize) {
+		let imageExtension = /([^\s]+(?=\.(jpg|jpeg|png|bmp|JPG|JPEG|PNG|BMP))\.\2)/
+		if (!imageExtension.test(fileName)) {
+			alert("이미지만 등록 가능합니다");
+			document.getElementById("choose-file").value = "";
+			return false;
+		}
+		if (fileSize >= 3145728) {
+			alert("이미지 크기가 너무 큽니다");
+			document.getElementById("choose-file").value = "";
+			return false;
+		}
+		return true;
+	}
 
-    function checkImage(fileName, fileSize) {
-        let imageExtension = /([^\s]+(?=\.(jpg|jpeg|png|bmp|JPG|JPEG|PNG|BMP))\.\2)/
-        if (!imageExtension.test(fileName)) {
-            alert("이미지만 등록 가능합니다");
-            document.getElementById("choose-file").value = "";
-            return false;
-        }
-        if (fileSize >= 3145728) {
-            alert("이미지 크기가 너무 큽니다");
-            document.getElementById("choose-file").value = "";
-            return false;
-        }
-        return true;
-    }
+	function contentCheckImage(fileName, fileSize) {
+		let imageExtension = /([^\s]+(?=\.(jpg|jpeg|png|bmp|JPG|JPEG|PNG|BMP))\.\2)/
+		if (!imageExtension.test(fileName)) {
+			alert("이미지만 등록 가능합니다");
+			document.getElementById("content-file").value = "";
+			return false;
+		}
+		if (fileSize >= 10485760) {
+			alert("이미지 크기가 너무 큽니다");
+			document.getElementById("content-file").value = "";
+			return false;
+		}
+		return true;
+	}
 
-    function contentCheckImage(fileName, fileSize) {
-        let imageExtension = /([^\s]+(?=\.(jpg|jpeg|png|bmp|JPG|JPEG|PNG|BMP))\.\2)/
-        if (!imageExtension.test(fileName)) {
-            alert("이미지만 등록 가능합니다");
-            document.getElementById("content-file").value = "";
-            return false;
-        }
-        if (fileSize >= 10485760) {
-            alert("이미지 크기가 너무 큽니다");
-            document.getElementById("content-file").value = "";
-            return false;
-        }
-        return true;
-    }
+	$("#choose-file").change(function () {
+		let file = document.getElementById("choose-file");
+		let filePath = file.value;
+		let filePathSplit = filePath.split('\\');
+		let filePathLength = filePathSplit.length;
+		let fileName = filePathSplit[filePathLength - 1];
+		let fileSize = file.files[0].size;
 
-    $("#choose-file").change(function () {
-        let file = document.getElementById("choose-file");
-        let filePath = file.value;
-        let filePathSplit = filePath.split('\\');
-        let filePathLength = filePathSplit.length;
-        let fileName = filePathSplit[filePathLength - 1];
-        let fileSize = file.files[0].size;
+		if (checkImage(fileName, fileSize)) {
+			if (this.files && this.files[0]) {
+				var reader = new FileReader;
+				reader.onload = function (data) {
+					$("#select_img img").attr("src", data.target.result).width(300).height(300);
+				}
+				reader.readAsDataURL(this.files[0]);
+			}
+		} else {
+			document.getElementById("choose-file").value = "";
+		}
+	});
 
-        if (checkImage(fileName, fileSize)) {
-            if (this.files && this.files[0]) {
-                var reader = new FileReader;
-                reader.onload = function (data) {
-                    $("#select_img img").attr("src", data.target.result).width(300).height(300);
-                }
-                reader.readAsDataURL(this.files[0]);
-            }
-        } else {
-            document.getElementById("choose-file").value = "";
-        }
-    });
+	$("#content-file").change(function () {
+		let file = document.getElementById("content-file");
+		let filePath = file.value;
+		let filePathSplit = filePath.split('\\');
+		let filePathLength = filePathSplit.length;
+		let fileName = filePathSplit[filePathLength - 1];
+		let fileSize = file.files[0].size;
 
-    $("#content-file").change(function () {
-        let file = document.getElementById("content-file");
-        let filePath = file.value;
-        let filePathSplit = filePath.split('\\');
-        let filePathLength = filePathSplit.length;
-        let fileName = filePathSplit[filePathLength - 1];
-        let fileSize = file.files[0].size;
+		if (contentCheckImage(fileName, fileSize)) {
+			if (this.files && this.files[0]) {
+				var reader = new FileReader;
+				reader.onload = function (data) {
+					$("#select_content_img img").attr("src", data.target.result).width(300).height(300);
+				}
+				reader.readAsDataURL(this.files[0]);
+			}
+		} else {
+			document.getElementById("content-file").value = "";
+		}
+	});
 
-        if (contentCheckImage(fileName, fileSize)) {
-            if (this.files && this.files[0]) {
-                var reader = new FileReader;
-                reader.onload = function (data) {
-                    $("#select_content_img img").attr("src", data.target.result).width(300).height(300);
-                }
-                reader.readAsDataURL(this.files[0]);
-            }
-        } else {
-            document.getElementById("content-file").value = "";
-        }
-    });
+	function codeCheck() {
+		let insertCode = $("#codeProduct").val();
+		if (insertCode.length === 6) {
+			$.ajax({
+				type       : 'post',
+				data       : insertCode, //서버로 보낼 data
+				url        : '/codeCheck',
+				dataType   : 'json', //서버에서 받을 데이터
+				contentType: "application/json; charset=UTF-8", //보낼 data 타입을 json으로 설정
+				beforeSend : function (xhr) { /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+					xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+				},
+				success    : function (data) {
+					if (data.cnt > 0) {
+						document.getElementById('codeCheckBtn').value = "사용불가";
+						document.getElementById('codeCheckBtn').style.background = '#6c757d';
+						$("#codeCheckHidden").val("0");
+					} else {
+						document.getElementById('codeCheckBtn').value = "사용가능";
+						document.getElementById('codeCheckBtn').style.background = '#a7e3ff';
+						$("#codeCheckHidden").val("1");
+					}
+				},
+				error      : function () {
+					alert("Error. 관리자에게 문의하십시오.");
+				}
+			});
+		}
+	}
 
-    function codeCheck() {
-        let insertCode = $("#codeProduct").val();
-        console.log(insertCode);
-        if (insertCode.length === 6) {
-            $.ajax({
-                type       : 'post',
-                data       : insertCode, //서버로 보낼 data
-                url        : '/codeCheck',
-                dataType   : 'json', //서버에서 받을 데이터
-                contentType: "application/json; charset=UTF-8", //보낼 data 타입을 json으로 설정
-                beforeSend : function (xhr) { /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
-                    xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-                },
-                success    : function (data) {
-                    if (data.cnt > 0) {
-                        document.getElementById('codeCheckBtn').value = "사용불가";
-                        document.getElementById('codeCheckBtn').style.background = '#6c757d';
-                        $("#codeCheckHidden").val("0");
-                    } else {
-                        document.getElementById('codeCheckBtn').value = "사용가능";
-                        document.getElementById('codeCheckBtn').style.background = '#a7e3ff';
-                        $("#codeCheckHidden").val("1");
-                    }
-                },
-                error      : function () {
-                    alert("Error. 관리자에게 문의하십시오.");
-                }
-            });
-        }
-    }
-
-    function searchFunc() {
-        let productSearch = document.getElementById('productSearch').value;
-        if (productSearch !== "") {
-            $.ajax({
-                url        : "/ajax/search",
-                type       : "GET",
-                dataType   : "json",
-                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                data       : {"searchStr": productSearch},
-                success    : function (data) {
-                    var list = data.searchList;
-                    $("#productSearch").autocomplete({
-                        source: list
-                    })
-                },
-                error      : function () {
-                    alert("Error. 관리자에게 문의하십시오.");
-                },
-            });
-        }
-    }
+	function searchFunc() {
+		let productSearch = document.getElementById('productSearch').value;
+		if (productSearch !== "") {
+			$.ajax({
+				url        : "/ajax/search",
+				type       : "GET",
+				dataType   : "json",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				data       : {"searchStr": productSearch},
+				success    : function (data) {
+					var list = data.searchList;
+					$("#productSearch").autocomplete({
+						source: list
+					})
+				},
+				error      : function () {
+					alert("Error. 관리자에게 문의하십시오.");
+				},
+			});
+		}
+	}
 </script>
 <%@include file="includes/footer.jsp" %>

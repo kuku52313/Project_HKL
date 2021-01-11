@@ -285,102 +285,102 @@
 </footer>
 </body>
 <script>
-    const toggleBtn = document.querySelector(".navbar_toggleBtn");
-    let search = document.querySelector(".navbar_search");
-    let menu = document.querySelector(".navbar_menu");
+	const toggleBtn = document.querySelector(".navbar_toggleBtn");
+	let search = document.querySelector(".navbar_search");
+	let menu = document.querySelector(".navbar_menu");
 
-    toggleBtn.addEventListener("click", () => {
-        search.classList.toggle("active");
-        menu.classList.toggle("active");
-    });
+	toggleBtn.addEventListener("click", () => {
+		search.classList.toggle("active");
+		menu.classList.toggle("active");
+	});
 
-    function checkPwfn() {
-        const checkPwSik = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$/;
-        let userPw = $("#userPw").val();
-        let checkpw = $("#userPw").val() === $("#userPwCk").val();
+	function checkPwfn() {
+		const checkPwSik = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$/;
+		let userPw = $("#userPw").val();
+		let checkpw = $("#userPw").val() === $("#userPwCk").val();
 
-        if (checkPwSik.test(userPw)) {
-            $("#pwCheckBtn").css("border", "");
-            $("#pwCheckBtn").css("border", "solid 5px #007bff");
-            $("#pwCheckHidden").val("1");
-        }
+		if (checkPwSik.test(userPw)) {
+			$("#pwCheckBtn").css("border", "");
+			$("#pwCheckBtn").css("border", "solid 5px #007bff");
+			$("#pwCheckHidden").val("1");
+		}
 
-        if (!checkPwSik.test(userPw)) {
-            $("#pwCheckBtn").css("border", "");
-            $("#pwCheckBtn").css("border", "solid 5px rgb(245, 99, 99)");
-            $("#pwCheckHidden").val("0");
-        }
+		if (!checkPwSik.test(userPw)) {
+			$("#pwCheckBtn").css("border", "");
+			$("#pwCheckBtn").css("border", "solid 5px rgb(245, 99, 99)");
+			$("#pwCheckHidden").val("0");
+		}
 
-        if (checkpw) {
-            $("#pwckCheckBtn").css("border", "");
-            $("#pwckCheckBtn").css("border", "solid 5px #007bff");
-            $("#pwckCheckHidden").val("1");
-        } else {
-            $("#pwckCheckBtn").css("border", "");
-            $("#pwckCheckBtn").css("border", "solid 5px rgb(245, 99, 99)");
-            $("#pwckCheckHidden").val("0");
-        }
-    }
+		if (checkpw) {
+			$("#pwckCheckBtn").css("border", "");
+			$("#pwckCheckBtn").css("border", "solid 5px #007bff");
+			$("#pwckCheckHidden").val("1");
+		} else {
+			$("#pwckCheckBtn").css("border", "");
+			$("#pwckCheckBtn").css("border", "solid 5px rgb(245, 99, 99)");
+			$("#pwckCheckHidden").val("0");
+		}
+	}
 
-    function enterKeyUp() {
-        if (event.keyCode === 13) {
-            updatePassword();
-        }
-    }
+	function enterKeyUp() {
+		if (event.keyCode === 13) {
+			updatePassword();
+		}
+	}
 
-    function updatePassword() {
-        let submitPasswordForm = document.passwordForm;
-        let pwCheck = $('#pwCheckHidden').val() == 1;
-        let pwCkCheck = $('#pwckCheckHidden').val() == 1;
-        if (pwCheck && pwCkCheck) {
-            alert("비밀번호가 변경되었습니다");
-            submitPasswordForm.submit();
-        } else {
-            alert("비밀번호 양식이 틀렸습니다");
-        }
-    }
+	function updatePassword() {
+		let submitPasswordForm = document.passwordForm;
+		let pwCheck = $('#pwCheckHidden').val() == 1;
+		let pwCkCheck = $('#pwckCheckHidden').val() == 1;
+		if (pwCheck && pwCkCheck) {
+			alert("비밀번호가 변경되었습니다");
+			submitPasswordForm.submit();
+		} else {
+			alert("비밀번호 양식이 틀렸습니다");
+		}
+	}
 
-    $(document).ready(function () {
-        $('a[href^="#"]').on("click", function (e) {
-            e.preventDefault();
+	$(document).ready(function () {
+		$('a[href^="#"]').on("click", function (e) {
+			e.preventDefault();
 
-            let target = this.hash;
-            let $target = $(target);
+			let target = this.hash;
+			let $target = $(target);
 
-            $("html, body")
-                .stop()
-                .animate(
-                    {
-                        scrollTop: $target.offset().top,
-                    },
-                    900,
-                    "swing",
-                    function () {
-                        window.location.hash = target;
-                    },
-                );
-        });
-    });
+			$("html, body")
+				.stop()
+				.animate(
+					{
+						scrollTop: $target.offset().top,
+					},
+					900,
+					"swing",
+					function () {
+						window.location.hash = target;
+					},
+				);
+		});
+	});
 
-    function searchFunc() {
-        let productSearch = document.getElementById('productSearch').value;
-        $.ajax({
-            url        : "/ajax/search",
-            type       : "GET",
-            dataType   : "json",
-            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-            data       : {"searchStr": productSearch},
-            success    : function (data) {
-                let dataList = data.searchList;
-                $("#productSearch").autocomplete({
-                    source: dataList
-                });
-            },
-            error      : function () {
-                alert("Error. 관리자에게 문의하십시오.");
-            },
-        });
-    }
+	function searchFunc() {
+		let productSearch = document.getElementById('productSearch').value;
+		$.ajax({
+			url        : "/ajax/search",
+			type       : "GET",
+			dataType   : "json",
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			data       : {"searchStr": productSearch},
+			success    : function (data) {
+				let dataList = data.searchList;
+				$("#productSearch").autocomplete({
+					source: dataList
+				});
+			},
+			error      : function () {
+				alert("Error. 관리자에게 문의하십시오.");
+			},
+		});
+	}
 </script>
 </html>
 

@@ -173,10 +173,10 @@
 </div>
 </body>
 <script>
-    function resizeWindow(win) {
-        var wid = win.document.body.offsetWidth + 400;
-        var hei = win.document.body.offsetHeight + 60;
-        win.resizeTo(wid, hei);
-    }
+	function resizeWindow(win) {
+		var wid = win.document.body.offsetWidth + 400;
+		var hei = win.document.body.offsetHeight + 60;
+		win.resizeTo(wid, hei);
+	}
 </script>
 </html>

@@ -103,7 +103,6 @@
             return 0;
         }
         let sendData = {productCode: thisCode};
-        console.log(sendData);
         $.ajax({
             url        : "/basket/check",
             type       : "GET",

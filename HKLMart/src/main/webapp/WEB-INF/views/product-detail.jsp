@@ -178,87 +178,84 @@
 <br><br>
 <hr style="border: solid 1px #ffb6b6;">
 <script>
-    function clickBasket(obj) {
-        let thisCode = document.getElementById('productCodeId').value;
-        let memberId = document.getElementById('memberId').value;
-        if (memberId === "none") {
-            alert("로그인이 필요한 서비스입니다");
-            location.href = "/member/login-page";
-            return 0;
-        }
-        let sendData = {memberId: memberId, productCode: thisCode};
-        console.log(sendData);
-        $.ajax({
-            url        : "/basket/check",
-            type       : "GET",
-            dataType   : "json",
-            contentType: "application/json; charset=UTF-8",
-            data       : sendData,
-            success    : function (data) {
-                if (data.result === 0) {
-                    alert("해당 상품을 장바구니에 담았습니다")
-                } else if (data.result === 1) {
-                    alert("이미 장바구니에 있는 상품입니다");
-                }
-            },
-            error      : function () {
-                alert("Error. 관리자에게 문의하십시오.");
-            },
-        });
-    }
+	function clickBasket(obj) {
+		let thisCode = document.getElementById('productCodeId').value;
+		let memberId = document.getElementById('memberId').value;
+		if (memberId === "none") {
+			alert("로그인이 필요한 서비스입니다");
+			location.href = "/member/login-page";
+			return 0;
+		}
+		let sendData = {memberId: memberId, productCode: thisCode};
+		$.ajax({
+			url        : "/basket/check",
+			type       : "GET",
+			dataType   : "json",
+			contentType: "application/json; charset=UTF-8",
+			data       : sendData,
+			success    : function (data) {
+				if (data.result === 0) {
+					alert("해당 상품을 장바구니에 담았습니다")
+				} else if (data.result === 1) {
+					alert("이미 장바구니에 있는 상품입니다");
+				}
+			},
+			error      : function () {
+				alert("Error. 관리자에게 문의하십시오.");
+			},
+		});
+	}
 
-    function clickLike(obj) {
-        let thisCode = $("#productCodeId").val();
-        let stateLogin = document.getElementById('stateLogin').value;
-        if (stateLogin === "0") {
-            alert("로그인이 필요한 서비스입니다");
-            location.href = "/member/login-page";
-            return 0;
-        }
-        let sendData = {productCode: thisCode};
-        console.log(sendData);
-        $.ajax({
-            url        : "/like/check",
-            type       : "GET",
-            dataType   : "json",
-            contentType: "application/json; charset=UTF-8",
-            data       : sendData,
-            success    : function (data) {
-                if (data.result === 0) {
-                    alert("해당 상품을 찜했습니다")
-                } else if (data.result === 1) {
-                    alert("이미 찜한 상품입니다");
-                }
-            },
-            error      : function () {
-                alert("Error. 관리자에게 문의하십시오.");
-            },
-        });
-    }
+	function clickLike(obj) {
+		let thisCode = $("#productCodeId").val();
+		let stateLogin = document.getElementById('stateLogin').value;
+		if (stateLogin === "0") {
+			alert("로그인이 필요한 서비스입니다");
+			location.href = "/member/login-page";
+			return 0;
+		}
+		let sendData = {productCode: thisCode};
+		$.ajax({
+			url        : "/like/check",
+			type       : "GET",
+			dataType   : "json",
+			contentType: "application/json; charset=UTF-8",
+			data       : sendData,
+			success    : function (data) {
+				if (data.result === 0) {
+					alert("해당 상품을 찜했습니다")
+				} else if (data.result === 1) {
+					alert("이미 찜한 상품입니다");
+				}
+			},
+			error      : function () {
+				alert("Error. 관리자에게 문의하십시오.");
+			},
+		});
+	}
 
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
+	$(document).ready(function () {
+		$('[data-toggle="tooltip"]').tooltip();
+	});
 
-    function goOrderFn() {
-        var productCode = $("#productCodeId").val();
-        var productStock = $("#size-select-box").val();
-        var productSize = $("#size-select-box option:selected").attr("name");
+	function goOrderFn() {
+		var productCode = $("#productCodeId").val();
+		var productStock = $("#size-select-box").val();
+		var productSize = $("#size-select-box option:selected").attr("name");
 
+		if (productSize == 'noSize') {
+			alert("사이즈를 선택하여주세요")
+			return;
+		}
+		if (productStock == 0) {
+			alert("재고가 부족합니다")
 
-        if (productSize == 'noSize') {
-            alert("사이즈를 선택하여주세요")
-            return;
-        }
-        if (productStock == 0) {
-            alert("재고가 부족합니다")
+		} else {
+			location.href = '/order/order-page?productCode=' + productCode + '&Size=' + productSize;
+		}
 
-        } else {
-            location.href = '/order/order-page?productCode=' + productCode + '&Size=' + productSize;
-        }
+	}
 
-    }
-
-    onchange = "fn_setAsscatnNm(this);"
+	onchange = "fn_setAsscatnNm(this);"
 </script>
 <%@include file="includes/footer.jsp" %>

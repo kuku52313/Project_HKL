@@ -108,132 +108,125 @@
     <br> <br>
     <hr style="border: solid 1px #ffb6b6;">
     <script>
-        function insertCheckfn() {
-            //서브밋 전 확인
-            var subForm = document.insertForm;
+		function insertCheckfn() {
+			//서브밋 전 확인
+			var subForm = document.insertForm;
 
-            var codeProduct = $("#codeProduct").val();
-            var orderNum = $("#orderNum").val();
-            var askType = $("#askType").val();
+			var codeProduct = $("#codeProduct").val();
+			var orderNum = $("#orderNum").val();
+			var askType = $("#askType").val();
 
-            var checkCode = /^[A-za-z0-9]{1,6}/;
+			var checkCode = /^[A-za-z0-9]{1,6}/;
 
-            if (askType == 0) {
+			if (askType == 0) {
 
-                alert("문의 종류를 선택해여 주세요")
+				alert("문의 종류를 선택해여 주세요")
 
-            } else if (askType == 1) {
+			} else if (askType == 1) {
 
-                if ((!checkCode.test(codeProduct))) {
-                    alert("제품코드를 잘못입력하였습니다")
+				if ((!checkCode.test(codeProduct))) {
+					alert("제품코드를 잘못입력하였습니다")
 
-                } else if ((!codeProduct.length === 6)) {
-                    alert("제품코드 자릿수 형식이 다릅니다")
+				} else if ((!codeProduct.length === 6)) {
+					alert("제품코드 자릿수 형식이 다릅니다")
 
-                } else {
-                    alert("등록성공")
-                    subForm.submit();
-                }
+				} else {
+					alert("등록성공")
+					subForm.submit();
+				}
 
+			} else if (askType == 2) {
 
-            } else if (askType == 2) {
+				if ((!checkCode.test(codeProduct))) {
+					alert("제품코드를 잘못입력하였습니다")
 
-                if ((!checkCode.test(codeProduct))) {
-                    alert("제품코드를 잘못입력하였습니다")
+				} else if ((!codeProduct.length === 6)) {
+					alert("제품코드 자릿수 형식이 다릅니다")
 
-                } else if ((!codeProduct.length === 6)) {
-                    alert("제품코드 자릿수 형식이 다릅니다")
+				} else {
+					alert("등록성공")
+					subForm.submit();
+				}
 
-                } else {
-                    alert("등록성공")
-                    subForm.submit();
-                }
+			} else if (askType == 3) {
 
+				if ((!checkCode.test(codeProduct))) {
+					alert("제품코드를 잘못입력하였습니다")
 
-            } else if (askType == 3) {
+				} else if ((!codeProduct.length === 6)) {
+					alert("제품코드 자릿수 형식이 다릅니다")
 
+				} else {
+					alert("등록성공")
+					subForm.submit();
+				}
 
-                if ((!checkCode.test(codeProduct))) {
-                    alert("제품코드를 잘못입력하였습니다")
+			} else if (askType == 4) {
 
-                } else if ((!codeProduct.length === 6)) {
-                    alert("제품코드 자릿수 형식이 다릅니다")
+				if ((!checkCode.test(codeProduct))) {
+					alert("제품코드를 잘못입력하였습니다")
 
-                } else {
-                    alert("등록성공")
-                    subForm.submit();
-                }
+				} else if ((!codeProduct.length === 6)) {
+					alert("제품코드 자릿수 형식이 다릅니다")
 
+				} else {
+					alert("등록성공")
+					subForm.submit();
+				}
 
-            } else if (askType == 4) {
+			} else if (askType == 5) {
 
+				if ((!checkCode.test(codeProduct))) {
+					alert("제품코드를 잘못입력하였습니다")
 
-                if ((!checkCode.test(codeProduct))) {
-                    alert("제품코드를 잘못입력하였습니다")
+				} else if ((!codeProduct.length == 6)) {
+					alert("제품코드 자릿수 형식이 다릅니다")
 
-                } else if ((!codeProduct.length === 6)) {
-                    alert("제품코드 자릿수 형식이 다릅니다")
+				} else {
+					alert("등록성공")
+					subForm.submit();
+				}
 
-                } else {
-                    alert("등록성공")
-                    subForm.submit();
-                }
+			} else if (askType == 6) {
 
+			} else {
+				alert("Error")
+			}
+		}
 
-            } else if (askType == 5) {
+		function askTypeFn() {
+			var askType = $("#askType").val();
+			var orderNum = $("#orderNum").val();
 
-                if ((!checkCode.test(codeProduct))) {
-                    alert("제품코드를 잘못입력하였습니다")
+			if (askType == 1) {
+				document.getElementById('codeProduct').placeholder = "필수 입력 / 예시 코드 ex) AA0010";
+				document.getElementById('orderNum').placeholder = "필수 입력";
 
-                } else if ((!codeProduct.length == 6)) {
-                    alert("제품코드 자릿수 형식이 다릅니다")
+			} else if (askType == 2) {
+				document.getElementById('codeProduct').placeholder = "필수 입력 / 예시 코드 ex) AA0010";
+				document.getElementById('orderNum').placeholder = "필수 입력";
 
-                } else {
-                    alert("등록성공")
-                    subForm.submit();
-                }
+			} else if (askType == 3) {
+				document.getElementById('codeProduct').placeholder = "필수 입력 / 예시 코드 ex) AA0010";
+				document.getElementById('orderNum').placeholder = " ";
+			} else if (askType == 4) {
+				document.getElementById('codeProduct').placeholder = "필수 입력 / 예시 코드 ex) AA0010";
+				document.getElementById('orderNum').placeholder = "문의하는 주문번호 입력 /생략가능";
 
+			} else if (askType == 5) {
+				document.getElementById('codeProduct').placeholder = "필수 입력 / 예시 코드 ex) AA0010";
+				document.getElementById('orderNum').placeholder = "필수 입력";
 
-            } else if (askType == 6) {
+			} else if (askType == 6) {
+				document.getElementById('codeProduct').placeholder = " ";
+				document.getElementById('orderNum').placeholder = " ";
 
-            } else {
-                alert("Error")
-            }
-        }
-
-        function askTypeFn() {
-            var askType = $("#askType").val();
-            var orderNum = $("#orderNum").val();
-
-            if (askType == 1) {
-                document.getElementById('codeProduct').placeholder = "필수 입력 / 예시 코드 ex) AA0010";
-                document.getElementById('orderNum').placeholder = "필수 입력";
-
-            } else if (askType == 2) {
-                document.getElementById('codeProduct').placeholder = "필수 입력 / 예시 코드 ex) AA0010";
-                document.getElementById('orderNum').placeholder = "필수 입력";
-
-            } else if (askType == 3) {
-                document.getElementById('codeProduct').placeholder = "필수 입력 / 예시 코드 ex) AA0010";
-                document.getElementById('orderNum').placeholder = " ";
-            } else if (askType == 4) {
-                document.getElementById('codeProduct').placeholder = "필수 입력 / 예시 코드 ex) AA0010";
-                document.getElementById('orderNum').placeholder = "문의하는 주문번호 입력 /생략가능";
-
-            } else if (askType == 5) {
-                document.getElementById('codeProduct').placeholder = "필수 입력 / 예시 코드 ex) AA0010";
-                document.getElementById('orderNum').placeholder = "필수 입력";
-
-            } else if (askType == 6) {
-                document.getElementById('codeProduct').placeholder = " ";
-                document.getElementById('orderNum').placeholder = " ";
-
-            } else if (askType == 0) {
-                document.getElementById('codeProduct').placeholder = "문의종류를 입력하여주세요";
-                document.getElementById('orderNum').placeholder = "문의종류를 입력하여주세요";
-            } else {
-                alert("Error")
-            }
-        }
+			} else if (askType == 0) {
+				document.getElementById('codeProduct').placeholder = "문의종류를 입력하여주세요";
+				document.getElementById('orderNum').placeholder = "문의종류를 입력하여주세요";
+			} else {
+				alert("Error")
+			}
+		}
     </script>
 <%@include file="includes/footer.jsp" %>

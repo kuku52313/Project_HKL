@@ -112,44 +112,43 @@
 </form>
 <hr style="border: solid 1px #ffb6b6;">
 <script>
-    function clickBasket(obj) {
-        let thisCode = $(obj).attr('class');
-        let stateLogin = document.getElementById('stateLogin').value;
-        if (stateLogin === "0") {
-            alert("로그인이 필요한 서비스입니다");
-            location.href = "/member/login-page";
-            return 0;
-        }
-        let sendData = {productCode: thisCode};
-        console.log(sendData);
-        $.ajax({
-            url        : "/basket/check",
-            type       : "GET",
-            dataType   : "json",
-            contentType: "application/json; charset=UTF-8",
-            data       : sendData,
-            success    : function (data) {
-                if (data.result === 0) {
-                    alert("해당 상품을 장바구니에 담았습니다")
-                } else if (data.result === 1) {
-                    alert("이미 장바구니에 있는 상품입니다");
-                }
-            },
-            error      : function () {
-                alert("Error. 관리자에게 문의하십시오.");
-            },
-        });
-    }
+	function clickBasket(obj) {
+		let thisCode = $(obj).attr('class');
+		let stateLogin = document.getElementById('stateLogin').value;
+		if (stateLogin === "0") {
+			alert("로그인이 필요한 서비스입니다");
+			location.href = "/member/login-page";
+			return 0;
+		}
+		let sendData = {productCode: thisCode};
+		$.ajax({
+			url        : "/basket/check",
+			type       : "GET",
+			dataType   : "json",
+			contentType: "application/json; charset=UTF-8",
+			data       : sendData,
+			success    : function (data) {
+				if (data.result === 0) {
+					alert("해당 상품을 장바구니에 담았습니다")
+				} else if (data.result === 1) {
+					alert("이미 장바구니에 있는 상품입니다");
+				}
+			},
+			error      : function () {
+				alert("Error. 관리자에게 문의하십시오.");
+			},
+		});
+	}
 
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
+	$(document).ready(function () {
+		$('[data-toggle="tooltip"]').tooltip();
+	});
 
-    function clickDelete(obj) {
-        let thisCode = $(obj).attr('class');
-        location.href = "/like/delete?productCode=" + thisCode;
-        alert("찜목록에서 삭제하였습니다")
-        location.href = "/like/get?pageNum=1&amount=12"
-    }
+	function clickDelete(obj) {
+		let thisCode = $(obj).attr('class');
+		location.href = "/like/delete?productCode=" + thisCode;
+		alert("찜목록에서 삭제하였습니다")
+		location.href = "/like/get?pageNum=1&amount=12"
+	}
 </script>
 <%@include file="includes/footer.jsp" %>
