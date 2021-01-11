@@ -146,4 +146,12 @@ public class MemberController {
         return "redirect:/member/user-review-list?pageNum=1&amount=10";
     }
 
+    @GetMapping("/user-ask-view")
+    public String goManagerAskAnawer(@RequestParam("boardAskNumber") String boardAskNumber, Model model) {
+
+
+        model.addAttribute("answer", memberService.getAskAnswer(boardAskNumber));
+
+        return "user-ask-view";
+    }
 }

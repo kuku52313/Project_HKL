@@ -45,7 +45,7 @@
             <br/><br/>
             <div id="orderListPage">
                 <span class="font-set" style="font-size: 25px">주문 전체 내역 페이지</span>
-                <a href="#" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
+                <a href="/manager/manager-order-list" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
                 <hr/>
             </div>
 

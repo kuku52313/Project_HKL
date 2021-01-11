@@ -43,7 +43,7 @@
             <br/><br/>
             <div id="order-history">
                 <span class="font-set" style="font-size: 25px">주문내역</span>
-                <a href="#" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
+                <a href="/member/user-order-list?pageNum=1&amount=10" class="font-set" style="font-size: 15px; color: gray; margin-left: 50px">더보기</a>
                 <hr/>
             </div>
 

@@ -79,23 +79,15 @@
         <label>답변</label>
     </div>
     <div>
-        <textarea id="AnswerContent" name="boardAskAnswer" cols="90" rows="10" style="border-color:#ffb6b6 ;">${answer.boardAskAnswer}</textarea>
-
+        <textarea id="AnswerContent" name="boardAskAnswer" cols="90" rows="10" style="border-color:#ffb6b6 ;" readonly="readonly">${answer.boardAskAnswer}</textarea>
     </div>
     <hr style="border: solid 1px #ffb6b6;">
-    <select class="formText" id="AnswerType" name="boardAskState">
-        <option value="답변 완료" name="boardAskState">- 답변 완료 -</option>
-    </select>
+    <input type="text" class="formText" id="AnswerType" name="boardAskState" value="${answer.boardAskState}" readonly="readonly" style="background-color: #e1e4ee;">
     <hr style="border: solid 1px #ffb6b6;">
-    <input type="button" class="insertBtn" onclick="insertCheckfn()" value="수정"/>
-    <input type="button" class="insertBtn" onclick="DeleteCheckfn()" value="삭제"/>
-    <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-ask-board';" value="홈으로"/>
+
+    <input type="button" class="insertBtn" onclick="location.href = '/member/user-ask-list';" value="홈으로"/>
 </form>
 
-<form id="pageForm" action="manager/manager-ask-board" method="get">
-    <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}"/>
-    <input type="hidden" name="amount" value="${pageMaker.cri.amount}"/>
-</form>
 <br>
 <br>
 <hr style="border: solid 1px #ffb6b6;">

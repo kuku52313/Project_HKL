@@ -27,11 +27,12 @@
         <s:intercept-url pattern="/basket/*" access="hasRole('ROLE_MEMBER')"/>
         <s:intercept-url pattern="/like/*" access="hasRole('ROLE_MEMBER')"/>
         <s:intercept-url pattern="/order/*" access="hasRole('ROLE_MEMBER')"/>
+        <s:intercept-url pattern="/board/*" access="hasRole('ROLE_MEMBER')"/>
 
         <!-- 관리자 권한 -->
         <s:intercept-url pattern="/manager/*" access="hasRole('ROLE_ADMIN')"/>
         <s:intercept-url pattern="/product/*" access="hasRole('ROLE_ADMIN')"/>
-        <s:intercept-url pattern="/board/*" access="hasRole('ROLE_ADMIN')"/>
+
 
         <!-- 최고 관리자 권한 -->
         <s:intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')"/>

@@ -69,4 +69,8 @@ public class ManagementService {
     public void modifyOrder(OrderPayVO orderPayVO) {
         managementDAO.modifyOrder(orderPayVO);
     }
+
+    public void updateAskAnswer(BoardAskVO boardAskVO) {
+        managementDAO.updateAskAnswer(boardAskVO);
+    }
 }
