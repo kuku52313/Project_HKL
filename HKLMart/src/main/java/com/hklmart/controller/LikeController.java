@@ -1,5 +1,4 @@
 package com.hklmart.controller;
-
 import com.hklmart.domain.PageCriteriaVO;
 import com.hklmart.domain.PageDTO;
 import com.hklmart.service.LikeService;
@@ -15,6 +14,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/like")
 public class LikeController {
+
     private final LikeService like;
     private final PageService pageService;
 
@@ -34,9 +34,10 @@ public class LikeController {
         map.put("result", count);
         return map;
     }
+
     @GetMapping("/delete")
     public void deleteLike(Principal principal, @RequestParam("productCode") String productCode) {
-        like.deleteLike(principal.getName(),productCode);
+        like.deleteLike(principal.getName(), productCode);
     }
 
     @PostMapping("/put")
@@ -52,12 +53,10 @@ public class LikeController {
 
     @GetMapping("/get")
     public String getUserLike(PageCriteriaVO cri, Principal principal, Model model) {
-
         model.addAttribute("likeList", like.getUserLike(cri, principal.getName()));
-
         int total = pageService.getLikeListTotal(cri, principal.getName());
-
         model.addAttribute("pageMaker", new PageDTO(cri, total));
         return "like-page";
     }
+
 }

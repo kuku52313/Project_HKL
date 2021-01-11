@@ -1,9 +1,9 @@
 package com.hklmart.domain;
-
 import lombok.Data;
 
 @Data
 public class PageDTO {
+
     private int startPage;
     private int endPage;
     private boolean prev, next;

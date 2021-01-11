@@ -1,95 +1,85 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hklmart.persistence.PageingDAO">
-    <select id="getAskBoardListTotalCount" resultType="int">
-        <![CDATA[
-        SELECT COUNT(*)
-        FROM BOARD_ASK
-        WHERE BOARD_ASK_NUMBER > 0
-        ]]>
-    </select>
-
-    <select id="getMemberListTotalCount" resultType="int">
-        <![CDATA[
-        SELECT COUNT(*)
-        FROM MEMBER
-        ]]>
-    </select>
-
-    <select id="getReviewListTotalCount" resultType="int">
-        <![CDATA[
-        SELECT COUNT(*)
-        FROM BOARD_REVIEW
-        ]]>
-    </select>
-
-    <select id="getProductListTotalCount" resultType="int">
-        <![CDATA[
-        SELECT COUNT(*)
-        FROM PRODUCT
-        ]]>
-    </select>
-
-    <select id="getUserProductListTotalCount" resultType="int">
-        <![CDATA[
-        SELECT COUNT(*)
-        FROM PRODUCT
-        WHERE PRODUCT_TYPE = #{Type}
-        ]]>
-    </select>
-
-    <select id="getMainCategoryUserProductListTotalCount" resultType="int">
-        <![CDATA[
-        SELECT COUNT(*)
-        FROM PRODUCT
-        WHERE PRODUCT_TYPE between #{Type} and (${Type}+19)
-        ]]>
-    </select>
-
-    <select id="getReviewProductTotalCount" resultType="int">
-        <![CDATA[
-        SELECT COUNT(*)
-        FROM BOARD_REVIEW
-        WHERE BOARD_REVIEW_PRODUCT_CODE = #{productCode}
-        ]]>
-    </select>
-
-    <select id="getUserAskListTotalCount" resultType="int">
-        <![CDATA[
-        SELECT COUNT(*)
-        FROM BOARD_ASK
-        WHERE BOARD_ASK_MEMBER_ID = #{memberId}
-        ]]>
-    </select>
-
-    <select id="getUserReviewListTotalCount" resultType="int">
-        <![CDATA[
-        SELECT COUNT(*)
-        FROM BOARD_REVIEW
-        WHERE BOARD_REVIEW_MEMBER_ID = #{memberId}
-        ]]>
-    </select>
-
-    <select id="getOrderListTotal" resultType="int">
-        <![CDATA[
-        SELECT COUNT(*)
-        FROM PRODUCT_ORDER
-        ]]>
-    </select>
-
-    <select id="getUserOrderListTotal" resultType="int">
-        <![CDATA[
-        SELECT COUNT(*)
-        FROM PRODUCT_ORDER po,product_order_list ol
-        WHERE po.ORDER_MEMBER_ID = #{memberId} and po.order_number = ol.order_list_order_number
-        ]]>
-    </select>
-
-    <select id="getLikeListTotal" resultType="int">
-        <![CDATA[
-        SELECT count(*) from product_like where like_member_id = #{param2}
-        ]]>
-    </select>
-
+	<select id="getAskBoardListTotalCount" resultType="int">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM BOARD_ASK
+		WHERE BOARD_ASK_NUMBER > 0
+		]]>
+	</select>
+	<select id="getMemberListTotalCount" resultType="int">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM MEMBER
+		]]>
+	</select>
+	<select id="getReviewListTotalCount" resultType="int">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM BOARD_REVIEW
+		]]>
+	</select>
+	<select id="getProductListTotalCount" resultType="int">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM PRODUCT
+		]]>
+	</select>
+	<select id="getUserProductListTotalCount" resultType="int">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM PRODUCT
+		WHERE PRODUCT_TYPE = #{Type}
+		]]>
+	</select>
+	<select id="getMainCategoryUserProductListTotalCount" resultType="int">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM PRODUCT
+		WHERE PRODUCT_TYPE BETWEEN #{Type} AND (${Type} + 19)
+		]]>
+	</select>
+	<select id="getReviewProductTotalCount" resultType="int">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM BOARD_REVIEW
+		WHERE BOARD_REVIEW_PRODUCT_CODE = #{productCode}
+		]]>
+	</select>
+	<select id="getUserAskListTotalCount" resultType="int">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM BOARD_ASK
+		WHERE BOARD_ASK_MEMBER_ID = #{memberId}
+		]]>
+	</select>
+	<select id="getUserReviewListTotalCount" resultType="int">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM BOARD_REVIEW
+		WHERE BOARD_REVIEW_MEMBER_ID = #{memberId}
+		]]>
+	</select>
+	<select id="getOrderListTotal" resultType="int">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM PRODUCT_ORDER
+		]]>
+	</select>
+	<select id="getUserOrderListTotal" resultType="int">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM PRODUCT_ORDER PO,
+		     PRODUCT_ORDER_LIST OL
+		WHERE PO.ORDER_MEMBER_ID = #{memberId}
+		  AND PO.ORDER_NUMBER = OL.ORDER_LIST_ORDER_NUMBER
+		]]>
+	</select>
+	<select id="getLikeListTotal" resultType="int">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM PRODUCT_LIKE
+		WHERE LIKE_MEMBER_ID = #{param2}
+		]]>
+	</select>
 </mapper>

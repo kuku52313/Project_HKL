@@ -1,5 +1,4 @@
 package com.hklmart.test;
-
 import com.hklmart.controller.BasketController;
 import lombok.extern.log4j.Log4j;
 import org.junit.Before;
@@ -23,7 +22,6 @@ public class ControllerTest {
 
     @Autowired
     private BasketController controller;
-
     MockMvc mockMvc;
 
     @Before
@@ -39,4 +37,5 @@ public class ControllerTest {
                 .param("productCode", "A00001"))
                 .andExpect(status().isOk());
     }
+
 }

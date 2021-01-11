@@ -1,5 +1,4 @@
 package com.hklmart.service;
-
 import com.hklmart.domain.BasketVO;
 import com.hklmart.domain.ProductVO;
 import com.hklmart.domain.StockVO;
@@ -48,8 +47,7 @@ public class BasketService {
     }
 
     public List<BasketVO> orderBasket(String basketMemberId) {
-        List<BasketVO> orderBasketList = basket.orderBasket(basketMemberId);
-        return orderBasketList;
+        return basket.orderBasket(basketMemberId);
     }
 
     public Map<String, StockVO> getStockList(String basketMemberId) {
@@ -64,4 +62,5 @@ public class BasketService {
     public void remove(String memberId, String productCode) {
         basket.remove(memberId, productCode);
     }
+
 }

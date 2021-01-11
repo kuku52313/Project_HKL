@@ -70,7 +70,7 @@
         <div class="col-7 w3-main">
             <c:set var="TypeValue" value="${param.Type}" />
             <div class="w3-row-padding w3-center product-card-wrapper">
-                <c:forEach items="${likeList}" var="list" varStatus="status">
+                <c:forEach items="${searchList}" var="list" varStatus="status">
                     <div class="w3-quarter product-card">
                         <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}">
                     <span>
@@ -92,24 +92,6 @@
         </div>
     </div>
 </div>
-<ul class="pagination justify-content-center" style="margin:20px 0">
-    <c:if test="${pageMaker.prev}">
-        <li class="page-item">
-            <a class="page-link" style="color: black;" href="/like/get?pageNum=${pageMaker.startPage - 1}&amount=12">Previous</a>
-        </li>
-    </c:if> <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-    <li class="page-item ${pageMaker.cri.pageNum == num ? "active":""}">
-        <a class="page-link " style="color: black;" href="/like/get?pageNum=${num}&amount=12">${num}</a>
-    </li>
-</c:forEach> <c:if test="${pageMaker.next}">
-    <li class="page-item">
-        <a class="page-link" style="color: black;" href="/like/get?pageNum=${pageMaker.endPage + 1}&amount=12">Next</a>
-    </li>
-</c:if>
-</ul>
-<form id="pageForm" action="/product-list" method="get">
-    <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}" /> <input type="hidden" name="amount" value="${pageMaker.cri.amount}" />
-</form>
 <hr style="border: solid 1px #ffb6b6;">
 <script>
     function clickBasket(obj) {

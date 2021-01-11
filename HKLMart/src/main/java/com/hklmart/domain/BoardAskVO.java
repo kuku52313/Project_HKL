@@ -1,9 +1,9 @@
 package com.hklmart.domain;
-
 import lombok.Data;
 
 @Data
 public class BoardAskVO {
+
     private String boardAskNumber;
     private String boardAskMemberId;
     private String boardAskDate;
@@ -14,4 +14,5 @@ public class BoardAskVO {
     private String boardAskOrderNumber;
     private String boardAskState;
     private String boardAskAnswer;
+
 }

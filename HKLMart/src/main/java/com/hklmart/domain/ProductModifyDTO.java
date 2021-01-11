@@ -1,9 +1,9 @@
 package com.hklmart.domain;
-
 import lombok.Data;
 
 @Data
 public class ProductModifyDTO {
+
     private String productName;
     private String productCode;
     private String productBrand;
@@ -27,4 +27,5 @@ public class ProductModifyDTO {
     private int stock285;
     private int stock290;
     private int stock295;
+
 }

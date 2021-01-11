@@ -4,80 +4,52 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true" %>
-
 <html>
 <head>
     <title>HKLMart :: Login</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="_csrf" content="${_csrf.token}" />
     <script src="/resources/jquery/3.5.1/jquery.min.js"></script>
     <script src="/resources/bootstrap/4.5.3/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/resources/css/login.css"/>
+    <link rel="stylesheet" href="/resources/css/login.css" />
     <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
 </head>
-
 <body>
-<input type="hidden" id="idCheckHidden" value="0"/>
-<input type="hidden" id="pwCheckHidden" value="0"/>
-<input type="hidden" id="pwckCheckHidden" value="0"/>
-<input type="hidden" id="emailCheckHidden" value="0"/>
-<input type="hidden" id="nameCheckHidden" value="0"/>
-<input type="hidden" id="telCheckHidden" value="0"/>
-
+<input type="hidden" id="idCheckHidden" value="0" /> <input type="hidden" id="pwCheckHidden" value="0" /> <input type="hidden" id="pwckCheckHidden" value="0" /> <input type="hidden" id="emailCheckHidden" value="0" />
+<input type="hidden" id="nameCheckHidden" value="0" /> <input type="hidden" id="telCheckHidden" value="0" />
 <div class="wrap">
     <div class="form-wrap">
         <!-- toggle -->
         <div class="button-wrap">
             <div id="btn" style="width: 50%"></div>
             <button type="button" class="togglebtn" onclick="login()">로그인</button>
-
             <button type="button" class="togglebtn" onclick="register()">회원가입</button>
         </div>
-
         <div class="logo" style="text-align: center">
             <a href="/">
-                <img src="/resources/img/login/twitter_header_photo_1.png"/>
+                <img src="/resources/img/login/twitter_header_photo_1.png" />
             </a>
         </div>
-
         <!-- Login -->
         <form class="input-group" id="login" name="memberLogin" action="/login" method="POST">
-            <input type="text" class="input-field_log" id="loginId" name="memberId" placeholder="User ID" required/>
-            <input type="password" class="input-field_log" id="loginPw" name="memberPw" placeholder="Enter Password" onKeyUp="pressEnter()" required/>
-            <input type="button" id="loginBtn" class="submitBtn" value="로그인"/>
+            <input type="text" class="input-field_log" id="loginId" name="memberId" placeholder="User ID" required />
+            <input type="password" class="input-field_log" id="loginPw" name="memberPw" placeholder="Enter Password" onKeyUp="pressEnter()" required /> <input type="button" id="loginBtn" class="submitBtn" value="로그인" />
         </form>
-
         <!-- Sign up -->
         <form class="input-group" id="register" name="memberForm" action="/member/signup" method="POST">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <input type="text" class="input-check" id="userId" name="memberId" placeholder="ID 6글자 이상 ex) hkl123" onchange="idCheck()" required/>
-            <input type="button" id="idCheckBtn" class="idCheckBtn" value="중복검사"/>
-            <input type="password" class="input-field" onkeyup="checkPwfn()" id="userPw" name="memberPw" placeholder="PW : 알파벳 대,소문자,특수문자,숫자 포함" required/>
-            &nbsp;&nbsp;
-            <input type="button" id="pwCheckBtn" class="pwCheckBtn"/>
-            <input type="password" class="input-field" onkeyup="checkPwfn()" id="userPwCk" placeholder="PW 확인" required/>
-            &nbsp;&nbsp;
-            <input type="button" id="pwckCheckBtn" class="pwckCheckBtn"/>
-            <input type="text" class="input-field" id="userEmail" onkeyup="checkEmailfn()" name="memberEmail" placeholder="Email ex) qwer1@hkl.com" required/>
-
-            &nbsp;&nbsp;
-            <input type="button" id="emailCheckBtn" class="emailCheckBtn"/>
-            <input type="text" class="input-field" id="userName" name="memberName" onkeyup="checkNamefn()" placeholder="name ex) 홍길동" required/>
-
-            &nbsp;&nbsp;
-            <input type="button" id="nameCheckBtn" class="nameCheckBtn"/>
-            <input type="text" class="input-field" id="userTel" name="memberTel" onkeyup="telCheckfn(),enterKeyUp()" placeholder="Tel ex) 01012345678" required/>
-
-            &nbsp;&nbsp;
-            <input type="button" id="telCheckBtn" class="telCheckBtn"/>
-
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> <input type="text" class="input-check" id="userId" name="memberId" placeholder="ID 6글자 이상 ex) hkl123" onchange="idCheck()" required />
+            <input type="button" id="idCheckBtn" class="idCheckBtn" value="중복검사" /> <input type="password" class="input-field" onkeyup="checkPwfn()" id="userPw" name="memberPw" placeholder="PW : 알파벳 대,소문자,특수문자,숫자 포함" required /> &nbsp;&nbsp;
+            <input type="button" id="pwCheckBtn" class="pwCheckBtn" /> <input type="password" class="input-field" onkeyup="checkPwfn()" id="userPwCk" placeholder="PW 확인" required /> &nbsp;&nbsp;
+            <input type="button" id="pwckCheckBtn" class="pwckCheckBtn" /> <input type="text" class="input-field" id="userEmail" onkeyup="checkEmailfn()" name="memberEmail" placeholder="Email ex) qwer1@hkl.com" required /> &nbsp;&nbsp;
+            <input type="button" id="emailCheckBtn" class="emailCheckBtn" /> <input type="text" class="input-field" id="userName" name="memberName" onkeyup="checkNamefn()" placeholder="name ex) 홍길동" required /> &nbsp;&nbsp;
+            <input type="button" id="nameCheckBtn" class="nameCheckBtn" /> <input type="text" class="input-field" id="userTel" name="memberTel" onkeyup="telCheckfn(),enterKeyUp()" placeholder="Tel ex) 01012345678" required /> &nbsp;&nbsp;
+            <input type="button" id="telCheckBtn" class="telCheckBtn" />
             <button type="button" class="submitBtn" onclick="memberCheckfn()">회원가입</button>
         </form>
     </div>
 </div>
 </body>
-
 <script>
     var x = document.getElementById("login");
     var y = document.getElementById("register");
@@ -106,15 +78,15 @@
             //유효성검사 테스트후
 
             $.ajax({
-                type: 'post',
-                data: userId, //서버로 보낼 data
-                url: '/idCheck',
-                dataType: 'json', //서버에서 받을 데이터
+                type       : 'post',
+                data       : userId, //서버로 보낼 data
+                url        : '/idCheck',
+                dataType   : 'json', //서버에서 받을 데이터
                 contentType: "application/json; charset=UTF-8", //보낼 data 타입을 json으로 설정
-                beforeSend: function (xhr) { /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                beforeSend : function (xhr) { /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
                     xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
                 },
-                success: function (data) {
+                success    : function (data) {
                     if (data.cnt > 0) {
 
                         document.getElementById('idCheckBtn').value = "사용불가";
@@ -129,7 +101,7 @@
 
                     }
                 },
-                error: function () {
+                error      : function () {
                     alert("Error. 관리자에게 문의하십시오.");
                 }
             });
@@ -244,14 +216,14 @@
             memberPw: $("#loginPw").val(),
         };
         $.ajax({
-            url: "/login",
-            type: "POST",
-            dataType: "json",
-            data: sendData,
+            url       : "/login",
+            type      : "POST",
+            dataType  : "json",
+            data      : sendData,
             beforeSend: function (xhr) {
                 xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
             },
-            success: function (data) {
+            success   : function (data) {
                 if (data.loginStatus === true) {
                     alert("로그인 하였습니다");
                     window.location.href = "/";
@@ -259,7 +231,7 @@
                     alert(data.loginFailMsg);
                 }
             },
-            error: function () {
+            error     : function () {
                 alert("Error. 관리자에게 문의하십시오.");
             },
         });
@@ -273,14 +245,14 @@
             };
 
             $.ajax({
-                url: "/login",
-                type: "POST",
-                dataType: "json",
-                data: sendData,
+                url       : "/login",
+                type      : "POST",
+                dataType  : "json",
+                data      : sendData,
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
                 },
-                success: function (data) {
+                success   : function (data) {
                     if (data.loginStatus === true) {
                         alert("로그인 하였습니다");
                         window.location.href = "/";
@@ -288,7 +260,7 @@
                         alert(data.loginFailMsg);
                     }
                 },
-                error: function () {
+                error     : function () {
                     alert("Error. 관리자에게 문의하십시오.");
                 },
             });

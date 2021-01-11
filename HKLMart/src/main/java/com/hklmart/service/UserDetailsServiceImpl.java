@@ -1,5 +1,4 @@
 package com.hklmart.service;
-
 import com.hklmart.domain.UserDetailsVO;
 import com.hklmart.persistence.MemberDAO;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +17,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String memberId) {
         UserDetailsVO userDetails = member.getMemberInfo(memberId);
-        if (userDetails == null) return null;
+        if (userDetails == null) { return null; }
         else {
             userDetails.setUsername(userDetails.getMemberId());
             userDetails.setPassword(userDetails.getMemberPw());
@@ -26,4 +25,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         return userDetails;
     }
+
 }

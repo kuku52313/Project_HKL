@@ -1,5 +1,4 @@
 package com.hklmart.controller;
-
 import com.hklmart.domain.BoardAskVO;
 import com.hklmart.domain.BoardReviewDTO;
 import com.hklmart.service.BoardService;
@@ -39,10 +38,8 @@ public class BoardController {
 
     @PostMapping("/review-insert")
     public String insertBoardReview(HttpServletRequest request, BoardReviewDTO boardReviewDTO) throws IllegalStateException, IOException {
-
         boardService.insertBoardReviewService(request, boardReviewDTO);
         return "redirect:/member/my-page";
     }
-
 
 }

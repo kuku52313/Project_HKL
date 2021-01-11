@@ -1,13 +1,9 @@
 package com.hklmart.service;
-
 import com.hklmart.domain.BasketOrderPayListVO;
 import com.hklmart.domain.CheckStockVO;
 import com.hklmart.domain.OrderPayVO;
 import com.hklmart.domain.OrderVO;
-import com.hklmart.domain.OrderViewVO;
 import com.hklmart.persistence.OrderDAO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,9 +15,7 @@ public class OrderService {
         this.orderDAO = orderDAO;
     }
 
-
     public OrderVO getOrderMemberService(String memberId) {
-
         return orderDAO.getOrderMemberService(memberId);
     }
 
@@ -30,7 +24,6 @@ public class OrderService {
     }
 
     public int checkStock(CheckStockVO checkStockVO) {
-
         return orderDAO.checkStock(checkStockVO);
     }
 
@@ -41,7 +34,6 @@ public class OrderService {
     public void doPay(BasketOrderPayListVO basketOrderPayListVO) {
         orderDAO.doPay(basketOrderPayListVO);
     }
-
 
     public void payProductList(OrderPayVO orderPayVO) {
         orderDAO.payProductList(orderPayVO);
@@ -58,4 +50,5 @@ public class OrderService {
     public void stockUpdate(BasketOrderPayListVO basketOrderPayListVO) {
         orderDAO.stockUpdate(basketOrderPayListVO);
     }
+
 }

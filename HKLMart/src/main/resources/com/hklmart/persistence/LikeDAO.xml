@@ -1,52 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hklmart.persistence.LikeDAO">
-    <insert id="putProductLike" parameterType="String">
-        <![CDATA[
-        INSERT INTO PRODUCT_LIKE
-                (LIKE_MEMBER_ID, LIKE_PRODUCT_CODE)
-        VALUES (#{param1}, #{param2})
-        ]]>
-    </insert>
-
-    <select id="takeProductLike" parameterType="String" resultType="java.lang.String">
-        <![CDATA[
-        SELECT LIKE_PRODUCT_CODE
-        FROM PRODUCT_LIKE
-        WHERE LIKE_MEMBER_ID = #{param}
-        ]]>
-    </select>
-
-    <select id="checkLike" parameterType="String" resultType="Integer">
-        <![CDATA[
-        SELECT COUNT(*)
-        FROM PRODUCT_LIKE
-        WHERE LIKE_MEMBER_ID = #{param1}
-          AND LIKE_PRODUCT_CODE = #{param2}
-        ]]>
-    </select>
-    <delete id="deleteLike">
-        <![CDATA[
-        DELETE PRODUCT_LIKE WHERE LIKE_MEMBER_ID = #{param1} AND LIKE_PRODUCT_CODE = #{param2}
-        ]]>
-    </delete>
-
-    <select id="getUserLike" resultType="com.hklmart.domain.ProductVO">
-        <![CDATA[
-        SELECT
-                *
-        FROM (
-                     SELECT
-                             ROWNUM rn,
-                             PL.LIKE_MEMBER_ID,
-                             P.*
-                     FROM PRODUCT P, PRODUCT_LIKE PL
-                     WHERE P.PRODUCT_CODE = PL.LIKE_PRODUCT_CODE AND PL.LIKE_MEMBER_ID = #{param2} AND ROWNUM <= #{param1.pageNum} * #{param1.amount}
-                     )
-        WHERE rn > (#{param1.pageNum} -1) * #{param1.amount}
-        ]]>
-    </select>
-
-
+	<insert id="putProductLike" parameterType="String">
+		<![CDATA[
+		INSERT INTO PRODUCT_LIKE
+				(LIKE_MEMBER_ID, LIKE_PRODUCT_CODE)
+		VALUES (#{param1}, #{param2})
+		]]>
+	</insert>
+	<select id="takeProductLike" parameterType="String" resultType="java.lang.String">
+		<![CDATA[
+		SELECT LIKE_PRODUCT_CODE
+		FROM PRODUCT_LIKE
+		WHERE LIKE_MEMBER_ID = #{param}
+		]]>
+	</select>
+	<select id="checkLike" parameterType="String" resultType="Integer">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM PRODUCT_LIKE
+		WHERE LIKE_MEMBER_ID = #{param1}
+		  AND LIKE_PRODUCT_CODE = #{param2}
+		]]>
+	</select>
+	<delete id="deleteLike">
+		<![CDATA[
+		DELETE PRODUCT_LIKE
+		WHERE LIKE_MEMBER_ID = #{param1}
+		  AND LIKE_PRODUCT_CODE = #{param2}
+		]]>
+	</delete>
+	<select id="getUserLike" resultType="com.hklmart.domain.ProductVO">
+		<![CDATA[
+		SELECT *
+		FROM (
+				     SELECT ROWNUM RN,
+				            PL.LIKE_MEMBER_ID,
+				            P.*
+				     FROM PRODUCT P,
+				          PRODUCT_LIKE PL
+				     WHERE P.PRODUCT_CODE = PL.LIKE_PRODUCT_CODE
+					   AND PL.LIKE_MEMBER_ID = #{param2}
+					   AND ROWNUM <= #{param1.pageNum} * #{param1.amount}
+				     )
+		WHERE RN > (#{param1.pageNum} - 1) * #{param1.amount}
+		]]>
+	</select>
 </mapper>

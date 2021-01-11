@@ -1,11 +1,11 @@
 package com.hklmart.domain;
-
 import lombok.Data;
 
 import java.util.List;
 
 @Data
 public class BasketOrderPayListVO {
+
     private List<BasketOrderVO> orderList;
     private String orderProductCode;
     private String orderMemberId;
@@ -21,4 +21,5 @@ public class BasketOrderPayListVO {
     private int orderListNumber;
     private int orderListOrderNumber;
     private int orderPayment;
+
 }

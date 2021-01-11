@@ -9,4 +9,17 @@
         WHERE RN <= 5
         ]]>
     </select>
+
+    <select id="getProductCodeList" parameterType="String" resultType="java.lang.String">
+        SELECT PRODUCT_CODE
+        FROM PRODUCT
+        WHERE PRODUCT_NAME LIKE '%' || #{param} || '%'
+           OR PRODUCT_BRAND LIKE '%' || #{param} || '%'
+    </select>
+
+    <select id="getProductList" parameterType="String" resultType="com.hklmart.domain.ProductVO">
+        SELECT *
+        FROM PRODUCT
+        WHERE PRODUCT_CODE = #{param}
+    </select>
 </mapper>

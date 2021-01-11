@@ -1,5 +1,4 @@
 package com.hklmart.service;
-
 import com.hklmart.domain.*;
 import com.hklmart.persistence.MemberDAO;
 import lombok.extern.log4j.Log4j;
@@ -40,21 +39,20 @@ public class MemberService {
     public int idCheckTest(String userId) {
         return memberDAO.idDuplicatiedInspection(userId);
     }
-    public List<BoardAskDTO> getUserAskList(ProductPageCriteriaVO cri) {
 
+    public List<BoardAskDTO> getUserAskList(ProductPageCriteriaVO cri) {
         return memberDAO.getUserAskList(cri);
     }
+
     public List<BoardReviewListDTO> getUserReviewList(ProductPageCriteriaVO cri) {
         return memberDAO.getUserReviewList(cri);
     }
-
 
     public void updateMemberAddress(MemberAddressVO memberAddressVO) {
         memberDAO.updateMemberAddress(memberAddressVO);
     }
 
     public List<orderProductListDTO> getUserOrderList(ProductPageCriteriaVO cri) {
-
         return memberDAO.getUserOrderList(cri);
     }
 
@@ -63,7 +61,6 @@ public class MemberService {
     }
 
     public List<orderProductListDTO> getOrderDetailProduct(String orderNumber) {
-
         return memberDAO.getOrderDetailProduct(orderNumber);
     }
 
@@ -71,8 +68,8 @@ public class MemberService {
         memberDAO.deleteReviewUser(boardReviewNumber);
     }
 
-
     public BoardAskDTO getAskAnswer(String boardAskNumber) {
         return memberDAO.getAskAnswer(boardAskNumber);
     }
+
 }

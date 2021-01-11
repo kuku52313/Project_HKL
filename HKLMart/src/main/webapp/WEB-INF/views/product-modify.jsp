@@ -4,37 +4,50 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true" %>
-
 <%@include file="includes/header.jsp" %>
-
 <title>HKLMart :: 제품 수정</title>
-
 <!-- Body -->
 <div class="container-fluid">
     <div class="row">
         <!-- 왼쪽 공백 -->
         <div class="col-1"></div>
-
         <!-- 사이드 메뉴 -->
         <div class="col-2">
             <ul class="sidebar" id="sidebar">
-                <hr/>
-                <li><a class="sidebarMain" href="/manager/manager-page">MANAGER</a></li>
-                <li><a href="/manager/manager-product">제품 관리 페이지</a></li>
-                <li><a href="#orderListPage">주문 전체 내역</a></li>
-                <li><a href="/manager/manager-ask-board">회원 문의 내역</a></li>
-                <li><a href="/manager/manager-review-list">리뷰 관리 페이지</a></li>
-                <li><a href="/manager/manager-member-list">회원 조회 페이지</a></li>
-                <li><a href="/product/product-regist">제품 등록 페이지</a></li>
-                <li><a class="sidebarMain" href="/member/my-page">MEMBER</a></li>
-                <li><a href="/member/my-page">내 정보</a></li>
-                <hr/>
+                <hr />
+                <li>
+                    <a class="sidebarMain" href="/manager/manager-page">MANAGER</a>
+                </li>
+                <li>
+                    <a href="/manager/manager-product">제품 관리 페이지</a>
+                </li>
+                <li>
+                    <a href="#orderListPage">주문 전체 내역</a>
+                </li>
+                <li>
+                    <a href="/manager/manager-ask-board">회원 문의 내역</a>
+                </li>
+                <li>
+                    <a href="/manager/manager-review-list">리뷰 관리 페이지</a>
+                </li>
+                <li>
+                    <a href="/manager/manager-member-list">회원 조회 페이지</a>
+                </li>
+                <li>
+                    <a href="/product/product-regist">제품 등록 페이지</a>
+                </li>
+                <li>
+                    <a class="sidebarMain" href="/member/my-page">MEMBER</a>
+                </li>
+                <li>
+                    <a href="/member/my-page">내 정보</a>
+                </li>
+                <hr />
             </ul>
         </div>
-
         <!-- 작업중 -->
         <div class="col-6" style="font-family: Godo; text-align: center; font-weight: bold;">
-            <br/><br/>
+            <br /><br />
             <!-- form header -->
             <form class="insertform" name="productData" action="/product/product-modify-up?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data">
                 <div class="form-header">
@@ -43,107 +56,100 @@
                 <!-- form body -->
                 <div>
                     <div class="record">
-                        <label>제품명 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="text" class="formText" id="nameProduct" name="productName" value="${product.productName}"/>
+                        <label>제품명</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="formText" id="nameProduct" name="productName" value="${product.productName}" />
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
                     <div class="record">
-                        <label>브랜드 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="text" class="formText" id="brandProduct" name="productBrand" value="${product.productBrand}"/>
+                        <label>브랜드</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="formText" id="brandProduct" name="productBrand" value="${product.productBrand}" />
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
                     <div class="record">
-                        <label>제품 코드</label>&nbsp;&nbsp;
-                        <input type="text" class="formText" id="codeProduct" name="productCode" value="${product.productCode}" readonly="readonly" style="background-color: #e1e4ee"/>
+                        <label>제품 코드</label>&nbsp;&nbsp; <input type="text" class="formText" id="codeProduct" name="productCode" value="${product.productCode}" readonly="readonly" style="background-color: #e1e4ee" />
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
                     <div class="record">
-                        <label>제품 가격</label>&nbsp;&nbsp;
-                        <input type="text" class="formText" id="priceProduct" name="productPrice" value="${product.productPrice}"/>
+                        <label>제품 가격</label>&nbsp;&nbsp; <input type="text" class="formText" id="priceProduct" name="productPrice" value="${product.productPrice}" />
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
                 </div>
                 <div class="record">
-                    <label>제품 종류</label>&nbsp;&nbsp;
-                    <input type="text" class="formText" id="kindProduct" name="productType" value="${product.productType}" readonly="readonly" style="background-color: #e1e4ee"/>
+                    <label>제품 종류</label>&nbsp;&nbsp; <input type="text" class="formText" id="kindProduct" name="productType" value="${product.productType}" readonly="readonly" style="background-color: #e1e4ee" />
                 </div>
                 <hr style="border: solid 1px #ffb6b6;">
                 <div class="form-group left">
-                    <label>제품 이미지</label><br/>
-                    <input type="file" id="choose-file" name="uploadImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;"/>
+                    <label>제품 이미지</label>
+                    <br /> <input type="file" id="choose-file" name="uploadImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;" />
                     <div id="select_img" style="width: 100%; text-align: center">
-                        <img src="<%=request.getContextPath()%>${product.productImgPath}${product.productImg}" width="300px" height="auto"/>
+                        <img src="<%=request.getContextPath()%>${product.productImgPath}${product.productImg}" width="300px" height="auto" />
                     </div>
                 </div>
                 <hr style="border: solid 1px #ffb6b6;">
-
                 <div class="form-group left">
-                    <label>제품 상세 이미지</label><br/>
-                    <input type="file" id="content-file" name="contentImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;"/>
+                    <label>제품 상세 이미지</label>
+                    <br /> <input type="file" id="content-file" name="contentImg" accept=".bmp, .jpg, .jpeg, .png" size="80" style="margin-top: 10px; margin-bottom: 10px;" />
                     <div id="select_content_img" style="width: 100%; text-align: center">
-                        <img src="<%=request.getContextPath()%>${product.productImgPath}${product.productContent}" width="300px" height="auto"/>
+                        <img src="<%=request.getContextPath()%>${product.productImgPath}${product.productContent}" width="300px" height="auto" />
                     </div>
                 </div>
-
                 <hr style="border: solid 1px #ffb6b6;">
                 <!-- 재고 등록 -->
                 <label>사이즈별 재고 수량</label>
                 <div style="margin-top: 10px; margin-bottom: 10px; background-color: rgb(241, 213, 234);">
                     <label style="margin-left: 7px;">240</label>
-                    <input type="number" class="stockInt" name="stock240" value="${product.stock240}" min="0" step="1"/>
-                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">245</label>
+                    <input type="number" class="stockInt" name="stock240" value="${product.stock240}" min="0" step="1" />
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
+                    <label style="margin-left: 7px;">245</label>
                     <input type="number" class="stockInt" name="stock245" value="${product.stock245}" min="0" step="1">
-                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">250</label>
-                    <input type="number" class="stockInt" name="stock250" value="${product.stock250}" min="0" step="1"/>
-                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">255</label>
-                    <input type="number" class="stockInt" name="stock255" value="${product.stock255}" min="0" step="1"/>
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
+                    <label style="margin-left: 7px;">250</label>
+                    <input type="number" class="stockInt" name="stock250" value="${product.stock250}" min="0" step="1" />
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
+                    <label style="margin-left: 7px;">255</label>
+                    <input type="number" class="stockInt" name="stock255" value="${product.stock255}" min="0" step="1" />
                     <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
                 </div>
-
                 <hr style="border: solid 1px #ffb6b6;">
-
                 <div style="margin-top: 10px; margin-bottom: 10px; background-color: rgb(238, 226, 235);">
                     <label style="margin-left: 7px;">260</label>
-                    <input type="number" class="stockInt" name="stock260" value="${product.stock260}" min="0" step="1"/>
-                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">265</label>
-                    <input type="number" class="stockInt" name="stock265" value="${product.stock265}" min="0" step="1"/>
-                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">270</label>
-                    <input type="number" class="stockInt" name="stock270" value="${product.stock270}" min="0" step="1"/>
-                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">275</label>
-                    <input type="number" class="stockInt" name="stock275" value="${product.stock275}" min="0" step="1"/>
+                    <input type="number" class="stockInt" name="stock260" value="${product.stock260}" min="0" step="1" />
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
+                    <label style="margin-left: 7px;">265</label>
+                    <input type="number" class="stockInt" name="stock265" value="${product.stock265}" min="0" step="1" />
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
+                    <label style="margin-left: 7px;">270</label>
+                    <input type="number" class="stockInt" name="stock270" value="${product.stock270}" min="0" step="1" />
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
+                    <label style="margin-left: 7px;">275</label>
+                    <input type="number" class="stockInt" name="stock275" value="${product.stock275}" min="0" step="1" />
                     <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
                 </div>
-
                 <hr style="border: solid 1px #ffb6b6;">
-
                 <div style="margin-top: 10px; margin-bottom: 10px; background-color: rgb(250, 248, 249);">
                     <label style="margin-left: 7px;">280</label>
-                    <input type="number" class="stockInt" name="stock280" value="${product.stock280}" min="0" step="1"/>
-                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">285</label>
-                    <input type="number" class="stockInt" name="stock285" value="${product.stock285}" min="0" step="1"/>
-                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">290</label>
-                    <input type="number" class="stockInt" name="stock290" value="${product.stock290}" min="0" step="1"/>
-                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label> <label style="margin-left: 7px;">295</label>
-                    <input type="number" class="stockInt" name="stock295" value="${product.stock295}" min="0" step="1"/>
+                    <input type="number" class="stockInt" name="stock280" value="${product.stock280}" min="0" step="1" />
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
+                    <label style="margin-left: 7px;">285</label>
+                    <input type="number" class="stockInt" name="stock285" value="${product.stock285}" min="0" step="1" />
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
+                    <label style="margin-left: 7px;">290</label>
+                    <input type="number" class="stockInt" name="stock290" value="${product.stock290}" min="0" step="1" />
+                    <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
+                    <label style="margin-left: 7px;">295</label>
+                    <input type="number" class="stockInt" name="stock295" value="${product.stock295}" min="0" step="1" />
                     <label style="border-right: solid 3px #ffb6b6;">EA &nbsp;</label>
                 </div>
-
                 <hr style="border: solid 1px #ffb6b6;">
-
-                <input type="button" class="insertBtn" onclick="insertCheckfn()" value="수정"/>
+                <input type="button" class="insertBtn" onclick="insertCheckfn()" value="수정" />
                 <button type="button" class="insertBtn" onclick="DeleteCheckfn()">삭제</button>
-                <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-product';" value="홈으로"/>
+                <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-product';" value="홈으로" />
             </form>
         </div>
-
         <!-- 오른쪽 공백 -->
         <div class="col-3"></div>
     </div>
 </div>
-
 <br><br>
 <hr style="border: solid 1px #ffb6b6;">
-
 <script>
     const toggleBtn = document.querySelector('.navbar_toggleBtn');
     const search = document.querySelector('.navbar_search');
@@ -292,15 +298,15 @@
         console.log(insertCode);
         if (insertCode.length === 6) {
             $.ajax({
-                type: 'post',
-                data: insertCode, //서버로 보낼 data
-                url: '/codeCheck',
-                dataType: 'json', //서버에서 받을 데이터
+                type       : 'post',
+                data       : insertCode, //서버로 보낼 data
+                url        : '/codeCheck',
+                dataType   : 'json', //서버에서 받을 데이터
                 contentType: "application/json; charset=UTF-8", //보낼 data 타입을 json으로 설정
-                beforeSend: function (xhr) { /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                beforeSend : function (xhr) { /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
                     xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
                 },
-                success: function (data) {
+                success    : function (data) {
                     if (data.cnt > 0) {
                         document.getElementById('codeCheckBtn').value = "사용불가";
                         document.getElementById('codeCheckBtn').style.background = '#6c757d';
@@ -311,7 +317,7 @@
                         $("#codeCheckHidden").val("1");
                     }
                 },
-                error: function () {
+                error      : function () {
                     alert("Error. 관리자에게 문의하십시오.");
                 }
             });
@@ -322,23 +328,22 @@
         let productSearch = document.getElementById('productSearch').value;
         if (productSearch !== "") {
             $.ajax({
-                url: "/ajax/search",
-                type: "GET",
-                dataType: "json",
+                url        : "/ajax/search",
+                type       : "GET",
+                dataType   : "json",
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                data: {"searchStr": productSearch},
-                success: function (data) {
+                data       : {"searchStr": productSearch},
+                success    : function (data) {
                     var list = data.searchList;
                     $("#productSearch").autocomplete({
                         source: list
                     })
                 },
-                error: function () {
+                error      : function () {
                     alert("Error. 관리자에게 문의하십시오.");
                 },
             });
         }
     }
 </script>
-
 <%@include file="includes/footer.jsp" %>
