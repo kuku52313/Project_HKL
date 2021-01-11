@@ -130,7 +130,7 @@
                 <tr>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="/" id="product" style="color: black">
-                            <img src="<%=request.getContextPath() %>${list.boardReviewImgpath}${list.boardReviewThumbnail}.png" style="width: 200px;  height: 200px; object-fit: fill;">
+                            <img src="<%=request.getContextPath() %>${list.boardReviewImgpath}${list.boardReviewThumbnail}" style="width: 200px;  height: 200px; object-fit: fill;">
                         </a>
                     </td>
                     <td class="">
