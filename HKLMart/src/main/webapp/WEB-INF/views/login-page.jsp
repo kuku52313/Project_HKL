@@ -67,7 +67,7 @@
 
             &nbsp;&nbsp;
             <input type="button" id="nameCheckBtn" class="nameCheckBtn"/>
-            <input type="text" class="input-field" id="userTel" name="memberTel" onkeyup="telCheckfn(),enterKeyUp()" placeholder="Tel ex) 010-1234-5678" required/>
+            <input type="text" class="input-field" id="userTel" name="memberTel" onkeyup="telCheckfn(),enterKeyUp()" placeholder="Tel ex) 01012345678" required/>
 
             &nbsp;&nbsp;
             <input type="button" id="telCheckBtn" class="telCheckBtn"/>
