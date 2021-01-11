@@ -9,6 +9,6 @@ public interface BoardDAO {
 
     void insertBoardReview(BoardReviewVO boardReviewVO);
 
-    void updateAskAnswer(BoardAskVO boardAskVO);
+
 
 }

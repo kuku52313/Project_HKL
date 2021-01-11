@@ -1,5 +1,6 @@
 package com.hklmart.controller;
 
+import com.hklmart.domain.BoardAskVO;
 import com.hklmart.domain.OrderPayVO;
 import com.hklmart.domain.PageCriteriaVO;
 import com.hklmart.domain.PageDTO;
@@ -150,5 +151,10 @@ public class ManagementController {
         managementService.modifyOrder(orderPayVO);
 
         return "redirect:/manager/manager-order-list";
+    }
+    @PostMapping("/ask-answer-up")
+    public String askAnswerUp(BoardAskVO boardAskVO) {
+        managementService.updateAskAnswer(boardAskVO);
+        return "redirect:/manager/manager-ask-board";
     }
 }

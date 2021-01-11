@@ -139,4 +139,13 @@
         DELETE FROM BOARD_REVIEW WHERE BOARD_REVIEW_NUMBER = #{boardReviewNumber}
 
     </delete>
+
+    <select id="getAskAnswer" resultType="com.hklmart.domain.BoardAskDTO">
+        <![CDATA[
+        SELECT *
+        FROM BOARD_ASK
+        WHERE BOARD_ASK_NUMBER = #{boardAskNumber}
+        ]]>
+    </select>
+
 </mapper>

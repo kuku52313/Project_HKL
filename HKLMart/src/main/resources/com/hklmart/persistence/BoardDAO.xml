@@ -21,12 +21,4 @@
         ]]>
     </insert>
 
-    <update id="updateAskAnswer">
-        <![CDATA[
-        update BOARD_ASK
-        set BOARD_ASK_STATE  = #{boardAskState},
-            BOARD_ASK_ANSWER = #{boardAskAnswer}
-        where BOARD_ASK_NUMBER = #{boardAskNumber}
-        ]]>
-    </update>
 </mapper>

@@ -82,9 +82,7 @@ public class BoardService {
         return path;
     }
 
-    public void updateAskAnswer(BoardAskVO boardAskVO) {
-        boardDAO.updateAskAnswer(boardAskVO);
-    }
+
 
 
 }

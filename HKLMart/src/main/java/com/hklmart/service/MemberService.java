@@ -70,4 +70,9 @@ public class MemberService {
     public void deleteReviewUser(String boardReviewNumber) {
         memberDAO.deleteReviewUser(boardReviewNumber);
     }
+
+
+    public BoardAskDTO getAskAnswer(String boardAskNumber) {
+        return memberDAO.getAskAnswer(boardAskNumber);
+    }
 }

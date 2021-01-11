@@ -72,7 +72,7 @@
                 <c:forEach items="${AskBoardList}" var="list" varStatus="status">
                     <tr>
                         <th>
-                            <a href=""
+                            <a href="/member/user-ask-view?boardAskNumber=${list.boardAskNumber}"
                                style="color: black">
                                 <c:out value="${list.boardAskNumber}"/></a></th>
                         <th><c:out value="${list.boardAskType}"/></th>
