@@ -89,6 +89,8 @@
             <!-- form header -->
             <form class="insertform" name="modifyForm" action="/manager/manager-order-modify-up" method="POST">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                <input type="hidden" name="pageNum" value="${param.pageNum}">
+                <input type="hidden" name="amount" value="${param.amount}">
                 <div class="form-header">
                     <h1>주문 관리</h1>
                 </div>
@@ -144,7 +146,7 @@
                     </select>
                     <hr style="border: solid 1px #ffb6b6;">
                 </div>
-                <input type="button" class="insertBtn" onclick="ModifyCheckfn()" value="수정 완료" /> <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-order-list';" value="뒤로" />
+                <input type="button" class="insertBtn" onclick="ModifyCheckfn()" value="수정 완료" /> <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-order-list?amount=${param.amount}&pageNum=${param.pageNum}';" value="뒤로" />
             </form>
         </div>
         <div class="col-3"></div>

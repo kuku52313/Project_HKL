@@ -66,7 +66,7 @@
     <hr style="border: solid 1px #ffb6b6;">
     <input type="text" class="formText" id="AnswerType" name="boardAskState" value="${answer.boardAskState}" readonly="readonly" style="background-color: #e1e4ee;">
     <hr style="border: solid 1px #ffb6b6;">
-    <input type="button" class="insertBtn" onclick="location.href = '/member/user-ask-list';" value="홈으로" />
+    <input type="button" class="insertBtn" onclick="location.href = '/member/user-ask-list?amount=${param.amount}&pageNum=${param.pageNum}';" value="홈으로" />
 </form>
 <br> <br>
 <hr style="border: solid 1px #ffb6b6;">

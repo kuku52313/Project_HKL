@@ -50,6 +50,8 @@
             <br /><br />
             <!-- form header -->
             <form class="insertform" name="productData" action="/product/product-modify-up?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="pageNum" value="${param.pageNum}">
+                <input type="hidden" name="amount" value="${param.amount}">
                 <div class="form-header">
                     <h1>제품 수정 및 재고 수정</h1>
                 </div>
@@ -141,7 +143,7 @@
                 <hr style="border: solid 1px #ffb6b6;">
                 <input type="button" class="insertBtn" onclick="insertCheckfn()" value="수정" />
                 <button type="button" class="insertBtn" onclick="DeleteCheckfn()">삭제</button>
-                <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-product';" value="홈으로" />
+                <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-product?amount=${param.amount}&pageNum=${param.pageNum}';" value="홈으로" />
             </form>
         </div>
         <!-- 오른쪽 공백 -->

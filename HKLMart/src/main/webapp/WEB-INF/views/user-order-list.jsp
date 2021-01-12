@@ -84,7 +84,7 @@
                         <dl>
                             <dt>${list.productBrand}</dt>
                             <dt>
-                                <a href="/member/user-order-detail?orderNumber=${list.orderNumber}">주문 번호: ${list.orderNumber}</a>
+                                <a href="/member/user-order-detail?orderNumber=${list.orderNumber}&amount=10&pageNum=${pageMaker.productCri.pageNum}">주문 번호: ${list.orderNumber}</a>
                             </dt>
                             <dt class="orderDate">주문 날짜</dt>
                             <dt>주문금액</dt>
@@ -93,7 +93,7 @@
                         </dl>
                         <dl data-v-6dcc2f72="">
                             <dd data-v-6dcc2f72="">
-                                <a data-v-6dcc2f72="">
+                                <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}" data-v-6dcc2f72="">
                                     <img data-v-6dcc2f72="" src="${list.productImgPath}${list.productThumbnail}">
                                 </a>
                             </dd>

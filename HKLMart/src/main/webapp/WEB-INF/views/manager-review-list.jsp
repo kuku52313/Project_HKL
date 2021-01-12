@@ -58,7 +58,7 @@
                 <tr>
                     <th class="product_info">상품 정보</th>
                     <th class="product">
-                        <a class="deletebtn" href="manager-review-delete?boardReviewNumber=${list.boardReviewNumber}">삭제</a>
+                        <a class="deletebtn" href="manager-review-delete?boardReviewNumber=${list.boardReviewNumber}&amount=10&pageNum=${pageMaker.cri.pageNum}">삭제</a>
                     </th> <!-- 여긴 빈칸-->
                 </tr>
                 <tr>

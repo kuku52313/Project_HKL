@@ -14,7 +14,9 @@
 </head>
 <body>
 <form class="insertform" name="insertForm" action="/manager/ask-answer-up" method="post">
-    <input type="hidden" name="pageNum" value="${param.pageNum}" /> <input type="hidden" name="amount" value="${param.amount}" /> <input type="hidden" name="boardAskNumber" value="${answer.boardAskNumber}" />
+    <input type="hidden" name="pageNum" value="${param.pageNum}" />
+    <input type="hidden" name="amount" value="${param.amount}" />
+    <input type="hidden" name="boardAskNumber" value="${answer.boardAskNumber}" />
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     <!-- form header -->
     <div class="form-header">
@@ -68,8 +70,9 @@
         <option value="답변 완료" name="boardAskState">- 답변 완료 -</option>
     </select>
     <hr style="border: solid 1px #ffb6b6;">
-    <input type="button" class="insertBtn" onclick="insertCheckfn()" value="수정" /> <input type="button" class="insertBtn" onclick="DeleteCheckfn()" value="삭제" />
-    <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-ask-board';" value="홈으로" />
+    <input type="button" class="insertBtn" onclick="insertCheckfn()" value="수정" />
+    <input type="button" class="insertBtn" onclick="DeleteCheckfn()" value="삭제" />
+    <input type="button" class="insertBtn" onclick="location.href = '/manager/manager-ask-board?amount=${param.amount}&pageNum=${param.pageNum}';" value="홈으로" />
 </form>
 <form id="pageForm" action="manager/manager-ask-board" method="get">
     <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}" /> <input type="hidden" name="amount" value="${pageMaker.cri.amount}" />

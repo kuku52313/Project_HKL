@@ -38,9 +38,10 @@ public class ManagementController {
     }
 
     @PostMapping("/manager-product-delete")
-    public String deleteManagerProduct(@RequestParam("productCode") String productCode) {
+    public String deleteManagerProduct(@RequestParam("productCode") String productCode,PageCriteriaVO cri) {
         managementService.deleteManagerProduct(productCode);
-        return "redirect:/manager/manager-product";
+        return "redirect:/manager/manager-product?amount="+cri.getAmount()+"&pageNum="+cri.getPageNum();
+
     }
 
     @GetMapping("/manager-ask-board")
@@ -58,9 +59,9 @@ public class ManagementController {
     }
 
     @PostMapping("/manager-ask-delete")
-    public String deleteAskManager(@RequestParam("boardAskNumber") String boardAskNumber) {
+    public String deleteAskManager(@RequestParam("boardAskNumber") String boardAskNumber,PageCriteriaVO cri) {
         managementService.deleteAskManager(boardAskNumber);
-        return "redirect:/manager/manager-ask-board";
+        return "redirect:/manager/manager-ask-board?amount="+cri.getAmount()+"&pageNum="+cri.getPageNum();
     }
 
     @GetMapping("/manager-member-modify")
@@ -70,15 +71,15 @@ public class ManagementController {
     }
 
     @PostMapping("/manager-member-delete")
-    public String deleteMember(@RequestParam("memberId") String memberId) {
+    public String deleteMember(@RequestParam("memberId") String memberId,PageCriteriaVO cri) {
         managementService.deleteMember(memberId);
-        return "redirect:/manager/manager-member-list";
+        return "redirect:/manager/manager-member-list?amount="+cri.getAmount()+"&pageNum="+cri.getPageNum();
     }
 
     @GetMapping("/manager-review-delete")
-    public String goManagerReviewDelete(@RequestParam("boardReviewNumber") String boardReviewNumber) {
+    public String goManagerReviewDelete(@RequestParam("boardReviewNumber") String boardReviewNumber,PageCriteriaVO cri) {
         managementService.deleteReviewManager(boardReviewNumber);
-        return "redirect:/manager/manager-review-list";
+        return "redirect:/manager/manager-review-list?amount="+cri.getAmount()+"&pageNum="+cri.getPageNum();
     }
 
     @GetMapping("/manager-review-list")
@@ -119,15 +120,15 @@ public class ManagementController {
     }
 
     @PostMapping("/manager-order-modify-up")
-    public String modifyOrder(OrderPayVO orderPayVO) {
+    public String modifyOrder(OrderPayVO orderPayVO,PageCriteriaVO cri) {
         managementService.modifyOrder(orderPayVO);
-        return "redirect:/manager/manager-order-list";
+        return "redirect:/manager/manager-order-list?amount="+cri.getAmount()+"&pageNum="+cri.getPageNum();
     }
 
     @PostMapping("/ask-answer-up")
-    public String askAnswerUp(BoardAskVO boardAskVO) {
+    public String askAnswerUp(BoardAskVO boardAskVO,PageCriteriaVO cri) {
         managementService.updateAskAnswer(boardAskVO);
-        return "redirect:/manager/manager-ask-board";
+        return "redirect:/manager/manager-ask-board?amount="+cri.getAmount()+"&pageNum="+cri.getPageNum();
     }
 
 }

@@ -1,4 +1,5 @@
 package com.hklmart.controller;
+import com.hklmart.domain.PageCriteriaVO;
 import com.hklmart.domain.ProductVO;
 import com.hklmart.domain.RegistImageVO;
 import com.hklmart.domain.StockVO;
@@ -33,9 +34,10 @@ public class ProductController {
     }
 
     @PostMapping("/product-modify-up")
-    public String modifyProduct(HttpServletRequest request, ProductVO productVO, RegistImageVO imageVO, StockVO stockVO) throws IOException {
+    public String modifyProduct(HttpServletRequest request, ProductVO productVO, RegistImageVO imageVO, StockVO stockVO, PageCriteriaVO cri) throws IOException {
         fileService.modifyProduct(request, productVO, imageVO, stockVO);
-        return "redirect:/manager/manager-product";
+
+        return "redirect:/manager/manager-product?amount="+cri.getAmount()+"&pageNum="+cri.getPageNum();
     }
 
 }
