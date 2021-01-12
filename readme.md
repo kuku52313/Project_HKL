@@ -1,10 +1,11 @@
 <p align="center">
   <a href="https://github.com/jrdev4102/Project_HKL"><img src="https://user-images.githubusercontent.com/71188307/101260354-9628fc80-3772-11eb-99fc-8ce0923dca57.png"></a>
-  <h1 align="center"><b><i>Project_HKLMart</i><b></h1>
+  <h1 align="center"><b><i>Project_HKLMart<br><br>
+    http://www.hklmart.shop/</i><b></h1>
 </p>
 
 ## *Dependency*</center>
-> *JAVA 11 / Oracle 12c / Servlet 4.0 / Spring 5.0 / Maven 3.6.3 / Spring Security / Mybatis / Lombok / jackson / slf4j / Log4j / JUnit / Mockito / HikariCP / commons-fileupload etc..*
+> *AWS EC2 / AWS Route53 / Spring Security / JAVA 11 / Oracle 12c / Servlet 4.0 / Spring 5.0 / Maven 3.6.3 / Mybatis / Lombok / jackson / slf4j / Log4j / JUnit / Mockito / HikariCP / commons-fileupload etc..*
 
 ---
 
