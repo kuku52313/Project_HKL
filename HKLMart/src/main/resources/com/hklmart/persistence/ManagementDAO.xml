@@ -1,203 +1,190 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hklmart.persistence.ManagementDAO">
-    <select id="getProductList" resultType="com.hklmart.domain.ProductListDTO">
-        <![CDATA[
-        SELECT *
-        FROM (
-                     SELECT/*+ INDEX_DESC(P PRODUCT_PK) */
-                             ROWNUM RN
-                          , P.PRODUCT_CODE
-                          , P.PRODUCT_NAME
-                          , P.PRODUCT_BRAND
-                          , P.PRODUCT_PRICE
-                          , P.PRODUCT_TYPE
-                          , P.PRODUCT_IMGPATH
-                          , P.PRODUCT_IMG
-                          , P.PRODUCT_THUMBNAIL
-                          , P.PRODUCT_CONTENT
-                          , P.PRODUCT_REGDATE
-                     FROM PRODUCT P
-                     WHERE ROWNUM <= #{pageNum} * #{amount}
-                     )
-        WHERE RN > (#{pageNum} - 1) * #{amount}
-        ]]>
-    </select>
-
-    <select id="getAskBoardList" resultType="com.hklmart.domain.BoardAskDTO">
-        <![CDATA[
-        SELECT *
-        FROM (
-                     SELECT/*+ INDEX_DESC(BOARD_ASK BOARD_ASK_PK) */
-                             ROWNUM RN,
-                             BOARD_ASK_NUMBER,
-                             BOARD_ASK_MEMBER_ID,
-                             BOARD_ASK_DATE,
-                             BOARD_ASK_TITLE,
-                             BOARD_ASK_CONTENT,
-                             BOARD_ASK_STATE,
-                             BOARD_ASK_TYPE
-                     FROM BOARD_ASK
-                     WHERE ROWNUM <= #{pageNum} * #{amount}
-                     )
-        WHERE RN > (#{pageNum} - 1) * #{amount}
-        ]]>
-    </select>
-
-    <select id="getBoardReviewList" resultType="com.hklmart.domain.BoardReviewListDTO">
-        <![CDATA[
-        SELECT *
-        FROM (
-                     SELECT/*+ INDEX_DESC(R BOARD_REVIEW_PK)*/
-                             ROWNUM RN,
-                             R.BOARD_REVIEW_NUMBER,
-                             R.BOARD_REVIEW_MEMBER_ID,
-                             P.PRODUCT_NAME,
-                             R.BOARD_REVIEW_SCORE,
-                             R.BOARD_REVIEW_DATE,
-                             R.BOARD_REVIEW_CONTENT,
-                             R.BOARD_REVIEW_IMG,
-                             R.BOARD_REVIEW_IMGPATH,
-                             R.BOARD_REVIEW_THUMBNAIL
-                     FROM PRODUCT P,
-                          BOARD_REVIEW R
-                     WHERE R.BOARD_REVIEW_PRODUCT_CODE = P.PRODUCT_CODE
-                       AND ROWNUM <= #{pageNum} * #{amount}
-                     )
-        WHERE RN > (#{pageNum} - 1) * #{amount}
-        ]]>
-    </select>
-
-    <select id="getMemberList" resultType="com.hklmart.domain.MemberListDTO">
-        <![CDATA[
-        SELECT *
-        FROM (
-                     SELECT/*+ INDEX_ASC(M MEMBER_PK) */
-                             ROWNUM RN,
-                             M.MEMBER_ID,
-                             M.MEMBER_NAME,
-                             M.MEMBER_TEL,
-                             M.MEMBER_REGDATE,
-                             A.AUTHORITIES_MEMBER,
-                             A.AUTHORITIES_MANAGER,
-                             A.AUTHORITIES_ADMIN
-                     FROM MEMBER M,
-                          AUTHORITIES A
-                     WHERE M.MEMBER_ID = A.AUTHORITIES_MEMBER_ID
-                       AND ROWNUM <= #{pageNum} * #{amount}
-                     )
-        WHERE RN > (#{pageNum} - 1) * #{amount}
-        ]]>
-    </select>
-
-    <select id="getModify" resultType="com.hklmart.domain.ProductModifyDTO">
-        <![CDATA[
-        SELECT *
-        FROM PRODUCT,
-             STOCK
-        WHERE PRODUCT.PRODUCT_CODE = STOCK.STOCK_PRODUCT_CODE
-          AND PRODUCT.PRODUCT_CODE = #{productCode}
-        ]]>
-    </select>
-
-    <select id="getAskAnswer" resultType="com.hklmart.domain.BoardAskDTO">
-        <![CDATA[
-        SELECT *
-        FROM BOARD_ASK
-        WHERE BOARD_ASK_NUMBER = #{boardAskNumber}
-        ]]>
-    </select>
-    
-    <select id="getManageMember" resultType="com.hklmart.domain.MemberModifyDTO">
-        <![CDATA[
-        SELECT
-                M.MEMBER_ID,
-                M.MEMBER_NAME,
-                M.MEMBER_EMAIL,
-                M.MEMBER_TEL,
-                M.MEMBER_REGDATE,
-                M.MEMBER_ADDRESS,
-                M.MEMBER_ADDRESS_POSTCODE,
-                M.MEMBER_ADDRESS_MEMBER,
-                A.AUTHORITIES_MEMBER,
-                A.AUTHORITIES_MANAGER,
-                A.AUTHORITIES_ADMIN
-        FROM MEMBER M, AUTHORITIES A
-        WHERE M.MEMBER_ID = A.AUTHORITIES_MEMBER_ID AND M.MEMBER_ID = #{memberId}
-        ]]>
-    </select>
-    
-    <delete id="deleteAskManager" >
-        DELETE FROM BOARD_ASK WHERE BOARD_ASK_NUMBER= #{boardAskNumber}
-
-    </delete>
-
-    <delete id="deleteManagerProduct" >
-        DELETE FROM product WHERE PRODUCT_CODE = #{productCode}
-
-    </delete>
-
-
-    <delete id="deleteReviewManager" >
-        DELETE FROM BOARD_REVIEW WHERE BOARD_REVIEW_NUMBER = #{boardReviewNumber}
-
-    </delete>
-    
-    <delete id="deleteMember">
-        DELETE FROM member WHERE member_id = #{memberId}
-    </delete>
-
-    <select id="getOrderList" resultType="com.hklmart.domain.OrderViewVO">
-        <![CDATA[
-        SELECT *
-        FROM (
-                     SELECT/*+ INDEX_DESC(PRODUCT_ORDER PRODUCT_ORDER_PK) */
-                             ROWNUM RN,
-                             ORDER_NUMBER,
-                             ORDER_MEMBER_ID,
-                             ORDER_DATE,
-                             ORDER_TEL,
-                             ORDER_PAYMENT,
-                             ORDER_STATE
-                     FROM PRODUCT_ORDER
-                     WHERE ROWNUM <= #{pageNum} * #{amount}
-                     )
-        WHERE RN > (#{pageNum} - 1) * #{amount}
-        ]]>
-    </select>
-
-    <select id="getOrderModify" resultType="com.hklmart.domain.OrderViewVO">
-
-        <![CDATA[
-        SELECT *
-        FROM PRODUCT_ORDER
-        WHERE ORDER_NUMBER = #{param}
-        ]]>
-
-    </select>
-    <select id="getOrderProduct" resultType="com.hklmart.domain.orderProductListDTO">
-
-        <![CDATA[
-        SELECT *
-        FROM PRODUCT_ORDER_LIST,PRODUCT
-        WHERE ORDER_LIST_ORDER_NUMBER = #{param} AND PRODUCT_CODE = ORDER_LIST_PRODUCT
-        ]]>
-
-    </select>
-
-    <update id="modifyOrder">
-        UPDATE PRODUCT_ORDER SET ORDER_STATE = #{orderState}
-        WHERE ORDER_NUMBER = #{orderNumber}
-
-    </update>
-
-    <update id="updateAskAnswer">
-        <![CDATA[
-        update BOARD_ASK
-        set BOARD_ASK_STATE  = #{boardAskState},
-            BOARD_ASK_ANSWER = #{boardAskAnswer}
-        where BOARD_ASK_NUMBER = #{boardAskNumber}
-        ]]>
-    </update>
+	<select id="getProductList" resultType="com.hklmart.domain.ProductListDTO">
+		<![CDATA[
+		SELECT *
+		FROM (
+				     SELECT/*+ INDEX_DESC(P PRODUCT_PK) */
+						     ROWNUM RN
+					      , P.PRODUCT_CODE
+					      , P.PRODUCT_NAME
+					      , P.PRODUCT_BRAND
+					      , P.PRODUCT_PRICE
+					      , P.PRODUCT_TYPE
+					      , P.PRODUCT_IMGPATH
+					      , P.PRODUCT_IMG
+					      , P.PRODUCT_THUMBNAIL
+					      , P.PRODUCT_CONTENT
+					      , P.PRODUCT_REGDATE
+				     FROM PRODUCT P
+				     WHERE ROWNUM <= #{pageNum} * #{amount}
+				     )
+		WHERE RN > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
+	<select id="getAskBoardList" resultType="com.hklmart.domain.BoardAskDTO">
+		<![CDATA[
+		SELECT *
+		FROM (
+				     SELECT/*+ INDEX_DESC(BOARD_ASK BOARD_ASK_PK) */
+						     ROWNUM RN,
+						     BOARD_ASK_NUMBER,
+						     BOARD_ASK_MEMBER_ID,
+						     BOARD_ASK_DATE,
+						     BOARD_ASK_TITLE,
+						     BOARD_ASK_CONTENT,
+						     BOARD_ASK_STATE,
+						     BOARD_ASK_TYPE
+				     FROM BOARD_ASK
+				     WHERE ROWNUM <= #{pageNum} * #{amount}
+				     )
+		WHERE RN > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
+	<select id="getBoardReviewList" resultType="com.hklmart.domain.BoardReviewListDTO">
+		<![CDATA[
+		SELECT *
+		FROM (
+				     SELECT/*+ INDEX_DESC(R BOARD_REVIEW_PK)*/
+						     ROWNUM RN,
+						     R.BOARD_REVIEW_NUMBER,
+						     R.BOARD_REVIEW_MEMBER_ID,
+						     P.PRODUCT_NAME,
+						     R.BOARD_REVIEW_SCORE,
+						     R.BOARD_REVIEW_DATE,
+						     R.BOARD_REVIEW_CONTENT,
+						     R.BOARD_REVIEW_IMG,
+						     R.BOARD_REVIEW_IMGPATH,
+						     R.BOARD_REVIEW_THUMBNAIL
+				     FROM PRODUCT P,
+				          BOARD_REVIEW R
+				     WHERE R.BOARD_REVIEW_PRODUCT_CODE = P.PRODUCT_CODE
+					   AND ROWNUM <= #{pageNum} * #{amount}
+				     )
+		WHERE RN > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
+	<select id="getMemberList" resultType="com.hklmart.domain.MemberListDTO">
+		<![CDATA[
+		SELECT *
+		FROM (
+				     SELECT/*+ INDEX_ASC(M MEMBER_PK) */
+						     ROWNUM RN,
+						     M.MEMBER_ID,
+						     M.MEMBER_NAME,
+						     M.MEMBER_TEL,
+						     M.MEMBER_REGDATE,
+						     A.AUTHORITIES_MEMBER,
+						     A.AUTHORITIES_MANAGER,
+						     A.AUTHORITIES_ADMIN
+				     FROM MEMBER M,
+				          AUTHORITIES A
+				     WHERE M.MEMBER_ID = A.AUTHORITIES_MEMBER_ID
+					   AND ROWNUM <= #{pageNum} * #{amount}
+				     )
+		WHERE RN > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
+	<select id="getModify" resultType="com.hklmart.domain.ProductModifyDTO">
+		<![CDATA[
+		SELECT *
+		FROM PRODUCT,
+		     STOCK
+		WHERE PRODUCT.PRODUCT_CODE = STOCK.STOCK_PRODUCT_CODE
+		  AND PRODUCT.PRODUCT_CODE = #{productCode}
+		]]>
+	</select>
+	<select id="getAskAnswer" resultType="com.hklmart.domain.BoardAskDTO">
+		<![CDATA[
+		SELECT *
+		FROM BOARD_ASK
+		WHERE BOARD_ASK_NUMBER = #{boardAskNumber}
+		]]>
+	</select>
+	<select id="getManageMember" resultType="com.hklmart.domain.MemberModifyDTO">
+		<![CDATA[
+		SELECT M.MEMBER_ID,
+		       M.MEMBER_NAME,
+		       M.MEMBER_EMAIL,
+		       M.MEMBER_TEL,
+		       M.MEMBER_REGDATE,
+		       M.MEMBER_ADDRESS,
+		       M.MEMBER_ADDRESS_POSTCODE,
+		       M.MEMBER_ADDRESS_MEMBER,
+		       A.AUTHORITIES_MEMBER,
+		       A.AUTHORITIES_MANAGER,
+		       A.AUTHORITIES_ADMIN
+		FROM MEMBER M,
+		     AUTHORITIES A
+		WHERE M.MEMBER_ID = A.AUTHORITIES_MEMBER_ID
+		  AND M.MEMBER_ID = #{memberId}
+		]]>
+	</select>
+	<delete id="deleteAskManager">
+		DELETE
+		FROM BOARD_ASK
+		WHERE BOARD_ASK_NUMBER = #{boardAskNumber}
+	</delete>
+	<delete id="deleteManagerProduct">
+		DELETE
+		FROM PRODUCT
+		WHERE PRODUCT_CODE = #{productCode}
+	</delete>
+	<delete id="deleteReviewManager">
+		DELETE
+		FROM BOARD_REVIEW
+		WHERE BOARD_REVIEW_NUMBER = #{boardReviewNumber}
+	</delete>
+	<delete id="deleteMember">
+		DELETE
+		FROM MEMBER
+		WHERE MEMBER_ID = #{memberId}
+	</delete>
+	<select id="getOrderList" resultType="com.hklmart.domain.OrderViewVO">
+		<![CDATA[
+		SELECT *
+		FROM (
+				     SELECT/*+ INDEX_DESC(PRODUCT_ORDER PRODUCT_ORDER_PK) */
+						     ROWNUM RN,
+						     ORDER_NUMBER,
+						     ORDER_MEMBER_ID,
+						     ORDER_DATE,
+						     ORDER_TEL,
+						     ORDER_PAYMENT,
+						     ORDER_STATE
+				     FROM PRODUCT_ORDER
+				     WHERE ROWNUM <= #{pageNum} * #{amount}
+				     )
+		WHERE RN > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
+	<select id="getOrderModify" resultType="com.hklmart.domain.OrderViewVO">
+		<![CDATA[
+		SELECT *
+		FROM PRODUCT_ORDER
+		WHERE ORDER_NUMBER = #{param}
+		]]>
+	</select>
+	<select id="getOrderProduct" resultType="com.hklmart.domain.orderProductListDTO">
+		<![CDATA[
+		SELECT *
+		FROM PRODUCT_ORDER_LIST,
+		     PRODUCT
+		WHERE ORDER_LIST_ORDER_NUMBER = #{param}
+		  AND PRODUCT_CODE = ORDER_LIST_PRODUCT
+		]]>
+	</select>
+	<update id="modifyOrder">
+		UPDATE PRODUCT_ORDER
+		SET ORDER_STATE = #{orderState}
+		WHERE ORDER_NUMBER = #{orderNumber}
+	</update>
+	<update id="updateAskAnswer">
+		<![CDATA[
+		update BOARD_ASK
+		set BOARD_ASK_STATE  = #{boardAskState},
+		    BOARD_ASK_ANSWER = #{boardAskAnswer}
+		where BOARD_ASK_NUMBER = #{boardAskNumber}
+		]]>
+	</update>
 </mapper>

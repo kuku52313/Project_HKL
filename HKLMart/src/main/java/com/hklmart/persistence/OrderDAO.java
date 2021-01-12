@@ -1,10 +1,8 @@
 package com.hklmart.persistence;
-
-
-import com.hklmart.domain.*;
-import org.apache.ibatis.annotations.Insert;
-
-import java.util.List;
+import com.hklmart.domain.BasketOrderPayListVO;
+import com.hklmart.domain.CheckStockVO;
+import com.hklmart.domain.OrderPayVO;
+import com.hklmart.domain.OrderVO;
 
 public interface OrderDAO {
 
@@ -25,4 +23,5 @@ public interface OrderDAO {
     void stockUpdate(OrderPayVO orderPayVO);
 
     void stockUpdate(BasketOrderPayListVO basketOrderPayListVO);
+
 }

@@ -1,5 +1,4 @@
 package com.hklmart.persistence;
-
 import com.hklmart.domain.*;
 
 import java.util.List;

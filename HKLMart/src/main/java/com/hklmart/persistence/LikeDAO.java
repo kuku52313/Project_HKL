@@ -1,5 +1,4 @@
 package com.hklmart.persistence;
-
 import com.hklmart.domain.PageCriteriaVO;
 import com.hklmart.domain.ProductVO;
 

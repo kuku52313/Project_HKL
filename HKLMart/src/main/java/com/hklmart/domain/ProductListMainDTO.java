@@ -1,5 +1,4 @@
 package com.hklmart.domain;
-
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
@@ -41,4 +40,5 @@ public class ProductListMainDTO {
         String pathReplace = productContent.replace('\\', '/');
         this.productContent = pathReplace;
     }
+
 }

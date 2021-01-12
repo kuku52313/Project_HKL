@@ -1,24 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hklmart.persistence.BoardDAO">
-    <insert id="insertAskBoard">
-        <![CDATA[
-        INSERT INTO BOARD_ASK
-                (BOARD_ASK_NUMBER, BOARD_ASK_MEMBER_ID, BOARD_ASK_DATE, BOARD_ASK_TYPE, BOARD_ASK_TITLE, BOARD_ASK_CONTENT, BOARD_ASK_PRODUCT_CODE,
-                 BOARD_ASK_ORDER_NUMBER)
-        VALUES (SEQ_BOARD_ASK.NEXTVAL, #{boardAskMemberId}, SYSDATE, #{boardAskType}, #{boardAskTitle}, #{boardAskContent}, #{boardAskProductCode},
-                #{boardAskOrderNumber})
-        ]]>
-    </insert>
-
-    <insert id="insertBoardReview">
-        <![CDATA[
-        insert INTO bOARD_REVIEW
-                (BOARD_REVIEW_NUMBER, BOARD_REVIEW_MEMBER_ID, BOARD_REVIEW_PRODUCT_CODE, BOARD_REVIEW_SCORE, BOARD_REVIEW_CONTENT, BOARD_REVIEW_IMG, BOARD_REVIEW_IMGPATH, BOARD_REVIEW_THUMBNAIL)
-        VALUES (SEQ_BOARD_REVIEW.NEXTVAL, #{boardReviewMemberId}, #{boardReviewProductCode}, #{boardReviewScore}, #{boardReviewContent}, #{boardReviewImg}, #{boardReviewImgpath},
-                #{boardReviewThumbnail})
-        ]]>
-    </insert>
-
+	<insert id="insertAskBoard">
+		<![CDATA[
+		INSERT INTO BOARD_ASK
+				(BOARD_ASK_NUMBER, BOARD_ASK_MEMBER_ID, BOARD_ASK_DATE, BOARD_ASK_TYPE, BOARD_ASK_TITLE, BOARD_ASK_CONTENT, BOARD_ASK_PRODUCT_CODE,
+				 BOARD_ASK_ORDER_NUMBER)
+		VALUES (SEQ_BOARD_ASK.NEXTVAL, #{boardAskMemberId}, SYSDATE, #{boardAskType}, #{boardAskTitle}, #{boardAskContent}, #{boardAskProductCode},
+		        #{boardAskOrderNumber})
+		]]>
+	</insert>
+	<insert id="insertBoardReview">
+		<![CDATA[
+		INSERT INTO BOARD_REVIEW
+				(BOARD_REVIEW_NUMBER, BOARD_REVIEW_MEMBER_ID, BOARD_REVIEW_PRODUCT_CODE, BOARD_REVIEW_SCORE, BOARD_REVIEW_CONTENT, BOARD_REVIEW_IMG, BOARD_REVIEW_IMGPATH, BOARD_REVIEW_THUMBNAIL)
+		VALUES (SEQ_BOARD_REVIEW.NEXTVAL, #{boardReviewMemberId}, #{boardReviewProductCode}, #{boardReviewScore}, #{boardReviewContent}, #{boardReviewImg}, #{boardReviewImgpath},
+		        #{boardReviewThumbnail})
+		]]>
+	</insert>
 </mapper>

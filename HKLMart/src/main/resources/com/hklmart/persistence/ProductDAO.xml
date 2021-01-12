@@ -24,14 +24,14 @@
     <update id="modifyFile">
         <![CDATA[
         UPDATE PRODUCT
-        SET PRODUCT_NAME            = #{productName},
-            PRODUCT_BRAND           = #{productBrand},
-            PRODUCT_PRICE           = #{productPrice},
-            PRODUCT_IMGPATH         = #{productImgPath},
-            PRODUCT_IMG             = #{productImg},
-            PRODUCT_THUMBNAIL       = #{productThumbnail},
-            PRODUCT_CONTENT         = #{productContent},
-            PRODUCT_REGDATE         = SYSDATE
+        SET PRODUCT_NAME      = #{productName},
+            PRODUCT_BRAND     = #{productBrand},
+            PRODUCT_PRICE     = #{productPrice},
+            PRODUCT_IMGPATH   = #{productImgPath},
+            PRODUCT_IMG       = #{productImg},
+            PRODUCT_THUMBNAIL = #{productThumbnail},
+            PRODUCT_CONTENT   = #{productContent},
+            PRODUCT_REGDATE   = SYSDATE
         WHERE PRODUCT_CODE = #{productCode}
         ]]>
     </update>
@@ -72,7 +72,8 @@
                           , P.PRODUCT_CONTENT
                           , P.PRODUCT_REGDATE
                      FROM PRODUCT P
-                     WHERE ROWNUM <= #{pageNum} * #{amount} and P.PRODUCT_TYPE = ${Type}
+                     WHERE ROWNUM <= #{pageNum} * #{amount}
+                       and P.PRODUCT_TYPE = ${Type}
                      )
         WHERE RN > (#{pageNum} - 1) * #{amount}
         ]]>
@@ -94,7 +95,8 @@
                           , P.PRODUCT_CONTENT
                           , P.PRODUCT_REGDATE
                      FROM PRODUCT P
-                     WHERE ROWNUM <= #{pageNum} * #{amount} and P.PRODUCT_TYPE between ${Type} and (${Type}+19)
+                     WHERE ROWNUM <= #{pageNum} * #{amount}
+                       and P.PRODUCT_TYPE between ${Type} and (${Type} + 19)
                      )
         WHERE RN > (#{pageNum} - 1) * #{amount}
         ]]>
@@ -136,8 +138,10 @@
                S.STOCK_285,
                S.STOCK_290,
                S.STOCK_295
-        FROM PRODUCT P, STOCK S
-        WHERE P.PRODUCT_CODE = S.STOCK_PRODUCT_CODE AND P.PRODUCT_CODE = #{productCode}
+        FROM PRODUCT P,
+             STOCK S
+        WHERE P.PRODUCT_CODE = S.STOCK_PRODUCT_CODE
+          AND P.PRODUCT_CODE = #{productCode}
         ]]>
     </select>
 
@@ -159,7 +163,8 @@
                      FROM PRODUCT P,
                           BOARD_REVIEW R
                      WHERE R.BOARD_REVIEW_PRODUCT_CODE = P.PRODUCT_CODE
-                       AND ROWNUM <= #{pageNum} * #{amount} AND P.PRODUCT_CODE = #{productCode}
+                       AND ROWNUM <= #{pageNum} * #{amount}
+                       AND P.PRODUCT_CODE = #{productCode}
                      )
         WHERE RN > (#{pageNum} - 1) * #{amount}
         ]]>

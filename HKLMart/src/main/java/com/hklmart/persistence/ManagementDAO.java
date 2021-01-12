@@ -1,8 +1,6 @@
 package com.hklmart.persistence;
-
 import com.hklmart.domain.*;
 
-import java.lang.reflect.Member;
 import java.util.List;
 
 public interface ManagementDAO {
@@ -38,4 +36,5 @@ public interface ManagementDAO {
     void modifyOrder(OrderPayVO orderPayVO);
 
     void updateAskAnswer(BoardAskVO boardAskVO);
+
 }

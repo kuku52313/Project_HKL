@@ -1,11 +1,9 @@
 package com.hklmart.service;
-
 import com.hklmart.domain.ImageVO;
 import com.hklmart.domain.ProductVO;
 import com.hklmart.domain.RegistImageVO;
 import com.hklmart.domain.StockVO;
 import com.hklmart.persistence.ProductDAO;
-import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +14,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-@Log4j
 @Service
 public class FileService {
 
@@ -30,8 +27,7 @@ public class FileService {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         String datePath = sdf.format(date).replace("-", File.separator);
-        String path = absolutePath + "\\" + datePath;
-        return path;
+        return absolutePath + "\\" + datePath;
     }
 
     public void saveFile(HttpServletRequest request, ProductVO productVO, RegistImageVO imageVO, StockVO stockVO) throws IllegalStateException, IOException {
@@ -41,14 +37,12 @@ public class FileService {
         File image = new File(path + "\\M_" + mainImageName);
         File thumbnail = new File(path + "\\S_" + mainImageName);
         File contentImage = new File(path + "\\C_" + mainImageName);
-
         if (!image.exists()) {
             path.mkdirs();
             imageVO.getUploadImg().transferTo(image);
             imageVO.getContentImg().transferTo(contentImage);
             Thumbnails.of(image).size(300, 300).toFile(thumbnail);
         }
-
         productVO.setProductImgPath(contextPath.toString());
         productVO.setProductImg(image.toString().replace(path.toString(), ""));
         productVO.setProductThumbnail(thumbnail.toString().replace(path.toString(), ""));
@@ -69,14 +63,12 @@ public class FileService {
         File image = new File(path + "\\M_" + mainImageName);
         File thumbnail = new File(path + "\\S_" + mainImageName);
         File contentImage = new File(path + "\\C_" + mainImageName);
-
         if (!(imageVO.getUploadImg().getOriginalFilename().equals("")) && !(imageVO.getContentImg().getOriginalFilename().equals(""))) {
             if (getImage.exists() && getContent.exists()) {
                 getImage.delete();
                 getThumbnail.delete();
                 getContent.delete();
             }
-
             if (!image.exists()) {
                 path.mkdirs();
                 imageVO.getUploadImg().transferTo(image);
@@ -87,12 +79,12 @@ public class FileService {
             productVO.setProductImg(image.toString().replace(path.toString(), ""));
             productVO.setProductThumbnail(thumbnail.toString().replace(path.toString(), ""));
             productVO.setProductContent(contentImage.toString().replace(path.toString(), ""));
-        } else if (!(imageVO.getUploadImg().getOriginalFilename().equals("")) && imageVO.getContentImg().getOriginalFilename().equals("")) {
+        }
+        else if (!(imageVO.getUploadImg().getOriginalFilename().equals("")) && imageVO.getContentImg().getOriginalFilename().equals("")) {
             if (getImage.exists()) {
                 getImage.delete();
                 getThumbnail.delete();
             }
-
             if (!image.exists()) {
                 path.mkdirs();
                 imageVO.getUploadImg().transferTo(image);
@@ -103,11 +95,11 @@ public class FileService {
             productVO.setProductImg(image.toString().replace(path.toString(), ""));
             productVO.setProductThumbnail(thumbnail.toString().replace(path.toString(), ""));
             productVO.setProductContent(contentImage.toString().replace(path.toString(), ""));
-        } else if (imageVO.getUploadImg().getOriginalFilename().equals("") && !(imageVO.getContentImg().getOriginalFilename().equals(""))) {
+        }
+        else if (imageVO.getUploadImg().getOriginalFilename().equals("") && !(imageVO.getContentImg().getOriginalFilename().equals(""))) {
             if (getContent.exists()) {
                 getContent.delete();
             }
-
             if (!contentImage.exists()) {
                 path.mkdirs();
                 getImage.renameTo(image);
@@ -118,7 +110,8 @@ public class FileService {
             productVO.setProductImg(image.toString().replace(path.toString(), ""));
             productVO.setProductThumbnail(thumbnail.toString().replace(path.toString(), ""));
             productVO.setProductContent(contentImage.toString().replace(path.toString(), ""));
-        } else {
+        }
+        else {
             productVO.setProductImgPath(imageInfo.getProductImgPath());
             productVO.setProductImg(imageInfo.getProductImg());
             productVO.setProductThumbnail(imageInfo.getProductThumbnail());
@@ -128,4 +121,5 @@ public class FileService {
         product.modifyFile(productVO);
         product.modifyStock(stockVO);
     }
+
 }

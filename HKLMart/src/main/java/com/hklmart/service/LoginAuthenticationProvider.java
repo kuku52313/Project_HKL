@@ -1,5 +1,4 @@
 package com.hklmart.service;
-
 import com.hklmart.domain.UserDetailsVO;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
@@ -21,35 +20,17 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-
         String inputId = authentication.getName();
         String inputPw = (String) authentication.getCredentials();
-
         UserDetailsVO userDetails = (UserDetailsVO) userDetailsServcie.loadUserByUsername(inputId);
-
-        if (userDetails == null)
-            throw new AuthenticationServiceException(inputId);
-
-        else if (!inputId.equals(userDetails.getName()) || !passwordEncoder.matches(inputPw, userDetails.getPassword()))
-            throw new BadCredentialsException(inputId);
-
-        else if (!userDetails.isAccountNonLocked())
-            throw new LockedException(inputId);
-
-        else if (!userDetails.isEnabled())
-            throw new DisabledException(inputId);
-
-        else if (!userDetails.isAccountNonExpired())
-            throw new AccountExpiredException(inputId);
-
-        else if (!userDetails.isCredentialsNonExpired())
-            throw new CredentialsExpiredException(inputId);
-
+        if (userDetails == null) { throw new AuthenticationServiceException(inputId); }
+        else if (!inputId.equals(userDetails.getName()) || !passwordEncoder.matches(inputPw, userDetails.getPassword())) { throw new BadCredentialsException(inputId); }
+        else if (!userDetails.isAccountNonLocked()) { throw new LockedException(inputId); }
+        else if (!userDetails.isEnabled()) { throw new DisabledException(inputId); }
+        else if (!userDetails.isAccountNonExpired()) { throw new AccountExpiredException(inputId); }
+        else if (!userDetails.isCredentialsNonExpired()) { throw new CredentialsExpiredException(inputId); }
         userDetails.setPassword(null);
-
-        Authentication auth = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-
-        return auth;
+        return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
     }
 
     @Override

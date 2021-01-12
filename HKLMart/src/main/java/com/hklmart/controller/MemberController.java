@@ -1,5 +1,4 @@
 package com.hklmart.controller;
-
 import com.hklmart.domain.*;
 import com.hklmart.service.MemberService;
 import com.hklmart.service.PageService;
@@ -28,10 +27,8 @@ public class MemberController {
 
     @RequestMapping("/login-page")
     public String tryLogin(Authentication authentication) {
-        if (authentication == null)
-            return "login-page";
-        else
-            return "redirect:/";
+        if (authentication == null) { return "login-page"; }
+        else { return "redirect:/"; }
     }
 
     @PostMapping("/signup")
@@ -75,83 +72,59 @@ public class MemberController {
     }
 
     @GetMapping("/user-review-list")
-    public String goUserAskReviewList(ProductPageCriteriaVO cri, Model model,Principal principal){
-
+    public String goUserAskReviewList(ProductPageCriteriaVO cri, Model model, Principal principal) {
         cri.setMemberId(principal.getName());
-
         model.addAttribute("BoardReviewList", memberService.getUserReviewList(cri));
-
         int ReviewTotal = pageService.getUserReviewListTotal(cri);
-
         model.addAttribute("PageMaker", new PageDTO(cri, ReviewTotal));
-
         return "user-review-list";
     }
 
     @GetMapping("/user-ask-list")
-    public String goUserAskList(ProductPageCriteriaVO cri, Model model,Principal principal){
-
+    public String goUserAskList(ProductPageCriteriaVO cri, Model model, Principal principal) {
         cri.setMemberId(principal.getName());
-
         model.addAttribute("AskBoardList", memberService.getUserAskList(cri));
-
         int askTotal = pageService.getUserAskListTotal(cri);
-
         model.addAttribute("PageMaker", new PageDTO(cri, askTotal));
-
         return "user-ask-list";
     }
+
     @GetMapping("/updateAddress")
     @ResponseBody
     public Map<String, Object> updateMemberAddress(Principal principal, MemberAddressVO memberAddressVO) {
-
         memberAddressVO.setMemberId(principal.getName());
-
         memberService.updateMemberAddress(memberAddressVO);
-
         Map<String, Object> map = new HashMap<>();
-
         map.put("message", 1);
         return map;
     }
+
     @GetMapping("/user-order-list")
-    public String getUserOrderList(Principal principal ,ProductPageCriteriaVO cri, Model model){
-
+    public String getUserOrderList(Principal principal, ProductPageCriteriaVO cri, Model model) {
         cri.setMemberId(principal.getName());
-
-        model.addAttribute("orderProductList",memberService.getUserOrderList(cri));
-
+        model.addAttribute("orderProductList", memberService.getUserOrderList(cri));
         int total = pageService.getUserOrderListTotal(cri);
-
         model.addAttribute("pageMaker", new PageDTO(cri, total));
-
-
-        return"/user-order-list";
+        return "/user-order-list";
     }
+
     @GetMapping("/user-order-detail")
-    public String getOrderDetail(@RequestParam("orderNumber") String orderNumber, Model model,Principal principal){
-
-
-        model.addAttribute("orderList",memberService.getOrderDetail(orderNumber));
-        model.addAttribute("productList",memberService.getOrderDetailProduct(orderNumber));
-
-
+    public String getOrderDetail(@RequestParam("orderNumber") String orderNumber, Model model, Principal principal) {
+        model.addAttribute("orderList", memberService.getOrderDetail(orderNumber));
+        model.addAttribute("productList", memberService.getOrderDetailProduct(orderNumber));
         return "user-order-detail";
     }
+
     @GetMapping("/user-review-delete")
     public String goManagerReviewDelete(@RequestParam("boardReviewNumber") String boardReviewNumber) {
-
         memberService.deleteReviewUser(boardReviewNumber);
-
         return "redirect:/member/user-review-list?pageNum=1&amount=10";
     }
 
     @GetMapping("/user-ask-view")
     public String goManagerAskAnawer(@RequestParam("boardAskNumber") String boardAskNumber, Model model) {
-
-
         model.addAttribute("answer", memberService.getAskAnswer(boardAskNumber));
-
         return "user-ask-view";
     }
+
 }

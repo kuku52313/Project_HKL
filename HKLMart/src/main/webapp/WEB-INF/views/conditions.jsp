@@ -4,7 +4,6 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true" %>
-
 <!doctype html>
 <html lang="ko">
 <head>
@@ -174,10 +173,10 @@
 </div>
 </body>
 <script>
-    function resizeWindow(win) {
-        var wid = win.document.body.offsetWidth + 400;
-        var hei = win.document.body.offsetHeight + 60;
-        win.resizeTo(wid, hei);
-    }
+	function resizeWindow(win) {
+		var wid = win.document.body.offsetWidth + 400;
+		var hei = win.document.body.offsetHeight + 60;
+		win.resizeTo(wid, hei);
+	}
 </script>
 </html>

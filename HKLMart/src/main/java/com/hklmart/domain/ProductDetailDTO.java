@@ -1,13 +1,11 @@
 package com.hklmart.domain;
-
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Data
 public class ProductDetailDTO {
+
     private String productName;
     private String productCode;
     private String productBrand;
@@ -34,25 +32,20 @@ public class ProductDetailDTO {
     private int stock290;
     private int stock295;
 
-
-
     protected void setProductImg(String productImg) {
-        String pathReplace = productImg.replace('\\', '/');
-        this.productImg = pathReplace;
+        this.productImg = productImg.replace('\\', '/');
     }
 
     protected void setProductImgpath(String productImgpath) {
-        String pathReplace = productImgpath.replace('\\', '/');
-        this.productImgpath = pathReplace;
+        this.productImgpath = productImgpath.replace('\\', '/');
     }
 
     protected void setProductThumbnail(String productThumbnail) {
-        String pathReplace = productThumbnail.replace('\\', '/');
-        this.productThumbnail = pathReplace;
+        this.productThumbnail = productThumbnail.replace('\\', '/');
     }
 
     protected void setProductContent(String productContent) {
-        String pathReplace = productContent.replace('\\', '/');
-        this.productContent = pathReplace;
+        this.productContent = productContent.replace('\\', '/');
     }
+
 }

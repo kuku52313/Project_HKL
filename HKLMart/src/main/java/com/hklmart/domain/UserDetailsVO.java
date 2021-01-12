@@ -1,5 +1,4 @@
 package com.hklmart.domain;
-
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,7 +12,6 @@ import java.util.List;
 public class UserDetailsVO implements UserDetails {
 
     private static final long serialVersionUID = 1L;
-
     private String username;
     private String password;
     private String memberId;
@@ -76,4 +74,5 @@ public class UserDetailsVO implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

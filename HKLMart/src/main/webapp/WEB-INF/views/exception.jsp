@@ -4,16 +4,13 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true" %>
-
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <title>HKLMart :: ERROR</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-          integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="shortcut icon" href="/resources/img/back_exception.jpg">
     <style>
         html,
@@ -164,9 +161,7 @@
         }
     </style>
 </head>
-
 <body>
-
 <div class="error-page">
     <div>
         <h1 data-h1="${error}" style="position: fixed; top: 35%; left: 50%; transform: translate(-50%, -50%); font-size: 25vh">${error}</h1>
@@ -175,8 +170,5 @@
         </div>
         <a class="back" href="/"><i class="fas fa-home" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i></a>
     </div>
-
-
 </body>
-
 </html>

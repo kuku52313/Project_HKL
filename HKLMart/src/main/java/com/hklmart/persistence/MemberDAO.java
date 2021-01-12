@@ -1,6 +1,4 @@
 package com.hklmart.persistence;
-
-
 import com.hklmart.domain.*;
 import org.apache.ibatis.annotations.Insert;
 
@@ -23,7 +21,6 @@ public interface MemberDAO {
 
     List<BoardReviewListDTO> getUserReviewList(ProductPageCriteriaVO cri);
 
-
     void updateMemberAddress(MemberAddressVO memberAddressVO);
 
     List<orderProductListDTO> getUserOrderList(ProductPageCriteriaVO cri);
@@ -35,4 +32,5 @@ public interface MemberDAO {
     void deleteReviewUser(String boardReviewNumber);
 
     BoardAskDTO getAskAnswer(String boardAskNumber);
+
 }

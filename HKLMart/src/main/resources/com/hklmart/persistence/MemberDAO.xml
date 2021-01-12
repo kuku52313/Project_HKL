@@ -1,151 +1,138 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hklmart.persistence.MemberDAO">
-    <insert id="registMember">
-        <![CDATA[
-        insert into MEMBER(MEMBER_ID,MEMBER_PW,MEMBER_NAME,MEMBER_EMAIL,MEMBER_TEL,MEMBER_REGDATE)
-        VALUES (#{memberId}, #{memberPw}, #{memberName}, #{memberEmail}, #{memberTel}, SYSDATE)
-        ]]>
-    </insert>
+	<insert id="registMember">
+		<![CDATA[
+		INSERT INTO MEMBER(MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_TEL, MEMBER_REGDATE)
+		VALUES (#{memberId}, #{memberPw}, #{memberName}, #{memberEmail}, #{memberTel}, SYSDATE)
+		]]>
+	</insert>
+	<insert id="registAuthorities">
+		<![CDATA[
+		INSERT INTO AUTHORITIES
+		VALUES (#{memberId}, #{authoritiesMember}, #{authoritiesManager, jdbcType=NULL}, #{authoritiesAdmin, jdbcType=NULL})
+		]]>
+	</insert>
+	<select id="getMemberInfo" parameterType="java.lang.String" resultType="com.hklmart.domain.UserDetailsVO">
+		<![CDATA[
+		SELECT *
+		FROM (SELECT M.MEMBER_ID,
+		             M.MEMBER_PW,
+		             M.MEMBER_NAME,
+		             M.MEMBER_EMAIL,
+		             M.MEMBER_TEL,
+		             A.AUTHORITIES_MEMBER,
+		             A.AUTHORITIES_MANAGER,
+		             A.AUTHORITIES_ADMIN
+		      FROM MEMBER M,
+		           AUTHORITIES A
+		      WHERE M.MEMBER_ID = A.AUTHORITIES_MEMBER_ID)
+		WHERE MEMBER_ID = #{param}
+		]]>
+	</select>
+	<select id="idDuplicatiedInspection" parameterType="String" resultType="Integer">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE MEMBER_ID = #{userId}
+	</select>
+	<select id="getUserAskList" resultType="com.hklmart.domain.BoardAskDTO">
+		<![CDATA[
+		SELECT *
+		FROM (
+				     SELECT/*+ INDEX_DESC(BOARD_ASK BOARD_ASK_PK) */
+						     ROWNUM RN,
+						     BOARD_ASK_NUMBER,
+						     BOARD_ASK_MEMBER_ID,
+						     BOARD_ASK_DATE,
+						     BOARD_ASK_TITLE,
+						     BOARD_ASK_CONTENT,
+						     BOARD_ASK_STATE,
+						     BOARD_ASK_TYPE
+				     FROM BOARD_ASK
+				     WHERE ROWNUM <= #{pageNum} * #{amount}
+					   and BOARD_ASK_MEMBER_ID = #{memberId}
+				     )
+		WHERE RN > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
+	<select id="getUserReviewList" resultType="com.hklmart.domain.BoardReviewListDTO">
+		<![CDATA[
+		SELECT *
+		FROM (
+				     SELECT/*+ INDEX_DESC(R BOARD_REVIEW_PK) */
+						     ROWNUM RN,
+						     R.BOARD_REVIEW_NUMBER,
+						     R.BOARD_REVIEW_MEMBER_ID,
+						     P.PRODUCT_NAME,
+						     R.BOARD_REVIEW_SCORE,
+						     R.BOARD_REVIEW_DATE,
+						     R.BOARD_REVIEW_CONTENT,
+						     R.BOARD_REVIEW_IMG,
+						     R.BOARD_REVIEW_IMGPATH,
+						     R.BOARD_REVIEW_THUMBNAIL,
+						     R.BOARD_REVIEW_PRODUCT_CODE
+				     FROM PRODUCT P,
+				          BOARD_REVIEW R
+				     WHERE R.BOARD_REVIEW_PRODUCT_CODE = P.PRODUCT_CODE
+					   AND ROWNUM <= #{pageNum} * #{amount}
+					   and R.BOARD_REVIEW_MEMBER_ID = #{memberId}
+				     )
+		WHERE RN > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
+	<update id="updateMemberAddress">
+		UPDATE MEMBER
+		SET MEMBER_ADDRESS          = #{memberAddress},
+		    MEMBER_ADDRESS_MEMBER   = #{memberAddressMember},
+		    MEMBER_ADDRESS_POSTCODE = #{memberAddressPostcode}
 
-    <insert id="registAuthorities">
-        <![CDATA[
-        INSERT INTO AUTHORITIES
-        VALUES (#{memberId}, #{authoritiesMember}, #{authoritiesManager, jdbcType=NULL}, #{authoritiesAdmin, jdbcType=NULL})
-        ]]>
-    </insert>
-
-    <select id="getMemberInfo" parameterType="java.lang.String" resultType="com.hklmart.domain.UserDetailsVO">
-        <![CDATA[
-        SELECT *
-        FROM (SELECT
-                      M.MEMBER_ID,
-                      M.MEMBER_PW,
-                      M.MEMBER_NAME,
-                      M.MEMBER_EMAIL,
-                      M.MEMBER_TEL,
-                      A.AUTHORITIES_MEMBER,
-                      A.AUTHORITIES_MANAGER,
-                      A.AUTHORITIES_ADMIN
-              FROM MEMBER M,
-                   AUTHORITIES A
-              WHERE M.MEMBER_ID = A.AUTHORITIES_MEMBER_ID)
-        WHERE MEMBER_ID = #{param}
-        ]]>
-    </select>
-
-    <select id="idDuplicatiedInspection" parameterType="String" resultType="Integer">
-        SELECT COUNT(*)
-        FROM member
-        WHERE MEMBER_ID = #{userId}
-    </select>
-
-    <select id="getUserAskList" resultType="com.hklmart.domain.BoardAskDTO">
-        <![CDATA[
-        SELECT *
-        FROM (
-                     SELECT/*+ INDEX_DESC(BOARD_ASK BOARD_ASK_PK) */
-                             ROWNUM RN,
-                             BOARD_ASK_NUMBER,
-                             BOARD_ASK_MEMBER_ID,
-                             BOARD_ASK_DATE,
-                             BOARD_ASK_TITLE,
-                             BOARD_ASK_CONTENT,
-                             BOARD_ASK_STATE,
-                             BOARD_ASK_TYPE
-                     FROM BOARD_ASK
-                     WHERE ROWNUM <= #{pageNum} * #{amount} and BOARD_ASK_MEMBER_ID = #{memberId}
-                     )
-        WHERE RN > (#{pageNum} - 1) * #{amount}
-        ]]>
-    </select>
-
-    <select id="getUserReviewList" resultType="com.hklmart.domain.BoardReviewListDTO">
-        <![CDATA[
-        SELECT *
-        FROM (
-                     SELECT/*+ INDEX_DESC(R BOARD_REVIEW_PK) */
-                             ROWNUM RN,
-                             R.BOARD_REVIEW_NUMBER,
-                             R.BOARD_REVIEW_MEMBER_ID,
-                             P.PRODUCT_NAME,
-                             R.BOARD_REVIEW_SCORE,
-                             R.BOARD_REVIEW_DATE,
-                             R.BOARD_REVIEW_CONTENT,
-                             R.BOARD_REVIEW_IMG,
-                             R.BOARD_REVIEW_IMGPATH,
-                             R.BOARD_REVIEW_THUMBNAIL,
-                             R.BOARD_REVIEW_PRODUCT_CODE
-                     FROM PRODUCT P,
-                          BOARD_REVIEW R
-                     WHERE R.BOARD_REVIEW_PRODUCT_CODE = P.PRODUCT_CODE
-                       AND ROWNUM <= #{pageNum} * #{amount} and R.BOARD_REVIEW_MEMBER_ID = #{memberId}
-                     )
-        WHERE RN > (#{pageNum} - 1) * #{amount}
-        ]]>
-    </select>
-
-    <update id="updateMemberAddress">
-        UPDATE MEMBER
-        SET
-        MEMBER_ADDRESS = #{memberAddress},
-        MEMBER_ADDRESS_MEMBER = #{memberAddressMember},
-        MEMBER_ADDRESS_POSTCODE = #{memberAddressPostcode}
-
-        WHERE MEMBER_ID = #{memberId}
-    </update>
-
-    <select id="getUserOrderList" resultType="com.hklmart.domain.orderProductListDTO">
-        <![CDATA[
-        SELECT *
-        FROM (
-                     SELECT/*+ INDEX_DESC(PO PRODUCT_ORDER_PK) */
-                             ROWNUM RN,
-                             OL.*,
-                             PO.*,
-                             P.*
-                     FROM PRODUCT P,
-                          PRODUCT_ORDER PO,
-                          PRODUCT_ORDER_LIST OL
-                     WHERE PO.ORDER_NUMBER = OL.ORDER_LIST_ORDER_NUMBER AND
-                             OL.ORDER_LIST_PRODUCT = P.PRODUCT_CODE
-                       AND ROWNUM <= #{pageNum} * #{amount} AND PO.ORDER_MEMBER_ID = #{memberId}
-                     )
-        WHERE RN > (#{pageNum} - 1) * #{amount}
-        ]]>
-    </select>
-
-    <select id="getOrderDetail" resultType="com.hklmart.domain.OrderViewVO">
-
-        <![CDATA[
-        SELECT *
-        FROM PRODUCT_ORDER
-        WHERE ORDER_NUMBER = #{param}
-        ]]>
-
-    </select>
-    <select id="getOrderDetailProduct" resultType="com.hklmart.domain.orderProductListDTO">
-
-        <![CDATA[
-        SELECT *
-        FROM PRODUCT_ORDER_LIST,PRODUCT
-        WHERE ORDER_LIST_ORDER_NUMBER = #{param} AND PRODUCT_CODE = ORDER_LIST_PRODUCT
-        ]]>
-
-    </select>
-
-    <delete id="deleteReviewUser" >
-        DELETE FROM BOARD_REVIEW WHERE BOARD_REVIEW_NUMBER = #{boardReviewNumber}
-
-    </delete>
-
-    <select id="getAskAnswer" resultType="com.hklmart.domain.BoardAskDTO">
-        <![CDATA[
-        SELECT *
-        FROM BOARD_ASK
-        WHERE BOARD_ASK_NUMBER = #{boardAskNumber}
-        ]]>
-    </select>
-
+		WHERE MEMBER_ID = #{memberId}
+	</update>
+	<select id="getUserOrderList" resultType="com.hklmart.domain.orderProductListDTO">
+		<![CDATA[
+		SELECT *
+		FROM (
+				     SELECT/*+ INDEX_DESC(PO PRODUCT_ORDER_PK) */
+						     ROWNUM RN,
+						     OL.*,
+						     PO.*,
+						     P.*
+				     FROM PRODUCT P,
+				          PRODUCT_ORDER PO,
+				          PRODUCT_ORDER_LIST OL
+				     WHERE PO.ORDER_NUMBER = OL.ORDER_LIST_ORDER_NUMBER
+					   AND OL.ORDER_LIST_PRODUCT = P.PRODUCT_CODE
+					   AND ROWNUM <= #{pageNum} * #{amount}
+					   AND PO.ORDER_MEMBER_ID = #{memberId}
+				     )
+		WHERE RN > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
+	<select id="getOrderDetail" resultType="com.hklmart.domain.OrderViewVO">
+		<![CDATA[
+		SELECT *
+		FROM PRODUCT_ORDER
+		WHERE ORDER_NUMBER = #{param}
+		]]>
+	</select>
+	<select id="getOrderDetailProduct" resultType="com.hklmart.domain.orderProductListDTO">
+		<![CDATA[
+		SELECT *
+		FROM PRODUCT_ORDER_LIST,
+		     PRODUCT
+		WHERE ORDER_LIST_ORDER_NUMBER = #{param}
+		  AND PRODUCT_CODE = ORDER_LIST_PRODUCT
+		]]>
+	</select>
+	<delete id="deleteReviewUser">
+		DELETE
+		FROM BOARD_REVIEW
+		WHERE BOARD_REVIEW_NUMBER = #{boardReviewNumber}
+	</delete>
+	<select id="getAskAnswer" resultType="com.hklmart.domain.BoardAskDTO">
+		<![CDATA[
+		SELECT *
+		FROM BOARD_ASK
+		WHERE BOARD_ASK_NUMBER = #{boardAskNumber}
+		]]>
+	</select>
 </mapper>

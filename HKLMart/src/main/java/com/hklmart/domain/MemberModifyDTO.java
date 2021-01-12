@@ -1,11 +1,11 @@
 package com.hklmart.domain;
-
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
 
 @Data
 public class MemberModifyDTO {
+
     private int rn;
     private String memberId;
     private String memberName;
@@ -15,14 +15,10 @@ public class MemberModifyDTO {
     private String memberAddress;
     private String memberAddressPostcode;
     private String memberAddressMember;
-
-
     @Setter(AccessLevel.PROTECTED)
     private String authoritiesMember;
-
     @Setter(AccessLevel.PROTECTED)
     private String authoritiesManager;
-
     @Setter(AccessLevel.PROTECTED)
     private String authoritiesAdmin;
     private String memberAuthority;

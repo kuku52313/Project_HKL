@@ -1,13 +1,10 @@
 package com.hklmart.service;
-
 import com.hklmart.domain.*;
 import com.hklmart.persistence.ManagementDAO;
-import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Log4j
 @Service
 public class ManagementService {
 
@@ -47,7 +44,7 @@ public class ManagementService {
 
     public void deleteAskManager(String boardAskNumber) { managementDAO.deleteAskManager(boardAskNumber); }
 
-    public void deleteManagerProduct(String productCode){
+    public void deleteManagerProduct(String productCode) {
         managementDAO.deleteManagerProduct(productCode);
     }
 
@@ -58,6 +55,7 @@ public class ManagementService {
     public List<OrderViewVO> getOrderList(PageCriteriaVO cri) {
         return managementDAO.getOrderList(cri);
     }
+
     public OrderViewVO getOrderModify(String orderNumber) {
         return managementDAO.getOrderModify(orderNumber);
     }
@@ -73,4 +71,5 @@ public class ManagementService {
     public void updateAskAnswer(BoardAskVO boardAskVO) {
         managementDAO.updateAskAnswer(boardAskVO);
     }
+
 }

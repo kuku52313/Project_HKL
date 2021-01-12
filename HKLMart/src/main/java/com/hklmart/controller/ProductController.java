@@ -1,10 +1,8 @@
 package com.hklmart.controller;
-
 import com.hklmart.domain.ProductVO;
 import com.hklmart.domain.RegistImageVO;
 import com.hklmart.domain.StockVO;
 import com.hklmart.service.FileService;
-import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-@Log4j
 @Controller
 @RequestMapping("/product")
 public class ProductController {
@@ -40,4 +37,5 @@ public class ProductController {
         fileService.modifyProduct(request, productVO, imageVO, stockVO);
         return "redirect:/manager/manager-product";
     }
+
 }

@@ -70,7 +70,7 @@
         <div class="col-7 w3-main">
             <c:set var="TypeValue" value="${param.Type}" />
             <div class="w3-row-padding w3-center product-card-wrapper">
-                <c:forEach items="${likeList}" var="list" varStatus="status">
+                <c:forEach items="${searchList}" var="list" varStatus="status">
                     <div class="w3-quarter product-card">
                         <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}">
                     <span>
@@ -92,63 +92,45 @@
         </div>
     </div>
 </div>
-<ul class="pagination justify-content-center" style="margin:20px 0">
-    <c:if test="${pageMaker.prev}">
-        <li class="page-item">
-            <a class="page-link" style="color: black;" href="/like/get?pageNum=${pageMaker.startPage - 1}&amount=12">Previous</a>
-        </li>
-    </c:if> <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-    <li class="page-item ${pageMaker.cri.pageNum == num ? "active":""}">
-        <a class="page-link " style="color: black;" href="/like/get?pageNum=${num}&amount=12">${num}</a>
-    </li>
-</c:forEach> <c:if test="${pageMaker.next}">
-    <li class="page-item">
-        <a class="page-link" style="color: black;" href="/like/get?pageNum=${pageMaker.endPage + 1}&amount=12">Next</a>
-    </li>
-</c:if>
-</ul>
-<form id="pageForm" action="/product-list" method="get">
-    <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}" /> <input type="hidden" name="amount" value="${pageMaker.cri.amount}" />
-</form>
 <hr style="border: solid 1px #ffb6b6;">
 <script>
-	function clickBasket(obj) {
-		let thisCode = $(obj).attr('class');
-		let stateLogin = document.getElementById('stateLogin').value;
-		if (stateLogin === "0") {
-			alert("로그인이 필요한 서비스입니다");
-			location.href = "/member/login-page";
-			return 0;
-		}
-		let sendData = {productCode: thisCode};
-		$.ajax({
-			url        : "/basket/check",
-			type       : "GET",
-			dataType   : "json",
-			contentType: "application/json; charset=UTF-8",
-			data       : sendData,
-			success    : function (data) {
-				if (data.result === 0) {
-					alert("해당 상품을 장바구니에 담았습니다")
-				} else if (data.result === 1) {
-					alert("이미 장바구니에 있는 상품입니다");
-				}
-			},
-			error      : function () {
-				alert("Error. 관리자에게 문의하십시오.");
-			},
-		});
-	}
+    function clickBasket(obj) {
+        let thisCode = $(obj).attr('class');
+        let stateLogin = document.getElementById('stateLogin').value;
+        if (stateLogin === "0") {
+            alert("로그인이 필요한 서비스입니다");
+            location.href = "/member/login-page";
+            return 0;
+        }
+        let sendData = {productCode: thisCode};
+        $.ajax({
+            url        : "/basket/check",
+            type       : "GET",
+            dataType   : "json",
+            contentType: "application/json; charset=UTF-8",
+            data       : sendData,
+            success    : function (data) {
+                if (data.result === 0) {
+                    alert("해당 상품을 장바구니에 담았습니다")
+                } else if (data.result === 1) {
+                    alert("이미 장바구니에 있는 상품입니다");
+                }
+            },
+            error      : function () {
+                alert("Error. 관리자에게 문의하십시오.");
+            },
+        });
+    }
 
-	$(document).ready(function () {
-		$('[data-toggle="tooltip"]').tooltip();
-	});
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 
-	function clickDelete(obj) {
-		let thisCode = $(obj).attr('class');
-		location.href = "/like/delete?productCode=" + thisCode;
-		alert("찜목록에서 삭제하였습니다")
-		location.href = "/like/get?pageNum=1&amount=12"
-	}
+    function clickDelete(obj) {
+        let thisCode = $(obj).attr('class');
+        location.href = "/like/delete?productCode=" + thisCode;
+        alert("찜목록에서 삭제하였습니다")
+        location.href = "/like/get?pageNum=1&amount=12"
+    }
 </script>
 <%@include file="includes/footer.jsp" %>

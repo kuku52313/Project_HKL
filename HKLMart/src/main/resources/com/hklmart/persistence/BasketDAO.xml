@@ -1,51 +1,49 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hklmart.persistence.BasketDAO">
-    <insert id="putProductBasket" parameterType="String">
-        <![CDATA[
-        INSERT INTO BASKET
-                (BASKET_MEMBER_ID, BASKET_PRODUCT_CODE)
-        VALUES (#{param1}, #{param2})
-        ]]>
-    </insert>
-
-    <select id="takeProductBasket" parameterType="String" resultType="java.lang.String">
-        <![CDATA[
-        SELECT BASKET_PRODUCT_CODE
-        FROM BASKET
-        WHERE BASKET_MEMBER_ID = #{param}
-        ]]>
-    </select>
-
-    <select id="checkBasket" parameterType="String" resultType="Integer">
-        <![CDATA[
-        SELECT COUNT(*)
-        FROM BASKET
-        WHERE BASKET_MEMBER_ID = #{param1}
-          AND BASKET_PRODUCT_CODE = #{param2}
-        ]]>
-    </select>
-
-    <select id="orderBasket" parameterType="String" resultType="com.hklmart.domain.BasketVO">
-        <![CDATA[
-        select
-                b.BASKET_MEMBER_ID,
-                p.PRODUCT_CODE,
-                p.PRODUCT_NAME,
-                p.PRODUCT_BRAND,
-                p.PRODUCT_PRICE,
-                p.PRODUCT_IMGPATH,
-                p.PRODUCT_IMG,
-                p.PRODUCT_THUMBNAIL
-        from PRODUCT p, BASKET b
-        where b.BASKET_MEMBER_ID = #{basketMemberId} and p.PRODUCT_CODE = b.BASKET_PRODUCT_CODE
-        ]]>
-    </select>
-
-    <delete id="remove" parameterType="String">
-        <![CDATA[
-        DELETE FROM BASKET WHERE BASKET_MEMBER_ID = #{param1} AND BASKET_PRODUCT_CODE = #{param2}
-        ]]>
-    </delete>
+	<insert id="putProductBasket" parameterType="String">
+		<![CDATA[
+		INSERT INTO BASKET
+				(BASKET_MEMBER_ID, BASKET_PRODUCT_CODE)
+		VALUES (#{param1}, #{param2})
+		]]>
+	</insert>
+	<select id="takeProductBasket" parameterType="String" resultType="java.lang.String">
+		<![CDATA[
+		SELECT BASKET_PRODUCT_CODE
+		FROM BASKET
+		WHERE BASKET_MEMBER_ID = #{param}
+		]]>
+	</select>
+	<select id="checkBasket" parameterType="String" resultType="Integer">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM BASKET
+		WHERE BASKET_MEMBER_ID = #{param1}
+		  AND BASKET_PRODUCT_CODE = #{param2}
+		]]>
+	</select>
+	<select id="orderBasket" parameterType="String" resultType="com.hklmart.domain.BasketVO">
+		<![CDATA[
+		select B.BASKET_MEMBER_ID,
+		       P.PRODUCT_CODE,
+		       P.PRODUCT_NAME,
+		       P.PRODUCT_BRAND,
+		       P.PRODUCT_PRICE,
+		       P.PRODUCT_IMGPATH,
+		       P.PRODUCT_IMG,
+		       P.PRODUCT_THUMBNAIL
+		from PRODUCT P,
+		     BASKET B
+		where B.BASKET_MEMBER_ID = #{basketMemberId}
+		  and P.PRODUCT_CODE = B.BASKET_PRODUCT_CODE
+		]]>
+	</select>
+	<delete id="remove" parameterType="String">
+		<![CDATA[
+		DELETE
+		FROM BASKET
+		WHERE BASKET_MEMBER_ID = #{param1}
+		  AND BASKET_PRODUCT_CODE = #{param2}
+		]]>
+	</delete>
 </mapper>

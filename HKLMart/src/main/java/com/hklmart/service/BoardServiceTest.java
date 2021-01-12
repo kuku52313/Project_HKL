@@ -1,5 +1,4 @@
 package com.hklmart.service;
-
 import com.hklmart.domain.BoardReviewVO;
 import com.hklmart.persistence.BoardDAO;
 import org.springframework.stereotype.Service;
@@ -13,10 +12,8 @@ public class BoardServiceTest {
         this.boardDAO = boardDAO;
     }
 
-
     public void insertBoardReviewService(BoardReviewVO boardReviewVO) {
         boardDAO.insertBoardReview(boardReviewVO);
     }
-
 
 }
