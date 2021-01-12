@@ -156,7 +156,7 @@
                     </div>
                     <hr style="border: solid 1px #ffb6b6;">
                 </div>
-                <input type="button" class="insertBtn" onclick="location.href = '/member/user-order-list?pageNum=1&amount=10';" value="뒤로" />
+                <input type="button" class="insertBtn" onclick="location.href = '/member/user-order-list?amount=${param.amount}&pageNum=${param.pageNum}'" value="뒤로" />
             </form>
         </div>
         <div class="col-3"></div>

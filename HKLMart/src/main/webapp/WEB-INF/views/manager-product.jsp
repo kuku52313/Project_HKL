@@ -66,7 +66,7 @@
                     <tr>
                         <th><c:out value="${list.rn}" /></th>
                         <th>
-                            <a href="/manager/product-modify?productCode=<c:out value="${list.productCode}" />" style="color: black">
+                            <a href="/manager/product-modify?productCode=<c:out value="${list.productCode}&amount=10&pageNum=${pageMaker.cri.pageNum}" />" style="color: black">
                                 <c:out value="${list.productCode}" /></a>
                         </th>
                         <th><c:out value="${list.productName}" /></th>

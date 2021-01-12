@@ -63,13 +63,11 @@
                     <th>회원권한</th>
                 </tr>
                 </thead>
-                <%-- <td><a href='/board/get?bno=<c:out value="${board.bno}" />'>
-                                                    <c:out value="${board.title}" />
-                                            </a></td> --%> <c:forEach items="${MemberList}" var="list" varStatus="status">
+                <c:forEach items="${MemberList}" var="list" varStatus="status">
                 <tr>
                     <th><c:out value="${status.count}" /></th>
                     <th>
-                        <a href="/manager/manager-member-modify?memberId=<c:out value="${list.memberId}" />" style="color: black">
+                        <a href="/manager/manager-member-modify?memberId=<c:out value="${list.memberId}"/>&amount=10&pageNum=${pageMaker.cri.pageNum}" style="color: black">
                             <c:out value="${list.memberId}" /></a>
                     </th>
                     <th><c:out value="${list.memberName}" /></th>

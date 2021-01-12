@@ -66,7 +66,7 @@
                 <c:forEach items="${orderList}" var="list" varStatus="status">
                     <tr>
                         <th>
-                            <a href="/manager/manager-order-modify?orderNumber=<c:out value="${list.orderNumber}" />" style="color: black">
+                            <a href="/manager/manager-order-modify?orderNumber=<c:out value="${list.orderNumber}"/>&amount=10&pageNum=${pageMaker.cri.pageNum}" style="color: black">
                                 <c:out value="${list.orderNumber}" /></a>
                         </th>
                         <th><c:out value="${list.orderMemberId}" /></th>

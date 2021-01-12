@@ -84,7 +84,7 @@
                         <dl>
                             <dt>${list.productBrand}</dt>
                             <dt>
-                                <a href="/member/user-order-detail?orderNumber=${list.orderNumber}">주문 번호: ${list.orderNumber}</a>
+                                <a href="/member/user-order-detail?orderNumber=${list.orderNumber}&amount=10&pageNum=${pageMaker.productCri.pageNum}">주문 번호: ${list.orderNumber}</a>
                             </dt>
                             <dt class="orderDate">주문 날짜</dt>
                             <dt>주문금액</dt>

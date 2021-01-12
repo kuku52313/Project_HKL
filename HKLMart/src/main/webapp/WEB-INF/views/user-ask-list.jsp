@@ -84,7 +84,7 @@
                 <c:forEach items="${AskBoardList}" var="list" varStatus="status">
                     <tr>
                         <th>
-                            <a href="/member/user-ask-view?boardAskNumber=${list.boardAskNumber}" style="color: black">
+                            <a href="/member/user-ask-view?boardAskNumber=${list.boardAskNumber}&amount=10&pageNum=${PageMaker.productCri.pageNum}" style="color: black">
                                 <c:out value="${list.boardAskNumber}" /></a>
                         </th>
                         <th><c:out value="${list.boardAskType}" /></th>

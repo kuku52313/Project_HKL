@@ -116,9 +116,9 @@ public class MemberController {
     }
 
     @GetMapping("/user-review-delete")
-    public String goManagerReviewDelete(@RequestParam("boardReviewNumber") String boardReviewNumber) {
+    public String goManagerReviewDelete(@RequestParam("boardReviewNumber") String boardReviewNumber,PageCriteriaVO cri) {
         memberService.deleteReviewUser(boardReviewNumber);
-        return "redirect:/member/user-review-list?pageNum=1&amount=10";
+        return "redirect:/member/user-review-list?amount="+cri.getAmount()+"&pageNum="+cri.getPageNum();
     }
 
     @GetMapping("/user-ask-view")
