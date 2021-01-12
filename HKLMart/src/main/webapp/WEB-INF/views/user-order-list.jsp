@@ -93,7 +93,7 @@
                         </dl>
                         <dl data-v-6dcc2f72="">
                             <dd data-v-6dcc2f72="">
-                                <a data-v-6dcc2f72="">
+                                <a href="/product-detail?pageNum=1&amount=5&productCode=${list.productCode}" data-v-6dcc2f72="">
                                     <img data-v-6dcc2f72="" src="${list.productImgPath}${list.productThumbnail}">
                                 </a>
                             </dd>
