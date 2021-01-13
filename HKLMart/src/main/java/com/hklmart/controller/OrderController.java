@@ -66,7 +66,6 @@ public class OrderController {
         orderService.doPay(orderPayListVO);
         for (BasketOrderVO temp : orderPayListVO.getOrderList()) {
             if (temp.getProductPrice() == 0 || temp.getProductSize() == 0 || temp.getProductCode() == null || temp.getProductCode().isEmpty()) {
-                continue;
             }
             else {
                 orderPayListVO.setOrderPayment(temp.getProductPrice());
