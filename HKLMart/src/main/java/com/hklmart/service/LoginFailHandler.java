@@ -2,6 +2,7 @@ package com.hklmart.service;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.session.SessionAuthenticationException;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.RequestDispatcher;
@@ -21,6 +22,7 @@ public class LoginFailHandler implements AuthenticationFailureHandler {
         else if (exception instanceof DisabledException) { request.setAttribute("loginFailMsg", "비활성화된 계정입니다"); }
         else if (exception instanceof AccountExpiredException) { request.setAttribute("loginFailMsg", "만료된 계정입니다"); }
         else if (exception instanceof CredentialsExpiredException) request.setAttribute("loginFailMsg", "비밀번호가 만료되었습니다");
+        else if (exception instanceof SessionAuthenticationException) request.setAttribute("loginFailMsg", "이미 로그인 된 상태입니다");
         request.setAttribute("loginStatus", false);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/member/login-fail");
         dispatcher.forward(request, response);

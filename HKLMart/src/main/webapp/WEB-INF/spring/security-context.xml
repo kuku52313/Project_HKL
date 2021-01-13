@@ -39,7 +39,7 @@
 		<!-- 중복 로그인 방지 | 중복가능한 최대 세션 수 1 | 중복로그인시 / 으로 리다이렉트 -->
 		<!-- 로그인된 상태에서는 로그인이나 회원가입 화면에 접근 못하도록 함 -->
 		<s:session-management invalid-session-url="/" session-authentication-error-url="/exception">
-			<s:concurrency-control max-sessions="1" expired-url="/" error-if-maximum-exceeded="true" />
+			<s:concurrency-control max-sessions="1" expired-url="/" error-if-maximum-exceeded="true"  />
 		</s:session-management>
 
 		<!-- 로그인 처리 -->
