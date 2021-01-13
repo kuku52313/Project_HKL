@@ -52,10 +52,10 @@
             <div class="row form-inline">
                 <div class="col-5"></div>
                 <div class="col-5">
-                    <input class="form-control active-pink" id="productSearch" type="search" placeholder="제품명 검색" onkeyup="searchFunc()" style="width:100%" autocomplete="off">
+                    <input class="form-control active-pink" id="productSearch" type="search" placeholder="제품명 검색" onkeyup="searchFunc(), enterKeyUp()" style="width:100%" autocomplete="off">
                 </div>
                 <div class="col-2">
-                    <a onclick="doSearch()" id="search"><i style="color: rgb(255, 48, 79);" class="fas fa-search fa-2x"></i></a>
+                    <a onclick="doSearch()" id="search" style="cursor: pointer"><i style="color: rgb(255, 48, 79);" class="fas fa-search fa-2x"></i></a>
                 </div>
             </div>
         </div>

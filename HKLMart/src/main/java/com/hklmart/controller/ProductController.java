@@ -36,8 +36,7 @@ public class ProductController {
     @PostMapping("/product-modify-up")
     public String modifyProduct(HttpServletRequest request, ProductVO productVO, RegistImageVO imageVO, StockVO stockVO, PageCriteriaVO cri) throws IOException {
         fileService.modifyProduct(request, productVO, imageVO, stockVO);
-
-        return "redirect:/manager/manager-product?amount="+cri.getAmount()+"&pageNum="+cri.getPageNum();
+        return "redirect:/manager/manager-product?amount=" + cri.getAmount() + "&pageNum=" + cri.getPageNum();
     }
 
 }

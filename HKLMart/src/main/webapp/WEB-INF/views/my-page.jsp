@@ -381,6 +381,17 @@
 			},
 		});
 	}
+
+	function enterKeyUp() {
+		if (event.keyCode == 13) {
+			doSearch();
+		}
+	}
+
+	function doSearch() {
+		let searchKeyword = document.getElementById('productSearch').value;
+		location.href = "/search?keyword=" + searchKeyword;
+	}
 </script>
 </html>
 

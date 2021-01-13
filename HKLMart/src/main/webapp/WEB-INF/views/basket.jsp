@@ -399,10 +399,11 @@
 
 	function checkSum(form) {
 		let sum = 0;
-		let firstItem = form.items;
 		let count = form.items.length;
 		if (count == undefined) {
-			sum += parseInt(form.items.value);
+			if (form.items.checked == true) {
+				sum += parseInt(form.items.value);
+			}
 		} else {
 			for (var i = 0; i < count; i++) {
 				if (form.items[i].checked == true) {
