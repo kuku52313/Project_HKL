@@ -33,14 +33,17 @@
     <script src="/resources/js/mapjsapi/postcode.v2.js"></script>
 </head>
 <body>
-<div class="toast toadst-position" data-autohide="false">
+<div class="toast toast-position" data-autohide="false">
     <div class="toast-header">
         <strong class="mr-auto">꼭 읽어주세요!!</strong> <small class="text-muted">readme</small>
         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
     </div>
     <div class="toast-body">
         <dl>
-            <br>
+            <dt>PC환경에 최적화 되어있습니다</dt>
+            <dd>&emsp;모바일에서 완벽하게 동작하지 않습니다</dd>
+            <dd>&emsp;가급적이면 PC로 접속해주세요</dd>
+            <hr>
             <dt>회원가입을 해주세요</dt>
             <dd>&emsp;개인정보는 모두암호화 됩니다</dd>
             <hr>
